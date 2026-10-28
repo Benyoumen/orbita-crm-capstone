@@ -1,0 +1,99 @@
+{
+  "meeting_id": "EX-MTG-2",
+  "run_status": "Awaiting review",
+  "source_status": "Ready",
+  "block_reason": null,
+  "fields": [
+    {
+      "field": "call_summary",
+      "status": "proposed",
+      "value": "Renata cancelled the 20 Oct demo because the clinic managers' team is being reorganised, and gave no new date. The budget is unchanged at USD 50,000 per year. Orbita will send its security documentation.",
+      "evidence": [
+        {
+          "quote": "I have to cancel the demo on the 20th.",
+          "line": 3
+        },
+        {
+          "quote": "it is still fifty thousand dollars a year.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "status": "proposed",
+      "value": "Clinic managers' team is being reorganised; no new date for the demo",
+      "evidence": [
+        {
+          "quote": "We are reorganising the clinic managers' team and I cannot give you a new date yet.",
+          "line": 3
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "status": "proposed",
+      "value": "Orbita (Ana): send the security documentation",
+      "evidence": [
+        {
+          "quote": "I will send you our security documentation in the meantime.",
+          "line": 6
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "status": "contradictory",
+      "value": null,
+      "evidence": [
+        {
+          "quote": "I have to cancel the demo on the 20th.",
+          "line": 3
+        }
+      ],
+      "note": "The approved demo was cancelled and no new next step was agreed."
+    },
+    {
+      "field": "follow_up_due_date",
+      "status": "contradictory",
+      "value": null,
+      "evidence": [
+        {
+          "quote": "I cannot give you a new date yet.",
+          "line": 3
+        }
+      ],
+      "note": "The approved date was the cancelled demo; no new date was agreed."
+    },
+    {
+      "field": "budget",
+      "status": "proposed",
+      "value": "USD 50,000 per year",
+      "evidence": [
+        {
+          "quote": "The budget itself has not changed: it is still fifty thousand dollars a year.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_maker",
+      "status": "no_evidence",
+      "value": null,
+      "evidence": [],
+      "note": "The only statement about who approves comes from an unattributed speaker, so the decision-maker is not identified."
+    },
+    {
+      "field": "stage",
+      "status": "no_evidence",
+      "value": null,
+      "evidence": [],
+      "note": "Solution exit criteria not met: no agreed scope and no request for a proposal."
+    }
+  ],
+  "ignored_out_of_scope": []
+}

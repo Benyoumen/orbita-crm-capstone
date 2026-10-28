@@ -1,0 +1,19 @@
+{
+  "name": "call-to-crm-kit",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Call-to-CRM Agent (Product Faculty capstone): Granola connector, agent pipeline, guardrails and eval for Orbita CRM",
+  "scripts": {
+    "build:data": "node scripts/build_data.mjs",
+    "sync": "node agent/granola.mjs sync",
+    "dry-run": "node agent/pipeline.mjs --all --dry-run",
+    "mock": "node agent/pipeline.mjs --all --mock",
+    "eval": "node eval/run_eval.mjs",
+    "test": "node eval/guardrail_tests.mjs && node eval/granola_live_test.mjs",
+    "prd": "python scripts/fill_prd.py"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.3.0"
+  }
+}

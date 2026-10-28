@@ -1,0 +1,226 @@
+{
+  "meeting_id": "MTG-2010",
+  "run_status": "Awaiting review",
+  "source_status": "Ready",
+  "block_reason": null,
+  "fields": [
+    {
+      "field": "call_summary",
+      "status": "proposed",
+      "value": "Discovery call with Pampa Agro. Field reps visit about 200 dealers and report on paper, later typed into a spreadsheet, so orders and promises get lost. They want one place for visits and orders, working offline with GPS check-in, for 38 users, live by July 2027, with about USD 70,000 a year. A field demo is set for 11 Nov.",
+      "evidence": [
+        {
+          "quote": "After each visit the rep fills in a paper report, and on Friday someone types it into a spreadsheet.",
+          "line": 5
+        },
+        {
+          "quote": "Yes, Wednesday the 11th works.",
+          "line": 25
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "status": "proposed",
+      "value": "No mobile signal in the fields; reps are not used to apps",
+      "evidence": [
+        {
+          "quote": "The problem is there's no mobile signal in the fields.",
+          "line": 10
+        },
+        {
+          "quote": "And the reps are not used to apps.",
+          "line": 10
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "status": "proposed",
+      "value": "Orbita (Ana): send a short video of the offline mode by 9 Nov; Pampa: pick two reps for the field demo",
+      "evidence": [
+        {
+          "quote": "I'll send you a short video of the offline mode by Monday.",
+          "line": 24
+        },
+        {
+          "quote": "We'll pick two reps.",
+          "line": 25
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "status": "proposed",
+      "value": "Field demo with two Pampa reps on 11 Nov",
+      "evidence": [
+        {
+          "quote": "would a field demo with two of your reps work next Wednesday, the 11th?",
+          "line": 24
+        },
+        {
+          "quote": "Yes, Wednesday the 11th works.",
+          "line": 25
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "status": "proposed",
+      "value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "quote": "I'll send you a short video of the offline mode by Monday.",
+          "line": 24
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "status": "proposed",
+      "value": "2026-11-09",
+      "evidence": [
+        {
+          "quote": "I'll send you a short video of the offline mode by Monday.",
+          "line": 24
+        }
+      ],
+      "note": "'Monday' resolved from the meeting date, Wed 2026-11-04."
+    },
+    {
+      "field": "customer_need",
+      "status": "proposed",
+      "value": "One place for every dealer visit, order and promise",
+      "evidence": [
+        {
+          "quote": "We need to know which dealer was visited, what they ordered and what was promised, in one place.",
+          "line": 7
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "budget",
+      "status": "proposed",
+      "value": "USD 70,000 per year",
+      "evidence": [
+        {
+          "quote": "About seventy thousand dollars a year.",
+          "line": 20
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_maker",
+      "status": "no_evidence",
+      "value": null,
+      "evidence": [],
+      "note": "'I make the final call' comes from an unattributed speaker, so the decision-maker is not identified."
+    },
+    {
+      "field": "go_live_target",
+      "status": "proposed",
+      "value": "2027-07",
+      "evidence": [
+        {
+          "quote": "so live by July 2027.",
+          "line": 23
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "status": "proposed",
+      "value": "38",
+      "evidence": [
+        {
+          "quote": "So thirty-eight users.",
+          "line": 9
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "departments",
+      "status": "proposed",
+      "value": "Sales; Leadership",
+      "evidence": [
+        {
+          "quote": "Thirty-two field reps in sales, and six people in the leadership team who want the reports.",
+          "line": 9
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_criteria",
+      "status": "proposed",
+      "value": "Works offline; GPS visit check-in; dealer visit and order records",
+      "evidence": [
+        {
+          "quote": "Then it must work offline and have the GPS check-in, those two are non-negotiable.",
+          "line": 12
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "integrations",
+      "status": "proposed",
+      "value": "Orion ERP",
+      "evidence": [
+        {
+          "quote": "Our ERP is Orion ERP. The dealer orders need to flow there.",
+          "line": 14
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "employee_count",
+      "status": "proposed",
+      "value": "450",
+      "evidence": [
+        {
+          "quote": "We're about four hundred and fifty people.",
+          "line": 16
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "current_solution",
+      "status": "proposed",
+      "value": "Paper visit reports typed into a spreadsheet",
+      "evidence": [
+        {
+          "quote": "After each visit the rep fills in a paper report, and on Friday someone types it into a spreadsheet.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "status": "no_evidence",
+      "value": null,
+      "evidence": [],
+      "note": "Qualified Opportunity exit criteria not met: need and timeline are on the call, but the decision-maker is not identified (the speaker is unattributed)."
+    },
+    {
+      "field": "champion",
+      "status": "no_evidence",
+      "value": null,
+      "evidence": [],
+      "note": "'I'm the one pushing for this' comes from an unattributed speaker, so the champion is not identified."
+    }
+  ],
+  "ignored_out_of_scope": []
+}

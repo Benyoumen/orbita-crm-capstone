@@ -1,0 +1,20 @@
+# secrets and local tool config (the key lives only in .env)
+.env
+.env.*
+!.env.example
+.vincent/
+
+# real notes from the optional Granola connector: never committed
+.granola-cache/
+
+# dependencies
+node_modules/
+
+# reference material from outside the capstone (work data): stays on this machine
+mockups/mockup-salesops-v5_2026-09-13.html
+
+# OS and Office noise
+~$*
+Thumbs.db
+desktop.ini
+.DS_Store

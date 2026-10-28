@@ -1,0 +1,110 @@
+{
+  "id": "not_b7cd41f134e9de",
+  "object": "note",
+  "title": "Verde Retail - POS data questions",
+  "owner": {
+    "name": "Ana Ribeiro",
+    "email": "ana.ribeiro@orbitacrm.example"
+  },
+  "created_at": "2026-11-05T18:00:00Z",
+  "updated_at": "2026-11-05T18:06:18Z",
+  "deleted_at": null,
+  "web_url": "https://notes.granola.ai/d/not_b7cd41f134e9de",
+  "calendar_event": {
+    "event_title": "Verde Retail - POS data questions",
+    "invitees": [
+      {
+        "email": "ana.ribeiro@orbitacrm.example"
+      },
+      {
+        "email": "camila.rocha@verderetail.example"
+      },
+      {
+        "email": "diego.faria@verderetail.example"
+      }
+    ],
+    "organiser": "ana.ribeiro@orbitacrm.example",
+    "calendar_event_id": "evt_b7cd41f134e9de",
+    "scheduled_start_time": "2026-11-05T18:00:00Z",
+    "scheduled_end_time": "2026-11-05T18:45:00Z"
+  },
+  "attachments": [],
+  "attendees": [
+    {
+      "name": "Ana Ribeiro",
+      "email": "ana.ribeiro@orbitacrm.example"
+    },
+    {
+      "name": "Camila Rocha",
+      "email": "camila.rocha@verderetail.example"
+    },
+    {
+      "name": "Diego Faria",
+      "email": "diego.faria@verderetail.example"
+    }
+  ],
+  "folder_membership": [
+    {
+      "id": "fol_CRMsyncFolder1",
+      "object": "folder",
+      "name": "CRM sync",
+      "parent_folder_id": null,
+      "space_id": null
+    }
+  ],
+  "space_membership": [],
+  "summary_text": "Follow-up with Verde Retail's Head of Retail Operations and IT Manager about POS data. The recording stopped after a few minutes.",
+  "summary_markdown": "Follow-up with Verde Retail's Head of Retail Operations and IT Manager about POS data. The recording stopped after a few minutes.",
+  "private_notes_text": null,
+  "private_notes_markdown": null,
+  "transcript": [
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Hi Camila, hi Diego. Thanks for setting this up so quickly.",
+      "start_time": "2026-11-05T18:00:06Z",
+      "end_time": "2026-11-05T18:00:10Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "I read the case study on the weekend and it made me curious, so I asked Diego to join. He looks after our POS integration.",
+      "start_time": "2026-11-05T18:00:14Z",
+      "end_time": "2026-11-05T18:00:24Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Diego Faria"
+      },
+      "text": "Our POS vendor exports the sales every night. I'm not sure we can get anything closer to real time for the franchisees.",
+      "start_time": "2026-11-05T18:00:58Z",
+      "end_time": "2026-11-05T18:01:06Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "A nightly export could be enough for a first version. What matters most to the franchise team?",
+      "start_time": "2026-11-05T18:02:30Z",
+      "end_time": "2026-11-05T18:02:37Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "So the main thing we would need from you before we go any further is",
+      "start_time": "2026-11-05T18:04:12Z",
+      "end_time": "2026-11-05T18:04:18Z"
+    }
+  ]
+}

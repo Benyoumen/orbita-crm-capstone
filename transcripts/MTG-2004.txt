@@ -1,0 +1,5 @@
+[00:00:00] Ana Ribeiro (Orbita): Hi Camila, hi Diego. Thanks for setting this up so quickly.
+[00:00:08] Camila Rocha (Verde Retail): I read the case study on the weekend and it made me curious, so I asked Diego to join. He looks after our POS integration.
+[00:00:52] Diego Faria (Verde Retail): Our POS vendor exports the sales every night. I'm not sure we can get anything closer to real time for the franchisees.
+[00:02:24] Ana Ribeiro (Orbita): A nightly export could be enough for a first version. What matters most to the franchise team?
+[00:04:06] Camila Rocha (Verde Retail): So the main thing we would need from you before we go any further is

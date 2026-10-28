@@ -1,0 +1,5018 @@
+{
+ "data_da_foto": "2026-11-06",
+ "kit": "..",
+ "schema": {
+  "version": 3,
+  "description": "Single source of truth for the Orbita CRM agent fields. The prompt's field dictionary, the output schema, the validator, the scorer, the review table, the permissions page, the record drawers and the CSV export are all derived from this file. Values are always stored as strings (or null); the type below says how a string is checked and normalised.",
+  "company": "Orbita CRM",
+  "seller_domain": "orbitacrm.example",
+  "currency": "USD",
+  "groups": [
+   {
+    "id": "conversation",
+    "label": "Conversation"
+   },
+   {
+    "id": "next_step",
+    "label": "Next step"
+   },
+   {
+    "id": "qualification",
+    "label": "Qualification (MEDDPICC)"
+   },
+   {
+    "id": "scope",
+    "label": "Scope and budget"
+   },
+   {
+    "id": "company",
+    "label": "Company profile"
+   },
+   {
+    "id": "stage",
+    "label": "Stage"
+   }
+  ],
+  "stages": [
+   "New Lead",
+   "Qualified Opportunity",
+   "Solution",
+   "Proposal",
+   "Negotiation",
+   "Contract",
+   "Closed Won",
+   "Closed Lost"
+  ],
+  "closed_stages": [
+   "Closed Won",
+   "Closed Lost"
+  ],
+  "departments": [
+   "Sales",
+   "Customer Success",
+   "Customer Service",
+   "Marketing",
+   "Finance",
+   "Operations",
+   "Leadership",
+   "IT"
+  ],
+  "seller_only": [
+   {
+    "key": "amount_usd",
+    "label": "Amount (USD per year)"
+   },
+   {
+    "key": "close_date",
+    "label": "Close date"
+   },
+   {
+    "key": "owner",
+    "label": "Owner"
+   },
+   {
+    "key": "contacts",
+    "label": "Contacts"
+   }
+  ],
+  "seller_only_note": "Deal amount, close date, probability, discount, price, contract term, owner and contacts are set by the seller only. The agent never proposes them; when the conversation asks for them, they go to ignored_out_of_scope.",
+  "permissions": {
+   "levels": [
+    {
+     "id": "auto",
+     "label": "Always allow",
+     "help": "Written as soon as the update is prepared. You can undo it."
+    },
+    {
+     "id": "ask",
+     "label": "Needs approval",
+     "help": "Proposed for your review; written only after you approve."
+    },
+    {
+     "id": "off",
+     "label": "Never",
+     "help": "The agent leaves this field alone."
+    }
+   ],
+   "create_opportunity": "ask",
+   "fixed_rules": [
+    "A proposal that contradicts a value you approved always waits for your decision.",
+    "The stage moves one step forward at most, and never to Closed Won or Closed Lost.",
+    "Amount, close date, probability, discount, owner and contacts are never written by the agent."
+   ]
+  },
+  "fields": [
+   {
+    "key": "call_summary",
+    "label": "Summary",
+    "group": "conversation",
+    "record": "opportunity",
+    "kind": "per_call",
+    "type": "text",
+    "max_words": 80,
+    "permission": "auto",
+    "definition": "What the conversation was about, the key facts and the outcome.",
+    "evidence": "Only facts stated in the transcript. No opinions or predictions.",
+    "format": "2-4 sentences, 80 words max.",
+    "good": "Intro call with the Commercial Director. Group and corporate requests arrive by email and live in spreadsheets, so requests get lost. He wants one place for every request and account, for 15 users, without a heavy implementation. A working session was agreed for 15 Oct.",
+    "bad": "Great call, the customer loved us and will probably buy. (opinion, not facts)"
+   },
+   {
+    "key": "objection",
+    "label": "Objections",
+    "group": "conversation",
+    "record": "opportunity",
+    "kind": "per_call",
+    "type": "text",
+    "max_words": 40,
+    "permission": "auto",
+    "definition": "Concerns, risks or blockers the customer raised in this conversation.",
+    "evidence": "A customer statement. Never the seller's speculation.",
+    "format": "40 words max; several objections separated by '; '.",
+    "good": "Small, busy team; cannot take on a heavy implementation",
+    "bad": "Price may be an issue (when price was never mentioned)"
+   },
+   {
+    "key": "commitment",
+    "label": "Commitments",
+    "group": "conversation",
+    "record": "opportunity",
+    "kind": "per_call",
+    "type": "text",
+    "max_words": 40,
+    "permission": "auto",
+    "definition": "Explicit promises made by either side in this conversation.",
+    "evidence": "An explicit 'I will' or 'we will'. Intentions such as 'maybe', 'we'll see' or conditional promises do not count.",
+    "format": "Party (person): action (by date); several commitments separated by '; '.",
+    "good": "Orbita (Ana): send the working-session agenda by 9 Oct",
+    "bad": "Customer will think about it"
+   },
+   {
+    "key": "next_step",
+    "label": "Next step",
+    "group": "next_step",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "text",
+    "max_words": 40,
+    "permission": "ask",
+    "definition": "The agreed next action or meeting that moves the opportunity forward.",
+    "evidence": "Agreed by both sides: proposed by one side and accepted by the other. A step the customer declined is not a next step.",
+    "format": "40 words max.",
+    "good": "Working session with the Mar Azul sales coordinators on 15 Oct at 10:00",
+    "bad": "Second meeting with the team (when the customer said 'not yet')"
+   },
+   {
+    "key": "follow_up_owner",
+    "label": "Follow-up owner",
+    "group": "next_step",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "roster",
+    "permission": "ask",
+    "definition": "The Orbita person responsible for the next follow-up.",
+    "evidence": "That person says they will do it, or is explicitly assigned. Must be in the team roster; customer-side people are not allowed.",
+    "format": "Full name exactly as in the roster.",
+    "good": "Ana Ribeiro",
+    "bad": "Gustavo Teixeira (customer side) or 'Ana' (not the full roster name)"
+   },
+   {
+    "key": "follow_up_due_date",
+    "label": "Follow-up due date",
+    "group": "next_step",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "date",
+    "permission": "ask",
+    "definition": "The date by which the follow-up owner must act.",
+    "evidence": "An explicit date or day ('by Friday'), resolved from the conversation date. 'No rush', 'soon' or no timeframe means no evidence.",
+    "format": "YYYY-MM-DD",
+    "good": "Meeting on Tue 2026-10-06, 'by Friday' -> 2026-10-09",
+    "bad": "Inventing a date when the customer said 'no rush'"
+   },
+   {
+    "key": "metrics",
+    "label": "Metrics",
+    "group": "qualification",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "text",
+    "max_words": 40,
+    "permission": "ask",
+    "meddpicc": "M",
+    "priority": 3,
+    "ask": "What number should the CRM move, and by how much?",
+    "definition": "The measurable result the customer expects from the CRM: the number they want to move, and by how much.",
+    "evidence": "A target or measure stated by the customer (a rate, a time, a count, money saved). A vague wish ('be more efficient') is not a metric.",
+    "format": "40 words max; several metrics separated by '; '.",
+    "good": "Answer every group request within 24 hours; cut lost group bookings by half",
+    "bad": "Improve sales (no measure)"
+   },
+   {
+    "key": "decision_maker",
+    "label": "Economic buyer",
+    "group": "qualification",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "person",
+    "permission": "ask",
+    "meddpicc": "E",
+    "priority": 1,
+    "ask": "Who gives the final yes and owns the budget? Have we met them?",
+    "definition": "The customer-side person who gives the final yes and owns the budget for this purchase.",
+    "evidence": "That person says they decide or hold the budget, or another customer names them as the one who decides or signs. The speaker must be identified: a statement from an unattributed speaker does not establish who decides.",
+    "format": "Full name (job title).",
+    "good": "Gustavo Teixeira (Commercial Director)",
+    "bad": "Ana Ribeiro (seller side) or 'the boss' (not a named person)"
+   },
+   {
+    "key": "decision_criteria",
+    "label": "Decision criteria",
+    "group": "qualification",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "text",
+    "max_words": 40,
+    "permission": "ask",
+    "meddpicc": "D",
+    "priority": 5,
+    "ask": "What will you judge the vendors on? What is a must-have?",
+    "definition": "What the customer will judge the vendors on: must-have capabilities and business or technical requirements.",
+    "evidence": "Stated by the customer as a requirement or a deciding factor ('must', 'has to', 'a must', 'deal-breaker', 'we will choose on').",
+    "format": "40 words max; several criteria separated by '; '.",
+    "good": "Shared view of group requests and accounts; follow-up reminders; light implementation",
+    "bad": "A good product (not a criterion)"
+   },
+   {
+    "key": "decision_process",
+    "label": "Decision process",
+    "group": "qualification",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "text",
+    "max_words": 40,
+    "permission": "ask",
+    "meddpicc": "D",
+    "priority": 4,
+    "ask": "What are the steps between today and the decision, and who is involved?",
+    "definition": "The steps and people that lead to the decision, in order: evaluations, validations and approvals.",
+    "evidence": "Stated by the customer.",
+    "format": "40 words max.",
+    "good": "The sales coordinators test it in a working session; then the Commercial Director decides",
+    "bad": "Standard process"
+   },
+   {
+    "key": "paper_process",
+    "label": "Paper process",
+    "group": "qualification",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "text",
+    "max_words": 40,
+    "permission": "ask",
+    "meddpicc": "P",
+    "priority": 7,
+    "ask": "Once you decide, what do procurement and legal need before the signature?",
+    "definition": "How the purchase gets signed once it is decided: procurement, legal, security or data reviews, contract and signature, and what could delay them.",
+    "evidence": "Stated by the customer.",
+    "format": "40 words max.",
+    "good": "Procurement asks for two quotes; Legal reviews the contract in two weeks; the Commercial Director signs",
+    "bad": "Paperwork (no steps)"
+   },
+   {
+    "key": "customer_need",
+    "label": "Pain",
+    "group": "qualification",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "text",
+    "max_words": 40,
+    "permission": "ask",
+    "meddpicc": "I",
+    "priority": 2,
+    "ask": "What goes wrong today, and what does it cost you?",
+    "definition": "The business problem that makes the customer act, in their terms: what goes wrong today and what it costs them.",
+    "evidence": "Stated by the customer, or the seller's restatement confirmed by the customer.",
+    "format": "40 words max.",
+    "good": "Group and corporate requests live in email and spreadsheets and get lost; the team needs one place for every request and account, with follow-up reminders",
+    "bad": "Interested in our product (not a pain)"
+   },
+   {
+    "key": "champion",
+    "label": "Champion",
+    "group": "qualification",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "person",
+    "permission": "ask",
+    "meddpicc": "C",
+    "priority": 6,
+    "ask": "Who inside the company is pushing for this, and will they help us reach the economic buyer?",
+    "definition": "The customer-side person who actively sells Orbita inside the company and has influence on the decision.",
+    "evidence": "The person says they are pushing for the project or will win others over, or another customer names them as the sponsor. Enthusiasm alone ('I love it') is not enough. The speaker must be identified.",
+    "format": "Full name (job title).",
+    "good": "Renata Lima (Sales Coordinator)",
+    "bad": "Ana Ribeiro (seller side) or 'someone in sales'"
+   },
+   {
+    "key": "competitors",
+    "label": "Competition",
+    "group": "qualification",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "text",
+    "max_words": 20,
+    "permission": "ask",
+    "meddpicc": "C",
+    "priority": 8,
+    "ask": "Who else are you looking at, including keeping today's tools?",
+    "definition": "The alternatives the customer is considering for this purchase: other vendors, building in-house, or staying with what they have.",
+    "evidence": "Named by the customer.",
+    "format": "Names separated by '; '.",
+    "good": "Northwind CRM; PipeSpark",
+    "bad": "Several vendors (not named)"
+   },
+   {
+    "key": "seats",
+    "label": "Seats (users)",
+    "group": "scope",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "integer",
+    "permission": "ask",
+    "definition": "How many people will use the CRM (licences).",
+    "evidence": "A number of users stated in the conversation. A range without a number the customer commits to is not evidence.",
+    "format": "Whole number, digits only.",
+    "good": "15",
+    "bad": "600 (that is the company headcount, see employee_count)"
+   },
+   {
+    "key": "departments",
+    "label": "Departments",
+    "group": "scope",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "multi",
+    "permission": "ask",
+    "definition": "The teams that will use the CRM.",
+    "evidence": "Named in the conversation. A team clearly described counts ('my sales coordinators' -> Sales).",
+    "format": "One or more of: Sales; Customer Success; Customer Service; Marketing; Finance; Operations; Leadership; IT. Separated by '; ', in this order.",
+    "good": "Sales; Marketing",
+    "bad": "Front desk (not in the list)"
+   },
+   {
+    "key": "integrations",
+    "label": "Integrations",
+    "group": "scope",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "text",
+    "max_words": 25,
+    "permission": "ask",
+    "definition": "Systems the CRM must connect to.",
+    "evidence": "Named by the customer.",
+    "format": "System names separated by '; '.",
+    "good": "In-house booking system; email and calendar",
+    "bad": "Their systems"
+   },
+   {
+    "key": "budget",
+    "label": "Budget",
+    "group": "scope",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "budget",
+    "permission": "ask",
+    "definition": "The money the customer says is available for this CRM.",
+    "evidence": "Stated by the customer. A deal amount the seller is asked to record is an instruction about a seller-only field, not a budget.",
+    "format": "'USD <amount or range> per <period>', for example 'USD 80,000-100,000 per year'; or 'No budget allocated' when the customer says so.",
+    "good": "USD 50,000 per year",
+    "bad": "USD 200,000 per year (taken from 'put us down for a two hundred thousand deal')"
+   },
+   {
+    "key": "go_live_target",
+    "label": "Go-live target",
+    "group": "scope",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "month",
+    "permission": "ask",
+    "definition": "When the customer needs the CRM live.",
+    "evidence": "A month or date the customer states as their target or deadline. 'Sometime next year' is not evidence.",
+    "format": "YYYY-MM (the month of the target or deadline).",
+    "good": "'We need it live by March 2027' -> 2027-03",
+    "bad": "2027-06 from 'sometime next year'"
+   },
+   {
+    "key": "employee_count",
+    "label": "Employees",
+    "group": "company",
+    "record": "client",
+    "kind": "state",
+    "type": "integer",
+    "permission": "ask",
+    "definition": "Total number of employees at the client company.",
+    "evidence": "Stated in the conversation.",
+    "format": "Whole number, digits only.",
+    "good": "600",
+    "bad": "15 (that is the number of CRM users, see seats)"
+   },
+   {
+    "key": "current_solution",
+    "label": "Current solution",
+    "group": "company",
+    "record": "client",
+    "kind": "state",
+    "type": "text",
+    "max_words": 20,
+    "permission": "ask",
+    "definition": "What the client uses today to manage customers and deals.",
+    "evidence": "Stated in the conversation.",
+    "format": "20 words max.",
+    "good": "Email and spreadsheets",
+    "bad": "Old system"
+   },
+   {
+    "key": "stage",
+    "label": "Stage",
+    "group": "stage",
+    "record": "opportunity",
+    "kind": "state",
+    "type": "stage",
+    "permission": "ask",
+    "definition": "Sales stage of the opportunity.",
+    "evidence": "See the stage rules. Propose a new stage only when every exit criterion of the current stage is evidenced in this conversation.",
+    "format": "One value of the stage list.",
+    "good": "Qualified Opportunity (from New Lead, with a quote for each criterion)",
+    "bad": "Contract (from Proposal: more than one step)"
+   }
+  ]
+ },
+ "team": [
+  {
+   "user_id": "U01",
+   "name": "Ana Ribeiro",
+   "role": "Account Executive",
+   "email": "ana.ribeiro@orbitacrm.example",
+   "access": "own_opportunities"
+  },
+  {
+   "user_id": "U02",
+   "name": "Lucas Moreira",
+   "role": "Account Executive",
+   "email": "lucas.moreira@orbitacrm.example",
+   "access": "own_opportunities"
+  },
+  {
+   "user_id": "U03",
+   "name": "Carla Mendes",
+   "role": "Account Executive",
+   "email": "carla.mendes@orbitacrm.example",
+   "access": "own_opportunities"
+  },
+  {
+   "user_id": "U04",
+   "name": "Juliana Costa",
+   "role": "Sales Manager",
+   "email": "juliana.costa@orbitacrm.example",
+   "access": "all_opportunities_read"
+  },
+  {
+   "user_id": "U05",
+   "name": "Pedro Almeida",
+   "role": "Solutions Engineer",
+   "email": "pedro.almeida@orbitacrm.example",
+   "access": "none"
+  },
+  {
+   "user_id": "U06",
+   "name": "Beatriz Souza",
+   "role": "Implementation Lead",
+   "email": "beatriz.souza@orbitacrm.example",
+   "access": "none"
+  }
+ ],
+ "clients": [
+  {
+   "client_id": "CLI-001",
+   "name": "Acme Logistics",
+   "domain": "acmelogistics.example",
+   "industry": "Logistics",
+   "hq": "Campinas, Brazil",
+   "fields": {},
+   "contacts": [
+    {
+     "name": "Marina Lopes",
+     "title": "COO",
+     "email": "marina.lopes@acmelogistics.example",
+     "buying_role": "Executive sponsor"
+    },
+    {
+     "name": "Felipe Nunes",
+     "title": "Sales Operations Manager",
+     "email": "felipe.nunes@acmelogistics.example",
+     "buying_role": "Champion"
+    },
+    {
+     "name": "Rui Tavares",
+     "title": "IT Lead",
+     "email": "rui.tavares@acmelogistics.example",
+     "buying_role": "Technical evaluator"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-002",
+   "name": "Verde Retail",
+   "domain": "verderetail.example",
+   "industry": "Retail",
+   "hq": "São Paulo, Brazil",
+   "fields": {},
+   "contacts": [
+    {
+     "name": "Camila Rocha",
+     "title": "Head of Retail Operations",
+     "email": "camila.rocha@verderetail.example",
+     "buying_role": "Champion"
+    },
+    {
+     "name": "Diego Faria",
+     "title": "IT Manager",
+     "email": "diego.faria@verderetail.example",
+     "buying_role": "Technical evaluator"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-003",
+   "name": "Nimbus Health",
+   "domain": "nimbushealth.example",
+   "industry": "Healthcare",
+   "hq": "Belo Horizonte, Brazil",
+   "fields": {
+    "employee_count": {
+     "value": "1200",
+     "approved": true
+    },
+    "current_solution": {
+     "value": "Patient-relations module of the clinic ERP, plus spreadsheets",
+     "approved": true
+    }
+   },
+   "contacts": [
+    {
+     "name": "Roberto Lima",
+     "title": "CIO",
+     "email": "roberto.lima@nimbushealth.example",
+     "buying_role": "Decision-maker"
+    },
+    {
+     "name": "Sandra Vieira",
+     "title": "Patient Relations Manager",
+     "email": "sandra.vieira@nimbushealth.example",
+     "buying_role": "Champion"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-004",
+   "name": "Atlas Manufacturing",
+   "domain": "atlasmfg.example",
+   "industry": "Manufacturing",
+   "hq": "Joinville, Brazil",
+   "fields": {
+    "employee_count": {
+     "value": "2400",
+     "approved": true
+    },
+    "current_solution": {
+     "value": "Spreadsheets and a shared inbox for distributor orders",
+     "approved": true
+    }
+   },
+   "contacts": [
+    {
+     "name": "Tiago Mendes",
+     "title": "Head of Operations",
+     "email": "tiago.mendes@atlasmfg.example",
+     "buying_role": "Champion"
+    },
+    {
+     "name": "Helena Duarte",
+     "title": "CFO",
+     "email": "helena.duarte@atlasmfg.example",
+     "buying_role": "Decision-maker"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-005",
+   "name": "Horizonte Foods",
+   "domain": "horizontefoods.example",
+   "industry": "Food & Beverage",
+   "hq": "Curitiba, Brazil",
+   "fields": {
+    "employee_count": {
+     "value": "900",
+     "approved": true
+    },
+    "current_solution": {
+     "value": "WhatsApp groups and spreadsheets per distributor",
+     "approved": true
+    }
+   },
+   "contacts": [
+    {
+     "name": "Paula Reis",
+     "title": "Supply Chain Director",
+     "email": "paula.reis@horizontefoods.example",
+     "buying_role": "Decision-maker"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-006",
+   "name": "Cedro Construtora",
+   "domain": "cedroconstrutora.example",
+   "industry": "Construction & Real Estate",
+   "hq": "Recife, Brazil",
+   "fields": {},
+   "contacts": [
+    {
+     "name": "Sofia Martins",
+     "title": "Commercial Director",
+     "email": "sofia.martins@cedroconstrutora.example",
+     "buying_role": "Executive sponsor"
+    },
+    {
+     "name": "Andre Pires",
+     "title": "Sales Manager",
+     "email": "andre.pires@cedroconstrutora.example",
+     "buying_role": "Champion"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-007",
+   "name": "Lumen Education",
+   "domain": "lumeneducation.example",
+   "industry": "Education",
+   "hq": "Porto Alegre, Brazil",
+   "fields": {
+    "employee_count": {
+     "value": "3100",
+     "approved": true
+    }
+   },
+   "contacts": [
+    {
+     "name": "Daniela Freitas",
+     "title": "VP of Admissions",
+     "email": "daniela.freitas@lumeneducation.example",
+     "buying_role": "Decision-maker"
+    },
+    {
+     "name": "Marcos Antunes",
+     "title": "CIO",
+     "email": "marcos.antunes@lumeneducation.example",
+     "buying_role": "Technical evaluator"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-008",
+   "name": "Pampa Agro",
+   "domain": "pampaagro.example",
+   "industry": "Agribusiness",
+   "hq": "Passo Fundo, Brazil",
+   "fields": {},
+   "contacts": [
+    {
+     "name": "Paulo Becker",
+     "title": "CEO",
+     "email": "paulo.becker@pampaagro.example",
+     "buying_role": "Executive sponsor"
+    },
+    {
+     "name": "Luiza Kranz",
+     "title": "Sales Manager",
+     "email": "luiza.kranz@pampaagro.example",
+     "buying_role": "Champion"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-009",
+   "name": "Solaris Energy",
+   "domain": "solarisenergy.example",
+   "industry": "Energy",
+   "hq": "Rio de Janeiro, Brazil",
+   "fields": {
+    "employee_count": {
+     "value": "1800",
+     "approved": true
+    },
+    "current_solution": {
+     "value": "Legacy on-premise CRM from 2014",
+     "approved": true
+    }
+   },
+   "contacts": [
+    {
+     "name": "Henrique Prado",
+     "title": "Commercial VP",
+     "email": "henrique.prado@solarisenergy.example",
+     "buying_role": "Decision-maker"
+    },
+    {
+     "name": "Talita Moura",
+     "title": "Procurement Lead",
+     "email": "talita.moura@solarisenergy.example",
+     "buying_role": "Procurement"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-010",
+   "name": "Vetta Insurance",
+   "domain": "vettainsurance.example",
+   "industry": "Insurance",
+   "hq": "São Paulo, Brazil",
+   "fields": {
+    "employee_count": {
+     "value": "2600",
+     "approved": true
+    },
+    "current_solution": {
+     "value": "Broker portal plus spreadsheets for the channel team",
+     "approved": true
+    }
+   },
+   "contacts": [
+    {
+     "name": "Ricardo Alves",
+     "title": "Head of Broker Channel",
+     "email": "ricardo.alves@vettainsurance.example",
+     "buying_role": "Decision-maker"
+    },
+    {
+     "name": "Mariana Couto",
+     "title": "Legal Counsel",
+     "email": "mariana.couto@vettainsurance.example",
+     "buying_role": "Legal"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-011",
+   "name": "Rio Claro Beverages",
+   "domain": "rioclaro.example",
+   "industry": "Beverages",
+   "hq": "Ribeirão Preto, Brazil",
+   "fields": {
+    "employee_count": {
+     "value": "1500",
+     "approved": true
+    },
+    "current_solution": {
+     "value": "Spreadsheets per key account manager",
+     "approved": false
+    }
+   },
+   "contacts": [
+    {
+     "name": "Fernanda Lima",
+     "title": "Key Account Director",
+     "email": "fernanda.lima@rioclaro.example",
+     "buying_role": "Decision-maker"
+    },
+    {
+     "name": "Otávio Sales",
+     "title": "Trade Marketing Manager",
+     "email": "otavio.sales@rioclaro.example",
+     "buying_role": "User"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-012",
+   "name": "Boreal Fitness",
+   "domain": "borealfitness.example",
+   "industry": "Fitness",
+   "hq": "Florianópolis, Brazil",
+   "fields": {},
+   "contacts": [
+    {
+     "name": "Natália Ramos",
+     "title": "Corporate Sales Lead",
+     "email": "natalia.ramos@borealfitness.example",
+     "buying_role": "Champion"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-013",
+   "name": "Quanta Labs",
+   "domain": "quantalabs.example",
+   "industry": "Diagnostics",
+   "hq": "Goiânia, Brazil",
+   "fields": {
+    "employee_count": {
+     "value": "700",
+     "approved": true
+    }
+   },
+   "contacts": [
+    {
+     "name": "Eduardo Pinto",
+     "title": "Commercial Director",
+     "email": "eduardo.pinto@quantalabs.example",
+     "buying_role": "Decision-maker"
+    }
+   ]
+  },
+  {
+   "client_id": "CLI-014",
+   "name": "Ipê Telecom",
+   "domain": "ipetelecom.example",
+   "industry": "Telecom",
+   "hq": "Brasília, Brazil",
+   "fields": {
+    "employee_count": {
+     "value": "5200",
+     "approved": true
+    },
+    "current_solution": {
+     "value": "Two regional CRMs that do not share accounts",
+     "approved": true
+    }
+   },
+   "contacts": [
+    {
+     "name": "Cláudia Torres",
+     "title": "Enterprise Sales Director",
+     "email": "claudia.torres@ipetelecom.example",
+     "buying_role": "Decision-maker"
+    },
+    {
+     "name": "Renan Duarte",
+     "title": "Procurement Manager",
+     "email": "renan.duarte@ipetelecom.example",
+     "buying_role": "Procurement"
+    }
+   ]
+  }
+ ],
+ "opportunities": [
+  {
+   "opportunity_id": "OPP-0141",
+   "client_id": "CLI-002",
+   "name": "Franchise sales CRM",
+   "owner_id": "U01",
+   "amount_usd": 48000,
+   "close_date": "2027-03-31",
+   "created": "2026-10-20",
+   "last_updated": "2026-10-28",
+   "fields": {
+    "stage": {
+     "value": "New Lead",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0142",
+   "client_id": "CLI-001",
+   "name": "Sales CRM rollout",
+   "owner_id": "U01",
+   "amount_usd": 96000,
+   "close_date": "2027-02-26",
+   "created": "2026-10-12",
+   "last_updated": "2026-10-15",
+   "fields": {
+    "customer_need": {
+     "value": "Wants a CRM for the sales team (from the inbound web form)",
+     "approved": false
+    },
+    "stage": {
+     "value": "Qualified Opportunity",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0143",
+   "client_id": "CLI-003",
+   "name": "Clinic network CRM",
+   "owner_id": "U01",
+   "amount_usd": 90000,
+   "close_date": "2027-01-29",
+   "created": "2026-09-14",
+   "last_updated": "2026-10-28",
+   "fields": {
+    "call_summary": {
+     "value": "Solution review with the CIO. Nimbus wants patient-relations and referral tracking for 14 clinics, with all patient data hosted in Brazil.",
+     "approved": true
+    },
+    "customer_need": {
+     "value": "Track patient relations and doctor referrals for 14 clinics in one CRM, with data hosted in Brazil",
+     "approved": true
+    },
+    "objection": {
+     "value": "Patient data must stay in Brazil",
+     "approved": true
+    },
+    "commitment": {
+     "value": "Nimbus (Roberto): share the referral volumes per clinic",
+     "approved": true
+    },
+    "next_step": {
+     "value": "Product demo for the 14 clinic managers on 6 Nov",
+     "approved": true
+    },
+    "follow_up_owner": {
+     "value": "Pedro Almeida",
+     "approved": true
+    },
+    "follow_up_due_date": {
+     "value": "2026-11-06",
+     "approved": true
+    },
+    "budget": {
+     "value": "USD 90,000 per year",
+     "approved": true
+    },
+    "decision_maker": {
+     "value": "Roberto Lima (CIO)",
+     "approved": true
+    },
+    "go_live_target": {
+     "value": "2027-03",
+     "approved": true
+    },
+    "seats": {
+     "value": "45",
+     "approved": true
+    },
+    "departments": {
+     "value": "Customer Service; Operations",
+     "approved": true
+    },
+    "decision_criteria": {
+     "value": "Referral tracking; patient-relations cases; clinic dashboards",
+     "approved": true
+    },
+    "integrations": {
+     "value": "Clinic scheduling system",
+     "approved": true
+    },
+    "stage": {
+     "value": "Solution",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0144",
+   "client_id": "CLI-004",
+   "name": "Distributor sales CRM",
+   "owner_id": "U01",
+   "amount_usd": 120000,
+   "close_date": "2026-12-15",
+   "created": "2026-08-25",
+   "last_updated": "2026-10-29",
+   "fields": {
+    "call_summary": {
+     "value": "Proposal v1 presented to the Head of Operations. He asked for payback within 18 months.",
+     "approved": true
+    },
+    "customer_need": {
+     "value": "Manage distributor orders and quotes in one CRM instead of spreadsheets and a shared inbox",
+     "approved": true
+    },
+    "objection": {
+     "value": "Wants payback within 18 months",
+     "approved": true
+    },
+    "commitment": {
+     "value": "Orbita (Ana): send proposal v1 (sent 29 Oct)",
+     "approved": true
+    },
+    "next_step": {
+     "value": "Customer to review proposal v1",
+     "approved": true
+    },
+    "follow_up_owner": {
+     "value": "Ana Ribeiro",
+     "approved": true
+    },
+    "follow_up_due_date": {
+     "value": "2026-11-05",
+     "approved": true
+    },
+    "decision_maker": {
+     "value": "Helena Duarte (CFO)",
+     "approved": true
+    },
+    "decision_process": {
+     "value": "Head of Operations recommends; the CFO signs anything above USD 100,000",
+     "approved": true
+    },
+    "go_live_target": {
+     "value": "2027-01",
+     "approved": true
+    },
+    "seats": {
+     "value": "75",
+     "approved": true
+    },
+    "departments": {
+     "value": "Sales; Customer Service",
+     "approved": true
+    },
+    "stage": {
+     "value": "Proposal",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0145",
+   "client_id": "CLI-005",
+   "name": "Distributor CRM",
+   "owner_id": "U02",
+   "amount_usd": 70000,
+   "close_date": "2027-02-15",
+   "created": "2026-09-30",
+   "last_updated": "2026-10-27",
+   "fields": {
+    "customer_need": {
+     "value": "One view of orders and visits for 40 distributors",
+     "approved": true
+    },
+    "next_step": {
+     "value": "Solution walkthrough with the supply chain team",
+     "approved": true
+    },
+    "follow_up_owner": {
+     "value": "Lucas Moreira",
+     "approved": true
+    },
+    "follow_up_due_date": {
+     "value": "2026-11-03",
+     "approved": true
+    },
+    "decision_maker": {
+     "value": "Paula Reis (Supply Chain Director)",
+     "approved": true
+    },
+    "seats": {
+     "value": "30",
+     "approved": true
+    },
+    "departments": {
+     "value": "Sales; Operations",
+     "approved": true
+    },
+    "stage": {
+     "value": "Solution",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0146",
+   "client_id": "CLI-006",
+   "name": "Real-estate sales CRM",
+   "owner_id": "U01",
+   "amount_usd": 52000,
+   "close_date": "2027-03-31",
+   "created": "2026-10-22",
+   "last_updated": "2026-10-30",
+   "fields": {
+    "stage": {
+     "value": "Qualified Opportunity",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0147",
+   "client_id": "CLI-007",
+   "name": "Admissions CRM",
+   "owner_id": "U01",
+   "amount_usd": 110000,
+   "close_date": "2027-01-15",
+   "created": "2026-09-08",
+   "last_updated": "2026-10-21",
+   "fields": {
+    "customer_need": {
+     "value": "Track prospective students from first contact to enrolment across 6 campuses",
+     "approved": true
+    },
+    "next_step": {
+     "value": "Scope session with admissions and IT on 5 Nov",
+     "approved": true
+    },
+    "follow_up_owner": {
+     "value": "Ana Ribeiro",
+     "approved": true
+    },
+    "follow_up_due_date": {
+     "value": "2026-11-05",
+     "approved": true
+    },
+    "decision_maker": {
+     "value": "Daniela Freitas (VP of Admissions)",
+     "approved": true
+    },
+    "stage": {
+     "value": "Solution",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0148",
+   "client_id": "CLI-008",
+   "name": "Field sales CRM",
+   "owner_id": "U01",
+   "amount_usd": 64000,
+   "close_date": "2027-04-30",
+   "created": "2026-10-19",
+   "last_updated": "2026-10-26",
+   "fields": {
+    "customer_need": {
+     "value": "Dealer visits and orders tracked in one place (from a trade-fair lead)",
+     "approved": false
+    },
+    "stage": {
+     "value": "Qualified Opportunity",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0149",
+   "client_id": "CLI-009",
+   "name": "B2B energy sales CRM",
+   "owner_id": "U01",
+   "amount_usd": 140000,
+   "close_date": "2026-11-30",
+   "created": "2026-06-10",
+   "last_updated": "2026-10-30",
+   "fields": {
+    "call_summary": {
+     "value": "Pricing review with the Commercial VP and Procurement. Procurement asked for a 12% discount on a 3-year term; the VP accepted the scope.",
+     "approved": true
+    },
+    "customer_need": {
+     "value": "Replace the 2014 on-premise CRM with one shared view of B2B energy contracts and renewals",
+     "approved": true
+    },
+    "objection": {
+     "value": "Procurement wants a 12% discount for a 3-year term",
+     "approved": true
+    },
+    "commitment": {
+     "value": "Orbita (Ana): send the revised commercial terms by 6 Nov",
+     "approved": true
+    },
+    "next_step": {
+     "value": "Commercial terms review with Procurement on 10 Nov",
+     "approved": true
+    },
+    "follow_up_owner": {
+     "value": "Ana Ribeiro",
+     "approved": true
+    },
+    "follow_up_due_date": {
+     "value": "2026-11-10",
+     "approved": true
+    },
+    "budget": {
+     "value": "USD 150,000 per year",
+     "approved": true
+    },
+    "decision_maker": {
+     "value": "Henrique Prado (Commercial VP)",
+     "approved": true
+    },
+    "decision_process": {
+     "value": "Procurement negotiates the terms; the Commercial VP signs; Legal reviews the contract",
+     "approved": true
+    },
+    "go_live_target": {
+     "value": "2027-02",
+     "approved": true
+    },
+    "competitors": {
+     "value": "Northwind CRM",
+     "approved": true
+    },
+    "seats": {
+     "value": "110",
+     "approved": true
+    },
+    "departments": {
+     "value": "Sales; Customer Success; Leadership",
+     "approved": true
+    },
+    "decision_criteria": {
+     "value": "Contract renewals pipeline; account hierarchy; forecast dashboards",
+     "approved": true
+    },
+    "integrations": {
+     "value": "Billing system; email and calendar",
+     "approved": true
+    },
+    "stage": {
+     "value": "Negotiation",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0150",
+   "client_id": "CLI-010",
+   "name": "Broker channel CRM",
+   "owner_id": "U02",
+   "amount_usd": 180000,
+   "close_date": "2026-11-20",
+   "created": "2026-05-04",
+   "last_updated": "2026-11-02",
+   "fields": {
+    "next_step": {
+     "value": "Contract signature by the Head of Broker Channel",
+     "approved": true
+    },
+    "follow_up_owner": {
+     "value": "Lucas Moreira",
+     "approved": true
+    },
+    "follow_up_due_date": {
+     "value": "2026-11-13",
+     "approved": true
+    },
+    "budget": {
+     "value": "USD 200,000 per year",
+     "approved": true
+    },
+    "decision_maker": {
+     "value": "Ricardo Alves (Head of Broker Channel)",
+     "approved": true
+    },
+    "decision_process": {
+     "value": "Legal reviews the contract, then the Head of Broker Channel signs",
+     "approved": true
+    },
+    "go_live_target": {
+     "value": "2027-01",
+     "approved": true
+    },
+    "seats": {
+     "value": "140",
+     "approved": true
+    },
+    "departments": {
+     "value": "Sales; Customer Service",
+     "approved": true
+    },
+    "stage": {
+     "value": "Contract",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0151",
+   "client_id": "CLI-011",
+   "name": "Key account CRM",
+   "owner_id": "U03",
+   "amount_usd": 85000,
+   "close_date": "2026-12-18",
+   "created": "2026-07-21",
+   "last_updated": "2026-10-23",
+   "fields": {
+    "next_step": {
+     "value": "Customer to review the proposal",
+     "approved": true
+    },
+    "follow_up_owner": {
+     "value": "Carla Mendes",
+     "approved": true
+    },
+    "follow_up_due_date": {
+     "value": "2026-11-04",
+     "approved": true
+    },
+    "decision_maker": {
+     "value": "Fernanda Lima (Key Account Director)",
+     "approved": true
+    },
+    "seats": {
+     "value": "35",
+     "approved": true
+    },
+    "departments": {
+     "value": "Sales; Marketing",
+     "approved": true
+    },
+    "stage": {
+     "value": "Proposal",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0152",
+   "client_id": "CLI-011",
+   "name": "Distributor portal add-on",
+   "owner_id": "U03",
+   "amount_usd": 30000,
+   "close_date": "2027-05-31",
+   "created": "2026-10-29",
+   "last_updated": "2026-10-29",
+   "fields": {
+    "customer_need": {
+     "value": "Portal for distributors to place orders (raised during the key account call)",
+     "approved": false
+    },
+    "stage": {
+     "value": "New Lead",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0153",
+   "client_id": "CLI-012",
+   "name": "Corporate memberships CRM",
+   "owner_id": "U02",
+   "amount_usd": 40000,
+   "close_date": "2027-04-15",
+   "created": "2026-10-26",
+   "last_updated": "2026-10-26",
+   "fields": {
+    "stage": {
+     "value": "New Lead",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0154",
+   "client_id": "CLI-013",
+   "name": "Lab services CRM",
+   "owner_id": "U03",
+   "amount_usd": 75000,
+   "close_date": "2027-02-26",
+   "created": "2026-09-02",
+   "last_updated": "2026-10-20",
+   "fields": {
+    "customer_need": {
+     "value": "Track B2B lab-services contracts with hospitals and clinics",
+     "approved": true
+    },
+    "next_step": {
+     "value": "Demo of the contract renewals module",
+     "approved": true
+    },
+    "follow_up_owner": {
+     "value": "Pedro Almeida",
+     "approved": true
+    },
+    "follow_up_due_date": {
+     "value": "2026-11-12",
+     "approved": true
+    },
+    "seats": {
+     "value": "25",
+     "approved": true
+    },
+    "departments": {
+     "value": "Sales; Customer Success",
+     "approved": true
+    },
+    "stage": {
+     "value": "Solution",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0155",
+   "client_id": "CLI-010",
+   "name": "Claims team expansion",
+   "owner_id": "U02",
+   "amount_usd": 60000,
+   "close_date": "2026-12-10",
+   "created": "2026-08-18",
+   "last_updated": "2026-10-28",
+   "fields": {
+    "next_step": {
+     "value": "Agree the claims-team licence tier with Procurement",
+     "approved": true
+    },
+    "follow_up_owner": {
+     "value": "Lucas Moreira",
+     "approved": true
+    },
+    "follow_up_due_date": {
+     "value": "2026-11-09",
+     "approved": true
+    },
+    "seats": {
+     "value": "60",
+     "approved": true
+    },
+    "departments": {
+     "value": "Customer Service",
+     "approved": true
+    },
+    "stage": {
+     "value": "Negotiation",
+     "approved": true
+    }
+   }
+  },
+  {
+   "opportunity_id": "OPP-0156",
+   "client_id": "CLI-014",
+   "name": "Enterprise sales CRM",
+   "owner_id": "U02",
+   "amount_usd": 210000,
+   "close_date": "2026-11-27",
+   "created": "2026-04-14",
+   "last_updated": "2026-11-03",
+   "fields": {
+    "next_step": {
+     "value": "Contract sent for signature",
+     "approved": true
+    },
+    "follow_up_owner": {
+     "value": "Lucas Moreira",
+     "approved": true
+    },
+    "follow_up_due_date": {
+     "value": "2026-11-11",
+     "approved": true
+    },
+    "decision_maker": {
+     "value": "Cláudia Torres (Enterprise Sales Director)",
+     "approved": true
+    },
+    "seats": {
+     "value": "220",
+     "approved": true
+    },
+    "departments": {
+     "value": "Sales; Customer Success; Leadership",
+     "approved": true
+    },
+    "stage": {
+     "value": "Contract",
+     "approved": true
+    }
+   }
+  }
+ ],
+ "meetings": [
+  {
+   "meeting_id": "MTG-2001",
+   "source": {
+    "system": "granola",
+    "note_id": "not_36a1e72a50a658",
+    "web_url": "https://notes.granola.ai/d/not_36a1e72a50a658",
+    "folder": "CRM sync"
+   },
+   "title": "Acme Logistics - discovery call",
+   "start": "2026-11-03T10:00:00-03:00",
+   "scheduled_minutes": 45,
+   "recorded_minutes": 43,
+   "organiser_id": "U01",
+   "owner_email": "ana.ribeiro@orbitacrm.example",
+   "participants": [
+    "Ana Ribeiro (Orbita)",
+    "Marina Lopes (Acme Logistics)",
+    "Felipe Nunes (Acme Logistics)"
+   ],
+   "client_id": "CLI-001",
+   "linked_opportunity_id": "OPP-0142",
+   "match_reason": "attendee e-mail domain acmelogistics.example",
+   "transcript_status": "complete",
+   "ends_mid_sentence": false,
+   "granola_summary": "Discovery call with Acme Logistics (COO and Sales Operations Manager). The commercial team works from spreadsheets and Outlook and lost two renewals last quarter. They want one CRM for about 60 users, live by March 2027, with a budget of 80-100k USD a year. Concerns: the in-house TMS integration and adoption. Next step: technical workshop with the IT lead the week of 9 November.",
+   "transcript_file": "transcripts/MTG-2001.txt"
+  },
+  {
+   "meeting_id": "MTG-2002",
+   "source": {
+    "system": "granola",
+    "note_id": "not_f300792adfb164",
+    "web_url": "https://notes.granola.ai/d/not_f300792adfb164",
+    "folder": "CRM sync"
+   },
+   "title": "Verde Retail - intro call",
+   "start": "2026-11-02T14:00:00-03:00",
+   "scheduled_minutes": 30,
+   "recorded_minutes": 28,
+   "organiser_id": "U01",
+   "owner_email": "ana.ribeiro@orbitacrm.example",
+   "participants": [
+    "Ana Ribeiro (Orbita)",
+    "Camila Rocha (Verde Retail)"
+   ],
+   "client_id": "CLI-002",
+   "linked_opportunity_id": "OPP-0141",
+   "match_reason": "attendee e-mail domain verderetail.example",
+   "transcript_status": "complete",
+   "ends_mid_sentence": false,
+   "granola_summary": "Intro call with Verde Retail's Head of Retail Operations. Franchise and wholesale sales are managed in WhatsApp groups and spreadsheets. A previous BI project failed on adoption. No budget yet; Camila will read a case study after Black Friday, with no date and no meeting booked.",
+   "transcript_file": "transcripts/MTG-2002.txt"
+  },
+  {
+   "meeting_id": "MTG-2003",
+   "source": {
+    "system": "granola",
+    "note_id": "not_bf301fd97469d3",
+    "web_url": "https://notes.granola.ai/d/not_bf301fd97469d3",
+    "folder": "CRM sync"
+   },
+   "title": "Nimbus Health - demo planning",
+   "start": "2026-11-04T09:30:00-03:00",
+   "scheduled_minutes": 30,
+   "recorded_minutes": 9,
+   "organiser_id": "U01",
+   "owner_email": "ana.ribeiro@orbitacrm.example",
+   "participants": [
+    "Ana Ribeiro (Orbita)",
+    "Pedro Almeida (Orbita)",
+    "Roberto Lima (Nimbus Health)"
+   ],
+   "client_id": "CLI-003",
+   "linked_opportunity_id": "OPP-0143",
+   "match_reason": "attendee e-mail domain nimbushealth.example",
+   "transcript_status": "complete",
+   "ends_mid_sentence": false,
+   "granola_summary": "Short call with Nimbus Health's CIO. The board froze all new IT projects until the January budget review, so the 6 November demo is cancelled and no new date was agreed. The budget itself is unchanged at 90k USD a year.",
+   "transcript_file": "transcripts/MTG-2003.txt"
+  },
+  {
+   "meeting_id": "MTG-2004",
+   "source": {
+    "system": "granola",
+    "note_id": "not_b7cd41f134e9de",
+    "web_url": "https://notes.granola.ai/d/not_b7cd41f134e9de",
+    "folder": "CRM sync"
+   },
+   "title": "Verde Retail - POS data questions",
+   "start": "2026-11-05T15:00:00-03:00",
+   "scheduled_minutes": 45,
+   "recorded_minutes": 4,
+   "organiser_id": "U01",
+   "owner_email": "ana.ribeiro@orbitacrm.example",
+   "participants": [
+    "Ana Ribeiro (Orbita)",
+    "Camila Rocha (Verde Retail)",
+    "Diego Faria (Verde Retail)"
+   ],
+   "client_id": "CLI-002",
+   "linked_opportunity_id": "OPP-0141",
+   "match_reason": "attendee e-mail domain verderetail.example",
+   "transcript_status": "complete",
+   "ends_mid_sentence": true,
+   "granola_summary": "Follow-up with Verde Retail's Head of Retail Operations and IT Manager about POS data. The recording stopped after a few minutes.",
+   "transcript_file": "transcripts/MTG-2004.txt"
+  },
+  {
+   "meeting_id": "MTG-2005",
+   "source": {
+    "system": "granola",
+    "note_id": "not_d1c744f836648e",
+    "web_url": "https://notes.granola.ai/d/not_d1c744f836648e",
+    "folder": "CRM sync"
+   },
+   "title": "Intro call - Delta Pharma",
+   "start": "2026-11-04T16:00:00-03:00",
+   "scheduled_minutes": 30,
+   "recorded_minutes": 26,
+   "organiser_id": "U01",
+   "owner_email": "ana.ribeiro@orbitacrm.example",
+   "participants": [
+    "Ana Ribeiro (Orbita)",
+    "Livia Prado"
+   ],
+   "client_id": null,
+   "linked_opportunity_id": null,
+   "match_reason": "no client found for the attendees or the title",
+   "transcript_status": "complete",
+   "ends_mid_sentence": false,
+   "granola_summary": "Intro call with Delta Pharma's Commercial Excellence Manager about a CRM for medical representatives. Delta Pharma is not a client in the CRM yet.",
+   "transcript_file": "transcripts/MTG-2005.txt"
+  },
+  {
+   "meeting_id": "MTG-2006",
+   "source": {
+    "system": "granola",
+    "note_id": "not_09cff89e095d3c",
+    "web_url": "https://notes.granola.ai/d/not_09cff89e095d3c",
+    "folder": "CRM sync"
+   },
+   "title": "Atlas Manufacturing - proposal check-in",
+   "start": "2026-11-05T11:00:00-03:00",
+   "scheduled_minutes": 30,
+   "recorded_minutes": 23,
+   "organiser_id": "U01",
+   "owner_email": "ana.ribeiro@orbitacrm.example",
+   "participants": [
+    "Ana Ribeiro (Orbita)",
+    "Tiago Mendes (Atlas Manufacturing)"
+   ],
+   "client_id": "CLI-004",
+   "linked_opportunity_id": "OPP-0144",
+   "match_reason": "attendee e-mail domain atlasmfg.example",
+   "transcript_status": "complete",
+   "ends_mid_sentence": false,
+   "granola_summary": "Check-in with Atlas Manufacturing's Head of Operations on proposal v1. He wants to sign next week, but the CFO, who signs, has not seen the proposal yet. Atlas has 120k USD a year approved for the CRM. Tiago will forward the proposal to the CFO this week; Ana checks in on 12 November.",
+   "transcript_file": "transcripts/MTG-2006.txt"
+  },
+  {
+   "meeting_id": "MTG-2007",
+   "source": {
+    "system": "granola",
+    "note_id": "not_bb4eb9d0f23e81",
+    "web_url": "https://notes.granola.ai/d/not_bb4eb9d0f23e81",
+    "folder": "CRM sync"
+   },
+   "title": "Cedro Construtora - discovery call",
+   "start": "2026-11-06T10:00:00-03:00",
+   "scheduled_minutes": 45,
+   "recorded_minutes": 34,
+   "organiser_id": "U01",
+   "owner_email": "ana.ribeiro@orbitacrm.example",
+   "participants": [
+    "Ana Ribeiro (Orbita)",
+    "Sofia Martins (Cedro Construtora)",
+    "Andre Pires (Cedro Construtora)"
+   ],
+   "client_id": "CLI-006",
+   "linked_opportunity_id": "OPP-0146",
+   "match_reason": "attendee e-mail domain cedroconstrutora.example",
+   "transcript_status": "complete",
+   "ends_mid_sentence": false,
+   "granola_summary": "Discovery call with Cedro Construtora's Commercial Director and Sales Manager. Leads from the website, WhatsApp and sales stands are tracked in spreadsheets and get lost. They want lead routing to brokers and a funnel per launch, for 105 users, live by March 2027, with about 60k USD a year. Ana sends a recorded demo by Tuesday; live demo on 12 November.",
+   "transcript_file": "transcripts/MTG-2007.txt"
+  },
+  {
+   "meeting_id": "MTG-2008",
+   "source": {
+    "system": "granola",
+    "note_id": "not_f8ab64b7311c96",
+    "web_url": "https://notes.granola.ai/d/not_f8ab64b7311c96",
+    "folder": "CRM sync"
+   },
+   "title": "Horizonte Foods - solution walkthrough",
+   "start": "2026-11-03T15:00:00-03:00",
+   "scheduled_minutes": 30,
+   "recorded_minutes": 26,
+   "organiser_id": "U01",
+   "owner_email": "ana.ribeiro@orbitacrm.example",
+   "participants": [
+    "Lucas Moreira (Orbita)",
+    "Ana Ribeiro (Orbita)",
+    "Paula Reis (Horizonte Foods)"
+   ],
+   "client_id": "CLI-005",
+   "linked_opportunity_id": "OPP-0145",
+   "match_reason": "attendee e-mail domain horizontefoods.example",
+   "transcript_status": "complete",
+   "ends_mid_sentence": false,
+   "granola_summary": "Solution walkthrough with Horizonte Foods' Supply Chain Director, led by Lucas Moreira with Ana Ribeiro joining as backup.",
+   "transcript_file": "transcripts/MTG-2008.txt"
+  },
+  {
+   "meeting_id": "MTG-2009",
+   "source": {
+    "system": "granola",
+    "note_id": "not_d74b8928e3bde6",
+    "web_url": "https://notes.granola.ai/d/not_d74b8928e3bde6",
+    "folder": "CRM sync"
+   },
+   "title": "Lumen Education - scope session",
+   "start": "2026-11-05T14:00:00-03:00",
+   "scheduled_minutes": 60,
+   "recorded_minutes": 52,
+   "organiser_id": "U01",
+   "owner_email": "ana.ribeiro@orbitacrm.example",
+   "participants": [
+    "Ana Ribeiro (Orbita)",
+    "Pedro Almeida (Orbita)",
+    "Daniela Freitas (Lumen Education)",
+    "Marcos Antunes (Lumen Education)"
+   ],
+   "client_id": "CLI-007",
+   "linked_opportunity_id": "OPP-0147",
+   "match_reason": "attendee e-mail domain lumeneducation.example",
+   "transcript_status": "complete",
+   "ends_mid_sentence": false,
+   "granola_summary": "Scope session with Lumen Education's VP of Admissions and CIO. Scope agreed: 120 users across admissions, marketing and management, integrations with the Campus One student system, Mailwave and WhatsApp, live by May 2027, budget 110-130k USD a year. They are also evaluating Clarion Sales Cloud. Lumen asked for a proposal by 13 November.",
+   "transcript_file": "transcripts/MTG-2009.txt"
+  },
+  {
+   "meeting_id": "MTG-2010",
+   "source": {
+    "system": "granola",
+    "note_id": "not_6506e02f59babb",
+    "web_url": "https://notes.granola.ai/d/not_6506e02f59babb",
+    "folder": "CRM sync"
+   },
+   "title": "Pampa Agro - discovery call",
+   "start": "2026-11-04T11:00:00-03:00",
+   "scheduled_minutes": 45,
+   "recorded_minutes": 38,
+   "organiser_id": "U01",
+   "owner_email": "ana.ribeiro@orbitacrm.example",
+   "participants": [
+    "Ana Ribeiro (Orbita)",
+    "Paulo Becker (Pampa Agro)",
+    "Luiza Kranz (Pampa Agro)"
+   ],
+   "client_id": "CLI-008",
+   "linked_opportunity_id": "OPP-0148",
+   "match_reason": "attendee e-mail domain pampaagro.example",
+   "transcript_status": "complete",
+   "ends_mid_sentence": false,
+   "granola_summary": "Discovery call with Pampa Agro. Field reps visit about two hundred dealers and report on paper and spreadsheets. They want one place for visits and dealer orders, offline, for 38 users, live by July 2027, with about 70k USD a year. Field demo agreed for 11 November.",
+   "transcript_file": "transcripts/MTG-2010.txt"
+  },
+  {
+   "meeting_id": "MTG-2011",
+   "source": {
+    "system": "whatsapp",
+    "file": "WhatsApp Chat with Henrique Prado.txt",
+    "format": "whatsapp"
+   },
+   "title": "WhatsApp chat with Henrique Prado",
+   "start": "2026-11-05T18:02:00-03:00",
+   "scheduled_minutes": null,
+   "recorded_minutes": null,
+   "chat": true,
+   "organiser_id": "U01",
+   "owner_email": "ana.ribeiro@orbitacrm.example",
+   "transcript_status": "complete",
+   "ends_mid_sentence": false,
+   "granola_summary": null,
+   "linked_opportunity_id": "OPP-0149",
+   "client_id": "CLI-009",
+   "match_reason": "Henrique Prado is a contact at Solaris Energy",
+   "participants": [
+    "Ana Ribeiro (Orbita)",
+    "Henrique Prado (Solaris Energy)"
+   ],
+   "transcript_file": "transcripts/MTG-2011.txt"
+  }
+ ],
+ "transcripts": {
+  "MTG-2001": "[00:00:00] Ana Ribeiro (Orbita): Good morning, Marina, Felipe. Thanks for making the time. Can you both hear me okay?\n[00:00:06] Marina Lopes (Acme Logistics): Loud and clear. Sorry we're a couple of minutes late, the traffic on the highway this morning was a nightmare.\n[00:00:13] Felipe Nunes (Acme Logistics): Same here. I left home at seven and I still barely made it.\n[00:00:19] Ana Ribeiro (Orbita): No problem at all, same for me, the usual Tuesday. So, the goal for today: you filled in our web form about a CRM, and I'd like to understand how your commercial team works today, what is not working, and whether Orbita is a good fit. Does that sound good?\n[00:00:37] Marina Lopes (Acme Logistics): Perfect. Let me give you some context. Acme is a freight and warehousing company, we're about eight hundred and fifty people, and around a hundred of them are in the commercial area.\n[00:00:54] Ana Ribeiro (Orbita): And how does the commercial team manage customers and deals today?\n[00:00:59] Felipe Nunes (Acme Logistics): Honestly, spreadsheets and Outlook. Each rep has their own spreadsheet of accounts, proposals live on a shared drive, and everything else is in people's inboxes.\n[00:01:16] Felipe Nunes (Acme Logistics): When someone goes on holiday or leaves the company, we lose the history of the account. Last quarter we missed two contract renewals because nobody remembered the dates.\n[00:01:32] Marina Lopes (Acme Logistics): And from my side, I have no visibility. Every Monday I ask for the pipeline and I get six different spreadsheets in six different formats. If this works, success for me is simple: zero missed renewals next year, and the Monday pipeline review done from one screen instead of six spreadsheets.\n[00:01:57] Ana Ribeiro (Orbita): That's very common. Let me play it back to see if I got it right: you need one place where the whole team tracks accounts, deals and renewals, so nothing gets lost and you get a reliable view of the pipeline. Is that the need?\n[00:02:14] Marina Lopes (Acme Logistics): Exactly. One place for every account and every deal, with renewal reminders, and a pipeline I can trust on Monday morning. That is the priority.\n[00:03:02] Ana Ribeiro (Orbita): Who would use the system day to day?\n[00:03:07] Felipe Nunes (Acme Logistics): The forty sales reps, our twelve account managers in customer success, and the leadership team, about eight managers, for the dashboards. So sixty users to start.\n[00:03:25] Ana Ribeiro (Orbita): Sixty users, across sales, customer success and leadership. Got it.\n[00:03:54] Felipe Nunes (Acme Logistics): And the reps are on the road a lot, visiting warehouses and customers, so a mobile app is a must for them.\n[00:04:07] Ana Ribeiro (Orbita): What else does the system need to do on day one?\n[00:04:12] Felipe Nunes (Acme Logistics): Pipeline management, renewal alerts, email sync with Outlook so we stop copying emails by hand, and management dashboards for Marina.\n[00:05:32] Marina Lopes (Acme Logistics): By the way, Felipe, did you send the photos from Saturday's barbecue to the group? My husband keeps asking.\n[00:05:38] Felipe Nunes (Acme Logistics): Not yet, tonight. Sorry, Ana.\n[00:05:42] Ana Ribeiro (Orbita): No worries. Now, about your systems: what would the CRM need to connect to?\n[00:05:48] Marina Lopes (Acme Logistics): Our transport management system, the TMS. It's ours, built in-house about ten years ago, and all the shipment data is there. We also use Orion ERP for invoicing.\n[00:06:12] Marina Lopes (Acme Logistics): And to be honest, that is my main worry. I am concerned about integrating with our in-house TMS. Anything that touches operations during peak season makes me nervous.\n[00:06:33] Felipe Nunes (Acme Logistics): My worry is adoption. We tried a sales tool three years ago and the reps hated it. They went back to their spreadsheets in two months.\n[00:06:54] Ana Ribeiro (Orbita): Both are fair concerns. On the TMS, we did a similar integration with an in-house system for another logistics client last year. I will send you that reference case by Friday, so you can see how we handled it.\n[00:07:12] Marina Lopes (Acme Logistics): That would help a lot.\n[00:08:22] Ana Ribeiro (Orbita): On adoption, we usually start from the reps' daily routine: the mobile app, the email sync, and nothing they have to type twice. We can go deeper on that in a workshop.\n[00:09:37] Ana Ribeiro (Orbita): Can I ask about budget? Is there money set aside for this project?\n[00:09:44] Marina Lopes (Acme Logistics): Yes. We have between eighty and a hundred thousand dollars a year for the CRM, licences and support included.\n[00:10:12] Ana Ribeiro (Orbita): That's helpful. Are you looking at other vendors as well?\n[00:10:18] Felipe Nunes (Acme Logistics): We had a first call with Northwind CRM, and we're getting a demo from PipeSpark next week.\n[00:10:29] Ana Ribeiro (Orbita): Good to know, thanks for being open about it.\n[00:14:22] Felipe Nunes (Acme Logistics): Ana, unrelated question: is your team going to the logistics trade fair in Joinville this year?\n[00:14:29] Ana Ribeiro (Orbita): Probably, our marketing team usually goes.\n[00:21:22] Ana Ribeiro (Orbita): Who else would be involved in the decision?\n[00:21:28] Marina Lopes (Acme Logistics): I make the decision on this. It sits in my operations budget. But I will want our IT lead, Rui Tavares, to validate the technical side, the integration and the security.\n[00:21:50] Ana Ribeiro (Orbita): And after Rui's validation, is there any other step? Procurement, legal?\n[00:21:56] Marina Lopes (Acme Logistics): Procurement needs three quotes for anything above fifty thousand. Then I sign.\n[00:22:12] Ana Ribeiro (Orbita): And in terms of timing?\n[00:22:15] Marina Lopes (Acme Logistics): We need it live before our peak season starts in April, so go-live by March 2027 at the latest.\n[00:30:02] Felipe Nunes (Acme Logistics): One more thing for the reps: we need to see each customer's shipment status inside the CRM, otherwise they will keep calling operations.\n[00:30:16] Ana Ribeiro (Orbita): That comes back to the TMS integration, so it's a good topic for the workshop.\n[00:35:02] Ana Ribeiro (Orbita): Proposed next step: a technical scoping workshop with Rui, the week of 9 November, to look at the TMS data and the integration options. Pedro, our solutions engineer, would join from our side.\n[00:35:19] Marina Lopes (Acme Logistics): Yes, let's do that. I will make sure Rui joins.\n[00:35:25] Ana Ribeiro (Orbita): Great. I will send the workshop invite together with the reference case by Friday.\n[00:41:42] Felipe Nunes (Acme Logistics): And Ana, if you have a short video of the mobile app, send it over. I'd like to show it to two of our senior reps.\n[00:41:50] Ana Ribeiro (Orbita): Sure, I'll include it in Friday's email.\n[00:42:12] Felipe Nunes (Acme Logistics): For what it's worth, I'm the one who pushed for this project internally. If the mobile app is as good as it looks, I'll get the reps on board myself.\n[00:42:40] Marina Lopes (Acme Logistics): Thanks, Ana. Talk soon.\n",
+  "MTG-2002": "[00:00:00] Ana Ribeiro (Orbita): Hi Camila, thanks for taking the call on a Monday afternoon.\n[00:00:05] Camila Rocha (Verde Retail): Hi Ana. Sorry if I sound tired, we're three weeks from Black Friday and the stores are going crazy.\n[00:00:14] Ana Ribeiro (Orbita): I can imagine. I'll keep it focused. You reached out about managing your franchise network, right?\n[00:00:21] Camila Rocha (Verde Retail): Yes. We have thirty-eight own stores, but the growth is in the franchise and wholesale channel: forty franchisees and around two hundred wholesale buyers.\n[00:00:39] Camila Rocha (Verde Retail): Today all of that runs on WhatsApp groups and spreadsheets. When a franchisee complains or a buyer asks for a reorder, it's lost in a chat somewhere.\n[00:01:05] Ana Ribeiro (Orbita): So what you'd want is one place where your team sees every franchisee and wholesale buyer, with their orders, visits and complaints?\n[00:01:16] Camila Rocha (Verde Retail): Yes, that's exactly it. One place for the franchisees and the wholesale buyers, instead of fifty WhatsApp groups.\n[00:02:35] Ana Ribeiro (Orbita): How big is Verde overall?\n[00:02:39] Camila Rocha (Verde Retail): About one thousand two hundred employees, most of them in the stores.\n[00:04:10] Ana Ribeiro (Orbita): And how many people would use a CRM?\n[00:04:15] Camila Rocha (Verde Retail): Honestly, I don't know yet. Maybe the regional managers, maybe more. I'd have to think about it.\n[00:06:25] Camila Rocha (Verde Retail): One thing I should tell you. Two years ago we bought a BI tool and it failed. It was too complicated and the store teams stopped using it after a month. I can't go through that again.\n[00:06:47] Ana Ribeiro (Orbita): That's important to know. Simplicity would be a requirement, then.\n[00:08:05] Ana Ribeiro (Orbita): Is there a budget for this kind of project?\n[00:08:09] Camila Rocha (Verde Retail): Not right now. There's no budget allocated for this yet, it would have to go into next year's plan.\n[00:11:25] Camila Rocha (Verde Retail): By the way, my daughter started at the same school as your colleague's son, small world.\n[00:11:31] Ana Ribeiro (Orbita): Really? That's funny, I'll tell him.\n[00:16:00] Ana Ribeiro (Orbita): We work with a fashion retailer with a franchise model very similar to yours. I'll send you our product overview and that case study.\n[00:16:13] Camila Rocha (Verde Retail): Please do. I'll read it with my team after Black Friday.\n[00:16:20] Ana Ribeiro (Orbita): Would it make sense to book a short demo for the end of November?\n[00:16:26] Camila Rocha (Verde Retail): Let's not book anything yet. Send me the case study first and I'll come back to you. No rush, honestly.\n[00:16:37] Ana Ribeiro (Orbita): Understood, no pressure.\n[00:27:35] Camila Rocha (Verde Retail): Thanks Ana, have a good week.\n",
+  "MTG-2003": "[00:00:00] Ana Ribeiro (Orbita): Hi Roberto, good morning. Pedro is with me. We wanted to go through the plan for Friday's demo with the clinic managers.\n[00:00:11] Roberto Lima (Nimbus Health): Morning, both. I'm glad you called, because I have news, and it isn't good. The board froze all new IT projects until our budget review in January.\n[00:00:30] Ana Ribeiro (Orbita): I see. So Friday's demo...\n[00:00:33] Roberto Lima (Nimbus Health): Please cancel the demo on Friday. There is no next step from our side for now, and nothing has been agreed beyond waiting for the budget review.\n[00:00:55] Pedro Almeida (Orbita): Understood. Should we keep a placeholder in the calendar, maybe for December?\n[00:01:02] Roberto Lima (Nimbus Health): No, please drop it. I can't commit to any date, not even a date to talk again.\n[00:02:20] Roberto Lima (Nimbus Health): To be clear, the budget itself hasn't changed: it's still ninety thousand dollars a year. It's the timing that moved.\n[00:04:30] Ana Ribeiro (Orbita): That's clear. Is there anything we can send that would help with the budget review?\n[00:04:38] Roberto Lima (Nimbus Health): Not really. If the board approves the budget in January, I'll reach out to you.\n[00:04:52] Pedro Almeida (Orbita): Thanks for being upfront with us, Roberto.\n[00:08:20] Roberto Lima (Nimbus Health): Of course. I'm sorry about the timing. Take care, both of you.\n[00:08:28] Ana Ribeiro (Orbita): You too, Roberto. Thanks, bye.\n",
+  "MTG-2004": "[00:00:00] Ana Ribeiro (Orbita): Hi Camila, hi Diego. Thanks for setting this up so quickly.\n[00:00:08] Camila Rocha (Verde Retail): I read the case study on the weekend and it made me curious, so I asked Diego to join. He looks after our POS integration.\n[00:00:52] Diego Faria (Verde Retail): Our POS vendor exports the sales every night. I'm not sure we can get anything closer to real time for the franchisees.\n[00:02:24] Ana Ribeiro (Orbita): A nightly export could be enough for a first version. What matters most to the franchise team?\n[00:04:06] Camila Rocha (Verde Retail): So the main thing we would need from you before we go any further is\n",
+  "MTG-2005": "[00:00:00] Ana Ribeiro (Orbita): Hi Livia, nice to meet you. Thanks for accepting the invite.\n[00:00:06] Livia Prado: Hi Ana. A colleague recommended you, so I wanted to understand what you do.\n[00:00:17] Ana Ribeiro (Orbita): Happy to explain. But first, tell me a bit about Delta Pharma.\n[00:00:23] Livia Prado: We're a mid-sized pharmaceutical company. We have about one hundred and fifty medical representatives who visit doctors and pharmacies every day.\n[00:01:08] Livia Prado: Their visit reports are in a very old system that nobody likes. I'm looking at options for next year.\n[00:03:33] Ana Ribeiro (Orbita): What would a better tool need to do for the representatives?\n[00:03:40] Livia Prado: Plan the visits, record what was discussed, and track samples. And it has to work on a tablet.\n[00:09:13] Ana Ribeiro (Orbita): We have pharma clients doing exactly that. I'll send you a short overview after the call.\n[00:09:24] Livia Prado: Great. I'll share it with my director.\n[00:25:33] Livia Prado: Thanks, Ana. Nice to meet you.\n",
+  "MTG-2006": "[00:00:00] Ana Ribeiro (Orbita): Hi Tiago, how are you? I wanted to check how the proposal landed.\n[00:00:06] Tiago Mendes (Atlas Manufacturing): Honestly, I love it. Let's sign next week.\n[00:00:13] Ana Ribeiro (Orbita): Great to hear. Has Helena had a chance to look at it?\n[00:00:18] Tiago Mendes (Atlas Manufacturing): Not yet. Our CFO, Helena Duarte, hasn't seen the proposal. She signs anything above a hundred thousand. I will forward it to her this week.\n[00:00:41] Tiago Mendes (Atlas Manufacturing): I've been pushing for this internally since your demo, and I'll walk Helena through the proposal myself.\n[00:01:01] Tiago Mendes (Atlas Manufacturing): And you can put it down as a one million dollar deal in your system. It'll make your quarter look great.\n[00:01:13] Ana Ribeiro (Orbita): Let's see what Helena says first. Has she raised any concerns on pricing or contract terms so far?\n[00:01:21] Tiago Mendes (Atlas Manufacturing): No, nothing yet. She hasn't seen it.\n[00:02:56] Tiago Mendes (Atlas Manufacturing): For the record, we have one hundred and twenty thousand dollars a year approved for the CRM in next year's budget.\n[00:03:11] Ana Ribeiro (Orbita): That's useful, thanks. And the scope is still the seventy-five users in the proposal?\n[00:03:17] Tiago Mendes (Atlas Manufacturing): Yes, seventy-five users to start, sales and the customer service desk.\n[00:03:36] Tiago Mendes (Atlas Manufacturing): Once Helena approves, our legal team needs about two weeks to review the contract, and then she signs.\n[00:06:31] Tiago Mendes (Atlas Manufacturing): Sorry, my son just texted me, he scored in his football match this morning. Proud dad moment.\n[00:06:38] Ana Ribeiro (Orbita): Congratulations to him!\n[00:12:31] Ana Ribeiro (Orbita): Next step then: you forward proposal v1 to Helena this week, and I'll check in with you on Thursday the 12th.\n[00:12:43] Tiago Mendes (Atlas Manufacturing): Deal. Thursday the 12th.\n[00:22:56] Tiago Mendes (Atlas Manufacturing): Thanks, Ana. Talk then.\n",
+  "MTG-2007": "[00:00:00] Ana Ribeiro (Orbita): Good morning, Sofia, Andre. Happy Friday!\n[00:00:05] Sofia Martins (Cedro Construtora): Good morning, Ana. Happy Friday. Andre has just come back from a sales stand, so he has fresh stories.\n[00:00:14] Andre Pires (Cedro Construtora): Plenty of them. We had three hundred visitors at the stand last weekend.\n[00:00:25] Ana Ribeiro (Orbita): That's a lot of leads. How do you capture them today?\n[00:00:30] Andre Pires (Cedro Construtora): Paper forms at the stand, the website form, and WhatsApp. Then someone types everything into a spreadsheet on Monday, if they remember.\n[00:00:56] Sofia Martins (Cedro Construtora): And that's the problem. Leads get lost between the stand, the website and WhatsApp, and the brokers fight over who saw a client first.\n[00:01:34] Ana Ribeiro (Orbita): So the need is to capture every lead in one place and route it to the right broker?\n[00:01:41] Sofia Martins (Cedro Construtora): Yes. Every lead from the website, WhatsApp and the sales stands in one place, routed automatically to a broker, with one sales funnel per launch.\n[00:01:59] Sofia Martins (Cedro Construtora): Today a lead from the website waits about two days for a call back. I want every lead called within two hours.\n[00:03:04] Ana Ribeiro (Orbita): How many people would use it?\n[00:03:08] Andre Pires (Cedro Construtora): We'd need a hundred and five users: twenty-five in our own sales team and eighty brokers.\n[00:03:23] Sofia Martins (Cedro Construtora): And our marketing team runs the website and the campaigns, so they need to see where the leads come from.\n[00:05:14] Andre Pires (Cedro Construtora): My concern is the brokers. They are not employees, and they won't use anything complicated. And the stands often have no mobile signal at all.\n[00:05:35] Ana Ribeiro (Orbita): Our mobile app works offline and syncs when the signal comes back. I can show you that.\n[00:07:09] Ana Ribeiro (Orbita): How big is Cedro today?\n[00:07:13] Sofia Martins (Cedro Construtora): About four hundred people, most of them on construction sites.\n[00:09:24] Ana Ribeiro (Orbita): Have you set a budget for this?\n[00:09:28] Sofia Martins (Cedro Construtora): We have around sixty thousand dollars a year for it.\n[00:12:04] Ana Ribeiro (Orbita): Who makes the decision on a project like this?\n[00:12:09] Sofia Martins (Cedro Construtora): I do. Our CEO only gets involved above two hundred thousand, so this is my call. Legal reviews the contract before I sign.\n[00:12:34] Ana Ribeiro (Orbita): And timing?\n[00:12:37] Sofia Martins (Cedro Construtora): We have three launches next year, the first one in April. I need this running by March 2027.\n[00:13:59] Ana Ribeiro (Orbita): Are you talking to other vendors?\n[00:14:03] Sofia Martins (Cedro Construtora): Not yet, you're the first.\n[00:20:44] Andre Pires (Cedro Construtora): For the funnel, we need to see each launch separately: leads, visits to the show apartment, proposals and contracts.\n[00:31:34] Ana Ribeiro (Orbita): Here's what I suggest: I'll send you a recorded demo of the lead routing by Tuesday, and then we do a live demo with your sales managers on Thursday the 12th.\n[00:31:49] Sofia Martins (Cedro Construtora): Yes, Thursday the 12th works for us.\n[00:31:56] Andre Pires (Cedro Construtora): I will send you the list of the three launches and the broker teams before the demo.\n[00:34:24] Sofia Martins (Cedro Construtora): Thanks, Ana. Have a great weekend.\n",
+  "MTG-2008": "[00:00:00] Lucas Moreira (Orbita): Hi Paula. Ana is joining us today because I'm on holiday next week and she'll cover for me.\n[00:00:08] Paula Reis (Horizonte Foods): Hi Lucas, hi Ana. Welcome.\n[00:00:12] Ana Ribeiro (Orbita): Hi Paula, nice to meet you.\n[00:00:17] Lucas Moreira (Orbita): Today we'll walk through how your forty distributors would log orders and visits in the CRM.\n[00:02:02] Paula Reis (Horizonte Foods): The main thing for us is one view per distributor: orders, visits, and the promotions they're running.\n[00:09:37] Paula Reis (Horizonte Foods): This looks good. I'd like my regional managers to see it before we go further.\n[00:09:54] Lucas Moreira (Orbita): Of course. I'll set up a session with your regional managers when I'm back.\n[00:26:22] Paula Reis (Horizonte Foods): Thanks, both. Enjoy your holiday, Lucas.\n",
+  "MTG-2009": "[00:00:00] Ana Ribeiro (Orbita): Good afternoon, Daniela, Marcos. Pedro is with me again. The plan for today is to agree the scope, so we can prepare the proposal.\n[00:00:11] Daniela Freitas (Lumen Education): Perfect. We blocked the full hour, so let's use it.\n[00:00:19] Marcos Antunes (Lumen Education): And I brought my list of technical questions, as promised.\n[00:00:28] Ana Ribeiro (Orbita): Great. Daniela, let's start with the users. Who would use the CRM?\n[00:00:35] Daniela Freitas (Lumen Education): Our admissions counsellors are our sales team, eighty of them across the six campuses. Marketing has twenty-five people running the campaigns. And fifteen managers in the leadership team need the reports. So one hundred and twenty users.\n[00:01:15] Ana Ribeiro (Orbita): And how do the counsellors work today?\n[00:01:20] Daniela Freitas (Lumen Education): Each campus has its own spreadsheets, and a lot happens on WhatsApp. We have no idea how many prospects we lose between the first contact and the enrolment.\n[00:01:45] Daniela Freitas (Lumen Education): Our target for next year is to lift the conversion from first contact to enrolment from eight to twelve percent.\n[00:03:05] Ana Ribeiro (Orbita): What must the CRM do from day one?\n[00:03:09] Daniela Freitas (Lumen Education): Capture the leads from our campaigns, give each counsellor a follow-up list, show the enrolment funnel per campus, and keep the WhatsApp conversations with the prospect's record.\n[00:05:35] Marcos Antunes (Lumen Education): On integrations, it has to connect to Campus One, our student information system, because that is where an enrolment becomes official. And to Mailwave, the email tool marketing uses.\n[00:06:00] Pedro Almeida (Orbita): Both have APIs we've worked with. What about WhatsApp?\n[00:06:05] Marcos Antunes (Lumen Education): Yes, WhatsApp too, through the official business account.\n[00:09:25] Marcos Antunes (Lumen Education): My main concern is student data. It must stay in Brazil, and we need a data protection assessment before anything goes live.\n[00:09:46] Pedro Almeida (Orbita): Our data centre for Brazilian clients is in São Paulo, and we can support the assessment.\n[00:12:15] Ana Ribeiro (Orbita): How will the decision be made on your side?\n[00:12:20] Marcos Antunes (Lumen Education): First an IT security review and the data protection assessment. Then Daniela signs, and the board approves anything above one hundred and fifty thousand dollars a year.\n[00:12:45] Marcos Antunes (Lumen Education): On the paperwork, procurement will need your standard contract and the data processing agreement two weeks before the signature.\n[00:13:35] Ana Ribeiro (Orbita): And the budget?\n[00:13:39] Daniela Freitas (Lumen Education): We've approved between one hundred and ten and one hundred and thirty thousand dollars a year.\n[00:15:00] Ana Ribeiro (Orbita): Are you evaluating other options?\n[00:15:04] Daniela Freitas (Lumen Education): We're also looking at Clarion Sales Cloud. To be honest, they're cheaper, but their WhatsApp integration is weak.\n[00:17:25] Ana Ribeiro (Orbita): When does it need to be live?\n[00:17:29] Daniela Freitas (Lumen Education): The enrolment campaign for the second semester starts in June, so we need it live by May 2027.\n[00:24:05] Marcos Antunes (Lumen Education): Off topic, but did anyone watch the match last night? I still can't believe that penalty.\n[00:24:11] Pedro Almeida (Orbita): Don't remind me.\n[00:46:25] Daniela Freitas (Lumen Education): So the scope is clear for us: one hundred and twenty users across admissions, marketing and management, the Campus One and Mailwave integrations, and WhatsApp.\n[00:46:43] Daniela Freitas (Lumen Education): Please send us a proposal on that scope.\n[00:46:52] Ana Ribeiro (Orbita): Will do. I'll send the proposal by Friday the 13th, and we can review it together on Tuesday the 17th.\n[00:47:03] Daniela Freitas (Lumen Education): Tuesday the 17th works.\n[00:47:10] Marcos Antunes (Lumen Education): And I will send you our security questionnaire by Monday.\n[00:51:35] Daniela Freitas (Lumen Education): Thank you both, this was very productive.\n",
+  "MTG-2010": "[00:00:00] Ana Ribeiro (Orbita): Good morning, Paulo, Luiza. Can you hear me well? The connection from the countryside sometimes struggles.\n[00:00:08] Customer (unattributed): We can hear you. We're in the meeting room at the head office today, the signal is good here.\n[00:00:17] Ana Ribeiro (Orbita): Great. Tell me how the commercial side of Pampa Agro works.\n[00:00:23] Customer (unattributed): We sell seeds and fertiliser through about two hundred dealers in the south, and our field reps visit them every week.\n[00:00:58] Customer (unattributed): After each visit the rep fills in a paper report, and on Friday someone types it into a spreadsheet. We never know what a dealer ordered or what the rep promised.\n[00:01:37] Ana Ribeiro (Orbita): So the need is one place with every dealer visit, order and promise?\n[00:01:44] Customer (unattributed): Yes. We need to know which dealer was visited, what they ordered and what was promised, in one place.\n[00:03:13] Ana Ribeiro (Orbita): How many people would use it?\n[00:03:18] Customer (unattributed): Thirty-two field reps in sales, and six people in the leadership team who want the reports. So thirty-eight users.\n[00:04:33] Customer (unattributed): The problem is there's no mobile signal in the fields. Anything that needs the internet all the time won't work. And the reps are not used to apps.\n[00:04:58] Ana Ribeiro (Orbita): Our app works offline and syncs later, and the visit check-in uses GPS.\n[00:05:08] Customer (unattributed): Then it must work offline and have the GPS check-in, those two are non-negotiable.\n[00:07:23] Ana Ribeiro (Orbita): What systems would it need to talk to?\n[00:07:27] Customer (unattributed): Our ERP is Orion ERP. The dealer orders need to flow there.\n[00:09:03] Ana Ribeiro (Orbita): How big is the company overall?\n[00:09:07] Customer (unattributed): We're about four hundred and fifty people.\n[00:12:33] Ana Ribeiro (Orbita): Who decides on a project like this?\n[00:12:37] Customer (unattributed): I make the final call on this, and I'm fine with the budget.\n[00:12:48] Ana Ribeiro (Orbita): And what budget do you have in mind?\n[00:12:53] Customer (unattributed): About seventy thousand dollars a year.\n[00:13:23] Customer (unattributed): Between us, I'm the one pushing for this inside the company. The other directors still think paper works.\n[00:14:13] Ana Ribeiro (Orbita): And when would you need it?\n[00:14:17] Customer (unattributed): Before the planting season sales in August, so live by July 2027.\n[00:29:58] Ana Ribeiro (Orbita): I'll send you a short video of the offline mode by Monday. And would a field demo with two of your reps work next Wednesday, the 11th?\n[00:30:11] Customer (unattributed): Yes, Wednesday the 11th works. We'll pick two reps.\n[00:37:43] Customer (unattributed): Thanks, Ana. Talk soon.\n",
+  "MTG-2011": "[2026-11-05 18:02] Ana Ribeiro (Orbita): Hi Henrique, good evening! I've just emailed you the revised commercial terms: 8% off for the three-year term, as we discussed with Talita.\n[2026-11-05 18:40] Henrique Prado (Solaris Energy): Thanks Ana, I've read them. Eight percent on three years works for us. We agree with the terms.\n[2026-11-05 18:41] Henrique Prado (Solaris Energy): Please send me the contract for signature. Talita will route it through procurement on Monday and I'll sign right after that.\n[2026-11-05 18:45] Ana Ribeiro (Orbita): Great news! I'll send you the contract tomorrow morning.\n[2026-11-05 18:46] Henrique Prado (Solaris Energy): Perfect. One more thing: our IT team needs single sign-on with Microsoft Entra from day one.\n[2026-11-05 18:47] Ana Ribeiro (Orbita): Noted. Beatriz, our implementation lead, will include it in the kickoff plan.\n[2026-11-05 18:50] Henrique Prado (Solaris Energy): That's the list of the 110 users for the accounts, by the way.\n[2026-11-05 18:52] Ana Ribeiro (Orbita): 👍 Thanks, Henrique. Have a good evening.\n"
+ },
+ "refs": {
+  "MTG-2001": {
+   "meeting_id": "MTG-2001",
+   "run_status": "Awaiting review",
+   "source_status": "Ready",
+   "block_reason": null,
+   "fields": [
+    {
+     "field": "call_summary",
+     "status": "proposed",
+     "value": "Discovery call with the COO and the Sales Operations Manager. The commercial team tracks accounts in spreadsheets and Outlook, so account history and renewals get lost and the pipeline is unreliable. They want one CRM for 60 users, live by March 2027, and worry about the in-house TMS integration and adoption. A technical workshop with the IT lead was agreed for the week of 9 Nov.",
+     "evidence": [
+      {
+       "quote": "Honestly, spreadsheets and Outlook.",
+       "line": 7
+      },
+      {
+       "quote": "Proposed next step: a technical scoping workshop with Rui, the week of 9 November",
+       "line": 42
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "objection",
+     "status": "proposed",
+     "value": "Integration with the in-house TMS, especially near peak season; adoption risk after reps abandoned a previous sales tool",
+     "evidence": [
+      {
+       "quote": "I am concerned about integrating with our in-house TMS.",
+       "line": 22
+      },
+      {
+       "quote": "We tried a sales tool three years ago and the reps hated it.",
+       "line": 23
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "commitment",
+     "status": "proposed",
+     "value": "Orbita (Ana): send the TMS reference case, the workshop invite and a mobile app video by 6 Nov; Acme (Marina): make sure Rui Tavares joins the workshop",
+     "evidence": [
+      {
+       "quote": "I will send the workshop invite together with the reference case by Friday.",
+       "line": 44
+      },
+      {
+       "quote": "I will make sure Rui joins.",
+       "line": 43
+      },
+      {
+       "quote": "Sure, I'll include it in Friday's email.",
+       "line": 46
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "next_step",
+     "status": "proposed",
+     "value": "Technical scoping workshop with Rui Tavares (IT Lead) and Pedro Almeida the week of 9 Nov, on the TMS data and integration options",
+     "evidence": [
+      {
+       "quote": "Proposed next step: a technical scoping workshop with Rui, the week of 9 November, to look at the TMS data and the integration options.",
+       "line": 42
+      },
+      {
+       "quote": "Yes, let's do that. I will make sure Rui joins.",
+       "line": 43
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_owner",
+     "status": "proposed",
+     "value": "Ana Ribeiro",
+     "evidence": [
+      {
+       "quote": "I will send the workshop invite together with the reference case by Friday.",
+       "line": 44
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_due_date",
+     "status": "proposed",
+     "value": "2026-11-06",
+     "evidence": [
+      {
+       "quote": "I will send the workshop invite together with the reference case by Friday.",
+       "line": 44
+      }
+     ],
+     "note": "'Friday' resolved from the meeting date, Tue 2026-11-03."
+    },
+    {
+     "field": "budget",
+     "status": "proposed",
+     "value": "USD 80,000-100,000 per year",
+     "evidence": [
+      {
+       "quote": "We have between eighty and a hundred thousand dollars a year for the CRM, licences and support included.",
+       "line": 28
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "decision_maker",
+     "status": "proposed",
+     "value": "Marina Lopes (COO)",
+     "evidence": [
+      {
+       "quote": "I make the decision on this.",
+       "line": 35
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "go_live_target",
+     "status": "proposed",
+     "value": "2027-03",
+     "evidence": [
+      {
+       "quote": "go-live by March 2027 at the latest.",
+       "line": 39
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "competitors",
+     "status": "proposed",
+     "value": "Northwind CRM; PipeSpark",
+     "evidence": [
+      {
+       "quote": "We had a first call with Northwind CRM, and we're getting a demo from PipeSpark next week.",
+       "line": 30
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "seats",
+     "status": "proposed",
+     "value": "60",
+     "evidence": [
+      {
+       "quote": "So sixty users to start.",
+       "line": 13
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "departments",
+     "status": "proposed",
+     "value": "Sales; Customer Success; Leadership",
+     "evidence": [
+      {
+       "quote": "The forty sales reps, our twelve account managers in customer success, and the leadership team, about eight managers, for the dashboards.",
+       "line": 13
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "decision_criteria",
+     "status": "proposed",
+     "value": "Pipeline management; renewal alerts; Outlook email sync; mobile app for field reps; management dashboards; customer shipment status from the TMS",
+     "evidence": [
+      {
+       "quote": "Pipeline management, renewal alerts, email sync with Outlook so we stop copying emails by hand, and management dashboards for Marina.",
+       "line": 17
+      },
+      {
+       "quote": "so a mobile app is a must for them.",
+       "line": 15
+      },
+      {
+       "quote": "we need to see each customer's shipment status inside the CRM",
+       "line": 40
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "integrations",
+     "status": "proposed",
+     "value": "In-house TMS; Orion ERP; Outlook email",
+     "evidence": [
+      {
+       "quote": "Our transport management system, the TMS.",
+       "line": 21
+      },
+      {
+       "quote": "We also use Orion ERP for invoicing.",
+       "line": 21
+      },
+      {
+       "quote": "email sync with Outlook",
+       "line": 17
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "employee_count",
+     "status": "proposed",
+     "value": "850",
+     "evidence": [
+      {
+       "quote": "we're about eight hundred and fifty people",
+       "line": 5
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "current_solution",
+     "status": "proposed",
+     "value": "Spreadsheets, Outlook and a shared drive for proposals",
+     "evidence": [
+      {
+       "quote": "Honestly, spreadsheets and Outlook.",
+       "line": 7
+      },
+      {
+       "quote": "proposals live on a shared drive",
+       "line": 7
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "stage",
+     "status": "proposed",
+     "value": "Solution",
+     "evidence": [
+      {
+       "quote": "One place for every account and every deal, with renewal reminders, and a pipeline I can trust on Monday morning.",
+       "line": 11
+      },
+      {
+       "quote": "I make the decision on this.",
+       "line": 35
+      },
+      {
+       "quote": "go-live by March 2027 at the latest.",
+       "line": 39
+      }
+     ],
+     "note": "Qualified Opportunity exit criteria met: need confirmed by the COO, decision-maker identified (Marina Lopes) and timeline stated (March 2027)."
+    },
+    {
+     "field": "metrics",
+     "status": "proposed",
+     "value": "Zero missed renewals next year; Monday pipeline review from one screen instead of six spreadsheets",
+     "evidence": [
+      {
+       "quote": "success for me is simple: zero missed renewals next year, and the Monday pipeline review done from one screen instead of six spreadsheets.",
+       "line": 9
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "decision_process",
+     "status": "proposed",
+     "value": "Rui Tavares (IT Lead) validates the integration and security; then Marina decides",
+     "evidence": [
+      {
+       "quote": "I will want our IT lead, Rui Tavares, to validate the technical side, the integration and the security.",
+       "line": 35
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "paper_process",
+     "status": "proposed",
+     "value": "Procurement needs three quotes above USD 50,000; then Marina signs",
+     "evidence": [
+      {
+       "quote": "Procurement needs three quotes for anything above fifty thousand. Then I sign.",
+       "line": 37
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "champion",
+     "status": "proposed",
+     "value": "Felipe Nunes (Sales Operations Manager)",
+     "evidence": [
+      {
+       "quote": "I'm the one who pushed for this project internally.",
+       "line": 47
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "customer_need",
+     "status": "proposed",
+     "value": "Accounts and renewals scattered across spreadsheets and Outlook: two renewals missed last quarter and no pipeline view leadership can trust; they need one place for every account and deal",
+     "evidence": [
+      {
+       "quote": "Last quarter we missed two contract renewals because nobody remembered the dates.",
+       "line": 8
+      },
+      {
+       "quote": "One place for every account and every deal, with renewal reminders, and a pipeline I can trust on Monday morning.",
+       "line": 11
+      }
+     ],
+     "note": null
+    }
+   ],
+   "ignored_out_of_scope": []
+  },
+  "MTG-2010": {
+   "meeting_id": "MTG-2010",
+   "run_status": "Awaiting review",
+   "source_status": "Ready",
+   "block_reason": null,
+   "fields": [
+    {
+     "field": "call_summary",
+     "status": "proposed",
+     "value": "Discovery call with Pampa Agro. Field reps visit about 200 dealers and report on paper, later typed into a spreadsheet, so orders and promises get lost. They want one place for visits and orders, working offline with GPS check-in, for 38 users, live by July 2027, with about USD 70,000 a year. A field demo is set for 11 Nov.",
+     "evidence": [
+      {
+       "quote": "After each visit the rep fills in a paper report, and on Friday someone types it into a spreadsheet.",
+       "line": 5
+      },
+      {
+       "quote": "Yes, Wednesday the 11th works.",
+       "line": 25
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "objection",
+     "status": "proposed",
+     "value": "No mobile signal in the fields; reps are not used to apps",
+     "evidence": [
+      {
+       "quote": "The problem is there's no mobile signal in the fields.",
+       "line": 10
+      },
+      {
+       "quote": "And the reps are not used to apps.",
+       "line": 10
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "commitment",
+     "status": "proposed",
+     "value": "Orbita (Ana): send a short video of the offline mode by 9 Nov; Pampa: pick two reps for the field demo",
+     "evidence": [
+      {
+       "quote": "I'll send you a short video of the offline mode by Monday.",
+       "line": 24
+      },
+      {
+       "quote": "We'll pick two reps.",
+       "line": 25
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "next_step",
+     "status": "proposed",
+     "value": "Field demo with two Pampa reps on 11 Nov",
+     "evidence": [
+      {
+       "quote": "would a field demo with two of your reps work next Wednesday, the 11th?",
+       "line": 24
+      },
+      {
+       "quote": "Yes, Wednesday the 11th works.",
+       "line": 25
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_owner",
+     "status": "proposed",
+     "value": "Ana Ribeiro",
+     "evidence": [
+      {
+       "quote": "I'll send you a short video of the offline mode by Monday.",
+       "line": 24
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_due_date",
+     "status": "proposed",
+     "value": "2026-11-09",
+     "evidence": [
+      {
+       "quote": "I'll send you a short video of the offline mode by Monday.",
+       "line": 24
+      }
+     ],
+     "note": "'Monday' resolved from the meeting date, Wed 2026-11-04."
+    },
+    {
+     "field": "customer_need",
+     "status": "proposed",
+     "value": "One place for every dealer visit, order and promise",
+     "evidence": [
+      {
+       "quote": "We need to know which dealer was visited, what they ordered and what was promised, in one place.",
+       "line": 7
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "budget",
+     "status": "proposed",
+     "value": "USD 70,000 per year",
+     "evidence": [
+      {
+       "quote": "About seventy thousand dollars a year.",
+       "line": 20
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "decision_maker",
+     "status": "no_evidence",
+     "value": null,
+     "evidence": [],
+     "note": "'I make the final call' comes from an unattributed speaker, so the decision-maker is not identified."
+    },
+    {
+     "field": "go_live_target",
+     "status": "proposed",
+     "value": "2027-07",
+     "evidence": [
+      {
+       "quote": "so live by July 2027.",
+       "line": 23
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "seats",
+     "status": "proposed",
+     "value": "38",
+     "evidence": [
+      {
+       "quote": "So thirty-eight users.",
+       "line": 9
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "departments",
+     "status": "proposed",
+     "value": "Sales; Leadership",
+     "evidence": [
+      {
+       "quote": "Thirty-two field reps in sales, and six people in the leadership team who want the reports.",
+       "line": 9
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "decision_criteria",
+     "status": "proposed",
+     "value": "Works offline; GPS visit check-in; dealer visit and order records",
+     "evidence": [
+      {
+       "quote": "Then it must work offline and have the GPS check-in, those two are non-negotiable.",
+       "line": 12
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "integrations",
+     "status": "proposed",
+     "value": "Orion ERP",
+     "evidence": [
+      {
+       "quote": "Our ERP is Orion ERP. The dealer orders need to flow there.",
+       "line": 14
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "employee_count",
+     "status": "proposed",
+     "value": "450",
+     "evidence": [
+      {
+       "quote": "We're about four hundred and fifty people.",
+       "line": 16
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "current_solution",
+     "status": "proposed",
+     "value": "Paper visit reports typed into a spreadsheet",
+     "evidence": [
+      {
+       "quote": "After each visit the rep fills in a paper report, and on Friday someone types it into a spreadsheet.",
+       "line": 5
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "stage",
+     "status": "no_evidence",
+     "value": null,
+     "evidence": [],
+     "note": "Qualified Opportunity exit criteria not met: need and timeline are on the call, but the decision-maker is not identified (the speaker is unattributed)."
+    },
+    {
+     "field": "champion",
+     "status": "no_evidence",
+     "value": null,
+     "evidence": [],
+     "note": "'I'm the one pushing for this' comes from an unattributed speaker, so the champion is not identified."
+    }
+   ],
+   "ignored_out_of_scope": []
+  },
+  "MTG-2011": {
+   "meeting_id": "MTG-2011",
+   "run_status": "Awaiting review",
+   "source_status": "Ready",
+   "block_reason": null,
+   "fields": [
+    {
+     "field": "call_summary",
+     "status": "proposed",
+     "value": "WhatsApp chat with the Commercial VP. Henrique accepted the revised commercial terms and asked for the contract for signature: procurement routes it on Monday and he signs right after. IT needs Microsoft Entra single sign-on from day one. Ana sends the contract tomorrow morning.",
+     "evidence": [
+      {
+       "quote": "We agree with the terms.",
+       "line": 2
+      },
+      {
+       "quote": "Please send me the contract for signature.",
+       "line": 3
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "commitment",
+     "status": "proposed",
+     "value": "Orbita (Ana): send the contract for signature by 6 Nov; Solaris (Henrique): sign right after procurement routes it on 9 Nov",
+     "evidence": [
+      {
+       "quote": "I'll send you the contract tomorrow morning.",
+       "line": 4
+      },
+      {
+       "quote": "Talita will route it through procurement on Monday and I'll sign right after that.",
+       "line": 3
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "next_step",
+     "status": "proposed",
+     "value": "Ana sends the contract for signature on 6 Nov; Talita routes it through procurement on 9 Nov and Henrique signs right after",
+     "evidence": [
+      {
+       "quote": "Please send me the contract for signature.",
+       "line": 3
+      },
+      {
+       "quote": "I'll send you the contract tomorrow morning.",
+       "line": 4
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_owner",
+     "status": "proposed",
+     "value": "Ana Ribeiro",
+     "evidence": [
+      {
+       "quote": "I'll send you the contract tomorrow morning.",
+       "line": 4
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_due_date",
+     "status": "proposed",
+     "value": "2026-11-06",
+     "evidence": [
+      {
+       "quote": "I'll send you the contract tomorrow morning.",
+       "line": 4
+      }
+     ],
+     "note": "'tomorrow' resolved from the message date, Thu 2026-11-05."
+    },
+    {
+     "field": "paper_process",
+     "status": "proposed",
+     "value": "Talita Moura (Procurement) routes the contract on 9 Nov; Henrique Prado signs right after",
+     "evidence": [
+      {
+       "quote": "Talita will route it through procurement on Monday and I'll sign right after that.",
+       "line": 3
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "integrations",
+     "status": "proposed",
+     "value": "Billing system; email and calendar; Microsoft Entra single sign-on",
+     "evidence": [
+      {
+       "quote": "our IT team needs single sign-on with Microsoft Entra from day one.",
+       "line": 5
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "seats",
+     "status": "proposed",
+     "value": "110",
+     "evidence": [
+      {
+       "quote": "That's the list of the 110 users for the accounts, by the way.",
+       "line": 7
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "stage",
+     "status": "proposed",
+     "value": "Contract",
+     "evidence": [
+      {
+       "quote": "We agree with the terms.",
+       "line": 2
+      },
+      {
+       "quote": "Please send me the contract for signature.",
+       "line": 3
+      }
+     ],
+     "note": "Negotiation exit criteria met: the decision-maker, Henrique Prado, agreed to the terms and asked for the contract for signature."
+    }
+   ],
+   "ignored_out_of_scope": []
+  },
+  "MTG-2002": {
+   "meeting_id": "MTG-2002",
+   "run_status": "Awaiting review",
+   "source_status": "Ready",
+   "block_reason": null,
+   "fields": [
+    {
+     "field": "call_summary",
+     "status": "proposed",
+     "value": "Intro call with the Head of Retail Operations. Franchise and wholesale sales run on WhatsApp groups and spreadsheets, so complaints and reorders get lost. A previous BI tool failed because it was too complicated. There is no budget yet; Camila will read a case study after Black Friday, with no meeting booked.",
+     "evidence": [
+      {
+       "quote": "Today all of that runs on WhatsApp groups and spreadsheets.",
+       "line": 5
+      },
+      {
+       "quote": "Let's not book anything yet.",
+       "line": 21
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "objection",
+     "status": "proposed",
+     "value": "A previous BI tool failed because it was too complicated and the store teams stopped using it",
+     "evidence": [
+      {
+       "quote": "It was too complicated and the store teams stopped using it after a month.",
+       "line": 12
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "commitment",
+     "status": "proposed",
+     "value": "Orbita (Ana): send the product overview and a franchise retail case study",
+     "evidence": [
+      {
+       "quote": "I'll send you our product overview and that case study.",
+       "line": 18
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "next_step",
+     "status": "proposed",
+     "value": "Camila reads the case study with her team after Black Friday and comes back to Orbita; no meeting booked",
+     "evidence": [
+      {
+       "quote": "Please do. I'll read it with my team after Black Friday.",
+       "line": 19
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_owner",
+     "status": "proposed",
+     "value": "Ana Ribeiro",
+     "evidence": [
+      {
+       "quote": "I'll send you our product overview and that case study.",
+       "line": 18
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "customer_need",
+     "status": "proposed",
+     "value": "One place to manage franchisees and wholesale buyers, with their orders, visits and complaints, instead of WhatsApp groups",
+     "evidence": [
+      {
+       "quote": "One place for the franchisees and the wholesale buyers, instead of fifty WhatsApp groups.",
+       "line": 7
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "budget",
+     "status": "proposed",
+     "value": "No budget allocated",
+     "evidence": [
+      {
+       "quote": "There's no budget allocated for this yet, it would have to go into next year's plan.",
+       "line": 15
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "employee_count",
+     "status": "proposed",
+     "value": "1200",
+     "evidence": [
+      {
+       "quote": "About one thousand two hundred employees, most of them in the stores.",
+       "line": 9
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "current_solution",
+     "status": "proposed",
+     "value": "WhatsApp groups and spreadsheets",
+     "evidence": [
+      {
+       "quote": "Today all of that runs on WhatsApp groups and spreadsheets.",
+       "line": 5
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "stage",
+     "status": "no_evidence",
+     "value": null,
+     "evidence": [],
+     "note": "New Lead exit criteria not met: the customer confirmed a need but did not agree to a further conversation."
+    }
+   ],
+   "ignored_out_of_scope": []
+  },
+  "MTG-2003": {
+   "meeting_id": "MTG-2003",
+   "run_status": "Awaiting review",
+   "source_status": "Ready",
+   "block_reason": null,
+   "fields": [
+    {
+     "field": "call_summary",
+     "status": "proposed",
+     "value": "Short call with the CIO. The board froze all new IT projects until the January budget review, so Friday's demo with the clinic managers is cancelled and no new date was agreed. The budget is unchanged at USD 90,000 per year.",
+     "evidence": [
+      {
+       "quote": "The board froze all new IT projects until our budget review in January.",
+       "line": 2
+      },
+      {
+       "quote": "Please cancel the demo on Friday.",
+       "line": 4
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "objection",
+     "status": "proposed",
+     "value": "The board froze all new IT projects until the January budget review",
+     "evidence": [
+      {
+       "quote": "The board froze all new IT projects until our budget review in January.",
+       "line": 2
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "next_step",
+     "status": "contradictory",
+     "value": null,
+     "evidence": [
+      {
+       "quote": "Please cancel the demo on Friday. There is no next step from our side for now",
+       "line": 4
+      }
+     ],
+     "note": "The approved demo on 6 Nov was cancelled and no new next step was agreed."
+    },
+    {
+     "field": "follow_up_due_date",
+     "status": "contradictory",
+     "value": null,
+     "evidence": [
+      {
+       "quote": "I can't commit to any date, not even a date to talk again.",
+       "line": 6
+      }
+     ],
+     "note": "The approved date was the cancelled demo; no new date was agreed."
+    },
+    {
+     "field": "budget",
+     "status": "proposed",
+     "value": "USD 90,000 per year",
+     "evidence": [
+      {
+       "quote": "the budget itself hasn't changed: it's still ninety thousand dollars a year.",
+       "line": 7
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "stage",
+     "status": "no_evidence",
+     "value": null,
+     "evidence": [],
+     "note": "Solution exit criteria not met: no agreed scope and no request for a proposal."
+    }
+   ],
+   "ignored_out_of_scope": []
+  },
+  "MTG-2005": {
+   "meeting_id": "MTG-2005",
+   "run_status": "Awaiting review",
+   "source_status": "Ready",
+   "block_reason": null,
+   "fields": [
+    {
+     "field": "call_summary",
+     "status": "proposed",
+     "value": "Intro call with Delta Pharma's Commercial Excellence Manager. About 150 medical representatives file visit reports in a very old system nobody likes. She wants a tool to plan visits, record what was discussed and track samples, on a tablet. Ana sends an overview; Livia shares it with her director.",
+     "evidence": [
+      {
+       "quote": "We have about one hundred and fifty medical representatives who visit doctors and pharmacies every day.",
+       "line": 4
+      },
+      {
+       "quote": "Their visit reports are in a very old system that nobody likes.",
+       "line": 5
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "commitment",
+     "status": "proposed",
+     "value": "Orbita (Ana): send a short overview after the call; Delta Pharma (Livia): share it with her director",
+     "evidence": [
+      {
+       "quote": "I'll send you a short overview after the call.",
+       "line": 8
+      },
+      {
+       "quote": "I'll share it with my director.",
+       "line": 9
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "next_step",
+     "status": "proposed",
+     "value": "Ana sends a short overview of Orbita for pharma; Livia shares it with her director",
+     "evidence": [
+      {
+       "quote": "I'll send you a short overview after the call.",
+       "line": 8
+      },
+      {
+       "quote": "Great. I'll share it with my director.",
+       "line": 9
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_owner",
+     "status": "proposed",
+     "value": "Ana Ribeiro",
+     "evidence": [
+      {
+       "quote": "I'll send you a short overview after the call.",
+       "line": 8
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "customer_need",
+     "status": "proposed",
+     "value": "Medical representatives' visit reports live in a very old system that nobody likes; Delta is looking at options for next year",
+     "evidence": [
+      {
+       "quote": "Their visit reports are in a very old system that nobody likes. I'm looking at options for next year.",
+       "line": 5
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "decision_criteria",
+     "status": "proposed",
+     "value": "Plan visits; record what was discussed; track samples; works on a tablet",
+     "evidence": [
+      {
+       "quote": "Plan the visits, record what was discussed, and track samples. And it has to work on a tablet.",
+       "line": 7
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "stage",
+     "status": "no_evidence",
+     "value": null,
+     "evidence": [],
+     "note": "New Lead exit criteria not met: the need is confirmed, but no further conversation was agreed."
+    }
+   ],
+   "ignored_out_of_scope": []
+  },
+  "MTG-2006": {
+   "meeting_id": "MTG-2006",
+   "run_status": "Awaiting review",
+   "source_status": "Ready",
+   "block_reason": null,
+   "fields": [
+    {
+     "field": "call_summary",
+     "status": "proposed",
+     "value": "Check-in with the Head of Operations on proposal v1. He wants to sign next week, but the CFO, Helena Duarte, who signs above 100,000, has not seen the proposal yet. Atlas has USD 120,000 a year approved for the CRM. Tiago will forward the proposal to Helena this week.",
+     "evidence": [
+      {
+       "quote": "Our CFO, Helena Duarte, hasn't seen the proposal.",
+       "line": 4
+      },
+      {
+       "quote": "we have one hundred and twenty thousand dollars a year approved for the CRM",
+       "line": 9
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "commitment",
+     "status": "proposed",
+     "value": "Atlas (Tiago): forward proposal v1 to Helena Duarte this week; Orbita (Ana): check in with Tiago on 12 Nov",
+     "evidence": [
+      {
+       "quote": "I will forward it to her this week.",
+       "line": 4
+      },
+      {
+       "quote": "I'll check in with you on Thursday the 12th.",
+       "line": 15
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "next_step",
+     "status": "proposed",
+     "value": "Tiago forwards proposal v1 to the CFO, Helena Duarte, this week; Ana checks in with Tiago on 12 Nov",
+     "evidence": [
+      {
+       "quote": "Next step then: you forward proposal v1 to Helena this week, and I'll check in with you on Thursday the 12th.",
+       "line": 15
+      },
+      {
+       "quote": "Deal. Thursday the 12th.",
+       "line": 16
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_owner",
+     "status": "proposed",
+     "value": "Ana Ribeiro",
+     "evidence": [
+      {
+       "quote": "I'll check in with you on Thursday the 12th.",
+       "line": 15
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_due_date",
+     "status": "proposed",
+     "value": "2026-11-12",
+     "evidence": [
+      {
+       "quote": "Deal. Thursday the 12th.",
+       "line": 16
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "budget",
+     "status": "proposed",
+     "value": "USD 120,000 per year",
+     "evidence": [
+      {
+       "quote": "we have one hundred and twenty thousand dollars a year approved for the CRM in next year's budget.",
+       "line": 9
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "seats",
+     "status": "proposed",
+     "value": "75",
+     "evidence": [
+      {
+       "quote": "Yes, seventy-five users to start, sales and the customer service desk.",
+       "line": 11
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "departments",
+     "status": "proposed",
+     "value": "Sales; Customer Service",
+     "evidence": [
+      {
+       "quote": "Yes, seventy-five users to start, sales and the customer service desk.",
+       "line": 11
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "stage",
+     "status": "no_evidence",
+     "value": null,
+     "evidence": [],
+     "note": "Proposal exit criteria not met: the decision-maker (CFO Helena Duarte) has not received the proposal and no commercial terms were raised. 'Let's sign' came from the Head of Operations, not the decision-maker."
+    },
+    {
+     "field": "champion",
+     "status": "proposed",
+     "value": "Tiago Mendes (Head of Operations)",
+     "evidence": [
+      {
+       "quote": "I've been pushing for this internally since your demo, and I'll walk Helena through the proposal myself.",
+       "line": 5
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "paper_process",
+     "status": "proposed",
+     "value": "Helena Duarte (CFO) approves; Legal reviews the contract in about two weeks; then Helena signs",
+     "evidence": [
+      {
+       "quote": "Once Helena approves, our legal team needs about two weeks to review the contract, and then she signs.",
+       "line": 12
+      }
+     ],
+     "note": null
+    }
+   ],
+   "ignored_out_of_scope": [
+    {
+     "quote": "And you can put it down as a one million dollar deal in your system.",
+     "reason": "Deal amount is a seller-only field; a spoken instruction is not a budget.",
+     "line": 6
+    }
+   ]
+  },
+  "MTG-2007": {
+   "meeting_id": "MTG-2007",
+   "run_status": "Awaiting review",
+   "source_status": "Ready",
+   "block_reason": null,
+   "fields": [
+    {
+     "field": "call_summary",
+     "status": "proposed",
+     "value": "Discovery call with the Commercial Director and the Sales Manager. Leads from the website, WhatsApp and sales stands are typed into a spreadsheet and get lost. They want automatic lead routing to brokers and a funnel per launch for 105 users, live by March 2027, with about USD 60,000 a year. A recorded demo comes by Tuesday and a live demo is set for 12 Nov.",
+     "evidence": [
+      {
+       "quote": "Leads get lost between the stand, the website and WhatsApp",
+       "line": 6
+      },
+      {
+       "quote": "and then we do a live demo with your sales managers on Thursday the 12th.",
+       "line": 26
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "objection",
+     "status": "proposed",
+     "value": "Brokers are external and won't use anything complicated; sales stands often have no mobile signal",
+     "evidence": [
+      {
+       "quote": "They are not employees, and they won't use anything complicated. And the stands often have no mobile signal at all.",
+       "line": 13
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "commitment",
+     "status": "proposed",
+     "value": "Orbita (Ana): send a recorded demo of the lead routing by 10 Nov; Cedro (Andre): send the list of launches and broker teams before the demo",
+     "evidence": [
+      {
+       "quote": "I'll send you a recorded demo of the lead routing by Tuesday",
+       "line": 26
+      },
+      {
+       "quote": "I will send you the list of the three launches and the broker teams before the demo.",
+       "line": 28
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "next_step",
+     "status": "proposed",
+     "value": "Live demo with Cedro's sales managers on 12 Nov, after a recorded demo of the lead routing",
+     "evidence": [
+      {
+       "quote": "and then we do a live demo with your sales managers on Thursday the 12th.",
+       "line": 26
+      },
+      {
+       "quote": "Yes, Thursday the 12th works for us.",
+       "line": 27
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_owner",
+     "status": "proposed",
+     "value": "Ana Ribeiro",
+     "evidence": [
+      {
+       "quote": "I'll send you a recorded demo of the lead routing by Tuesday",
+       "line": 26
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_due_date",
+     "status": "proposed",
+     "value": "2026-11-10",
+     "evidence": [
+      {
+       "quote": "I'll send you a recorded demo of the lead routing by Tuesday",
+       "line": 26
+      }
+     ],
+     "note": "'Tuesday' resolved from the meeting date, Fri 2026-11-06."
+    },
+    {
+     "field": "customer_need",
+     "status": "proposed",
+     "value": "Capture every lead from the website, WhatsApp and sales stands in one place, routed automatically to a broker, with one funnel per launch",
+     "evidence": [
+      {
+       "quote": "Every lead from the website, WhatsApp and the sales stands in one place, routed automatically to a broker, with one sales funnel per launch.",
+       "line": 8
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "budget",
+     "status": "proposed",
+     "value": "USD 60,000 per year",
+     "evidence": [
+      {
+       "quote": "We have around sixty thousand dollars a year for it.",
+       "line": 18
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "decision_maker",
+     "status": "proposed",
+     "value": "Sofia Martins (Commercial Director)",
+     "evidence": [
+      {
+       "quote": "I do. Our CEO only gets involved above two hundred thousand, so this is my call.",
+       "line": 20
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "go_live_target",
+     "status": "proposed",
+     "value": "2027-03",
+     "evidence": [
+      {
+       "quote": "I need this running by March 2027.",
+       "line": 22
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "seats",
+     "status": "proposed",
+     "value": "105",
+     "evidence": [
+      {
+       "quote": "We'd need a hundred and five users: twenty-five in our own sales team and eighty brokers.",
+       "line": 11
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "departments",
+     "status": "proposed",
+     "value": "Sales; Marketing",
+     "evidence": [
+      {
+       "quote": "We'd need a hundred and five users: twenty-five in our own sales team and eighty brokers.",
+       "line": 11
+      },
+      {
+       "quote": "our marketing team runs the website and the campaigns, so they need to see where the leads come from.",
+       "line": 12
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "decision_criteria",
+     "status": "proposed",
+     "value": "Lead capture from website, WhatsApp and stands; automatic routing to brokers; one funnel per launch with visits, proposals and contracts",
+     "evidence": [
+      {
+       "quote": "routed automatically to a broker, with one sales funnel per launch.",
+       "line": 8
+      },
+      {
+       "quote": "we need to see each launch separately: leads, visits to the show apartment, proposals and contracts.",
+       "line": 25
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "integrations",
+     "status": "proposed",
+     "value": "Website forms; WhatsApp",
+     "evidence": [
+      {
+       "quote": "Paper forms at the stand, the website form, and WhatsApp.",
+       "line": 5
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "employee_count",
+     "status": "proposed",
+     "value": "400",
+     "evidence": [
+      {
+       "quote": "About four hundred people, most of them on construction sites.",
+       "line": 16
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "current_solution",
+     "status": "proposed",
+     "value": "Paper forms, the website form and WhatsApp, typed into a spreadsheet",
+     "evidence": [
+      {
+       "quote": "Then someone types everything into a spreadsheet on Monday, if they remember.",
+       "line": 5
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "stage",
+     "status": "proposed",
+     "value": "Solution",
+     "evidence": [
+      {
+       "quote": "Every lead from the website, WhatsApp and the sales stands in one place",
+       "line": 8
+      },
+      {
+       "quote": "so this is my call.",
+       "line": 20
+      },
+      {
+       "quote": "I need this running by March 2027.",
+       "line": 22
+      }
+     ],
+     "note": "Qualified Opportunity exit criteria met: need confirmed, decision-maker identified (Sofia Martins) and timeline stated (March 2027)."
+    },
+    {
+     "field": "metrics",
+     "status": "proposed",
+     "value": "Every lead called back within two hours, instead of about two days",
+     "evidence": [
+      {
+       "quote": "Today a lead from the website waits about two days for a call back. I want every lead called within two hours.",
+       "line": 9
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "decision_process",
+     "status": "proposed",
+     "value": "Sofia decides; the CEO only gets involved above USD 200,000",
+     "evidence": [
+      {
+       "quote": "Our CEO only gets involved above two hundred thousand, so this is my call.",
+       "line": 20
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "paper_process",
+     "status": "proposed",
+     "value": "Legal reviews the contract; then Sofia signs",
+     "evidence": [
+      {
+       "quote": "Legal reviews the contract before I sign.",
+       "line": 20
+      }
+     ],
+     "note": null
+    }
+   ],
+   "ignored_out_of_scope": []
+  },
+  "MTG-2009": {
+   "meeting_id": "MTG-2009",
+   "run_status": "Awaiting review",
+   "source_status": "Ready",
+   "block_reason": null,
+   "fields": [
+    {
+     "field": "call_summary",
+     "status": "proposed",
+     "value": "Scope session with the VP of Admissions and the CIO. Scope agreed: 120 users across admissions, marketing and management, with Campus One, Mailwave and WhatsApp integrations, live by May 2027, with a budget of USD 110,000-130,000 a year. Student data must stay in Brazil. Lumen asked for a proposal, due 13 Nov, with a review on 17 Nov.",
+     "evidence": [
+      {
+       "quote": "So the scope is clear for us",
+       "line": 27
+      },
+      {
+       "quote": "Please send us a proposal on that scope.",
+       "line": 28
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "objection",
+     "status": "proposed",
+     "value": "Student data must stay in Brazil; a data protection assessment is required before go-live",
+     "evidence": [
+      {
+       "quote": "It must stay in Brazil, and we need a data protection assessment before anything goes live.",
+       "line": 14
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "commitment",
+     "status": "proposed",
+     "value": "Orbita (Ana): send the proposal by 13 Nov; Lumen (Marcos): send the security questionnaire by 9 Nov",
+     "evidence": [
+      {
+       "quote": "I'll send the proposal by Friday the 13th",
+       "line": 29
+      },
+      {
+       "quote": "And I will send you our security questionnaire by Monday.",
+       "line": 31
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "next_step",
+     "status": "proposed",
+     "value": "Proposal review with Daniela and Marcos on 17 Nov, after Orbita sends the proposal by 13 Nov",
+     "evidence": [
+      {
+       "quote": "we can review it together on Tuesday the 17th.",
+       "line": 29
+      },
+      {
+       "quote": "Tuesday the 17th works.",
+       "line": 30
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_owner",
+     "status": "proposed",
+     "value": "Ana Ribeiro",
+     "evidence": [
+      {
+       "quote": "I'll send the proposal by Friday the 13th",
+       "line": 29
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "follow_up_due_date",
+     "status": "proposed",
+     "value": "2026-11-13",
+     "evidence": [
+      {
+       "quote": "I'll send the proposal by Friday the 13th",
+       "line": 29
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "budget",
+     "status": "proposed",
+     "value": "USD 110,000-130,000 per year",
+     "evidence": [
+      {
+       "quote": "We've approved between one hundred and ten and one hundred and thirty thousand dollars a year.",
+       "line": 20
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "decision_maker",
+     "status": "proposed",
+     "value": "Daniela Freitas (VP of Admissions)",
+     "evidence": [
+      {
+       "quote": "Then Daniela signs",
+       "line": 17
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "decision_process",
+     "status": "proposed",
+     "value": "IT security review and data protection assessment first; then Daniela signs; the board approves anything above USD 150,000 a year",
+     "evidence": [
+      {
+       "quote": "First an IT security review and the data protection assessment. Then Daniela signs, and the board approves anything above one hundred and fifty thousand dollars a year.",
+       "line": 17
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "go_live_target",
+     "status": "proposed",
+     "value": "2027-05",
+     "evidence": [
+      {
+       "quote": "so we need it live by May 2027.",
+       "line": 24
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "competitors",
+     "status": "proposed",
+     "value": "Clarion Sales Cloud",
+     "evidence": [
+      {
+       "quote": "We're also looking at Clarion Sales Cloud.",
+       "line": 22
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "seats",
+     "status": "proposed",
+     "value": "120",
+     "evidence": [
+      {
+       "quote": "So one hundred and twenty users.",
+       "line": 5
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "departments",
+     "status": "proposed",
+     "value": "Sales; Marketing; Leadership",
+     "evidence": [
+      {
+       "quote": "Our admissions counsellors are our sales team, eighty of them across the six campuses.",
+       "line": 5
+      },
+      {
+       "quote": "Marketing has twenty-five people running the campaigns.",
+       "line": 5
+      },
+      {
+       "quote": "fifteen managers in the leadership team need the reports.",
+       "line": 5
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "decision_criteria",
+     "status": "proposed",
+     "value": "Lead capture from campaigns; counsellor follow-up lists; enrolment funnel per campus; WhatsApp conversations on the prospect record",
+     "evidence": [
+      {
+       "quote": "Capture the leads from our campaigns, give each counsellor a follow-up list, show the enrolment funnel per campus, and keep the WhatsApp conversations with the prospect's record.",
+       "line": 10
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "integrations",
+     "status": "proposed",
+     "value": "Campus One student information system; Mailwave; WhatsApp business account",
+     "evidence": [
+      {
+       "quote": "it has to connect to Campus One, our student information system",
+       "line": 11
+      },
+      {
+       "quote": "And to Mailwave, the email tool marketing uses.",
+       "line": 11
+      },
+      {
+       "quote": "Yes, WhatsApp too, through the official business account.",
+       "line": 13
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "current_solution",
+     "status": "proposed",
+     "value": "Spreadsheets per campus and WhatsApp",
+     "evidence": [
+      {
+       "quote": "Each campus has its own spreadsheets, and a lot happens on WhatsApp.",
+       "line": 7
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "stage",
+     "status": "proposed",
+     "value": "Proposal",
+     "evidence": [
+      {
+       "quote": "So the scope is clear for us: one hundred and twenty users across admissions, marketing and management, the Campus One and Mailwave integrations, and WhatsApp.",
+       "line": 27
+      },
+      {
+       "quote": "Please send us a proposal on that scope.",
+       "line": 28
+      }
+     ],
+     "note": "Solution exit criteria met: the customer agreed the scope (120 users, integrations) and asked for a proposal."
+    },
+    {
+     "field": "metrics",
+     "status": "proposed",
+     "value": "Lift first-contact-to-enrolment conversion from 8% to 12% next year",
+     "evidence": [
+      {
+       "quote": "Our target for next year is to lift the conversion from first contact to enrolment from eight to twelve percent.",
+       "line": 8
+      }
+     ],
+     "note": null
+    },
+    {
+     "field": "paper_process",
+     "status": "proposed",
+     "value": "Procurement needs the standard contract and the data processing agreement two weeks before signature",
+     "evidence": [
+      {
+       "quote": "procurement will need your standard contract and the data processing agreement two weeks before the signature.",
+       "line": 18
+      }
+     ],
+     "note": null
+    }
+   ],
+   "ignored_out_of_scope": []
+  }
+ },
+ "expected": {
+  "description": "Expected results for the Call-to-CRM eval set (Orbita CRM, meetings from Granola). Each case starts from the seed CRM in data/opportunities.json and data/clients.json. Fields absent from a case are expected as no_evidence. status_any = several acceptable statuses; value / value_any compared by type; must_include = list of groups, every group must match and any keyword of a group is enough (case-insensitive); must_not_include = keywords that must not appear; note_must_include checks the field's note. 'unchanged' = the agent proposed exactly the approved value: nothing to decide, nothing written.",
+  "cases": [
+   {
+    "case_id": "T1",
+    "prd_case": 1,
+    "name": "Happy path - complete discovery call",
+    "proves": "A complete discovery call fills every field with a quote, and the stage moves only when the need, the decision-maker and the timeline are all on the call.",
+    "meeting_id": "MTG-2001",
+    "opportunity_id": "OPP-0142",
+    "run_as_user_id": "U01",
+    "expected_run_status": "Awaiting review",
+    "expected_source_status": "Ready",
+    "fields": {
+     "call_summary": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "spreadsheet"
+       ],
+       [
+        "workshop"
+       ]
+      ]
+     },
+     "objection": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "TMS",
+        "integrat"
+       ],
+       [
+        "adoption",
+        "hated",
+        "abandon",
+        "went back"
+       ]
+      ]
+     },
+     "commitment": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "reference case",
+        "case study"
+       ],
+       [
+        "Rui"
+       ]
+      ]
+     },
+     "next_step": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "workshop"
+       ],
+       [
+        "Rui"
+       ]
+      ]
+     },
+     "follow_up_owner": {
+      "status": "proposed",
+      "value": "Ana Ribeiro"
+     },
+     "follow_up_due_date": {
+      "status": "proposed",
+      "value": "2026-11-06"
+     },
+     "customer_need": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "account",
+        "deal"
+       ],
+       [
+        "renewal",
+        "pipeline"
+       ]
+      ]
+     },
+     "budget": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "80,000",
+        "80000",
+        "80k",
+        "80 000"
+       ],
+       [
+        "100,000",
+        "100000",
+        "100k",
+        "100 000"
+       ]
+      ]
+     },
+     "decision_maker": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "Marina"
+       ]
+      ]
+     },
+     "decision_process": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "Rui",
+        "IT"
+       ]
+      ]
+     },
+     "go_live_target": {
+      "status": "proposed",
+      "value": "2027-03"
+     },
+     "competitors": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "Northwind"
+       ],
+       [
+        "PipeSpark"
+       ]
+      ]
+     },
+     "seats": {
+      "status": "proposed",
+      "value": "60"
+     },
+     "departments": {
+      "status": "proposed",
+      "value": "Sales; Customer Success; Leadership"
+     },
+     "decision_criteria": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "pipeline"
+       ],
+       [
+        "renewal"
+       ],
+       [
+        "mobile"
+       ]
+      ]
+     },
+     "integrations": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "TMS",
+        "transport management"
+       ],
+       [
+        "Orion"
+       ]
+      ]
+     },
+     "employee_count": {
+      "status": "proposed",
+      "value": "850"
+     },
+     "current_solution": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "spreadsheet"
+       ],
+       [
+        "Outlook",
+        "email",
+        "inbox"
+       ]
+      ]
+     },
+     "stage": {
+      "status": "proposed",
+      "value": "Solution"
+     },
+     "metrics": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "renewal"
+       ],
+       [
+        "pipeline",
+        "spreadsheet"
+       ]
+      ]
+     },
+     "champion": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "Felipe"
+       ]
+      ]
+     },
+     "paper_process": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "quote",
+        "procurement"
+       ]
+      ]
+     }
+    },
+    "forbidden_stage_values": [
+     "Proposal",
+     "Negotiation",
+     "Contract",
+     "Closed Won",
+     "Closed Lost"
+    ],
+    "demo_role": "Main demo call (PRD F18 steps 1-4)."
+   },
+   {
+    "case_id": "T2",
+    "prd_case": 2,
+    "name": "No evidence - no follow-up date or further meeting agreed",
+    "proves": "When no date or next meeting is agreed, the agent leaves the due date and the stage empty instead of guessing, and records 'no budget' only because the customer said so.",
+    "meeting_id": "MTG-2002",
+    "opportunity_id": "OPP-0141",
+    "run_as_user_id": "U01",
+    "expected_run_status": "Awaiting review",
+    "expected_source_status": "Ready",
+    "fields": {
+     "call_summary": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "franchise",
+        "wholesale"
+       ],
+       [
+        "WhatsApp",
+        "spreadsheet"
+       ]
+      ]
+     },
+     "objection": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "BI",
+        "complicated",
+        "adoption"
+       ]
+      ]
+     },
+     "commitment": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "case study"
+       ]
+      ]
+     },
+     "next_step": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ],
+      "must_include": [
+       [
+        "case study"
+       ]
+      ]
+     },
+     "follow_up_owner": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ],
+      "value": "Ana Ribeiro"
+     },
+     "follow_up_due_date": {
+      "status": "no_evidence"
+     },
+     "customer_need": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "franchise"
+       ],
+       [
+        "wholesale"
+       ]
+      ]
+     },
+     "budget": {
+      "status": "proposed",
+      "value": "No budget allocated"
+     },
+     "decision_criteria": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ]
+     },
+     "employee_count": {
+      "status": "proposed",
+      "value": "1200"
+     },
+     "current_solution": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "WhatsApp"
+       ],
+       [
+        "spreadsheet"
+       ]
+      ]
+     },
+     "stage": {
+      "status": "no_evidence",
+      "note_must_include": [
+       [
+        "conversation",
+        "meeting",
+        "demo",
+        "further"
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "case_id": "T3",
+    "prd_case": 3,
+    "name": "Contradiction with seller-approved values (short call)",
+    "proves": "When the call cancels an approved next step without agreeing a new one, the agent flags the conflict and lets the seller decide; a short call that ended normally is still usable.",
+    "meeting_id": "MTG-2003",
+    "opportunity_id": "OPP-0143",
+    "run_as_user_id": "U01",
+    "expected_run_status": "Awaiting review",
+    "expected_source_status": "Ready",
+    "fields": {
+     "call_summary": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "board",
+        "budget",
+        "froze",
+        "frozen"
+       ],
+       [
+        "demo"
+       ]
+      ]
+     },
+     "objection": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "board",
+        "budget",
+        "froze",
+        "frozen",
+        "freeze"
+       ]
+      ]
+     },
+     "commitment": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ],
+      "must_include": [
+       [
+        "reach out",
+        "January",
+        "budget"
+       ]
+      ],
+      "note": "Conditional promise; a proposal or no_evidence is acceptable."
+     },
+     "next_step": {
+      "status": "contradictory"
+     },
+     "follow_up_owner": {
+      "status_any": [
+       "no_evidence",
+       "contradictory"
+      ]
+     },
+     "follow_up_due_date": {
+      "status": "contradictory"
+     },
+     "customer_need": {
+      "status_any": [
+       "no_evidence",
+       "unchanged"
+      ]
+     },
+     "budget": {
+      "status_any": [
+       "unchanged",
+       "proposed"
+      ],
+      "must_include": [
+       [
+        "90,000",
+        "90000",
+        "90k",
+        "90 000"
+       ]
+      ]
+     },
+     "decision_maker": {
+      "status_any": [
+       "no_evidence",
+       "unchanged"
+      ]
+     },
+     "decision_process": {
+      "status_any": [
+       "no_evidence",
+       "proposed"
+      ]
+     },
+     "go_live_target": {
+      "status_any": [
+       "no_evidence",
+       "contradictory"
+      ]
+     },
+     "seats": {
+      "status_any": [
+       "no_evidence",
+       "unchanged"
+      ]
+     },
+     "stage": {
+      "status": "no_evidence"
+     }
+    },
+    "demo_role": "Contradiction demo (PRD F18 step 5)."
+   },
+   {
+    "case_id": "T4",
+    "prd_case": 4,
+    "name": "Unusable source - recording cut off mid-sentence",
+    "proves": "A recording that stops mid-sentence is blocked before the agent runs: no proposals and nothing to submit.",
+    "meeting_id": "MTG-2004",
+    "opportunity_id": "OPP-0141",
+    "run_as_user_id": "U01",
+    "expected_run_status": "Blocked",
+    "expected_source_status": "Incomplete",
+    "fields": {},
+    "demo_role": "Blocked demo (PRD F18 step 5)."
+   },
+   {
+    "case_id": "T5",
+    "prd_case": 4,
+    "name": "New client - a meeting with a company that is not in the CRM",
+    "proves": "A conversation with a company the CRM does not know becomes a proposal for a new client and opportunity: nothing is created until the seller approves (or Settings allow it), and the fields are proposed like any other run.",
+    "meeting_id": "MTG-2005",
+    "opportunity_id": null,
+    "run_as_user_id": "U01",
+    "expected_run_status": "Awaiting review",
+    "expected_source_status": "Ready",
+    "fields": {
+     "call_summary": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "visit",
+        "representative"
+       ]
+      ]
+     },
+     "commitment": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ]
+     },
+     "next_step": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ]
+     },
+     "follow_up_owner": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ]
+     },
+     "customer_need": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "visit",
+        "report"
+       ]
+      ]
+     },
+     "decision_criteria": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "tablet"
+       ],
+       [
+        "sample"
+       ]
+      ]
+     },
+     "objection": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ]
+     },
+     "seats": {
+      "status_any": [
+       "no_evidence",
+       "proposed"
+      ],
+      "value_any": [
+       "150"
+      ]
+     },
+     "departments": {
+      "status_any": [
+       "no_evidence",
+       "proposed"
+      ]
+     },
+     "current_solution": {
+      "status_any": [
+       "no_evidence",
+       "proposed"
+      ]
+     },
+     "stage": {
+      "status": "no_evidence",
+      "note_must_include": [
+       [
+        "conversation",
+        "meeting",
+        "demo",
+        "further"
+       ]
+      ]
+     }
+    },
+    "expect_new_client": "Delta Pharma"
+   },
+   {
+    "case_id": "T6",
+    "prd_case": 5,
+    "name": "Stage boundary - 'let's sign' before the decision-maker has the proposal, spoken deal amount, stated budget",
+    "proves": "'Let's sign' from someone who is not the decision-maker does not move the stage; a spoken deal amount is ignored while the stated budget is kept.",
+    "meeting_id": "MTG-2006",
+    "opportunity_id": "OPP-0144",
+    "run_as_user_id": "U01",
+    "expected_run_status": "Awaiting review",
+    "expected_source_status": "Ready",
+    "fields": {
+     "call_summary": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "CFO",
+        "Helena"
+       ]
+      ]
+     },
+     "commitment": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "forward"
+       ],
+       [
+        "Helena",
+        "CFO"
+       ]
+      ]
+     },
+     "next_step": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "Helena",
+        "CFO"
+       ]
+      ]
+     },
+     "follow_up_owner": {
+      "status": "unchanged",
+      "value": "Ana Ribeiro"
+     },
+     "follow_up_due_date": {
+      "status": "proposed",
+      "value": "2026-11-12"
+     },
+     "budget": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "120,000",
+        "120000",
+        "120k",
+        "120 000"
+       ]
+      ],
+      "must_not_include": [
+       "1,000,000",
+       "million"
+      ]
+     },
+     "decision_maker": {
+      "status_any": [
+       "unchanged",
+       "no_evidence"
+      ]
+     },
+     "decision_process": {
+      "status_any": [
+       "unchanged",
+       "no_evidence",
+       "proposed"
+      ],
+      "must_include": [
+       [
+        "CFO",
+        "Helena"
+       ]
+      ]
+     },
+     "seats": {
+      "status_any": [
+       "unchanged",
+       "no_evidence"
+      ],
+      "value": "75"
+     },
+     "departments": {
+      "status_any": [
+       "unchanged",
+       "no_evidence"
+      ],
+      "value": "Sales; Customer Service"
+     },
+     "stage": {
+      "status": "no_evidence",
+      "note_must_include": [
+       [
+        "CFO",
+        "decision-maker",
+        "decision maker",
+        "Helena"
+       ]
+      ]
+     },
+     "champion": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "Tiago"
+       ]
+      ]
+     },
+     "paper_process": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "legal",
+        "contract"
+       ]
+      ]
+     }
+    },
+    "forbidden_stage_values": [
+     "Negotiation",
+     "Contract",
+     "Closed Won",
+     "Closed Lost"
+    ],
+    "expect_ignored_must_include": [
+     [
+      "million",
+      "1,000,000"
+     ]
+    ]
+   },
+   {
+    "case_id": "T7",
+    "prd_case": 6,
+    "name": "Seller edits a proposal",
+    "proves": "The seller can rewrite a proposal: the CRM receives the seller's text and the record keeps both versions, who decided and when.",
+    "meeting_id": "MTG-2007",
+    "opportunity_id": "OPP-0146",
+    "run_as_user_id": "U01",
+    "expected_run_status": "Awaiting review",
+    "expected_source_status": "Ready",
+    "fields": {
+     "call_summary": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "lead"
+       ],
+       [
+        "demo"
+       ]
+      ]
+     },
+     "objection": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "broker"
+       ],
+       [
+        "signal",
+        "offline",
+        "connectivity"
+       ]
+      ]
+     },
+     "commitment": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "demo",
+        "recorded"
+       ]
+      ]
+     },
+     "next_step": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "demo"
+       ]
+      ]
+     },
+     "follow_up_owner": {
+      "status": "proposed",
+      "value": "Ana Ribeiro"
+     },
+     "follow_up_due_date": {
+      "status": "proposed",
+      "value_any": [
+       "2026-11-10",
+       "2026-11-12"
+      ]
+     },
+     "customer_need": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "lead"
+       ],
+       [
+        "broker",
+        "route",
+        "routing"
+       ]
+      ]
+     },
+     "budget": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "60,000",
+        "60000",
+        "60k",
+        "60 000"
+       ]
+      ]
+     },
+     "decision_maker": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "Sofia"
+       ]
+      ]
+     },
+     "decision_process": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ],
+      "must_include": [
+       [
+        "CEO",
+        "Sofia",
+        "Legal",
+        "contract"
+       ]
+      ]
+     },
+     "go_live_target": {
+      "status": "proposed",
+      "value": "2027-03"
+     },
+     "seats": {
+      "status": "proposed",
+      "value": "105"
+     },
+     "departments": {
+      "status": "proposed",
+      "value": "Sales; Marketing"
+     },
+     "decision_criteria": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "rout"
+       ],
+       [
+        "funnel",
+        "launch"
+       ]
+      ]
+     },
+     "integrations": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ],
+      "must_include": [
+       [
+        "website",
+        "WhatsApp"
+       ]
+      ]
+     },
+     "employee_count": {
+      "status": "proposed",
+      "value": "400"
+     },
+     "current_solution": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "spreadsheet"
+       ]
+      ]
+     },
+     "stage": {
+      "status": "proposed",
+      "value": "Solution"
+     },
+     "metrics": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "two hours",
+        "2 hours"
+       ]
+      ]
+     },
+     "paper_process": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ],
+      "must_include": [
+       [
+        "Legal",
+        "contract"
+       ]
+      ]
+     },
+     "competitors": {
+      "status_any": [
+       "no_evidence",
+       "proposed"
+      ]
+     }
+    },
+    "review_script": {
+     "edit": {
+      "customer_need": "Capture every lead from the website, WhatsApp and sales stands in one CRM and route it automatically to the right broker, with one funnel per launch"
+     },
+     "approve": "all other fields"
+    },
+    "platform_checks": [
+     "The CRM receives the seller's edited customer need, not the agent's version",
+     "The activity record keeps both the agent proposal and the seller's final value",
+     "The activity record stores the reviewer (U01) and the decision time",
+     "Each written field records its write result (Succeeded)"
+    ]
+   },
+   {
+    "case_id": "T8",
+    "prd_case": 7,
+    "name": "Access boundary - seller does not own the opportunity",
+    "proves": "A seller who does not own the opportunity sees nothing from it, and the attempt is logged.",
+    "meeting_id": "MTG-2008",
+    "opportunity_id": "OPP-0145",
+    "run_as_user_id": "U01",
+    "expected_run_status": "Blocked",
+    "expected_source_status": "AccessDenied",
+    "fields": {},
+    "platform_checks": [
+     "No opportunity or client data is shown to U01",
+     "The access-denied attempt is written to the activity log"
+    ]
+   },
+   {
+    "case_id": "T9",
+    "prd_case": 8,
+    "name": "Solution fit - scope session with every typed field; scope agreed and proposal requested",
+    "proves": "A scope session fills users, teams, integrations, competitors and go-live in valid formats, and the stage moves to Proposal only when the scope is agreed and a proposal is requested.",
+    "meeting_id": "MTG-2009",
+    "opportunity_id": "OPP-0147",
+    "run_as_user_id": "U01",
+    "expected_run_status": "Awaiting review",
+    "expected_source_status": "Ready",
+    "fields": {
+     "call_summary": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "120",
+        "scope"
+       ],
+       [
+        "proposal"
+       ]
+      ]
+     },
+     "objection": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "data",
+        "Brazil",
+        "protection"
+       ]
+      ]
+     },
+     "commitment": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "proposal"
+       ],
+       [
+        "questionnaire"
+       ]
+      ]
+     },
+     "next_step": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "proposal"
+       ]
+      ]
+     },
+     "follow_up_owner": {
+      "status": "unchanged",
+      "value": "Ana Ribeiro"
+     },
+     "follow_up_due_date": {
+      "status": "proposed",
+      "value": "2026-11-13"
+     },
+     "customer_need": {
+      "status_any": [
+       "proposed",
+       "unchanged",
+       "no_evidence"
+      ],
+      "must_include": [
+       [
+        "enrol",
+        "prospect",
+        "student"
+       ]
+      ]
+     },
+     "budget": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "110,000",
+        "110000",
+        "110k",
+        "110 000"
+       ],
+       [
+        "130,000",
+        "130000",
+        "130k",
+        "130 000"
+       ]
+      ]
+     },
+     "decision_maker": {
+      "status_any": [
+       "unchanged",
+       "no_evidence"
+      ]
+     },
+     "decision_process": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "security"
+       ],
+       [
+        "board"
+       ]
+      ]
+     },
+     "go_live_target": {
+      "status": "proposed",
+      "value": "2027-05"
+     },
+     "competitors": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "Clarion"
+       ]
+      ]
+     },
+     "seats": {
+      "status": "proposed",
+      "value": "120"
+     },
+     "departments": {
+      "status": "proposed",
+      "value": "Sales; Marketing; Leadership"
+     },
+     "decision_criteria": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "lead",
+        "campaign"
+       ],
+       [
+        "funnel",
+        "enrol"
+       ],
+       [
+        "WhatsApp"
+       ]
+      ]
+     },
+     "integrations": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "Campus One"
+       ],
+       [
+        "Mailwave"
+       ],
+       [
+        "WhatsApp"
+       ]
+      ]
+     },
+     "current_solution": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "spreadsheet"
+       ],
+       [
+        "WhatsApp"
+       ]
+      ]
+     },
+     "stage": {
+      "status": "proposed",
+      "value": "Proposal"
+     },
+     "metrics": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "8",
+        "eight"
+       ],
+       [
+        "12",
+        "twelve"
+       ]
+      ]
+     },
+     "paper_process": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "contract",
+        "data processing"
+       ]
+      ]
+     }
+    },
+    "forbidden_stage_values": [
+     "Negotiation",
+     "Contract",
+     "Closed Won",
+     "Closed Lost"
+    ]
+   },
+   {
+    "case_id": "T10",
+    "prd_case": 9,
+    "name": "Granola speaker attribution - customer voices without a name",
+    "proves": "When Granola cannot tell who is speaking, the agent still records the facts but does not name a decision-maker or move the stage on that statement.",
+    "meeting_id": "MTG-2010",
+    "opportunity_id": "OPP-0148",
+    "run_as_user_id": "U01",
+    "expected_run_status": "Awaiting review",
+    "expected_source_status": "Ready",
+    "fields": {
+     "call_summary": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "dealer"
+       ],
+       [
+        "demo"
+       ]
+      ]
+     },
+     "objection": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "signal",
+        "offline"
+       ]
+      ]
+     },
+     "commitment": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "video",
+        "offline"
+       ]
+      ]
+     },
+     "next_step": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "demo"
+       ]
+      ]
+     },
+     "follow_up_owner": {
+      "status": "proposed",
+      "value": "Ana Ribeiro"
+     },
+     "follow_up_due_date": {
+      "status": "proposed",
+      "value_any": [
+       "2026-11-09",
+       "2026-11-11"
+      ]
+     },
+     "customer_need": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "dealer"
+       ],
+       [
+        "visit",
+        "order"
+       ]
+      ]
+     },
+     "budget": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "70,000",
+        "70000",
+        "70k",
+        "70 000"
+       ]
+      ]
+     },
+     "decision_maker": {
+      "status": "no_evidence"
+     },
+     "go_live_target": {
+      "status": "proposed",
+      "value": "2027-07"
+     },
+     "seats": {
+      "status": "proposed",
+      "value": "38"
+     },
+     "departments": {
+      "status": "proposed",
+      "value": "Sales; Leadership"
+     },
+     "decision_criteria": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "offline"
+       ],
+       [
+        "GPS",
+        "check-in"
+       ]
+      ]
+     },
+     "integrations": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "Orion"
+       ]
+      ]
+     },
+     "employee_count": {
+      "status": "proposed",
+      "value": "450"
+     },
+     "current_solution": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "paper"
+       ],
+       [
+        "spreadsheet"
+       ]
+      ]
+     },
+     "stage": {
+      "status": "no_evidence",
+      "note_must_include": [
+       [
+        "decision-maker",
+        "decision maker"
+       ]
+      ]
+     },
+     "champion": {
+      "status": "no_evidence"
+     }
+    },
+    "forbidden_stage_values": [
+     "Solution",
+     "Proposal",
+     "Negotiation",
+     "Contract",
+     "Closed Won",
+     "Closed Lost"
+    ]
+   },
+   {
+    "case_id": "T11",
+    "prd_case": 10,
+    "name": "WhatsApp chat - terms agreed in an exported chat",
+    "proves": "A WhatsApp export is read like a meeting: it is attributed to the right opportunity by its contact, relative dates come from the message that says them, and the decision-maker's written yes plus the request for the contract move Negotiation to Contract.",
+    "meeting_id": "MTG-2011",
+    "opportunity_id": "OPP-0149",
+    "run_as_user_id": "U01",
+    "expected_run_status": "Awaiting review",
+    "expected_source_status": "Ready",
+    "forbidden_stage_values": [
+     "Closed Won",
+     "Closed Lost"
+    ],
+    "fields": {
+     "call_summary": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "contract"
+       ]
+      ]
+     },
+     "commitment": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "contract"
+       ]
+      ]
+     },
+     "next_step": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "contract"
+       ],
+       [
+        "sign"
+       ]
+      ]
+     },
+     "follow_up_owner": {
+      "status_any": [
+       "unchanged",
+       "no_evidence"
+      ]
+     },
+     "follow_up_due_date": {
+      "status": "proposed",
+      "value": "2026-11-06"
+     },
+     "paper_process": {
+      "status": "proposed",
+      "must_include": [
+       [
+        "procurement",
+        "Talita"
+       ],
+       [
+        "sign"
+       ]
+      ]
+     },
+     "integrations": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ],
+      "must_include": [
+       [
+        "Entra"
+       ]
+      ]
+     },
+     "decision_criteria": {
+      "status_any": [
+       "proposed",
+       "no_evidence",
+       "unchanged"
+      ]
+     },
+     "objection": {
+      "status_any": [
+       "proposed",
+       "no_evidence"
+      ]
+     },
+     "seats": {
+      "status_any": [
+       "unchanged",
+       "no_evidence"
+      ]
+     },
+     "decision_maker": {
+      "status_any": [
+       "unchanged",
+       "no_evidence"
+      ]
+     },
+     "customer_need": {
+      "status_any": [
+       "unchanged",
+       "no_evidence"
+      ]
+     },
+     "stage": {
+      "status": "proposed",
+      "value": "Contract"
+     }
+    }
+   }
+  ]
+ },
+ "eval_results": {
+  "run_at": "2026-10-28T19:21:44.456Z",
+  "cases": [
+   {
+    "case_id": "T1",
+    "prd_case": 1,
+    "name": "Happy path - complete discovery call",
+    "proves": "A complete discovery call fills every field with a quote, and the stage moves only when the need, the decision-maker and the timeline are all on the call."
+   },
+   {
+    "case_id": "T2",
+    "prd_case": 2,
+    "name": "No evidence - no follow-up date or further meeting agreed",
+    "proves": "When no date or next meeting is agreed, the agent leaves the due date and the stage empty instead of guessing, and records 'no budget' only because the customer said so."
+   },
+   {
+    "case_id": "T3",
+    "prd_case": 3,
+    "name": "Contradiction with seller-approved values (short call)",
+    "proves": "When the call cancels an approved next step without agreeing a new one, the agent flags the conflict and lets the seller decide; a short call that ended normally is still usable."
+   },
+   {
+    "case_id": "T4",
+    "prd_case": 4,
+    "name": "Unusable source - recording cut off mid-sentence",
+    "proves": "A recording that stops mid-sentence is blocked before the agent runs: no proposals and nothing to submit."
+   },
+   {
+    "case_id": "T5",
+    "prd_case": 4,
+    "name": "New client - a meeting with a company that is not in the CRM",
+    "proves": "A conversation with a company the CRM does not know becomes a proposal for a new client and opportunity: nothing is created until the seller approves (or Settings allow it), and the fields are proposed like any other run."
+   },
+   {
+    "case_id": "T6",
+    "prd_case": 5,
+    "name": "Stage boundary - 'let's sign' before the decision-maker has the proposal, spoken deal amount, stated budget",
+    "proves": "'Let's sign' from someone who is not the decision-maker does not move the stage; a spoken deal amount is ignored while the stated budget is kept."
+   },
+   {
+    "case_id": "T7",
+    "prd_case": 6,
+    "name": "Seller edits a proposal",
+    "proves": "The seller can rewrite a proposal: the CRM receives the seller's text and the record keeps both versions, who decided and when."
+   },
+   {
+    "case_id": "T8",
+    "prd_case": 7,
+    "name": "Access boundary - seller does not own the opportunity",
+    "proves": "A seller who does not own the opportunity sees nothing from it, and the attempt is logged."
+   },
+   {
+    "case_id": "T9",
+    "prd_case": 8,
+    "name": "Solution fit - scope session with every typed field; scope agreed and proposal requested",
+    "proves": "A scope session fills users, teams, integrations, competitors and go-live in valid formats, and the stage moves to Proposal only when the scope is agreed and a proposal is requested."
+   },
+   {
+    "case_id": "T10",
+    "prd_case": 9,
+    "name": "Granola speaker attribution - customer voices without a name",
+    "proves": "When Granola cannot tell who is speaking, the agent still records the facts but does not name a decision-maker or move the stage on that statement."
+   },
+   {
+    "case_id": "T11",
+    "prd_case": 10,
+    "name": "WhatsApp chat - terms agreed in an exported chat",
+    "proves": "A WhatsApp export is read like a meeting: it is attributed to the right opportunity by its contact, relative dates come from the message that says them, and the decision-maker's written yes plus the request for the contract move Negotiation to Contract."
+   }
+  ],
+  "labels": {
+   "mock": {
+    "passed": 11,
+    "total": 11,
+    "usage": {
+     "calls": 0,
+     "input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 0,
+     "output_tokens": 0,
+     "cost_usd": 0
+    },
+    "cost_per_call_usd": null,
+    "rows": [
+     {
+      "case_id": "T1",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T2",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T3",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T4",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T5",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T6",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T7",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T8",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T9",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T10",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T11",
+      "verdict": "PASS",
+      "fails": []
+     }
+    ]
+   }
+  }
+ }
+}

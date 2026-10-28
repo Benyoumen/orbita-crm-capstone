@@ -1,0 +1,141 @@
+{
+  "id": "not_f8ab64b7311c96",
+  "object": "note",
+  "title": "Horizonte Foods - solution walkthrough",
+  "owner": {
+    "name": "Ana Ribeiro",
+    "email": "ana.ribeiro@orbitacrm.example"
+  },
+  "created_at": "2026-11-03T18:00:00Z",
+  "updated_at": "2026-11-03T18:28:32Z",
+  "deleted_at": null,
+  "web_url": "https://notes.granola.ai/d/not_f8ab64b7311c96",
+  "calendar_event": {
+    "event_title": "Horizonte Foods - solution walkthrough",
+    "invitees": [
+      {
+        "email": "lucas.moreira@orbitacrm.example"
+      },
+      {
+        "email": "ana.ribeiro@orbitacrm.example"
+      },
+      {
+        "email": "paula.reis@horizontefoods.example"
+      }
+    ],
+    "organiser": "ana.ribeiro@orbitacrm.example",
+    "calendar_event_id": "evt_f8ab64b7311c96",
+    "scheduled_start_time": "2026-11-03T18:00:00Z",
+    "scheduled_end_time": "2026-11-03T18:30:00Z"
+  },
+  "attachments": [],
+  "attendees": [
+    {
+      "name": "Lucas Moreira",
+      "email": "lucas.moreira@orbitacrm.example"
+    },
+    {
+      "name": "Ana Ribeiro",
+      "email": "ana.ribeiro@orbitacrm.example"
+    },
+    {
+      "name": "Paula Reis",
+      "email": "paula.reis@horizontefoods.example"
+    }
+  ],
+  "folder_membership": [
+    {
+      "id": "fol_CRMsyncFolder1",
+      "object": "folder",
+      "name": "CRM sync",
+      "parent_folder_id": null,
+      "space_id": null
+    }
+  ],
+  "space_membership": [],
+  "summary_text": "Solution walkthrough with Horizonte Foods' Supply Chain Director, led by Lucas Moreira with Ana Ribeiro joining as backup.",
+  "summary_markdown": "Solution walkthrough with Horizonte Foods' Supply Chain Director, led by Lucas Moreira with Ana Ribeiro joining as backup.",
+  "private_notes_text": null,
+  "private_notes_markdown": null,
+  "transcript": [
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Lucas Moreira"
+      },
+      "text": "Hi Paula. Ana is joining us today because I'm on holiday next week and she'll cover for me.",
+      "start_time": "2026-11-03T18:00:08Z",
+      "end_time": "2026-11-03T18:00:15Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Paula Reis"
+      },
+      "text": "Hi Lucas, hi Ana. Welcome.",
+      "start_time": "2026-11-03T18:00:16Z",
+      "end_time": "2026-11-03T18:00:18Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Hi Paula, nice to meet you.",
+      "start_time": "2026-11-03T18:00:20Z",
+      "end_time": "2026-11-03T18:00:22Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Lucas Moreira"
+      },
+      "text": "Today we'll walk through how your forty distributors would log orders and visits in the CRM.",
+      "start_time": "2026-11-03T18:00:25Z",
+      "end_time": "2026-11-03T18:00:31Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Paula Reis"
+      },
+      "text": "The main thing for us is one view per distributor: orders, visits, and the promotions they're running.",
+      "start_time": "2026-11-03T18:02:10Z",
+      "end_time": "2026-11-03T18:02:17Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Paula Reis"
+      },
+      "text": "This looks good. I'd like my regional managers to see it before we go further.",
+      "start_time": "2026-11-03T18:09:45Z",
+      "end_time": "2026-11-03T18:09:51Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Lucas Moreira"
+      },
+      "text": "Of course. I'll set up a session with your regional managers when I'm back.",
+      "start_time": "2026-11-03T18:10:02Z",
+      "end_time": "2026-11-03T18:10:07Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Paula Reis"
+      },
+      "text": "Thanks, both. Enjoy your holiday, Lucas.",
+      "start_time": "2026-11-03T18:26:30Z",
+      "end_time": "2026-11-03T18:26:32Z"
+    }
+  ]
+}

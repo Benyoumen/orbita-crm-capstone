@@ -1,0 +1,56 @@
+# case: T1 - happy path, complete discovery call
+# title: Acme Logistics - discovery call
+# start: 2026-11-03T10:00:00-03:00
+# scheduled_minutes: 45
+# owner: ana.ribeiro@orbitacrm.example
+# attendees: Ana Ribeiro <ana.ribeiro@orbitacrm.example>; Marina Lopes <marina.lopes@acmelogistics.example>; Felipe Nunes <felipe.nunes@acmelogistics.example>
+# summary: Discovery call with Acme Logistics (COO and Sales Operations Manager). The commercial team works from spreadsheets and Outlook and lost two renewals last quarter. They want one CRM for about 60 users, live by March 2027, with a budget of 80-100k USD a year. Concerns: the in-house TMS integration and adoption. Next step: technical workshop with the IT lead the week of 9 November.
+[00:00:08] Ana Ribeiro (Orbita): Good morning, Marina, Felipe. Thanks for making the time. Can you both hear me okay?
+[00:00:14] Marina Lopes (Acme Logistics): Loud and clear. Sorry we're a couple of minutes late, the traffic on the highway this morning was a nightmare.
+[00:00:21] Felipe Nunes (Acme Logistics): Same here. I left home at seven and I still barely made it.
+[00:00:27] Ana Ribeiro (Orbita): No problem at all, same for me, the usual Tuesday. So, the goal for today: you filled in our web form about a CRM, and I'd like to understand how your commercial team works today, what is not working, and whether Orbita is a good fit. Does that sound good?
+[00:00:45] Marina Lopes (Acme Logistics): Perfect. Let me give you some context. Acme is a freight and warehousing company, we're about eight hundred and fifty people, and around a hundred of them are in the commercial area.
+[00:01:02] Ana Ribeiro (Orbita): And how does the commercial team manage customers and deals today?
+[00:01:07] Felipe Nunes (Acme Logistics): Honestly, spreadsheets and Outlook. Each rep has their own spreadsheet of accounts, proposals live on a shared drive, and everything else is in people's inboxes.
+[00:01:24] Felipe Nunes (Acme Logistics): When someone goes on holiday or leaves the company, we lose the history of the account. Last quarter we missed two contract renewals because nobody remembered the dates.
+[00:01:40] Marina Lopes (Acme Logistics): And from my side, I have no visibility. Every Monday I ask for the pipeline and I get six different spreadsheets in six different formats.
+[00:01:52] Marina Lopes (Acme Logistics): If this works, success for me is simple: zero missed renewals next year, and the Monday pipeline review done from one screen instead of six spreadsheets.
+[00:02:05] Ana Ribeiro (Orbita): That's very common. Let me play it back to see if I got it right: you need one place where the whole team tracks accounts, deals and renewals, so nothing gets lost and you get a reliable view of the pipeline. Is that the need?
+[00:02:22] Marina Lopes (Acme Logistics): Exactly. One place for every account and every deal, with renewal reminders, and a pipeline I can trust on Monday morning. That is the priority.
+[00:03:10] Ana Ribeiro (Orbita): Who would use the system day to day?
+[00:03:15] Felipe Nunes (Acme Logistics): The forty sales reps, our twelve account managers in customer success, and the leadership team, about eight managers, for the dashboards. So sixty users to start.
+[00:03:33] Ana Ribeiro (Orbita): Sixty users, across sales, customer success and leadership. Got it.
+[00:04:02] Felipe Nunes (Acme Logistics): And the reps are on the road a lot, visiting warehouses and customers, so a mobile app is a must for them.
+[00:04:15] Ana Ribeiro (Orbita): What else does the system need to do on day one?
+[00:04:20] Felipe Nunes (Acme Logistics): Pipeline management, renewal alerts, email sync with Outlook so we stop copying emails by hand, and management dashboards for Marina.
+[00:05:40] Marina Lopes (Acme Logistics): By the way, Felipe, did you send the photos from Saturday's barbecue to the group? My husband keeps asking.
+[00:05:46] Felipe Nunes (Acme Logistics): Not yet, tonight. Sorry, Ana.
+[00:05:50] Ana Ribeiro (Orbita): No worries. Now, about your systems: what would the CRM need to connect to?
+[00:05:56] Marina Lopes (Acme Logistics): Our transport management system, the TMS. It's ours, built in-house about ten years ago, and all the shipment data is there. We also use Orion ERP for invoicing.
+[00:06:20] Marina Lopes (Acme Logistics): And to be honest, that is my main worry. I am concerned about integrating with our in-house TMS. Anything that touches operations during peak season makes me nervous.
+[00:06:41] Felipe Nunes (Acme Logistics): My worry is adoption. We tried a sales tool three years ago and the reps hated it. They went back to their spreadsheets in two months.
+[00:07:02] Ana Ribeiro (Orbita): Both are fair concerns. On the TMS, we did a similar integration with an in-house system for another logistics client last year. I will send you that reference case by Friday, so you can see how we handled it.
+[00:07:20] Marina Lopes (Acme Logistics): That would help a lot.
+[00:08:30] Ana Ribeiro (Orbita): On adoption, we usually start from the reps' daily routine: the mobile app, the email sync, and nothing they have to type twice. We can go deeper on that in a workshop.
+[00:09:45] Ana Ribeiro (Orbita): Can I ask about budget? Is there money set aside for this project?
+[00:09:52] Marina Lopes (Acme Logistics): Yes. We have between eighty and a hundred thousand dollars a year for the CRM, licences and support included.
+[00:10:20] Ana Ribeiro (Orbita): That's helpful. Are you looking at other vendors as well?
+[00:10:26] Felipe Nunes (Acme Logistics): We had a first call with Northwind CRM, and we're getting a demo from PipeSpark next week.
+[00:10:37] Ana Ribeiro (Orbita): Good to know, thanks for being open about it.
+[00:14:30] Felipe Nunes (Acme Logistics): Ana, unrelated question: is your team going to the logistics trade fair in Joinville this year?
+[00:14:37] Ana Ribeiro (Orbita): Probably, our marketing team usually goes.
+[00:21:30] Ana Ribeiro (Orbita): Who else would be involved in the decision?
+[00:21:36] Marina Lopes (Acme Logistics): I make the decision on this. It sits in my operations budget. But I will want our IT lead, Rui Tavares, to validate the technical side, the integration and the security.
+[00:21:58] Ana Ribeiro (Orbita): And after Rui's validation, is there any other step? Procurement, legal?
+[00:22:04] Marina Lopes (Acme Logistics): Procurement needs three quotes for anything above fifty thousand. Then I sign.
+[00:22:20] Ana Ribeiro (Orbita): And in terms of timing?
+[00:22:23] Marina Lopes (Acme Logistics): We need it live before our peak season starts in April, so go-live by March 2027 at the latest.
+[00:30:10] Felipe Nunes (Acme Logistics): One more thing for the reps: we need to see each customer's shipment status inside the CRM, otherwise they will keep calling operations.
+[00:30:24] Ana Ribeiro (Orbita): That comes back to the TMS integration, so it's a good topic for the workshop.
+[00:35:10] Ana Ribeiro (Orbita): Proposed next step: a technical scoping workshop with Rui, the week of 9 November, to look at the TMS data and the integration options. Pedro, our solutions engineer, would join from our side.
+[00:35:27] Marina Lopes (Acme Logistics): Yes, let's do that. I will make sure Rui joins.
+[00:35:33] Ana Ribeiro (Orbita): Great. I will send the workshop invite together with the reference case by Friday.
+[00:41:50] Felipe Nunes (Acme Logistics): And Ana, if you have a short video of the mobile app, send it over. I'd like to show it to two of our senior reps.
+[00:41:58] Ana Ribeiro (Orbita): Sure, I'll include it in Friday's email.
+[00:42:20] Felipe Nunes (Acme Logistics): For what it's worth, I'm the one who pushed for this project internally. If the mobile app is as good as it looks, I'll get the reps on board myself.
+[00:42:48] Marina Lopes (Acme Logistics): Thanks, Ana. Talk soon.

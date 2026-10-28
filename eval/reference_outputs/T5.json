@@ -1,0 +1,100 @@
+{
+  "meeting_id": "MTG-2005",
+  "run_status": "Awaiting review",
+  "source_status": "Ready",
+  "block_reason": null,
+  "fields": [
+    {
+      "field": "call_summary",
+      "status": "proposed",
+      "value": "Intro call with Delta Pharma's Commercial Excellence Manager. About 150 medical representatives file visit reports in a very old system nobody likes. She wants a tool to plan visits, record what was discussed and track samples, on a tablet. Ana sends an overview; Livia shares it with her director.",
+      "evidence": [
+        {
+          "quote": "We have about one hundred and fifty medical representatives who visit doctors and pharmacies every day.",
+          "line": 4
+        },
+        {
+          "quote": "Their visit reports are in a very old system that nobody likes.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "status": "proposed",
+      "value": "Orbita (Ana): send a short overview after the call; Delta Pharma (Livia): share it with her director",
+      "evidence": [
+        {
+          "quote": "I'll send you a short overview after the call.",
+          "line": 8
+        },
+        {
+          "quote": "I'll share it with my director.",
+          "line": 9
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "status": "proposed",
+      "value": "Ana sends a short overview of Orbita for pharma; Livia shares it with her director",
+      "evidence": [
+        {
+          "quote": "I'll send you a short overview after the call.",
+          "line": 8
+        },
+        {
+          "quote": "Great. I'll share it with my director.",
+          "line": 9
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "status": "proposed",
+      "value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "quote": "I'll send you a short overview after the call.",
+          "line": 8
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "customer_need",
+      "status": "proposed",
+      "value": "Medical representatives' visit reports live in a very old system that nobody likes; Delta is looking at options for next year",
+      "evidence": [
+        {
+          "quote": "Their visit reports are in a very old system that nobody likes. I'm looking at options for next year.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_criteria",
+      "status": "proposed",
+      "value": "Plan visits; record what was discussed; track samples; works on a tablet",
+      "evidence": [
+        {
+          "quote": "Plan the visits, record what was discussed, and track samples. And it has to work on a tablet.",
+          "line": 7
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "status": "no_evidence",
+      "value": null,
+      "evidence": [],
+      "note": "New Lead exit criteria not met: the need is confirmed, but no further conversation was agreed."
+    }
+  ],
+  "ignored_out_of_scope": []
+}

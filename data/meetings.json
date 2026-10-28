@@ -1,0 +1,270 @@
+[
+  {
+    "meeting_id": "MTG-2001",
+    "source": {
+      "system": "granola",
+      "note_id": "not_36a1e72a50a658",
+      "web_url": "https://notes.granola.ai/d/not_36a1e72a50a658",
+      "folder": "CRM sync"
+    },
+    "title": "Acme Logistics - discovery call",
+    "start": "2026-11-03T10:00:00-03:00",
+    "scheduled_minutes": 45,
+    "recorded_minutes": 43,
+    "organiser_id": "U01",
+    "owner_email": "ana.ribeiro@orbitacrm.example",
+    "participants": [
+      "Ana Ribeiro (Orbita)",
+      "Marina Lopes (Acme Logistics)",
+      "Felipe Nunes (Acme Logistics)"
+    ],
+    "client_id": "CLI-001",
+    "linked_opportunity_id": "OPP-0142",
+    "match_reason": "attendee e-mail domain acmelogistics.example",
+    "transcript_status": "complete",
+    "ends_mid_sentence": false,
+    "granola_summary": "Discovery call with Acme Logistics (COO and Sales Operations Manager). The commercial team works from spreadsheets and Outlook and lost two renewals last quarter. They want one CRM for about 60 users, live by March 2027, with a budget of 80-100k USD a year. Concerns: the in-house TMS integration and adoption. Next step: technical workshop with the IT lead the week of 9 November.",
+    "transcript_file": "transcripts/MTG-2001.txt"
+  },
+  {
+    "meeting_id": "MTG-2002",
+    "source": {
+      "system": "granola",
+      "note_id": "not_f300792adfb164",
+      "web_url": "https://notes.granola.ai/d/not_f300792adfb164",
+      "folder": "CRM sync"
+    },
+    "title": "Verde Retail - intro call",
+    "start": "2026-11-02T14:00:00-03:00",
+    "scheduled_minutes": 30,
+    "recorded_minutes": 28,
+    "organiser_id": "U01",
+    "owner_email": "ana.ribeiro@orbitacrm.example",
+    "participants": [
+      "Ana Ribeiro (Orbita)",
+      "Camila Rocha (Verde Retail)"
+    ],
+    "client_id": "CLI-002",
+    "linked_opportunity_id": "OPP-0141",
+    "match_reason": "attendee e-mail domain verderetail.example",
+    "transcript_status": "complete",
+    "ends_mid_sentence": false,
+    "granola_summary": "Intro call with Verde Retail's Head of Retail Operations. Franchise and wholesale sales are managed in WhatsApp groups and spreadsheets. A previous BI project failed on adoption. No budget yet; Camila will read a case study after Black Friday, with no date and no meeting booked.",
+    "transcript_file": "transcripts/MTG-2002.txt"
+  },
+  {
+    "meeting_id": "MTG-2003",
+    "source": {
+      "system": "granola",
+      "note_id": "not_bf301fd97469d3",
+      "web_url": "https://notes.granola.ai/d/not_bf301fd97469d3",
+      "folder": "CRM sync"
+    },
+    "title": "Nimbus Health - demo planning",
+    "start": "2026-11-04T09:30:00-03:00",
+    "scheduled_minutes": 30,
+    "recorded_minutes": 9,
+    "organiser_id": "U01",
+    "owner_email": "ana.ribeiro@orbitacrm.example",
+    "participants": [
+      "Ana Ribeiro (Orbita)",
+      "Pedro Almeida (Orbita)",
+      "Roberto Lima (Nimbus Health)"
+    ],
+    "client_id": "CLI-003",
+    "linked_opportunity_id": "OPP-0143",
+    "match_reason": "attendee e-mail domain nimbushealth.example",
+    "transcript_status": "complete",
+    "ends_mid_sentence": false,
+    "granola_summary": "Short call with Nimbus Health's CIO. The board froze all new IT projects until the January budget review, so the 6 November demo is cancelled and no new date was agreed. The budget itself is unchanged at 90k USD a year.",
+    "transcript_file": "transcripts/MTG-2003.txt"
+  },
+  {
+    "meeting_id": "MTG-2004",
+    "source": {
+      "system": "granola",
+      "note_id": "not_b7cd41f134e9de",
+      "web_url": "https://notes.granola.ai/d/not_b7cd41f134e9de",
+      "folder": "CRM sync"
+    },
+    "title": "Verde Retail - POS data questions",
+    "start": "2026-11-05T15:00:00-03:00",
+    "scheduled_minutes": 45,
+    "recorded_minutes": 4,
+    "organiser_id": "U01",
+    "owner_email": "ana.ribeiro@orbitacrm.example",
+    "participants": [
+      "Ana Ribeiro (Orbita)",
+      "Camila Rocha (Verde Retail)",
+      "Diego Faria (Verde Retail)"
+    ],
+    "client_id": "CLI-002",
+    "linked_opportunity_id": "OPP-0141",
+    "match_reason": "attendee e-mail domain verderetail.example",
+    "transcript_status": "complete",
+    "ends_mid_sentence": true,
+    "granola_summary": "Follow-up with Verde Retail's Head of Retail Operations and IT Manager about POS data. The recording stopped after a few minutes.",
+    "transcript_file": "transcripts/MTG-2004.txt"
+  },
+  {
+    "meeting_id": "MTG-2005",
+    "source": {
+      "system": "granola",
+      "note_id": "not_d1c744f836648e",
+      "web_url": "https://notes.granola.ai/d/not_d1c744f836648e",
+      "folder": "CRM sync"
+    },
+    "title": "Intro call - Delta Pharma",
+    "start": "2026-11-04T16:00:00-03:00",
+    "scheduled_minutes": 30,
+    "recorded_minutes": 26,
+    "organiser_id": "U01",
+    "owner_email": "ana.ribeiro@orbitacrm.example",
+    "participants": [
+      "Ana Ribeiro (Orbita)",
+      "Livia Prado"
+    ],
+    "client_id": null,
+    "linked_opportunity_id": null,
+    "match_reason": "no client found for the attendees or the title",
+    "transcript_status": "complete",
+    "ends_mid_sentence": false,
+    "granola_summary": "Intro call with Delta Pharma's Commercial Excellence Manager about a CRM for medical representatives. Delta Pharma is not a client in the CRM yet.",
+    "transcript_file": "transcripts/MTG-2005.txt"
+  },
+  {
+    "meeting_id": "MTG-2006",
+    "source": {
+      "system": "granola",
+      "note_id": "not_09cff89e095d3c",
+      "web_url": "https://notes.granola.ai/d/not_09cff89e095d3c",
+      "folder": "CRM sync"
+    },
+    "title": "Atlas Manufacturing - proposal check-in",
+    "start": "2026-11-05T11:00:00-03:00",
+    "scheduled_minutes": 30,
+    "recorded_minutes": 23,
+    "organiser_id": "U01",
+    "owner_email": "ana.ribeiro@orbitacrm.example",
+    "participants": [
+      "Ana Ribeiro (Orbita)",
+      "Tiago Mendes (Atlas Manufacturing)"
+    ],
+    "client_id": "CLI-004",
+    "linked_opportunity_id": "OPP-0144",
+    "match_reason": "attendee e-mail domain atlasmfg.example",
+    "transcript_status": "complete",
+    "ends_mid_sentence": false,
+    "granola_summary": "Check-in with Atlas Manufacturing's Head of Operations on proposal v1. He wants to sign next week, but the CFO, who signs, has not seen the proposal yet. Atlas has 120k USD a year approved for the CRM. Tiago will forward the proposal to the CFO this week; Ana checks in on 12 November.",
+    "transcript_file": "transcripts/MTG-2006.txt"
+  },
+  {
+    "meeting_id": "MTG-2007",
+    "source": {
+      "system": "granola",
+      "note_id": "not_bb4eb9d0f23e81",
+      "web_url": "https://notes.granola.ai/d/not_bb4eb9d0f23e81",
+      "folder": "CRM sync"
+    },
+    "title": "Cedro Construtora - discovery call",
+    "start": "2026-11-06T10:00:00-03:00",
+    "scheduled_minutes": 45,
+    "recorded_minutes": 34,
+    "organiser_id": "U01",
+    "owner_email": "ana.ribeiro@orbitacrm.example",
+    "participants": [
+      "Ana Ribeiro (Orbita)",
+      "Sofia Martins (Cedro Construtora)",
+      "Andre Pires (Cedro Construtora)"
+    ],
+    "client_id": "CLI-006",
+    "linked_opportunity_id": "OPP-0146",
+    "match_reason": "attendee e-mail domain cedroconstrutora.example",
+    "transcript_status": "complete",
+    "ends_mid_sentence": false,
+    "granola_summary": "Discovery call with Cedro Construtora's Commercial Director and Sales Manager. Leads from the website, WhatsApp and sales stands are tracked in spreadsheets and get lost. They want lead routing to brokers and a funnel per launch, for 105 users, live by March 2027, with about 60k USD a year. Ana sends a recorded demo by Tuesday; live demo on 12 November.",
+    "transcript_file": "transcripts/MTG-2007.txt"
+  },
+  {
+    "meeting_id": "MTG-2008",
+    "source": {
+      "system": "granola",
+      "note_id": "not_f8ab64b7311c96",
+      "web_url": "https://notes.granola.ai/d/not_f8ab64b7311c96",
+      "folder": "CRM sync"
+    },
+    "title": "Horizonte Foods - solution walkthrough",
+    "start": "2026-11-03T15:00:00-03:00",
+    "scheduled_minutes": 30,
+    "recorded_minutes": 26,
+    "organiser_id": "U01",
+    "owner_email": "ana.ribeiro@orbitacrm.example",
+    "participants": [
+      "Lucas Moreira (Orbita)",
+      "Ana Ribeiro (Orbita)",
+      "Paula Reis (Horizonte Foods)"
+    ],
+    "client_id": "CLI-005",
+    "linked_opportunity_id": "OPP-0145",
+    "match_reason": "attendee e-mail domain horizontefoods.example",
+    "transcript_status": "complete",
+    "ends_mid_sentence": false,
+    "granola_summary": "Solution walkthrough with Horizonte Foods' Supply Chain Director, led by Lucas Moreira with Ana Ribeiro joining as backup.",
+    "transcript_file": "transcripts/MTG-2008.txt"
+  },
+  {
+    "meeting_id": "MTG-2009",
+    "source": {
+      "system": "granola",
+      "note_id": "not_d74b8928e3bde6",
+      "web_url": "https://notes.granola.ai/d/not_d74b8928e3bde6",
+      "folder": "CRM sync"
+    },
+    "title": "Lumen Education - scope session",
+    "start": "2026-11-05T14:00:00-03:00",
+    "scheduled_minutes": 60,
+    "recorded_minutes": 52,
+    "organiser_id": "U01",
+    "owner_email": "ana.ribeiro@orbitacrm.example",
+    "participants": [
+      "Ana Ribeiro (Orbita)",
+      "Pedro Almeida (Orbita)",
+      "Daniela Freitas (Lumen Education)",
+      "Marcos Antunes (Lumen Education)"
+    ],
+    "client_id": "CLI-007",
+    "linked_opportunity_id": "OPP-0147",
+    "match_reason": "attendee e-mail domain lumeneducation.example",
+    "transcript_status": "complete",
+    "ends_mid_sentence": false,
+    "granola_summary": "Scope session with Lumen Education's VP of Admissions and CIO. Scope agreed: 120 users across admissions, marketing and management, integrations with the Campus One student system, Mailwave and WhatsApp, live by May 2027, budget 110-130k USD a year. They are also evaluating Clarion Sales Cloud. Lumen asked for a proposal by 13 November.",
+    "transcript_file": "transcripts/MTG-2009.txt"
+  },
+  {
+    "meeting_id": "MTG-2010",
+    "source": {
+      "system": "granola",
+      "note_id": "not_6506e02f59babb",
+      "web_url": "https://notes.granola.ai/d/not_6506e02f59babb",
+      "folder": "CRM sync"
+    },
+    "title": "Pampa Agro - discovery call",
+    "start": "2026-11-04T11:00:00-03:00",
+    "scheduled_minutes": 45,
+    "recorded_minutes": 38,
+    "organiser_id": "U01",
+    "owner_email": "ana.ribeiro@orbitacrm.example",
+    "participants": [
+      "Ana Ribeiro (Orbita)",
+      "Paulo Becker (Pampa Agro)",
+      "Luiza Kranz (Pampa Agro)"
+    ],
+    "client_id": "CLI-008",
+    "linked_opportunity_id": "OPP-0148",
+    "match_reason": "attendee e-mail domain pampaagro.example",
+    "transcript_status": "complete",
+    "ends_mid_sentence": false,
+    "granola_summary": "Discovery call with Pampa Agro. Field reps visit about two hundred dealers and report on paper and spreadsheets. They want one place for visits and dealer orders, offline, for 38 users, live by July 2027, with about 70k USD a year. Field demo agreed for 11 November.",
+    "transcript_file": "transcripts/MTG-2010.txt"
+  }
+]

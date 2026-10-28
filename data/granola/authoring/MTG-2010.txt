@@ -1,0 +1,33 @@
+# case: T10 - Granola did not resolve the customer voices (unattributed speakers)
+# title: Pampa Agro - discovery call
+# start: 2026-11-04T11:00:00-03:00
+# scheduled_minutes: 45
+# owner: ana.ribeiro@orbitacrm.example
+# attendees: Ana Ribeiro <ana.ribeiro@orbitacrm.example>; Paulo Becker <paulo.becker@pampaagro.example>; Luiza Kranz <luiza.kranz@pampaagro.example>
+# summary: Discovery call with Pampa Agro. Field reps visit about two hundred dealers and report on paper and spreadsheets. They want one place for visits and dealer orders, offline, for 38 users, live by July 2027, with about 70k USD a year. Field demo agreed for 11 November.
+[00:00:07] Ana Ribeiro (Orbita): Good morning, Paulo, Luiza. Can you hear me well? The connection from the countryside sometimes struggles.
+[00:00:15] Customer (unattributed): We can hear you. We're in the meeting room at the head office today, the signal is good here.
+[00:00:24] Ana Ribeiro (Orbita): Great. Tell me how the commercial side of Pampa Agro works.
+[00:00:30] Customer (unattributed): We sell seeds and fertiliser through about two hundred dealers in the south, and our field reps visit them every week.
+[00:01:05] Customer (unattributed): After each visit the rep fills in a paper report, and on Friday someone types it into a spreadsheet. We never know what a dealer ordered or what the rep promised.
+[00:01:44] Ana Ribeiro (Orbita): So the need is one place with every dealer visit, order and promise?
+[00:01:51] Customer (unattributed): Yes. We need to know which dealer was visited, what they ordered and what was promised, in one place.
+[00:03:20] Ana Ribeiro (Orbita): How many people would use it?
+[00:03:25] Customer (unattributed): Thirty-two field reps in sales, and six people in the leadership team who want the reports. So thirty-eight users.
+[00:04:40] Customer (unattributed): The problem is there's no mobile signal in the fields. Anything that needs the internet all the time won't work. And the reps are not used to apps.
+[00:05:05] Ana Ribeiro (Orbita): Our app works offline and syncs later, and the visit check-in uses GPS.
+[00:05:15] Customer (unattributed): Then it must work offline and have the GPS check-in, those two are non-negotiable.
+[00:07:30] Ana Ribeiro (Orbita): What systems would it need to talk to?
+[00:07:34] Customer (unattributed): Our ERP is Orion ERP. The dealer orders need to flow there.
+[00:09:10] Ana Ribeiro (Orbita): How big is the company overall?
+[00:09:14] Customer (unattributed): We're about four hundred and fifty people.
+[00:12:40] Ana Ribeiro (Orbita): Who decides on a project like this?
+[00:12:44] Customer (unattributed): I make the final call on this, and I'm fine with the budget.
+[00:12:55] Ana Ribeiro (Orbita): And what budget do you have in mind?
+[00:13:00] Customer (unattributed): About seventy thousand dollars a year.
+[00:13:30] Customer (unattributed): Between us, I'm the one pushing for this inside the company. The other directors still think paper works.
+[00:14:20] Ana Ribeiro (Orbita): And when would you need it?
+[00:14:24] Customer (unattributed): Before the planting season sales in August, so live by July 2027.
+[00:30:05] Ana Ribeiro (Orbita): I'll send you a short video of the offline mode by Monday. And would a field demo with two of your reps work next Wednesday, the 11th?
+[00:30:18] Customer (unattributed): Yes, Wednesday the 11th works. We'll pick two reps.
+[00:37:50] Customer (unattributed): Thanks, Ana. Talk soon.

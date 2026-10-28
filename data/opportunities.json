@@ -1,0 +1,203 @@
+[
+  {
+    "opportunity_id": "OPP-0141", "client_id": "CLI-002", "name": "Franchise sales CRM", "owner_id": "U01",
+    "amount_usd": 48000, "close_date": "2027-03-31", "created": "2026-10-20", "last_updated": "2026-10-28",
+    "fields": {
+      "stage": { "value": "New Lead", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0142", "client_id": "CLI-001", "name": "Sales CRM rollout", "owner_id": "U01",
+    "amount_usd": 96000, "close_date": "2027-02-26", "created": "2026-10-12", "last_updated": "2026-10-15",
+    "fields": {
+      "customer_need": { "value": "Wants a CRM for the sales team (from the inbound web form)", "approved": false },
+      "stage": { "value": "Qualified Opportunity", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0143", "client_id": "CLI-003", "name": "Clinic network CRM", "owner_id": "U01",
+    "amount_usd": 90000, "close_date": "2027-01-29", "created": "2026-09-14", "last_updated": "2026-10-28",
+    "fields": {
+      "call_summary": { "value": "Solution review with the CIO. Nimbus wants patient-relations and referral tracking for 14 clinics, with all patient data hosted in Brazil.", "approved": true },
+      "customer_need": { "value": "Track patient relations and doctor referrals for 14 clinics in one CRM, with data hosted in Brazil", "approved": true },
+      "objection": { "value": "Patient data must stay in Brazil", "approved": true },
+      "commitment": { "value": "Nimbus (Roberto): share the referral volumes per clinic", "approved": true },
+      "next_step": { "value": "Product demo for the 14 clinic managers on 6 Nov", "approved": true },
+      "follow_up_owner": { "value": "Pedro Almeida", "approved": true },
+      "follow_up_due_date": { "value": "2026-11-06", "approved": true },
+      "budget": { "value": "USD 90,000 per year", "approved": true },
+      "decision_maker": { "value": "Roberto Lima (CIO)", "approved": true },
+      "go_live_target": { "value": "2027-03", "approved": true },
+      "seats": { "value": "45", "approved": true },
+      "departments": { "value": "Customer Service; Operations", "approved": true },
+      "decision_criteria": { "value": "Referral tracking; patient-relations cases; clinic dashboards", "approved": true },
+      "integrations": { "value": "Clinic scheduling system", "approved": true },
+      "stage": { "value": "Solution", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0144", "client_id": "CLI-004", "name": "Distributor sales CRM", "owner_id": "U01",
+    "amount_usd": 120000, "close_date": "2026-12-15", "created": "2026-08-25", "last_updated": "2026-10-29",
+    "fields": {
+      "call_summary": { "value": "Proposal v1 presented to the Head of Operations. He asked for payback within 18 months.", "approved": true },
+      "customer_need": { "value": "Manage distributor orders and quotes in one CRM instead of spreadsheets and a shared inbox", "approved": true },
+      "objection": { "value": "Wants payback within 18 months", "approved": true },
+      "commitment": { "value": "Orbita (Ana): send proposal v1 (sent 29 Oct)", "approved": true },
+      "next_step": { "value": "Customer to review proposal v1", "approved": true },
+      "follow_up_owner": { "value": "Ana Ribeiro", "approved": true },
+      "follow_up_due_date": { "value": "2026-11-05", "approved": true },
+      "decision_maker": { "value": "Helena Duarte (CFO)", "approved": true },
+      "decision_process": { "value": "Head of Operations recommends; the CFO signs anything above USD 100,000", "approved": true },
+      "go_live_target": { "value": "2027-01", "approved": true },
+      "seats": { "value": "75", "approved": true },
+      "departments": { "value": "Sales; Customer Service", "approved": true },
+      "stage": { "value": "Proposal", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0145", "client_id": "CLI-005", "name": "Distributor CRM", "owner_id": "U02",
+    "amount_usd": 70000, "close_date": "2027-02-15", "created": "2026-09-30", "last_updated": "2026-10-27",
+    "fields": {
+      "customer_need": { "value": "One view of orders and visits for 40 distributors", "approved": true },
+      "next_step": { "value": "Solution walkthrough with the supply chain team", "approved": true },
+      "follow_up_owner": { "value": "Lucas Moreira", "approved": true },
+      "follow_up_due_date": { "value": "2026-11-03", "approved": true },
+      "decision_maker": { "value": "Paula Reis (Supply Chain Director)", "approved": true },
+      "seats": { "value": "30", "approved": true },
+      "departments": { "value": "Sales; Operations", "approved": true },
+      "stage": { "value": "Solution", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0146", "client_id": "CLI-006", "name": "Real-estate sales CRM", "owner_id": "U01",
+    "amount_usd": 52000, "close_date": "2027-03-31", "created": "2026-10-22", "last_updated": "2026-10-30",
+    "fields": {
+      "stage": { "value": "Qualified Opportunity", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0147", "client_id": "CLI-007", "name": "Admissions CRM", "owner_id": "U01",
+    "amount_usd": 110000, "close_date": "2027-01-15", "created": "2026-09-08", "last_updated": "2026-10-21",
+    "fields": {
+      "customer_need": { "value": "Track prospective students from first contact to enrolment across 6 campuses", "approved": true },
+      "next_step": { "value": "Scope session with admissions and IT on 5 Nov", "approved": true },
+      "follow_up_owner": { "value": "Ana Ribeiro", "approved": true },
+      "follow_up_due_date": { "value": "2026-11-05", "approved": true },
+      "decision_maker": { "value": "Daniela Freitas (VP of Admissions)", "approved": true },
+      "stage": { "value": "Solution", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0148", "client_id": "CLI-008", "name": "Field sales CRM", "owner_id": "U01",
+    "amount_usd": 64000, "close_date": "2027-04-30", "created": "2026-10-19", "last_updated": "2026-10-26",
+    "fields": {
+      "customer_need": { "value": "Dealer visits and orders tracked in one place (from a trade-fair lead)", "approved": false },
+      "stage": { "value": "Qualified Opportunity", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0149", "client_id": "CLI-009", "name": "B2B energy sales CRM", "owner_id": "U01",
+    "amount_usd": 140000, "close_date": "2026-11-30", "created": "2026-06-10", "last_updated": "2026-10-30",
+    "fields": {
+      "call_summary": { "value": "Pricing review with the Commercial VP and Procurement. Procurement asked for a 12% discount on a 3-year term; the VP accepted the scope.", "approved": true },
+      "customer_need": { "value": "Replace the 2014 on-premise CRM with one shared view of B2B energy contracts and renewals", "approved": true },
+      "objection": { "value": "Procurement wants a 12% discount for a 3-year term", "approved": true },
+      "commitment": { "value": "Orbita (Ana): send the revised commercial terms by 6 Nov", "approved": true },
+      "next_step": { "value": "Commercial terms review with Procurement on 10 Nov", "approved": true },
+      "follow_up_owner": { "value": "Ana Ribeiro", "approved": true },
+      "follow_up_due_date": { "value": "2026-11-10", "approved": true },
+      "budget": { "value": "USD 150,000 per year", "approved": true },
+      "decision_maker": { "value": "Henrique Prado (Commercial VP)", "approved": true },
+      "decision_process": { "value": "Procurement negotiates the terms; the Commercial VP signs; Legal reviews the contract", "approved": true },
+      "go_live_target": { "value": "2027-02", "approved": true },
+      "competitors": { "value": "Northwind CRM", "approved": true },
+      "seats": { "value": "110", "approved": true },
+      "departments": { "value": "Sales; Customer Success; Leadership", "approved": true },
+      "decision_criteria": { "value": "Contract renewals pipeline; account hierarchy; forecast dashboards", "approved": true },
+      "integrations": { "value": "Billing system; email and calendar", "approved": true },
+      "stage": { "value": "Negotiation", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0150", "client_id": "CLI-010", "name": "Broker channel CRM", "owner_id": "U02",
+    "amount_usd": 180000, "close_date": "2026-11-20", "created": "2026-05-04", "last_updated": "2026-11-02",
+    "fields": {
+      "next_step": { "value": "Contract signature by the Head of Broker Channel", "approved": true },
+      "follow_up_owner": { "value": "Lucas Moreira", "approved": true },
+      "follow_up_due_date": { "value": "2026-11-13", "approved": true },
+      "budget": { "value": "USD 200,000 per year", "approved": true },
+      "decision_maker": { "value": "Ricardo Alves (Head of Broker Channel)", "approved": true },
+      "decision_process": { "value": "Legal reviews the contract, then the Head of Broker Channel signs", "approved": true },
+      "go_live_target": { "value": "2027-01", "approved": true },
+      "seats": { "value": "140", "approved": true },
+      "departments": { "value": "Sales; Customer Service", "approved": true },
+      "stage": { "value": "Contract", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0151", "client_id": "CLI-011", "name": "Key account CRM", "owner_id": "U03",
+    "amount_usd": 85000, "close_date": "2026-12-18", "created": "2026-07-21", "last_updated": "2026-10-23",
+    "fields": {
+      "next_step": { "value": "Customer to review the proposal", "approved": true },
+      "follow_up_owner": { "value": "Carla Mendes", "approved": true },
+      "follow_up_due_date": { "value": "2026-11-04", "approved": true },
+      "decision_maker": { "value": "Fernanda Lima (Key Account Director)", "approved": true },
+      "seats": { "value": "35", "approved": true },
+      "departments": { "value": "Sales; Marketing", "approved": true },
+      "stage": { "value": "Proposal", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0152", "client_id": "CLI-011", "name": "Distributor portal add-on", "owner_id": "U03",
+    "amount_usd": 30000, "close_date": "2027-05-31", "created": "2026-10-29", "last_updated": "2026-10-29",
+    "fields": {
+      "customer_need": { "value": "Portal for distributors to place orders (raised during the key account call)", "approved": false },
+      "stage": { "value": "New Lead", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0153", "client_id": "CLI-012", "name": "Corporate memberships CRM", "owner_id": "U02",
+    "amount_usd": 40000, "close_date": "2027-04-15", "created": "2026-10-26", "last_updated": "2026-10-26",
+    "fields": {
+      "stage": { "value": "New Lead", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0154", "client_id": "CLI-013", "name": "Lab services CRM", "owner_id": "U03",
+    "amount_usd": 75000, "close_date": "2027-02-26", "created": "2026-09-02", "last_updated": "2026-10-20",
+    "fields": {
+      "customer_need": { "value": "Track B2B lab-services contracts with hospitals and clinics", "approved": true },
+      "next_step": { "value": "Demo of the contract renewals module", "approved": true },
+      "follow_up_owner": { "value": "Pedro Almeida", "approved": true },
+      "follow_up_due_date": { "value": "2026-11-12", "approved": true },
+      "seats": { "value": "25", "approved": true },
+      "departments": { "value": "Sales; Customer Success", "approved": true },
+      "stage": { "value": "Solution", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0155", "client_id": "CLI-010", "name": "Claims team expansion", "owner_id": "U02",
+    "amount_usd": 60000, "close_date": "2026-12-10", "created": "2026-08-18", "last_updated": "2026-10-28",
+    "fields": {
+      "next_step": { "value": "Agree the claims-team licence tier with Procurement", "approved": true },
+      "follow_up_owner": { "value": "Lucas Moreira", "approved": true },
+      "follow_up_due_date": { "value": "2026-11-09", "approved": true },
+      "seats": { "value": "60", "approved": true },
+      "departments": { "value": "Customer Service", "approved": true },
+      "stage": { "value": "Negotiation", "approved": true }
+    }
+  },
+  {
+    "opportunity_id": "OPP-0156", "client_id": "CLI-014", "name": "Enterprise sales CRM", "owner_id": "U02",
+    "amount_usd": 210000, "close_date": "2026-11-27", "created": "2026-04-14", "last_updated": "2026-11-03",
+    "fields": {
+      "next_step": { "value": "Contract sent for signature", "approved": true },
+      "follow_up_owner": { "value": "Lucas Moreira", "approved": true },
+      "follow_up_due_date": { "value": "2026-11-11", "approved": true },
+      "decision_maker": { "value": "Cláudia Torres (Enterprise Sales Director)", "approved": true },
+      "seats": { "value": "220", "approved": true },
+      "departments": { "value": "Sales; Customer Success; Leadership", "approved": true },
+      "stage": { "value": "Contract", "approved": true }
+    }
+  }
+]

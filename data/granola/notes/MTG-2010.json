@@ -1,0 +1,296 @@
+{
+  "id": "not_6506e02f59babb",
+  "object": "note",
+  "title": "Pampa Agro - discovery call",
+  "owner": {
+    "name": "Ana Ribeiro",
+    "email": "ana.ribeiro@orbitacrm.example"
+  },
+  "created_at": "2026-11-04T14:00:00Z",
+  "updated_at": "2026-11-04T14:39:52Z",
+  "deleted_at": null,
+  "web_url": "https://notes.granola.ai/d/not_6506e02f59babb",
+  "calendar_event": {
+    "event_title": "Pampa Agro - discovery call",
+    "invitees": [
+      {
+        "email": "ana.ribeiro@orbitacrm.example"
+      },
+      {
+        "email": "paulo.becker@pampaagro.example"
+      },
+      {
+        "email": "luiza.kranz@pampaagro.example"
+      }
+    ],
+    "organiser": "ana.ribeiro@orbitacrm.example",
+    "calendar_event_id": "evt_6506e02f59babb",
+    "scheduled_start_time": "2026-11-04T14:00:00Z",
+    "scheduled_end_time": "2026-11-04T14:45:00Z"
+  },
+  "attachments": [],
+  "attendees": [
+    {
+      "name": "Ana Ribeiro",
+      "email": "ana.ribeiro@orbitacrm.example"
+    },
+    {
+      "name": "Paulo Becker",
+      "email": "paulo.becker@pampaagro.example"
+    },
+    {
+      "name": "Luiza Kranz",
+      "email": "luiza.kranz@pampaagro.example"
+    }
+  ],
+  "folder_membership": [
+    {
+      "id": "fol_CRMsyncFolder1",
+      "object": "folder",
+      "name": "CRM sync",
+      "parent_folder_id": null,
+      "space_id": null
+    }
+  ],
+  "space_membership": [],
+  "summary_text": "Discovery call with Pampa Agro. Field reps visit about two hundred dealers and report on paper and spreadsheets. They want one place for visits and dealer orders, offline, for 38 users, live by July 2027, with about 70k USD a year. Field demo agreed for 11 November.",
+  "summary_markdown": "Discovery call with Pampa Agro. Field reps visit about two hundred dealers and report on paper and spreadsheets. They want one place for visits and dealer orders, offline, for 38 users, live by July 2027, with about 70k USD a year. Field demo agreed for 11 November.",
+  "private_notes_text": null,
+  "private_notes_markdown": null,
+  "transcript": [
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Good morning, Paulo, Luiza. Can you hear me well? The connection from the countryside sometimes struggles.",
+      "start_time": "2026-11-04T14:00:07Z",
+      "end_time": "2026-11-04T14:00:13Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "We can hear you. We're in the meeting room at the head office today, the signal is good here.",
+      "start_time": "2026-11-04T14:00:15Z",
+      "end_time": "2026-11-04T14:00:22Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Great. Tell me how the commercial side of Pampa Agro works.",
+      "start_time": "2026-11-04T14:00:24Z",
+      "end_time": "2026-11-04T14:00:28Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "We sell seeds and fertiliser through about two hundred dealers in the south, and our field reps visit them every week.",
+      "start_time": "2026-11-04T14:00:30Z",
+      "end_time": "2026-11-04T14:00:38Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "After each visit the rep fills in a paper report, and on Friday someone types it into a spreadsheet. We never know what a dealer ordered or what the rep promised.",
+      "start_time": "2026-11-04T14:01:05Z",
+      "end_time": "2026-11-04T14:01:17Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "So the need is one place with every dealer visit, order and promise?",
+      "start_time": "2026-11-04T14:01:44Z",
+      "end_time": "2026-11-04T14:01:49Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "Yes. We need to know which dealer was visited, what they ordered and what was promised, in one place.",
+      "start_time": "2026-11-04T14:01:51Z",
+      "end_time": "2026-11-04T14:01:58Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "How many people would use it?",
+      "start_time": "2026-11-04T14:03:20Z",
+      "end_time": "2026-11-04T14:03:22Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "Thirty-two field reps in sales, and six people in the leadership team who want the reports. So thirty-eight users.",
+      "start_time": "2026-11-04T14:03:25Z",
+      "end_time": "2026-11-04T14:03:32Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "The problem is there's no mobile signal in the fields. Anything that needs the internet all the time won't work. And the reps are not used to apps.",
+      "start_time": "2026-11-04T14:04:40Z",
+      "end_time": "2026-11-04T14:04:51Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Our app works offline and syncs later, and the visit check-in uses GPS.",
+      "start_time": "2026-11-04T14:05:05Z",
+      "end_time": "2026-11-04T14:05:10Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "Then it must work offline and have the GPS check-in, those two are non-negotiable.",
+      "start_time": "2026-11-04T14:05:15Z",
+      "end_time": "2026-11-04T14:05:20Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "What systems would it need to talk to?",
+      "start_time": "2026-11-04T14:07:30Z",
+      "end_time": "2026-11-04T14:07:33Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "Our ERP is Orion ERP. The dealer orders need to flow there.",
+      "start_time": "2026-11-04T14:07:34Z",
+      "end_time": "2026-11-04T14:07:39Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "How big is the company overall?",
+      "start_time": "2026-11-04T14:09:10Z",
+      "end_time": "2026-11-04T14:09:12Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "We're about four hundred and fifty people.",
+      "start_time": "2026-11-04T14:09:14Z",
+      "end_time": "2026-11-04T14:09:17Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Who decides on a project like this?",
+      "start_time": "2026-11-04T14:12:40Z",
+      "end_time": "2026-11-04T14:12:43Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "I make the final call on this, and I'm fine with the budget.",
+      "start_time": "2026-11-04T14:12:44Z",
+      "end_time": "2026-11-04T14:12:49Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "And what budget do you have in mind?",
+      "start_time": "2026-11-04T14:12:55Z",
+      "end_time": "2026-11-04T14:12:58Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "About seventy thousand dollars a year.",
+      "start_time": "2026-11-04T14:13:00Z",
+      "end_time": "2026-11-04T14:13:02Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "Between us, I'm the one pushing for this inside the company. The other directors still think paper works.",
+      "start_time": "2026-11-04T14:13:30Z",
+      "end_time": "2026-11-04T14:13:37Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "And when would you need it?",
+      "start_time": "2026-11-04T14:14:20Z",
+      "end_time": "2026-11-04T14:14:22Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "Before the planting season sales in August, so live by July 2027.",
+      "start_time": "2026-11-04T14:14:24Z",
+      "end_time": "2026-11-04T14:14:29Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "I'll send you a short video of the offline mode by Monday. And would a field demo with two of your reps work next Wednesday, the 11th?",
+      "start_time": "2026-11-04T14:30:05Z",
+      "end_time": "2026-11-04T14:30:15Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "Yes, Wednesday the 11th works. We'll pick two reps.",
+      "start_time": "2026-11-04T14:30:18Z",
+      "end_time": "2026-11-04T14:30:21Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them"
+      },
+      "text": "Thanks, Ana. Talk soon.",
+      "start_time": "2026-11-04T14:37:50Z",
+      "end_time": "2026-11-04T14:37:52Z"
+    }
+  ]
+}

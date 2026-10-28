@@ -1,0 +1,10 @@
+05/11/2026, 17:58 - Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them. Tap to learn more.
+05/11/2026, 18:02 - Ana Ribeiro: Hi Henrique, good evening! I've just emailed you the revised commercial terms: 8% off for the three-year term, as we discussed with Talita.
+05/11/2026, 18:40 - Henrique Prado: Thanks Ana, I've read them. Eight percent on three years works for us. We agree with the terms.
+05/11/2026, 18:41 - Henrique Prado: Please send me the contract for signature. Talita will route it through procurement on Monday and I'll sign right after that.
+05/11/2026, 18:45 - Ana Ribeiro: Great news! I'll send you the contract tomorrow morning.
+05/11/2026, 18:46 - Henrique Prado: Perfect. One more thing: our IT team needs single sign-on with Microsoft Entra from day one.
+05/11/2026, 18:47 - Ana Ribeiro: Noted. Beatriz, our implementation lead, will include it in the kickoff plan.
+05/11/2026, 18:49 - Henrique Prado: <Media omitted>
+05/11/2026, 18:50 - Henrique Prado: That's the list of the 110 users for the accounts, by the way.
+05/11/2026, 18:52 - Ana Ribeiro: 👍 Thanks, Henrique. Have a good evening.

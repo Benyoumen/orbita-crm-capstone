@@ -1,0 +1,20 @@
+{
+  "meeting": {
+    "meeting_id": "EX-MTG-1",
+    "source": { "system": "granola" },
+    "title": "Mar Azul Hotels - intro call",
+    "start": "2026-10-06T10:00:00-03:00",
+    "scheduled_minutes": 30,
+    "recorded_minutes": 19,
+    "participants": ["Ana Ribeiro (Orbita)", "Gustavo Teixeira (Mar Azul Hotels)"]
+  },
+  "client": {
+    "client_id": "EX-CLI-1", "name": "Mar Azul Hotels", "industry": "Hospitality",
+    "contacts": [{ "name": "Gustavo Teixeira", "title": "Commercial Director" }],
+    "fields": {}
+  },
+  "opportunity": {
+    "opportunity_id": "EX-OPP-1", "client_id": "EX-CLI-1", "name": "Group sales CRM", "owner_id": "U01",
+    "fields": { "stage": { "value": "New Lead", "approved": true } }
+  }
+}

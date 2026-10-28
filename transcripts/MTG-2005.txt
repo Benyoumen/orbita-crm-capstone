@@ -1,0 +1,10 @@
+[00:00:00] Ana Ribeiro (Orbita): Hi Livia, nice to meet you. Thanks for accepting the invite.
+[00:00:06] Livia Prado: Hi Ana. A colleague recommended you, so I wanted to understand what you do.
+[00:00:17] Ana Ribeiro (Orbita): Happy to explain. But first, tell me a bit about Delta Pharma.
+[00:00:23] Livia Prado: We're a mid-sized pharmaceutical company. We have about one hundred and fifty medical representatives who visit doctors and pharmacies every day.
+[00:01:08] Livia Prado: Their visit reports are in a very old system that nobody likes. I'm looking at options for next year.
+[00:03:33] Ana Ribeiro (Orbita): What would a better tool need to do for the representatives?
+[00:03:40] Livia Prado: Plan the visits, record what was discussed, and track samples. And it has to work on a tablet.
+[00:09:13] Ana Ribeiro (Orbita): We have pharma clients doing exactly that. I'll send you a short overview after the call.
+[00:09:24] Livia Prado: Great. I'll share it with my director.
+[00:25:33] Livia Prado: Thanks, Ana. Nice to meet you.

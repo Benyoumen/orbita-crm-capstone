@@ -1,0 +1,128 @@
+{
+  "meeting_id": "MTG-2002",
+  "run_status": "Awaiting review",
+  "source_status": "Ready",
+  "block_reason": null,
+  "fields": [
+    {
+      "field": "call_summary",
+      "status": "proposed",
+      "value": "Intro call with the Head of Retail Operations. Franchise and wholesale sales run on WhatsApp groups and spreadsheets, so complaints and reorders get lost. A previous BI tool failed because it was too complicated. There is no budget yet; Camila will read a case study after Black Friday, with no meeting booked.",
+      "evidence": [
+        {
+          "quote": "Today all of that runs on WhatsApp groups and spreadsheets.",
+          "line": 5
+        },
+        {
+          "quote": "Let's not book anything yet.",
+          "line": 21
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "status": "proposed",
+      "value": "A previous BI tool failed because it was too complicated and the store teams stopped using it",
+      "evidence": [
+        {
+          "quote": "It was too complicated and the store teams stopped using it after a month.",
+          "line": 12
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "status": "proposed",
+      "value": "Orbita (Ana): send the product overview and a franchise retail case study",
+      "evidence": [
+        {
+          "quote": "I'll send you our product overview and that case study.",
+          "line": 18
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "status": "proposed",
+      "value": "Camila reads the case study with her team after Black Friday and comes back to Orbita; no meeting booked",
+      "evidence": [
+        {
+          "quote": "Please do. I'll read it with my team after Black Friday.",
+          "line": 19
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "status": "proposed",
+      "value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "quote": "I'll send you our product overview and that case study.",
+          "line": 18
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "customer_need",
+      "status": "proposed",
+      "value": "One place to manage franchisees and wholesale buyers, with their orders, visits and complaints, instead of WhatsApp groups",
+      "evidence": [
+        {
+          "quote": "One place for the franchisees and the wholesale buyers, instead of fifty WhatsApp groups.",
+          "line": 7
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "budget",
+      "status": "proposed",
+      "value": "No budget allocated",
+      "evidence": [
+        {
+          "quote": "There's no budget allocated for this yet, it would have to go into next year's plan.",
+          "line": 15
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "employee_count",
+      "status": "proposed",
+      "value": "1200",
+      "evidence": [
+        {
+          "quote": "About one thousand two hundred employees, most of them in the stores.",
+          "line": 9
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "current_solution",
+      "status": "proposed",
+      "value": "WhatsApp groups and spreadsheets",
+      "evidence": [
+        {
+          "quote": "Today all of that runs on WhatsApp groups and spreadsheets.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "status": "no_evidence",
+      "value": null,
+      "evidence": [],
+      "note": "New Lead exit criteria not met: the customer confirmed a need but did not agree to a further conversation."
+    }
+  ],
+  "ignored_out_of_scope": []
+}

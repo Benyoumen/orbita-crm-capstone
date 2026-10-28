@@ -1,0 +1,193 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.769
+<v Ana Ribeiro>Good morning, Marina, Felipe. Thanks for making the time. Can you both hear me okay?</v>
+
+2
+00:00:06.000 --> 00:00:12.800
+<v Marina Lopes>Loud and clear. Sorry we're a couple of minutes late, the traffic on the highway this morning was a nightmare.</v>
+
+3
+00:00:13.000 --> 00:00:18.000
+<v Felipe Nunes>Same here. I left home at seven and I still barely made it.</v>
+
+4
+00:00:19.000 --> 00:00:36.800
+<v Ana Ribeiro>No problem at all, same for me, the usual Tuesday. So, the goal for today: you filled in our web form about a CRM, and I'd like to understand how your commercial team works today, what is not working, and whether Orbita is a good fit. Does that sound good?</v>
+
+5
+00:00:37.000 --> 00:00:49.308
+<v Marina Lopes>Perfect. Let me give you some context. Acme is a freight and warehousing company, we're about eight hundred and fifty people, and around a hundred of them are in the commercial area.</v>
+
+6
+00:00:54.000 --> 00:00:58.231
+<v Ana Ribeiro>And how does the commercial team manage customers and deals today?</v>
+
+7
+00:00:59.000 --> 00:01:08.615
+<v Felipe Nunes>Honestly, spreadsheets and Outlook. Each rep has their own spreadsheet of accounts, proposals live on a shared drive, and everything else is in people's inboxes.</v>
+
+8
+00:01:16.000 --> 00:01:26.769
+<v Felipe Nunes>When someone goes on holiday or leaves the company, we lose the history of the account. Last quarter we missed two contract renewals because nobody remembered the dates.</v>
+
+9
+00:01:32.000 --> 00:01:51.615
+<v Marina Lopes>And from my side, I have no visibility. Every Monday I ask for the pipeline and I get six different spreadsheets in six different formats. If this works, success for me is simple: zero missed renewals next year, and the Monday pipeline review done from one screen instead of six spreadsheets.</v>
+
+10
+00:01:57.000 --> 00:02:13.800
+<v Ana Ribeiro>That's very common. Let me play it back to see if I got it right: you need one place where the whole team tracks accounts, deals and renewals, so nothing gets lost and you get a reliable view of the pipeline. Is that the need?</v>
+
+11
+00:02:14.000 --> 00:02:23.615
+<v Marina Lopes>Exactly. One place for every account and every deal, with renewal reminders, and a pipeline I can trust on Monday morning. That is the priority.</v>
+
+12
+00:03:02.000 --> 00:03:05.077
+<v Ana Ribeiro>Who would use the system day to day?</v>
+
+13
+00:03:07.000 --> 00:03:17.000
+<v Felipe Nunes>The forty sales reps, our twelve account managers in customer success, and the leadership team, about eight managers, for the dashboards. So sixty users to start.</v>
+
+14
+00:03:25.000 --> 00:03:28.846
+<v Ana Ribeiro>Sixty users, across sales, customer success and leadership. Got it.</v>
+
+15
+00:03:54.000 --> 00:04:02.462
+<v Felipe Nunes>And the reps are on the road a lot, visiting warehouses and customers, so a mobile app is a must for them.</v>
+
+16
+00:04:07.000 --> 00:04:11.231
+<v Ana Ribeiro>What else does the system need to do on day one?</v>
+
+17
+00:04:12.000 --> 00:04:19.692
+<v Felipe Nunes>Pipeline management, renewal alerts, email sync with Outlook so we stop copying emails by hand, and management dashboards for Marina.</v>
+
+18
+00:05:32.000 --> 00:05:37.800
+<v Marina Lopes>By the way, Felipe, did you send the photos from Saturday's barbecue to the group? My husband keeps asking.</v>
+
+19
+00:05:38.000 --> 00:05:39.923
+<v Felipe Nunes>Not yet, tonight. Sorry, Ana.</v>
+
+20
+00:05:42.000 --> 00:05:47.385
+<v Ana Ribeiro>No worries. Now, about your systems: what would the CRM need to connect to?</v>
+
+21
+00:05:48.000 --> 00:05:58.769
+<v Marina Lopes>Our transport management system, the TMS. It's ours, built in-house about ten years ago, and all the shipment data is there. We also use Orion ERP for invoicing.</v>
+
+22
+00:06:12.000 --> 00:06:22.769
+<v Marina Lopes>And to be honest, that is my main worry. I am concerned about integrating with our in-house TMS. Anything that touches operations during peak season makes me nervous.</v>
+
+23
+00:06:33.000 --> 00:06:43.000
+<v Felipe Nunes>My worry is adoption. We tried a sales tool three years ago and the reps hated it. They went back to their spreadsheets in two months.</v>
+
+24
+00:06:54.000 --> 00:07:09.000
+<v Ana Ribeiro>Both are fair concerns. On the TMS, we did a similar integration with an in-house system for another logistics client last year. I will send you that reference case by Friday, so you can see how we handled it.</v>
+
+25
+00:07:12.000 --> 00:07:13.923
+<v Marina Lopes>That would help a lot.</v>
+
+26
+00:08:22.000 --> 00:08:34.308
+<v Ana Ribeiro>On adoption, we usually start from the reps' daily routine: the mobile app, the email sync, and nothing they have to type twice. We can go deeper on that in a workshop.</v>
+
+27
+00:09:37.000 --> 00:09:42.000
+<v Ana Ribeiro>Can I ask about budget? Is there money set aside for this project?</v>
+
+28
+00:09:44.000 --> 00:09:51.308
+<v Marina Lopes>Yes. We have between eighty and a hundred thousand dollars a year for the CRM, licences and support included.</v>
+
+29
+00:10:12.000 --> 00:10:15.846
+<v Ana Ribeiro>That's helpful. Are you looking at other vendors as well?</v>
+
+30
+00:10:18.000 --> 00:10:24.538
+<v Felipe Nunes>We had a first call with Northwind CRM, and we're getting a demo from PipeSpark next week.</v>
+
+31
+00:10:29.000 --> 00:10:32.462
+<v Ana Ribeiro>Good to know, thanks for being open about it.</v>
+
+32
+00:14:22.000 --> 00:14:28.154
+<v Felipe Nunes>Ana, unrelated question: is your team going to the logistics trade fair in Joinville this year?</v>
+
+33
+00:14:29.000 --> 00:14:31.308
+<v Ana Ribeiro>Probably, our marketing team usually goes.</v>
+
+34
+00:21:22.000 --> 00:21:25.077
+<v Ana Ribeiro>Who else would be involved in the decision?</v>
+
+35
+00:21:28.000 --> 00:21:39.923
+<v Marina Lopes>I make the decision on this. It sits in my operations budget. But I will want our IT lead, Rui Tavares, to validate the technical side, the integration and the security.</v>
+
+36
+00:21:50.000 --> 00:21:54.231
+<v Ana Ribeiro>And after Rui's validation, is there any other step? Procurement, legal?</v>
+
+37
+00:21:56.000 --> 00:22:00.615
+<v Marina Lopes>Procurement needs three quotes for anything above fifty thousand. Then I sign.</v>
+
+38
+00:22:12.000 --> 00:22:13.923
+<v Ana Ribeiro>And in terms of timing?</v>
+
+39
+00:22:15.000 --> 00:22:22.308
+<v Marina Lopes>We need it live before our peak season starts in April, so go-live by March 2027 at the latest.</v>
+
+40
+00:30:02.000 --> 00:30:10.846
+<v Felipe Nunes>One more thing for the reps: we need to see each customer's shipment status inside the CRM, otherwise they will keep calling operations.</v>
+
+41
+00:30:16.000 --> 00:30:21.769
+<v Ana Ribeiro>That comes back to the TMS integration, so it's a good topic for the workshop.</v>
+
+42
+00:35:02.000 --> 00:35:14.692
+<v Ana Ribeiro>Proposed next step: a technical scoping workshop with Rui, the week of 9 November, to look at the TMS data and the integration options. Pedro, our solutions engineer, would join from our side.</v>
+
+43
+00:35:19.000 --> 00:35:22.846
+<v Marina Lopes>Yes, let's do that. I will make sure Rui joins.</v>
+
+44
+00:35:25.000 --> 00:35:30.385
+<v Ana Ribeiro>Great. I will send the workshop invite together with the reference case by Friday.</v>
+
+45
+00:41:42.000 --> 00:41:49.800
+<v Felipe Nunes>And Ana, if you have a short video of the mobile app, send it over. I'd like to show it to two of our senior reps.</v>
+
+46
+00:41:50.000 --> 00:41:52.692
+<v Ana Ribeiro>Sure, I'll include it in Friday's email.</v>
+
+47
+00:42:12.000 --> 00:42:23.538
+<v Felipe Nunes>For what it's worth, I'm the one who pushed for this project internally. If the mobile app is as good as it looks, I'll get the reps on board myself.</v>
+
+48
+00:42:40.000 --> 00:42:41.538
+<v Marina Lopes>Thanks, Ana. Talk soon.</v>

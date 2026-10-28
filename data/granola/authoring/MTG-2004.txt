@@ -1,0 +1,12 @@
+# case: T4 - recording cut off mid-sentence
+# title: Verde Retail - POS data questions
+# start: 2026-11-05T15:00:00-03:00
+# scheduled_minutes: 45
+# owner: ana.ribeiro@orbitacrm.example
+# attendees: Ana Ribeiro <ana.ribeiro@orbitacrm.example>; Camila Rocha <camila.rocha@verderetail.example>; Diego Faria <diego.faria@verderetail.example>
+# summary: Follow-up with Verde Retail's Head of Retail Operations and IT Manager about POS data. The recording stopped after a few minutes.
+[00:00:06] Ana Ribeiro (Orbita): Hi Camila, hi Diego. Thanks for setting this up so quickly.
+[00:00:14] Camila Rocha (Verde Retail): I read the case study on the weekend and it made me curious, so I asked Diego to join. He looks after our POS integration.
+[00:00:58] Diego Faria (Verde Retail): Our POS vendor exports the sales every night. I'm not sure we can get anything closer to real time for the franchisees.
+[00:02:30] Ana Ribeiro (Orbita): A nightly export could be enough for a first version. What matters most to the franchise team?
+[00:04:12] Camila Rocha (Verde Retail): So the main thing we would need from you before we go any further is

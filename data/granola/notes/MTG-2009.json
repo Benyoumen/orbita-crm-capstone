@@ -1,0 +1,380 @@
+{
+  "id": "not_d74b8928e3bde6",
+  "object": "note",
+  "title": "Lumen Education - scope session",
+  "owner": {
+    "name": "Ana Ribeiro",
+    "email": "ana.ribeiro@orbitacrm.example"
+  },
+  "created_at": "2026-11-05T17:00:00Z",
+  "updated_at": "2026-11-05T17:53:43Z",
+  "deleted_at": null,
+  "web_url": "https://notes.granola.ai/d/not_d74b8928e3bde6",
+  "calendar_event": {
+    "event_title": "Lumen Education - scope session",
+    "invitees": [
+      {
+        "email": "ana.ribeiro@orbitacrm.example"
+      },
+      {
+        "email": "pedro.almeida@orbitacrm.example"
+      },
+      {
+        "email": "daniela.freitas@lumeneducation.example"
+      },
+      {
+        "email": "marcos.antunes@lumeneducation.example"
+      }
+    ],
+    "organiser": "ana.ribeiro@orbitacrm.example",
+    "calendar_event_id": "evt_d74b8928e3bde6",
+    "scheduled_start_time": "2026-11-05T17:00:00Z",
+    "scheduled_end_time": "2026-11-05T18:00:00Z"
+  },
+  "attachments": [],
+  "attendees": [
+    {
+      "name": "Ana Ribeiro",
+      "email": "ana.ribeiro@orbitacrm.example"
+    },
+    {
+      "name": "Pedro Almeida",
+      "email": "pedro.almeida@orbitacrm.example"
+    },
+    {
+      "name": "Daniela Freitas",
+      "email": "daniela.freitas@lumeneducation.example"
+    },
+    {
+      "name": "Marcos Antunes",
+      "email": "marcos.antunes@lumeneducation.example"
+    }
+  ],
+  "folder_membership": [
+    {
+      "id": "fol_CRMsyncFolder1",
+      "object": "folder",
+      "name": "CRM sync",
+      "parent_folder_id": null,
+      "space_id": null
+    }
+  ],
+  "space_membership": [],
+  "summary_text": "Scope session with Lumen Education's VP of Admissions and CIO. Scope agreed: 120 users across admissions, marketing and management, integrations with the Campus One student system, Mailwave and WhatsApp, live by May 2027, budget 110-130k USD a year. They are also evaluating Clarion Sales Cloud. Lumen asked for a proposal by 13 November.",
+  "summary_markdown": "Scope session with Lumen Education's VP of Admissions and CIO. Scope agreed: 120 users across admissions, marketing and management, integrations with the Campus One student system, Mailwave and WhatsApp, live by May 2027, budget 110-130k USD a year. They are also evaluating Clarion Sales Cloud. Lumen asked for a proposal by 13 November.",
+  "private_notes_text": null,
+  "private_notes_markdown": null,
+  "transcript": [
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Good afternoon, Daniela, Marcos. Pedro is with me again. The plan for today is to agree the scope, so we can prepare the proposal.",
+      "start_time": "2026-11-05T17:00:05Z",
+      "end_time": "2026-11-05T17:00:14Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Daniela Freitas"
+      },
+      "text": "Perfect. We blocked the full hour, so let's use it.",
+      "start_time": "2026-11-05T17:00:16Z",
+      "end_time": "2026-11-05T17:00:20Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marcos Antunes"
+      },
+      "text": "And I brought my list of technical questions, as promised.",
+      "start_time": "2026-11-05T17:00:24Z",
+      "end_time": "2026-11-05T17:00:28Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Great. Daniela, let's start with the users. Who would use the CRM?",
+      "start_time": "2026-11-05T17:00:33Z",
+      "end_time": "2026-11-05T17:00:38Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Daniela Freitas"
+      },
+      "text": "Our admissions counsellors are our sales team, eighty of them across the six campuses. Marketing has twenty-five people running the campaigns. And fifteen managers in the leadership team need the reports. So one hundred and twenty users.",
+      "start_time": "2026-11-05T17:00:40Z",
+      "end_time": "2026-11-05T17:00:54Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "And how do the counsellors work today?",
+      "start_time": "2026-11-05T17:01:20Z",
+      "end_time": "2026-11-05T17:01:23Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Daniela Freitas"
+      },
+      "text": "Each campus has its own spreadsheets, and a lot happens on WhatsApp. We have no idea how many prospects we lose between the first contact and the enrolment.",
+      "start_time": "2026-11-05T17:01:25Z",
+      "end_time": "2026-11-05T17:01:36Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Daniela Freitas"
+      },
+      "text": "Our target for next year is to lift the conversion from first contact to enrolment from eight to twelve percent.",
+      "start_time": "2026-11-05T17:01:50Z",
+      "end_time": "2026-11-05T17:01:58Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "What must the CRM do from day one?",
+      "start_time": "2026-11-05T17:03:10Z",
+      "end_time": "2026-11-05T17:03:13Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Daniela Freitas"
+      },
+      "text": "Capture the leads from our campaigns, give each counsellor a follow-up list, show the enrolment funnel per campus, and keep the WhatsApp conversations with the prospect's record.",
+      "start_time": "2026-11-05T17:03:14Z",
+      "end_time": "2026-11-05T17:03:24Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marcos Antunes"
+      },
+      "text": "On integrations, it has to connect to Campus One, our student information system, because that is where an enrolment becomes official. And to Mailwave, the email tool marketing uses.",
+      "start_time": "2026-11-05T17:05:40Z",
+      "end_time": "2026-11-05T17:05:51Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Pedro Almeida"
+      },
+      "text": "Both have APIs we've worked with. What about WhatsApp?",
+      "start_time": "2026-11-05T17:06:05Z",
+      "end_time": "2026-11-05T17:06:08Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marcos Antunes"
+      },
+      "text": "Yes, WhatsApp too, through the official business account.",
+      "start_time": "2026-11-05T17:06:10Z",
+      "end_time": "2026-11-05T17:06:13Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marcos Antunes"
+      },
+      "text": "My main concern is student data. It must stay in Brazil, and we need a data protection assessment before anything goes live.",
+      "start_time": "2026-11-05T17:09:30Z",
+      "end_time": "2026-11-05T17:09:38Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Pedro Almeida"
+      },
+      "text": "Our data centre for Brazilian clients is in São Paulo, and we can support the assessment.",
+      "start_time": "2026-11-05T17:09:51Z",
+      "end_time": "2026-11-05T17:09:57Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "How will the decision be made on your side?",
+      "start_time": "2026-11-05T17:12:20Z",
+      "end_time": "2026-11-05T17:12:23Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marcos Antunes"
+      },
+      "text": "First an IT security review and the data protection assessment. Then Daniela signs, and the board approves anything above one hundred and fifty thousand dollars a year.",
+      "start_time": "2026-11-05T17:12:25Z",
+      "end_time": "2026-11-05T17:12:35Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marcos Antunes"
+      },
+      "text": "On the paperwork, procurement will need your standard contract and the data processing agreement two weeks before the signature.",
+      "start_time": "2026-11-05T17:12:50Z",
+      "end_time": "2026-11-05T17:12:57Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "And the budget?",
+      "start_time": "2026-11-05T17:13:40Z",
+      "end_time": "2026-11-05T17:13:41Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Daniela Freitas"
+      },
+      "text": "We've approved between one hundred and ten and one hundred and thirty thousand dollars a year.",
+      "start_time": "2026-11-05T17:13:44Z",
+      "end_time": "2026-11-05T17:13:50Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Are you evaluating other options?",
+      "start_time": "2026-11-05T17:15:05Z",
+      "end_time": "2026-11-05T17:15:07Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Daniela Freitas"
+      },
+      "text": "We're also looking at Clarion Sales Cloud. To be honest, they're cheaper, but their WhatsApp integration is weak.",
+      "start_time": "2026-11-05T17:15:09Z",
+      "end_time": "2026-11-05T17:15:16Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "When does it need to be live?",
+      "start_time": "2026-11-05T17:17:30Z",
+      "end_time": "2026-11-05T17:17:33Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Daniela Freitas"
+      },
+      "text": "The enrolment campaign for the second semester starts in June, so we need it live by May 2027.",
+      "start_time": "2026-11-05T17:17:34Z",
+      "end_time": "2026-11-05T17:17:41Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marcos Antunes"
+      },
+      "text": "Off topic, but did anyone watch the match last night? I still can't believe that penalty.",
+      "start_time": "2026-11-05T17:24:10Z",
+      "end_time": "2026-11-05T17:24:15Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Pedro Almeida"
+      },
+      "text": "Don't remind me.",
+      "start_time": "2026-11-05T17:24:16Z",
+      "end_time": "2026-11-05T17:24:17Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Daniela Freitas"
+      },
+      "text": "So the scope is clear for us: one hundred and twenty users across admissions, marketing and management, the Campus One and Mailwave integrations, and WhatsApp.",
+      "start_time": "2026-11-05T17:46:30Z",
+      "end_time": "2026-11-05T17:46:40Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Daniela Freitas"
+      },
+      "text": "Please send us a proposal on that scope.",
+      "start_time": "2026-11-05T17:46:48Z",
+      "end_time": "2026-11-05T17:46:51Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Will do. I'll send the proposal by Friday the 13th, and we can review it together on Tuesday the 17th.",
+      "start_time": "2026-11-05T17:46:57Z",
+      "end_time": "2026-11-05T17:47:05Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Daniela Freitas"
+      },
+      "text": "Tuesday the 17th works.",
+      "start_time": "2026-11-05T17:47:08Z",
+      "end_time": "2026-11-05T17:47:10Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marcos Antunes"
+      },
+      "text": "And I will send you our security questionnaire by Monday.",
+      "start_time": "2026-11-05T17:47:15Z",
+      "end_time": "2026-11-05T17:47:19Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Daniela Freitas"
+      },
+      "text": "Thank you both, this was very productive.",
+      "start_time": "2026-11-05T17:51:40Z",
+      "end_time": "2026-11-05T17:51:43Z"
+    }
+  ]
+}

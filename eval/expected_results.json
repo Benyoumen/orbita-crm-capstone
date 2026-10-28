@@ -1,0 +1,1392 @@
+{
+  "description": "Expected results for the Call-to-CRM eval set (Orbita CRM, meetings from Granola). Each case starts from the seed CRM in data/opportunities.json and data/clients.json. Fields absent from a case are expected as no_evidence. status_any = several acceptable statuses; value / value_any compared by type; must_include = list of groups, every group must match and any keyword of a group is enough (case-insensitive); must_not_include = keywords that must not appear; note_must_include checks the field's note. 'unchanged' = the agent proposed exactly the approved value: nothing to decide, nothing written.",
+  "cases": [
+    {
+      "case_id": "T1",
+      "prd_case": 1,
+      "name": "Happy path - complete discovery call",
+      "proves": "A complete discovery call fills every field with a quote, and the stage moves only when the need, the decision-maker and the timeline are all on the call.",
+      "meeting_id": "MTG-2001",
+      "opportunity_id": "OPP-0142",
+      "run_as_user_id": "U01",
+      "expected_run_status": "Awaiting review",
+      "expected_source_status": "Ready",
+      "fields": {
+        "call_summary": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "spreadsheet"
+            ],
+            [
+              "workshop"
+            ]
+          ]
+        },
+        "objection": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "TMS",
+              "integrat"
+            ],
+            [
+              "adoption",
+              "hated",
+              "abandon",
+              "went back"
+            ]
+          ]
+        },
+        "commitment": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "reference case",
+              "case study"
+            ],
+            [
+              "Rui"
+            ]
+          ]
+        },
+        "next_step": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "workshop"
+            ],
+            [
+              "Rui"
+            ]
+          ]
+        },
+        "follow_up_owner": {
+          "status": "proposed",
+          "value": "Ana Ribeiro"
+        },
+        "follow_up_due_date": {
+          "status": "proposed",
+          "value": "2026-11-06"
+        },
+        "customer_need": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "account",
+              "deal"
+            ],
+            [
+              "renewal",
+              "pipeline"
+            ]
+          ]
+        },
+        "budget": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "80,000",
+              "80000",
+              "80k",
+              "80 000"
+            ],
+            [
+              "100,000",
+              "100000",
+              "100k",
+              "100 000"
+            ]
+          ]
+        },
+        "decision_maker": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "Marina"
+            ]
+          ]
+        },
+        "decision_process": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "Rui",
+              "IT"
+            ]
+          ]
+        },
+        "go_live_target": {
+          "status": "proposed",
+          "value": "2027-03"
+        },
+        "competitors": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "Northwind"
+            ],
+            [
+              "PipeSpark"
+            ]
+          ]
+        },
+        "seats": {
+          "status": "proposed",
+          "value": "60"
+        },
+        "departments": {
+          "status": "proposed",
+          "value": "Sales; Customer Success; Leadership"
+        },
+        "decision_criteria": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "pipeline"
+            ],
+            [
+              "renewal"
+            ],
+            [
+              "mobile"
+            ]
+          ]
+        },
+        "integrations": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "TMS",
+              "transport management"
+            ],
+            [
+              "Orion"
+            ]
+          ]
+        },
+        "employee_count": {
+          "status": "proposed",
+          "value": "850"
+        },
+        "current_solution": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "spreadsheet"
+            ],
+            [
+              "Outlook",
+              "email",
+              "inbox"
+            ]
+          ]
+        },
+        "stage": {
+          "status": "proposed",
+          "value": "Solution"
+        },
+        "metrics": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "renewal"
+            ],
+            [
+              "pipeline",
+              "spreadsheet"
+            ]
+          ]
+        },
+        "champion": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "Felipe"
+            ]
+          ]
+        },
+        "paper_process": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "quote",
+              "procurement"
+            ]
+          ]
+        }
+      },
+      "forbidden_stage_values": [
+        "Proposal",
+        "Negotiation",
+        "Contract",
+        "Closed Won",
+        "Closed Lost"
+      ],
+      "demo_role": "Main demo call (PRD F18 steps 1-4)."
+    },
+    {
+      "case_id": "T2",
+      "prd_case": 2,
+      "name": "No evidence - no follow-up date or further meeting agreed",
+      "proves": "When no date or next meeting is agreed, the agent leaves the due date and the stage empty instead of guessing, and records 'no budget' only because the customer said so.",
+      "meeting_id": "MTG-2002",
+      "opportunity_id": "OPP-0141",
+      "run_as_user_id": "U01",
+      "expected_run_status": "Awaiting review",
+      "expected_source_status": "Ready",
+      "fields": {
+        "call_summary": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "franchise",
+              "wholesale"
+            ],
+            [
+              "WhatsApp",
+              "spreadsheet"
+            ]
+          ]
+        },
+        "objection": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "BI",
+              "complicated",
+              "adoption"
+            ]
+          ]
+        },
+        "commitment": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "case study"
+            ]
+          ]
+        },
+        "next_step": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ],
+          "must_include": [
+            [
+              "case study"
+            ]
+          ]
+        },
+        "follow_up_owner": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ],
+          "value": "Ana Ribeiro"
+        },
+        "follow_up_due_date": {
+          "status": "no_evidence"
+        },
+        "customer_need": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "franchise"
+            ],
+            [
+              "wholesale"
+            ]
+          ]
+        },
+        "budget": {
+          "status": "proposed",
+          "value": "No budget allocated"
+        },
+        "decision_criteria": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ]
+        },
+        "employee_count": {
+          "status": "proposed",
+          "value": "1200"
+        },
+        "current_solution": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "WhatsApp"
+            ],
+            [
+              "spreadsheet"
+            ]
+          ]
+        },
+        "stage": {
+          "status": "no_evidence",
+          "note_must_include": [
+            [
+              "conversation",
+              "meeting",
+              "demo",
+              "further"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "T3",
+      "prd_case": 3,
+      "name": "Contradiction with seller-approved values (short call)",
+      "proves": "When the call cancels an approved next step without agreeing a new one, the agent flags the conflict and lets the seller decide; a short call that ended normally is still usable.",
+      "meeting_id": "MTG-2003",
+      "opportunity_id": "OPP-0143",
+      "run_as_user_id": "U01",
+      "expected_run_status": "Awaiting review",
+      "expected_source_status": "Ready",
+      "fields": {
+        "call_summary": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "board",
+              "budget",
+              "froze",
+              "frozen"
+            ],
+            [
+              "demo"
+            ]
+          ]
+        },
+        "objection": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "board",
+              "budget",
+              "froze",
+              "frozen",
+              "freeze"
+            ]
+          ]
+        },
+        "commitment": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ],
+          "must_include": [
+            [
+              "reach out",
+              "January",
+              "budget"
+            ]
+          ],
+          "note": "Conditional promise; a proposal or no_evidence is acceptable."
+        },
+        "next_step": {
+          "status": "contradictory"
+        },
+        "follow_up_owner": {
+          "status_any": [
+            "no_evidence",
+            "contradictory"
+          ]
+        },
+        "follow_up_due_date": {
+          "status": "contradictory"
+        },
+        "customer_need": {
+          "status_any": [
+            "no_evidence",
+            "unchanged"
+          ]
+        },
+        "budget": {
+          "status_any": [
+            "unchanged",
+            "proposed"
+          ],
+          "must_include": [
+            [
+              "90,000",
+              "90000",
+              "90k",
+              "90 000"
+            ]
+          ]
+        },
+        "decision_maker": {
+          "status_any": [
+            "no_evidence",
+            "unchanged"
+          ]
+        },
+        "decision_process": {
+          "status_any": [
+            "no_evidence",
+            "proposed"
+          ]
+        },
+        "go_live_target": {
+          "status_any": [
+            "no_evidence",
+            "contradictory"
+          ]
+        },
+        "seats": {
+          "status_any": [
+            "no_evidence",
+            "unchanged"
+          ]
+        },
+        "stage": {
+          "status": "no_evidence"
+        }
+      },
+      "demo_role": "Contradiction demo (PRD F18 step 5)."
+    },
+    {
+      "case_id": "T4",
+      "prd_case": 4,
+      "name": "Unusable source - recording cut off mid-sentence",
+      "proves": "A recording that stops mid-sentence is blocked before the agent runs: no proposals and nothing to submit.",
+      "meeting_id": "MTG-2004",
+      "opportunity_id": "OPP-0141",
+      "run_as_user_id": "U01",
+      "expected_run_status": "Blocked",
+      "expected_source_status": "Incomplete",
+      "fields": {},
+      "demo_role": "Blocked demo (PRD F18 step 5)."
+    },
+    {
+      "case_id": "T5",
+      "prd_case": 4,
+      "name": "New client - a meeting with a company that is not in the CRM",
+      "proves": "A conversation with a company the CRM does not know becomes a proposal for a new client and opportunity: nothing is created until the seller approves (or Settings allow it), and the fields are proposed like any other run.",
+      "meeting_id": "MTG-2005",
+      "opportunity_id": null,
+      "run_as_user_id": "U01",
+      "expected_run_status": "Awaiting review",
+      "expected_source_status": "Ready",
+      "fields": {
+        "call_summary": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "visit",
+              "representative"
+            ]
+          ]
+        },
+        "commitment": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ]
+        },
+        "next_step": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ]
+        },
+        "follow_up_owner": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ]
+        },
+        "customer_need": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "visit",
+              "report"
+            ]
+          ]
+        },
+        "decision_criteria": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "tablet"
+            ],
+            [
+              "sample"
+            ]
+          ]
+        },
+        "objection": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ]
+        },
+        "seats": {
+          "status_any": [
+            "no_evidence",
+            "proposed"
+          ],
+          "value_any": [
+            "150"
+          ]
+        },
+        "departments": {
+          "status_any": [
+            "no_evidence",
+            "proposed"
+          ]
+        },
+        "current_solution": {
+          "status_any": [
+            "no_evidence",
+            "proposed"
+          ]
+        },
+        "stage": {
+          "status": "no_evidence",
+          "note_must_include": [
+            [
+              "conversation",
+              "meeting",
+              "demo",
+              "further"
+            ]
+          ]
+        }
+      },
+      "expect_new_client": "Delta Pharma"
+    },
+    {
+      "case_id": "T6",
+      "prd_case": 5,
+      "name": "Stage boundary - 'let's sign' before the decision-maker has the proposal, spoken deal amount, stated budget",
+      "proves": "'Let's sign' from someone who is not the decision-maker does not move the stage; a spoken deal amount is ignored while the stated budget is kept.",
+      "meeting_id": "MTG-2006",
+      "opportunity_id": "OPP-0144",
+      "run_as_user_id": "U01",
+      "expected_run_status": "Awaiting review",
+      "expected_source_status": "Ready",
+      "fields": {
+        "call_summary": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "CFO",
+              "Helena"
+            ]
+          ]
+        },
+        "commitment": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "forward"
+            ],
+            [
+              "Helena",
+              "CFO"
+            ]
+          ]
+        },
+        "next_step": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "Helena",
+              "CFO"
+            ]
+          ]
+        },
+        "follow_up_owner": {
+          "status": "unchanged",
+          "value": "Ana Ribeiro"
+        },
+        "follow_up_due_date": {
+          "status": "proposed",
+          "value": "2026-11-12"
+        },
+        "budget": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "120,000",
+              "120000",
+              "120k",
+              "120 000"
+            ]
+          ],
+          "must_not_include": [
+            "1,000,000",
+            "million"
+          ]
+        },
+        "decision_maker": {
+          "status_any": [
+            "unchanged",
+            "no_evidence"
+          ]
+        },
+        "decision_process": {
+          "status_any": [
+            "unchanged",
+            "no_evidence",
+            "proposed"
+          ],
+          "must_include": [
+            [
+              "CFO",
+              "Helena"
+            ]
+          ]
+        },
+        "seats": {
+          "status_any": [
+            "unchanged",
+            "no_evidence"
+          ],
+          "value": "75"
+        },
+        "departments": {
+          "status_any": [
+            "unchanged",
+            "no_evidence"
+          ],
+          "value": "Sales; Customer Service"
+        },
+        "stage": {
+          "status": "no_evidence",
+          "note_must_include": [
+            [
+              "CFO",
+              "decision-maker",
+              "decision maker",
+              "Helena"
+            ]
+          ]
+        },
+        "champion": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "Tiago"
+            ]
+          ]
+        },
+        "paper_process": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "legal",
+              "contract"
+            ]
+          ]
+        }
+      },
+      "forbidden_stage_values": [
+        "Negotiation",
+        "Contract",
+        "Closed Won",
+        "Closed Lost"
+      ],
+      "expect_ignored_must_include": [
+        [
+          "million",
+          "1,000,000"
+        ]
+      ]
+    },
+    {
+      "case_id": "T7",
+      "prd_case": 6,
+      "name": "Seller edits a proposal",
+      "proves": "The seller can rewrite a proposal: the CRM receives the seller's text and the record keeps both versions, who decided and when.",
+      "meeting_id": "MTG-2007",
+      "opportunity_id": "OPP-0146",
+      "run_as_user_id": "U01",
+      "expected_run_status": "Awaiting review",
+      "expected_source_status": "Ready",
+      "fields": {
+        "call_summary": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "lead"
+            ],
+            [
+              "demo"
+            ]
+          ]
+        },
+        "objection": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "broker"
+            ],
+            [
+              "signal",
+              "offline",
+              "connectivity"
+            ]
+          ]
+        },
+        "commitment": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "demo",
+              "recorded"
+            ]
+          ]
+        },
+        "next_step": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "demo"
+            ]
+          ]
+        },
+        "follow_up_owner": {
+          "status": "proposed",
+          "value": "Ana Ribeiro"
+        },
+        "follow_up_due_date": {
+          "status": "proposed",
+          "value_any": [
+            "2026-11-10",
+            "2026-11-12"
+          ]
+        },
+        "customer_need": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "lead"
+            ],
+            [
+              "broker",
+              "route",
+              "routing"
+            ]
+          ]
+        },
+        "budget": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "60,000",
+              "60000",
+              "60k",
+              "60 000"
+            ]
+          ]
+        },
+        "decision_maker": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "Sofia"
+            ]
+          ]
+        },
+        "decision_process": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ],
+          "must_include": [
+            [
+              "CEO",
+              "Sofia",
+              "Legal",
+              "contract"
+            ]
+          ]
+        },
+        "go_live_target": {
+          "status": "proposed",
+          "value": "2027-03"
+        },
+        "seats": {
+          "status": "proposed",
+          "value": "105"
+        },
+        "departments": {
+          "status": "proposed",
+          "value": "Sales; Marketing"
+        },
+        "decision_criteria": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "rout"
+            ],
+            [
+              "funnel",
+              "launch"
+            ]
+          ]
+        },
+        "integrations": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ],
+          "must_include": [
+            [
+              "website",
+              "WhatsApp"
+            ]
+          ]
+        },
+        "employee_count": {
+          "status": "proposed",
+          "value": "400"
+        },
+        "current_solution": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "spreadsheet"
+            ]
+          ]
+        },
+        "stage": {
+          "status": "proposed",
+          "value": "Solution"
+        },
+        "metrics": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "two hours",
+              "2 hours"
+            ]
+          ]
+        },
+        "paper_process": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ],
+          "must_include": [
+            [
+              "Legal",
+              "contract"
+            ]
+          ]
+        },
+        "competitors": {
+          "status_any": [
+            "no_evidence",
+            "proposed"
+          ]
+        }
+      },
+      "review_script": {
+        "edit": {
+          "customer_need": "Capture every lead from the website, WhatsApp and sales stands in one CRM and route it automatically to the right broker, with one funnel per launch"
+        },
+        "approve": "all other fields"
+      },
+      "platform_checks": [
+        "The CRM receives the seller's edited customer need, not the agent's version",
+        "The activity record keeps both the agent proposal and the seller's final value",
+        "The activity record stores the reviewer (U01) and the decision time",
+        "Each written field records its write result (Succeeded)"
+      ]
+    },
+    {
+      "case_id": "T8",
+      "prd_case": 7,
+      "name": "Access boundary - seller does not own the opportunity",
+      "proves": "A seller who does not own the opportunity sees nothing from it, and the attempt is logged.",
+      "meeting_id": "MTG-2008",
+      "opportunity_id": "OPP-0145",
+      "run_as_user_id": "U01",
+      "expected_run_status": "Blocked",
+      "expected_source_status": "AccessDenied",
+      "fields": {},
+      "platform_checks": [
+        "No opportunity or client data is shown to U01",
+        "The access-denied attempt is written to the activity log"
+      ]
+    },
+    {
+      "case_id": "T9",
+      "prd_case": 8,
+      "name": "Solution fit - scope session with every typed field; scope agreed and proposal requested",
+      "proves": "A scope session fills users, teams, integrations, competitors and go-live in valid formats, and the stage moves to Proposal only when the scope is agreed and a proposal is requested.",
+      "meeting_id": "MTG-2009",
+      "opportunity_id": "OPP-0147",
+      "run_as_user_id": "U01",
+      "expected_run_status": "Awaiting review",
+      "expected_source_status": "Ready",
+      "fields": {
+        "call_summary": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "120",
+              "scope"
+            ],
+            [
+              "proposal"
+            ]
+          ]
+        },
+        "objection": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "data",
+              "Brazil",
+              "protection"
+            ]
+          ]
+        },
+        "commitment": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "proposal"
+            ],
+            [
+              "questionnaire"
+            ]
+          ]
+        },
+        "next_step": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "proposal"
+            ]
+          ]
+        },
+        "follow_up_owner": {
+          "status": "unchanged",
+          "value": "Ana Ribeiro"
+        },
+        "follow_up_due_date": {
+          "status": "proposed",
+          "value": "2026-11-13"
+        },
+        "customer_need": {
+          "status_any": [
+            "proposed",
+            "unchanged",
+            "no_evidence"
+          ],
+          "must_include": [
+            [
+              "enrol",
+              "prospect",
+              "student"
+            ]
+          ]
+        },
+        "budget": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "110,000",
+              "110000",
+              "110k",
+              "110 000"
+            ],
+            [
+              "130,000",
+              "130000",
+              "130k",
+              "130 000"
+            ]
+          ]
+        },
+        "decision_maker": {
+          "status_any": [
+            "unchanged",
+            "no_evidence"
+          ]
+        },
+        "decision_process": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "security"
+            ],
+            [
+              "board"
+            ]
+          ]
+        },
+        "go_live_target": {
+          "status": "proposed",
+          "value": "2027-05"
+        },
+        "competitors": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "Clarion"
+            ]
+          ]
+        },
+        "seats": {
+          "status": "proposed",
+          "value": "120"
+        },
+        "departments": {
+          "status": "proposed",
+          "value": "Sales; Marketing; Leadership"
+        },
+        "decision_criteria": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "lead",
+              "campaign"
+            ],
+            [
+              "funnel",
+              "enrol"
+            ],
+            [
+              "WhatsApp"
+            ]
+          ]
+        },
+        "integrations": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "Campus One"
+            ],
+            [
+              "Mailwave"
+            ],
+            [
+              "WhatsApp"
+            ]
+          ]
+        },
+        "current_solution": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "spreadsheet"
+            ],
+            [
+              "WhatsApp"
+            ]
+          ]
+        },
+        "stage": {
+          "status": "proposed",
+          "value": "Proposal"
+        },
+        "metrics": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "8",
+              "eight"
+            ],
+            [
+              "12",
+              "twelve"
+            ]
+          ]
+        },
+        "paper_process": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "contract",
+              "data processing"
+            ]
+          ]
+        }
+      },
+      "forbidden_stage_values": [
+        "Negotiation",
+        "Contract",
+        "Closed Won",
+        "Closed Lost"
+      ]
+    },
+    {
+      "case_id": "T10",
+      "prd_case": 9,
+      "name": "Granola speaker attribution - customer voices without a name",
+      "proves": "When Granola cannot tell who is speaking, the agent still records the facts but does not name a decision-maker or move the stage on that statement.",
+      "meeting_id": "MTG-2010",
+      "opportunity_id": "OPP-0148",
+      "run_as_user_id": "U01",
+      "expected_run_status": "Awaiting review",
+      "expected_source_status": "Ready",
+      "fields": {
+        "call_summary": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "dealer"
+            ],
+            [
+              "demo"
+            ]
+          ]
+        },
+        "objection": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "signal",
+              "offline"
+            ]
+          ]
+        },
+        "commitment": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "video",
+              "offline"
+            ]
+          ]
+        },
+        "next_step": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "demo"
+            ]
+          ]
+        },
+        "follow_up_owner": {
+          "status": "proposed",
+          "value": "Ana Ribeiro"
+        },
+        "follow_up_due_date": {
+          "status": "proposed",
+          "value_any": [
+            "2026-11-09",
+            "2026-11-11"
+          ]
+        },
+        "customer_need": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "dealer"
+            ],
+            [
+              "visit",
+              "order"
+            ]
+          ]
+        },
+        "budget": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "70,000",
+              "70000",
+              "70k",
+              "70 000"
+            ]
+          ]
+        },
+        "decision_maker": {
+          "status": "no_evidence"
+        },
+        "go_live_target": {
+          "status": "proposed",
+          "value": "2027-07"
+        },
+        "seats": {
+          "status": "proposed",
+          "value": "38"
+        },
+        "departments": {
+          "status": "proposed",
+          "value": "Sales; Leadership"
+        },
+        "decision_criteria": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "offline"
+            ],
+            [
+              "GPS",
+              "check-in"
+            ]
+          ]
+        },
+        "integrations": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "Orion"
+            ]
+          ]
+        },
+        "employee_count": {
+          "status": "proposed",
+          "value": "450"
+        },
+        "current_solution": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "paper"
+            ],
+            [
+              "spreadsheet"
+            ]
+          ]
+        },
+        "stage": {
+          "status": "no_evidence",
+          "note_must_include": [
+            [
+              "decision-maker",
+              "decision maker"
+            ]
+          ]
+        },
+        "champion": {
+          "status": "no_evidence"
+        }
+      },
+      "forbidden_stage_values": [
+        "Solution",
+        "Proposal",
+        "Negotiation",
+        "Contract",
+        "Closed Won",
+        "Closed Lost"
+      ]
+    },
+    {
+      "case_id": "T11",
+      "prd_case": 10,
+      "name": "WhatsApp chat - terms agreed in an exported chat",
+      "proves": "A WhatsApp export is read like a meeting: it is attributed to the right opportunity by its contact, relative dates come from the message that says them, and the decision-maker's written yes plus the request for the contract move Negotiation to Contract.",
+      "meeting_id": "MTG-2011",
+      "opportunity_id": "OPP-0149",
+      "run_as_user_id": "U01",
+      "expected_run_status": "Awaiting review",
+      "expected_source_status": "Ready",
+      "forbidden_stage_values": [
+        "Closed Won",
+        "Closed Lost"
+      ],
+      "fields": {
+        "call_summary": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "contract"
+            ]
+          ]
+        },
+        "commitment": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "contract"
+            ]
+          ]
+        },
+        "next_step": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "contract"
+            ],
+            [
+              "sign"
+            ]
+          ]
+        },
+        "follow_up_owner": {
+          "status_any": [
+            "unchanged",
+            "no_evidence"
+          ]
+        },
+        "follow_up_due_date": {
+          "status": "proposed",
+          "value": "2026-11-06"
+        },
+        "paper_process": {
+          "status": "proposed",
+          "must_include": [
+            [
+              "procurement",
+              "Talita"
+            ],
+            [
+              "sign"
+            ]
+          ]
+        },
+        "integrations": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ],
+          "must_include": [
+            [
+              "Entra"
+            ]
+          ]
+        },
+        "decision_criteria": {
+          "status_any": [
+            "proposed",
+            "no_evidence",
+            "unchanged"
+          ]
+        },
+        "objection": {
+          "status_any": [
+            "proposed",
+            "no_evidence"
+          ]
+        },
+        "seats": {
+          "status_any": [
+            "unchanged",
+            "no_evidence"
+          ]
+        },
+        "decision_maker": {
+          "status_any": [
+            "unchanged",
+            "no_evidence"
+          ]
+        },
+        "customer_need": {
+          "status_any": [
+            "unchanged",
+            "no_evidence"
+          ]
+        },
+        "stage": {
+          "status": "proposed",
+          "value": "Contract"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# case: T8 - Ana recorded a call on Lucas's opportunity (access denied for Ana)
+# title: Horizonte Foods - solution walkthrough
+# start: 2026-11-03T15:00:00-03:00
+# scheduled_minutes: 30
+# owner: ana.ribeiro@orbitacrm.example
+# attendees: Lucas Moreira <lucas.moreira@orbitacrm.example>; Ana Ribeiro <ana.ribeiro@orbitacrm.example>; Paula Reis <paula.reis@horizontefoods.example>
+# summary: Solution walkthrough with Horizonte Foods' Supply Chain Director, led by Lucas Moreira with Ana Ribeiro joining as backup.
+[00:00:08] Lucas Moreira (Orbita): Hi Paula. Ana is joining us today because I'm on holiday next week and she'll cover for me.
+[00:00:16] Paula Reis (Horizonte Foods): Hi Lucas, hi Ana. Welcome.
+[00:00:20] Ana Ribeiro (Orbita): Hi Paula, nice to meet you.
+[00:00:25] Lucas Moreira (Orbita): Today we'll walk through how your forty distributors would log orders and visits in the CRM.
+[00:02:10] Paula Reis (Horizonte Foods): The main thing for us is one view per distributor: orders, visits, and the promotions they're running.
+[00:09:45] Paula Reis (Horizonte Foods): This looks good. I'd like my regional managers to see it before we go further.
+[00:10:02] Lucas Moreira (Orbita): Of course. I'll set up a session with your regional managers when I'm back.
+[00:26:30] Paula Reis (Horizonte Foods): Thanks, both. Enjoy your holiday, Lucas.

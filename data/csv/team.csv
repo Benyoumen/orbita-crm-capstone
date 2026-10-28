@@ -1,0 +1,7 @@
+user_id,name,role,email,access
+U01,Ana Ribeiro,Account Executive,ana.ribeiro@orbitacrm.example,own_opportunities
+U02,Lucas Moreira,Account Executive,lucas.moreira@orbitacrm.example,own_opportunities
+U03,Carla Mendes,Account Executive,carla.mendes@orbitacrm.example,own_opportunities
+U04,Juliana Costa,Sales Manager,juliana.costa@orbitacrm.example,all_opportunities_read
+U05,Pedro Almeida,Solutions Engineer,pedro.almeida@orbitacrm.example,none
+U06,Beatriz Souza,Implementation Lead,beatriz.souza@orbitacrm.example,none

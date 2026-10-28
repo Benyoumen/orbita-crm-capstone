@@ -1,0 +1,151 @@
+{
+  "id": "not_d1c744f836648e",
+  "object": "note",
+  "title": "Intro call - Delta Pharma",
+  "owner": {
+    "name": "Ana Ribeiro",
+    "email": "ana.ribeiro@orbitacrm.example"
+  },
+  "created_at": "2026-11-04T19:00:00Z",
+  "updated_at": "2026-11-04T19:27:42Z",
+  "deleted_at": null,
+  "web_url": "https://notes.granola.ai/d/not_d1c744f836648e",
+  "calendar_event": {
+    "event_title": "Intro call - Delta Pharma",
+    "invitees": [
+      {
+        "email": "ana.ribeiro@orbitacrm.example"
+      },
+      {
+        "email": "livia.prado@deltapharma.example"
+      }
+    ],
+    "organiser": "ana.ribeiro@orbitacrm.example",
+    "calendar_event_id": "evt_d1c744f836648e",
+    "scheduled_start_time": "2026-11-04T19:00:00Z",
+    "scheduled_end_time": "2026-11-04T19:30:00Z"
+  },
+  "attachments": [],
+  "attendees": [
+    {
+      "name": "Ana Ribeiro",
+      "email": "ana.ribeiro@orbitacrm.example"
+    },
+    {
+      "name": "Livia Prado",
+      "email": "livia.prado@deltapharma.example"
+    }
+  ],
+  "folder_membership": [
+    {
+      "id": "fol_CRMsyncFolder1",
+      "object": "folder",
+      "name": "CRM sync",
+      "parent_folder_id": null,
+      "space_id": null
+    }
+  ],
+  "space_membership": [],
+  "summary_text": "Intro call with Delta Pharma's Commercial Excellence Manager about a CRM for medical representatives. Delta Pharma is not a client in the CRM yet.",
+  "summary_markdown": "Intro call with Delta Pharma's Commercial Excellence Manager about a CRM for medical representatives. Delta Pharma is not a client in the CRM yet.",
+  "private_notes_text": null,
+  "private_notes_markdown": null,
+  "transcript": [
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Hi Livia, nice to meet you. Thanks for accepting the invite.",
+      "start_time": "2026-11-04T19:00:07Z",
+      "end_time": "2026-11-04T19:00:11Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Livia Prado"
+      },
+      "text": "Hi Ana. A colleague recommended you, so I wanted to understand what you do.",
+      "start_time": "2026-11-04T19:00:13Z",
+      "end_time": "2026-11-04T19:00:18Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Happy to explain. But first, tell me a bit about Delta Pharma.",
+      "start_time": "2026-11-04T19:00:24Z",
+      "end_time": "2026-11-04T19:00:29Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Livia Prado"
+      },
+      "text": "We're a mid-sized pharmaceutical company. We have about one hundred and fifty medical representatives who visit doctors and pharmacies every day.",
+      "start_time": "2026-11-04T19:00:30Z",
+      "end_time": "2026-11-04T19:00:38Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Livia Prado"
+      },
+      "text": "Their visit reports are in a very old system that nobody likes. I'm looking at options for next year.",
+      "start_time": "2026-11-04T19:01:15Z",
+      "end_time": "2026-11-04T19:01:22Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "What would a better tool need to do for the representatives?",
+      "start_time": "2026-11-04T19:03:40Z",
+      "end_time": "2026-11-04T19:03:44Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Livia Prado"
+      },
+      "text": "Plan the visits, record what was discussed, and track samples. And it has to work on a tablet.",
+      "start_time": "2026-11-04T19:03:47Z",
+      "end_time": "2026-11-04T19:03:54Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "We have pharma clients doing exactly that. I'll send you a short overview after the call.",
+      "start_time": "2026-11-04T19:09:20Z",
+      "end_time": "2026-11-04T19:09:26Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Livia Prado"
+      },
+      "text": "Great. I'll share it with my director.",
+      "start_time": "2026-11-04T19:09:31Z",
+      "end_time": "2026-11-04T19:09:34Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Livia Prado"
+      },
+      "text": "Thanks, Ana. Nice to meet you.",
+      "start_time": "2026-11-04T19:25:40Z",
+      "end_time": "2026-11-04T19:25:42Z"
+    }
+  ]
+}

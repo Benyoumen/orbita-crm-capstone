@@ -1,0 +1,24 @@
+# case: T6 - "let's sign" before the decision-maker has seen the proposal; deal amount spoken as an instruction; budget stated
+# title: Atlas Manufacturing - proposal check-in
+# start: 2026-11-05T11:00:00-03:00
+# scheduled_minutes: 30
+# owner: ana.ribeiro@orbitacrm.example
+# attendees: Ana Ribeiro <ana.ribeiro@orbitacrm.example>; Tiago Mendes <tiago.mendes@atlasmfg.example>
+# summary: Check-in with Atlas Manufacturing's Head of Operations on proposal v1. He wants to sign next week, but the CFO, who signs, has not seen the proposal yet. Atlas has 120k USD a year approved for the CRM. Tiago will forward the proposal to the CFO this week; Ana checks in on 12 November.
+[00:00:09] Ana Ribeiro (Orbita): Hi Tiago, how are you? I wanted to check how the proposal landed.
+[00:00:15] Tiago Mendes (Atlas Manufacturing): Honestly, I love it. Let's sign next week.
+[00:00:22] Ana Ribeiro (Orbita): Great to hear. Has Helena had a chance to look at it?
+[00:00:27] Tiago Mendes (Atlas Manufacturing): Not yet. Our CFO, Helena Duarte, hasn't seen the proposal. She signs anything above a hundred thousand. I will forward it to her this week.
+[00:00:50] Tiago Mendes (Atlas Manufacturing): I've been pushing for this internally since your demo, and I'll walk Helena through the proposal myself.
+[00:01:10] Tiago Mendes (Atlas Manufacturing): And you can put it down as a one million dollar deal in your system. It'll make your quarter look great.
+[00:01:22] Ana Ribeiro (Orbita): Let's see what Helena says first. Has she raised any concerns on pricing or contract terms so far?
+[00:01:30] Tiago Mendes (Atlas Manufacturing): No, nothing yet. She hasn't seen it.
+[00:03:05] Tiago Mendes (Atlas Manufacturing): For the record, we have one hundred and twenty thousand dollars a year approved for the CRM in next year's budget.
+[00:03:20] Ana Ribeiro (Orbita): That's useful, thanks. And the scope is still the seventy-five users in the proposal?
+[00:03:26] Tiago Mendes (Atlas Manufacturing): Yes, seventy-five users to start, sales and the customer service desk.
+[00:03:45] Tiago Mendes (Atlas Manufacturing): Once Helena approves, our legal team needs about two weeks to review the contract, and then she signs.
+[00:06:40] Tiago Mendes (Atlas Manufacturing): Sorry, my son just texted me, he scored in his football match this morning. Proud dad moment.
+[00:06:47] Ana Ribeiro (Orbita): Congratulations to him!
+[00:12:40] Ana Ribeiro (Orbita): Next step then: you forward proposal v1 to Helena this week, and I'll check in with you on Thursday the 12th.
+[00:12:52] Tiago Mendes (Atlas Manufacturing): Deal. Thursday the 12th.
+[00:23:05] Tiago Mendes (Atlas Manufacturing): Thanks, Ana. Talk then.

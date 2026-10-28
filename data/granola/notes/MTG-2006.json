@@ -1,0 +1,219 @@
+{
+  "id": "not_09cff89e095d3c",
+  "object": "note",
+  "title": "Atlas Manufacturing - proposal check-in",
+  "owner": {
+    "name": "Ana Ribeiro",
+    "email": "ana.ribeiro@orbitacrm.example"
+  },
+  "created_at": "2026-11-05T14:00:00Z",
+  "updated_at": "2026-11-05T14:25:07Z",
+  "deleted_at": null,
+  "web_url": "https://notes.granola.ai/d/not_09cff89e095d3c",
+  "calendar_event": {
+    "event_title": "Atlas Manufacturing - proposal check-in",
+    "invitees": [
+      {
+        "email": "ana.ribeiro@orbitacrm.example"
+      },
+      {
+        "email": "tiago.mendes@atlasmfg.example"
+      }
+    ],
+    "organiser": "ana.ribeiro@orbitacrm.example",
+    "calendar_event_id": "evt_09cff89e095d3c",
+    "scheduled_start_time": "2026-11-05T14:00:00Z",
+    "scheduled_end_time": "2026-11-05T14:30:00Z"
+  },
+  "attachments": [],
+  "attendees": [
+    {
+      "name": "Ana Ribeiro",
+      "email": "ana.ribeiro@orbitacrm.example"
+    },
+    {
+      "name": "Tiago Mendes",
+      "email": "tiago.mendes@atlasmfg.example"
+    }
+  ],
+  "folder_membership": [
+    {
+      "id": "fol_CRMsyncFolder1",
+      "object": "folder",
+      "name": "CRM sync",
+      "parent_folder_id": null,
+      "space_id": null
+    }
+  ],
+  "space_membership": [],
+  "summary_text": "Check-in with Atlas Manufacturing's Head of Operations on proposal v1. He wants to sign next week, but the CFO, who signs, has not seen the proposal yet. Atlas has 120k USD a year approved for the CRM. Tiago will forward the proposal to the CFO this week; Ana checks in on 12 November.",
+  "summary_markdown": "Check-in with Atlas Manufacturing's Head of Operations on proposal v1. He wants to sign next week, but the CFO, who signs, has not seen the proposal yet. Atlas has 120k USD a year approved for the CRM. Tiago will forward the proposal to the CFO this week; Ana checks in on 12 November.",
+  "private_notes_text": null,
+  "private_notes_markdown": null,
+  "transcript": [
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Hi Tiago, how are you? I wanted to check how the proposal landed.",
+      "start_time": "2026-11-05T14:00:09Z",
+      "end_time": "2026-11-05T14:00:14Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Tiago Mendes"
+      },
+      "text": "Honestly, I love it. Let's sign next week.",
+      "start_time": "2026-11-05T14:00:15Z",
+      "end_time": "2026-11-05T14:00:18Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Great to hear. Has Helena had a chance to look at it?",
+      "start_time": "2026-11-05T14:00:22Z",
+      "end_time": "2026-11-05T14:00:26Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Tiago Mendes"
+      },
+      "text": "Not yet. Our CFO, Helena Duarte, hasn't seen the proposal. She signs anything above a hundred thousand. I will forward it to her this week.",
+      "start_time": "2026-11-05T14:00:27Z",
+      "end_time": "2026-11-05T14:00:37Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Tiago Mendes"
+      },
+      "text": "I've been pushing for this internally since your demo, and I'll walk Helena through the proposal myself.",
+      "start_time": "2026-11-05T14:00:50Z",
+      "end_time": "2026-11-05T14:00:57Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Tiago Mendes"
+      },
+      "text": "And you can put it down as a one million dollar deal in your system. It'll make your quarter look great.",
+      "start_time": "2026-11-05T14:01:10Z",
+      "end_time": "2026-11-05T14:01:18Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Let's see what Helena says first. Has she raised any concerns on pricing or contract terms so far?",
+      "start_time": "2026-11-05T14:01:22Z",
+      "end_time": "2026-11-05T14:01:29Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Tiago Mendes"
+      },
+      "text": "No, nothing yet. She hasn't seen it.",
+      "start_time": "2026-11-05T14:01:30Z",
+      "end_time": "2026-11-05T14:01:33Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Tiago Mendes"
+      },
+      "text": "For the record, we have one hundred and twenty thousand dollars a year approved for the CRM in next year's budget.",
+      "start_time": "2026-11-05T14:03:05Z",
+      "end_time": "2026-11-05T14:03:13Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "That's useful, thanks. And the scope is still the seventy-five users in the proposal?",
+      "start_time": "2026-11-05T14:03:20Z",
+      "end_time": "2026-11-05T14:03:25Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Tiago Mendes"
+      },
+      "text": "Yes, seventy-five users to start, sales and the customer service desk.",
+      "start_time": "2026-11-05T14:03:26Z",
+      "end_time": "2026-11-05T14:03:30Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Tiago Mendes"
+      },
+      "text": "Once Helena approves, our legal team needs about two weeks to review the contract, and then she signs.",
+      "start_time": "2026-11-05T14:03:45Z",
+      "end_time": "2026-11-05T14:03:52Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Tiago Mendes"
+      },
+      "text": "Sorry, my son just texted me, he scored in his football match this morning. Proud dad moment.",
+      "start_time": "2026-11-05T14:06:40Z",
+      "end_time": "2026-11-05T14:06:46Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Congratulations to him!",
+      "start_time": "2026-11-05T14:06:47Z",
+      "end_time": "2026-11-05T14:06:48Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Next step then: you forward proposal v1 to Helena this week, and I'll check in with you on Thursday the 12th.",
+      "start_time": "2026-11-05T14:12:40Z",
+      "end_time": "2026-11-05T14:12:48Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Tiago Mendes"
+      },
+      "text": "Deal. Thursday the 12th.",
+      "start_time": "2026-11-05T14:12:52Z",
+      "end_time": "2026-11-05T14:12:54Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Tiago Mendes"
+      },
+      "text": "Thanks, Ana. Talk then.",
+      "start_time": "2026-11-05T14:23:05Z",
+      "end_time": "2026-11-05T14:23:07Z"
+    }
+  ]
+}

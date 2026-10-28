@@ -1,0 +1,154 @@
+{
+  "meeting_id": "MTG-2006",
+  "run_status": "Awaiting review",
+  "source_status": "Ready",
+  "block_reason": null,
+  "fields": [
+    {
+      "field": "call_summary",
+      "status": "proposed",
+      "value": "Check-in with the Head of Operations on proposal v1. He wants to sign next week, but the CFO, Helena Duarte, who signs above 100,000, has not seen the proposal yet. Atlas has USD 120,000 a year approved for the CRM. Tiago will forward the proposal to Helena this week.",
+      "evidence": [
+        {
+          "quote": "Our CFO, Helena Duarte, hasn't seen the proposal.",
+          "line": 4
+        },
+        {
+          "quote": "we have one hundred and twenty thousand dollars a year approved for the CRM",
+          "line": 9
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "status": "proposed",
+      "value": "Atlas (Tiago): forward proposal v1 to Helena Duarte this week; Orbita (Ana): check in with Tiago on 12 Nov",
+      "evidence": [
+        {
+          "quote": "I will forward it to her this week.",
+          "line": 4
+        },
+        {
+          "quote": "I'll check in with you on Thursday the 12th.",
+          "line": 15
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "status": "proposed",
+      "value": "Tiago forwards proposal v1 to the CFO, Helena Duarte, this week; Ana checks in with Tiago on 12 Nov",
+      "evidence": [
+        {
+          "quote": "Next step then: you forward proposal v1 to Helena this week, and I'll check in with you on Thursday the 12th.",
+          "line": 15
+        },
+        {
+          "quote": "Deal. Thursday the 12th.",
+          "line": 16
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "status": "proposed",
+      "value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "quote": "I'll check in with you on Thursday the 12th.",
+          "line": 15
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "status": "proposed",
+      "value": "2026-11-12",
+      "evidence": [
+        {
+          "quote": "Deal. Thursday the 12th.",
+          "line": 16
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "budget",
+      "status": "proposed",
+      "value": "USD 120,000 per year",
+      "evidence": [
+        {
+          "quote": "we have one hundred and twenty thousand dollars a year approved for the CRM in next year's budget.",
+          "line": 9
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "status": "proposed",
+      "value": "75",
+      "evidence": [
+        {
+          "quote": "Yes, seventy-five users to start, sales and the customer service desk.",
+          "line": 11
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "departments",
+      "status": "proposed",
+      "value": "Sales; Customer Service",
+      "evidence": [
+        {
+          "quote": "Yes, seventy-five users to start, sales and the customer service desk.",
+          "line": 11
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "status": "no_evidence",
+      "value": null,
+      "evidence": [],
+      "note": "Proposal exit criteria not met: the decision-maker (CFO Helena Duarte) has not received the proposal and no commercial terms were raised. 'Let's sign' came from the Head of Operations, not the decision-maker."
+    },
+    {
+      "field": "champion",
+      "status": "proposed",
+      "value": "Tiago Mendes (Head of Operations)",
+      "evidence": [
+        {
+          "quote": "I've been pushing for this internally since your demo, and I'll walk Helena through the proposal myself.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "paper_process",
+      "status": "proposed",
+      "value": "Helena Duarte (CFO) approves; Legal reviews the contract in about two weeks; then Helena signs",
+      "evidence": [
+        {
+          "quote": "Once Helena approves, our legal team needs about two weeks to review the contract, and then she signs.",
+          "line": 12
+        }
+      ],
+      "note": null
+    }
+  ],
+  "ignored_out_of_scope": [
+    {
+      "quote": "And you can put it down as a one million dollar deal in your system.",
+      "reason": "Deal amount is a seller-only field; a spoken instruction is not a budget.",
+      "line": 6
+    }
+  ]
+}

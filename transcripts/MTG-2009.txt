@@ -1,0 +1,32 @@
+[00:00:00] Ana Ribeiro (Orbita): Good afternoon, Daniela, Marcos. Pedro is with me again. The plan for today is to agree the scope, so we can prepare the proposal.
+[00:00:11] Daniela Freitas (Lumen Education): Perfect. We blocked the full hour, so let's use it.
+[00:00:19] Marcos Antunes (Lumen Education): And I brought my list of technical questions, as promised.
+[00:00:28] Ana Ribeiro (Orbita): Great. Daniela, let's start with the users. Who would use the CRM?
+[00:00:35] Daniela Freitas (Lumen Education): Our admissions counsellors are our sales team, eighty of them across the six campuses. Marketing has twenty-five people running the campaigns. And fifteen managers in the leadership team need the reports. So one hundred and twenty users.
+[00:01:15] Ana Ribeiro (Orbita): And how do the counsellors work today?
+[00:01:20] Daniela Freitas (Lumen Education): Each campus has its own spreadsheets, and a lot happens on WhatsApp. We have no idea how many prospects we lose between the first contact and the enrolment.
+[00:01:45] Daniela Freitas (Lumen Education): Our target for next year is to lift the conversion from first contact to enrolment from eight to twelve percent.
+[00:03:05] Ana Ribeiro (Orbita): What must the CRM do from day one?
+[00:03:09] Daniela Freitas (Lumen Education): Capture the leads from our campaigns, give each counsellor a follow-up list, show the enrolment funnel per campus, and keep the WhatsApp conversations with the prospect's record.
+[00:05:35] Marcos Antunes (Lumen Education): On integrations, it has to connect to Campus One, our student information system, because that is where an enrolment becomes official. And to Mailwave, the email tool marketing uses.
+[00:06:00] Pedro Almeida (Orbita): Both have APIs we've worked with. What about WhatsApp?
+[00:06:05] Marcos Antunes (Lumen Education): Yes, WhatsApp too, through the official business account.
+[00:09:25] Marcos Antunes (Lumen Education): My main concern is student data. It must stay in Brazil, and we need a data protection assessment before anything goes live.
+[00:09:46] Pedro Almeida (Orbita): Our data centre for Brazilian clients is in São Paulo, and we can support the assessment.
+[00:12:15] Ana Ribeiro (Orbita): How will the decision be made on your side?
+[00:12:20] Marcos Antunes (Lumen Education): First an IT security review and the data protection assessment. Then Daniela signs, and the board approves anything above one hundred and fifty thousand dollars a year.
+[00:12:45] Marcos Antunes (Lumen Education): On the paperwork, procurement will need your standard contract and the data processing agreement two weeks before the signature.
+[00:13:35] Ana Ribeiro (Orbita): And the budget?
+[00:13:39] Daniela Freitas (Lumen Education): We've approved between one hundred and ten and one hundred and thirty thousand dollars a year.
+[00:15:00] Ana Ribeiro (Orbita): Are you evaluating other options?
+[00:15:04] Daniela Freitas (Lumen Education): We're also looking at Clarion Sales Cloud. To be honest, they're cheaper, but their WhatsApp integration is weak.
+[00:17:25] Ana Ribeiro (Orbita): When does it need to be live?
+[00:17:29] Daniela Freitas (Lumen Education): The enrolment campaign for the second semester starts in June, so we need it live by May 2027.
+[00:24:05] Marcos Antunes (Lumen Education): Off topic, but did anyone watch the match last night? I still can't believe that penalty.
+[00:24:11] Pedro Almeida (Orbita): Don't remind me.
+[00:46:25] Daniela Freitas (Lumen Education): So the scope is clear for us: one hundred and twenty users across admissions, marketing and management, the Campus One and Mailwave integrations, and WhatsApp.
+[00:46:43] Daniela Freitas (Lumen Education): Please send us a proposal on that scope.
+[00:46:52] Ana Ribeiro (Orbita): Will do. I'll send the proposal by Friday the 13th, and we can review it together on Tuesday the 17th.
+[00:47:03] Daniela Freitas (Lumen Education): Tuesday the 17th works.
+[00:47:10] Marcos Antunes (Lumen Education): And I will send you our security questionnaire by Monday.
+[00:51:35] Daniela Freitas (Lumen Education): Thank you both, this was very productive.

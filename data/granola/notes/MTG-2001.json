@@ -1,0 +1,531 @@
+{
+  "id": "not_36a1e72a50a658",
+  "object": "note",
+  "title": "Acme Logistics - discovery call",
+  "owner": {
+    "name": "Ana Ribeiro",
+    "email": "ana.ribeiro@orbitacrm.example"
+  },
+  "created_at": "2026-11-03T13:00:00Z",
+  "updated_at": "2026-11-03T13:44:50Z",
+  "deleted_at": null,
+  "web_url": "https://notes.granola.ai/d/not_36a1e72a50a658",
+  "calendar_event": {
+    "event_title": "Acme Logistics - discovery call",
+    "invitees": [
+      {
+        "email": "ana.ribeiro@orbitacrm.example"
+      },
+      {
+        "email": "marina.lopes@acmelogistics.example"
+      },
+      {
+        "email": "felipe.nunes@acmelogistics.example"
+      }
+    ],
+    "organiser": "ana.ribeiro@orbitacrm.example",
+    "calendar_event_id": "evt_36a1e72a50a658",
+    "scheduled_start_time": "2026-11-03T13:00:00Z",
+    "scheduled_end_time": "2026-11-03T13:45:00Z"
+  },
+  "attachments": [],
+  "attendees": [
+    {
+      "name": "Ana Ribeiro",
+      "email": "ana.ribeiro@orbitacrm.example"
+    },
+    {
+      "name": "Marina Lopes",
+      "email": "marina.lopes@acmelogistics.example"
+    },
+    {
+      "name": "Felipe Nunes",
+      "email": "felipe.nunes@acmelogistics.example"
+    }
+  ],
+  "folder_membership": [
+    {
+      "id": "fol_CRMsyncFolder1",
+      "object": "folder",
+      "name": "CRM sync",
+      "parent_folder_id": null,
+      "space_id": null
+    }
+  ],
+  "space_membership": [],
+  "summary_text": "Discovery call with Acme Logistics (COO and Sales Operations Manager). The commercial team works from spreadsheets and Outlook and lost two renewals last quarter. They want one CRM for about 60 users, live by March 2027, with a budget of 80-100k USD a year. Concerns: the in-house TMS integration and adoption. Next step: technical workshop with the IT lead the week of 9 November.",
+  "summary_markdown": "Discovery call with Acme Logistics (COO and Sales Operations Manager). The commercial team works from spreadsheets and Outlook and lost two renewals last quarter. They want one CRM for about 60 users, live by March 2027, with a budget of 80-100k USD a year. Concerns: the in-house TMS integration and adoption. Next step: technical workshop with the IT lead the week of 9 November.",
+  "private_notes_text": null,
+  "private_notes_markdown": null,
+  "transcript": [
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Good morning, Marina, Felipe. Thanks for making the time. Can you both hear me okay?",
+      "start_time": "2026-11-03T13:00:08Z",
+      "end_time": "2026-11-03T13:00:13Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "Loud and clear. Sorry we're a couple of minutes late, the traffic on the highway this morning was a nightmare.",
+      "start_time": "2026-11-03T13:00:14Z",
+      "end_time": "2026-11-03T13:00:20Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "Same here. I left home at seven and I still barely made it.",
+      "start_time": "2026-11-03T13:00:21Z",
+      "end_time": "2026-11-03T13:00:26Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "No problem at all, same for me, the usual Tuesday. So, the goal for today: you filled in our web form about a CRM, and I'd like to understand how your commercial team works today, what is not working, and whether Orbita is a good fit. Does that sound good?",
+      "start_time": "2026-11-03T13:00:27Z",
+      "end_time": "2026-11-03T13:00:44Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "Perfect. Let me give you some context. Acme is a freight and warehousing company, we're about eight hundred and fifty people, and around a hundred of them are in the commercial area.",
+      "start_time": "2026-11-03T13:00:45Z",
+      "end_time": "2026-11-03T13:00:57Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "And how does the commercial team manage customers and deals today?",
+      "start_time": "2026-11-03T13:01:02Z",
+      "end_time": "2026-11-03T13:01:06Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "Honestly, spreadsheets and Outlook. Each rep has their own spreadsheet of accounts, proposals live on a shared drive, and everything else is in people's inboxes.",
+      "start_time": "2026-11-03T13:01:07Z",
+      "end_time": "2026-11-03T13:01:17Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "When someone goes on holiday or leaves the company, we lose the history of the account. Last quarter we missed two contract renewals because nobody remembered the dates.",
+      "start_time": "2026-11-03T13:01:24Z",
+      "end_time": "2026-11-03T13:01:35Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "And from my side, I have no visibility. Every Monday I ask for the pipeline and I get six different spreadsheets in six different formats.",
+      "start_time": "2026-11-03T13:01:40Z",
+      "end_time": "2026-11-03T13:01:50Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "If this works, success for me is simple: zero missed renewals next year, and the Monday pipeline review done from one screen instead of six spreadsheets.",
+      "start_time": "2026-11-03T13:01:52Z",
+      "end_time": "2026-11-03T13:02:02Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "That's very common. Let me play it back to see if I got it right: you need one place where the whole team tracks accounts, deals and renewals, so nothing gets lost and you get a reliable view of the pipeline. Is that the need?",
+      "start_time": "2026-11-03T13:02:05Z",
+      "end_time": "2026-11-03T13:02:21Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "Exactly. One place for every account and every deal, with renewal reminders, and a pipeline I can trust on Monday morning. That is the priority.",
+      "start_time": "2026-11-03T13:02:22Z",
+      "end_time": "2026-11-03T13:02:32Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Who would use the system day to day?",
+      "start_time": "2026-11-03T13:03:10Z",
+      "end_time": "2026-11-03T13:03:13Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "The forty sales reps, our twelve account managers in customer success, and the leadership team, about eight managers, for the dashboards. So sixty users to start.",
+      "start_time": "2026-11-03T13:03:15Z",
+      "end_time": "2026-11-03T13:03:25Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Sixty users, across sales, customer success and leadership. Got it.",
+      "start_time": "2026-11-03T13:03:33Z",
+      "end_time": "2026-11-03T13:03:37Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "And the reps are on the road a lot, visiting warehouses and customers, so a mobile app is a must for them.",
+      "start_time": "2026-11-03T13:04:02Z",
+      "end_time": "2026-11-03T13:04:10Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "What else does the system need to do on day one?",
+      "start_time": "2026-11-03T13:04:15Z",
+      "end_time": "2026-11-03T13:04:19Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "Pipeline management, renewal alerts, email sync with Outlook so we stop copying emails by hand, and management dashboards for Marina.",
+      "start_time": "2026-11-03T13:04:20Z",
+      "end_time": "2026-11-03T13:04:28Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "By the way, Felipe, did you send the photos from Saturday's barbecue to the group? My husband keeps asking.",
+      "start_time": "2026-11-03T13:05:40Z",
+      "end_time": "2026-11-03T13:05:45Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "Not yet, tonight. Sorry, Ana.",
+      "start_time": "2026-11-03T13:05:46Z",
+      "end_time": "2026-11-03T13:05:48Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "No worries. Now, about your systems: what would the CRM need to connect to?",
+      "start_time": "2026-11-03T13:05:50Z",
+      "end_time": "2026-11-03T13:05:55Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "Our transport management system, the TMS. It's ours, built in-house about ten years ago, and all the shipment data is there. We also use Orion ERP for invoicing.",
+      "start_time": "2026-11-03T13:05:56Z",
+      "end_time": "2026-11-03T13:06:07Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "And to be honest, that is my main worry. I am concerned about integrating with our in-house TMS. Anything that touches operations during peak season makes me nervous.",
+      "start_time": "2026-11-03T13:06:20Z",
+      "end_time": "2026-11-03T13:06:31Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "My worry is adoption. We tried a sales tool three years ago and the reps hated it. They went back to their spreadsheets in two months.",
+      "start_time": "2026-11-03T13:06:41Z",
+      "end_time": "2026-11-03T13:06:51Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Both are fair concerns. On the TMS, we did a similar integration with an in-house system for another logistics client last year. I will send you that reference case by Friday, so you can see how we handled it.",
+      "start_time": "2026-11-03T13:07:02Z",
+      "end_time": "2026-11-03T13:07:17Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "That would help a lot.",
+      "start_time": "2026-11-03T13:07:20Z",
+      "end_time": "2026-11-03T13:07:22Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "On adoption, we usually start from the reps' daily routine: the mobile app, the email sync, and nothing they have to type twice. We can go deeper on that in a workshop.",
+      "start_time": "2026-11-03T13:08:30Z",
+      "end_time": "2026-11-03T13:08:42Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Can I ask about budget? Is there money set aside for this project?",
+      "start_time": "2026-11-03T13:09:45Z",
+      "end_time": "2026-11-03T13:09:50Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "Yes. We have between eighty and a hundred thousand dollars a year for the CRM, licences and support included.",
+      "start_time": "2026-11-03T13:09:52Z",
+      "end_time": "2026-11-03T13:09:59Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "That's helpful. Are you looking at other vendors as well?",
+      "start_time": "2026-11-03T13:10:20Z",
+      "end_time": "2026-11-03T13:10:24Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "We had a first call with Northwind CRM, and we're getting a demo from PipeSpark next week.",
+      "start_time": "2026-11-03T13:10:26Z",
+      "end_time": "2026-11-03T13:10:33Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Good to know, thanks for being open about it.",
+      "start_time": "2026-11-03T13:10:37Z",
+      "end_time": "2026-11-03T13:10:40Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "Ana, unrelated question: is your team going to the logistics trade fair in Joinville this year?",
+      "start_time": "2026-11-03T13:14:30Z",
+      "end_time": "2026-11-03T13:14:36Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Probably, our marketing team usually goes.",
+      "start_time": "2026-11-03T13:14:37Z",
+      "end_time": "2026-11-03T13:14:39Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Who else would be involved in the decision?",
+      "start_time": "2026-11-03T13:21:30Z",
+      "end_time": "2026-11-03T13:21:33Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "I make the decision on this. It sits in my operations budget. But I will want our IT lead, Rui Tavares, to validate the technical side, the integration and the security.",
+      "start_time": "2026-11-03T13:21:36Z",
+      "end_time": "2026-11-03T13:21:48Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "And after Rui's validation, is there any other step? Procurement, legal?",
+      "start_time": "2026-11-03T13:21:58Z",
+      "end_time": "2026-11-03T13:22:02Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "Procurement needs three quotes for anything above fifty thousand. Then I sign.",
+      "start_time": "2026-11-03T13:22:04Z",
+      "end_time": "2026-11-03T13:22:09Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "And in terms of timing?",
+      "start_time": "2026-11-03T13:22:20Z",
+      "end_time": "2026-11-03T13:22:22Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "We need it live before our peak season starts in April, so go-live by March 2027 at the latest.",
+      "start_time": "2026-11-03T13:22:23Z",
+      "end_time": "2026-11-03T13:22:30Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "One more thing for the reps: we need to see each customer's shipment status inside the CRM, otherwise they will keep calling operations.",
+      "start_time": "2026-11-03T13:30:10Z",
+      "end_time": "2026-11-03T13:30:19Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "That comes back to the TMS integration, so it's a good topic for the workshop.",
+      "start_time": "2026-11-03T13:30:24Z",
+      "end_time": "2026-11-03T13:30:30Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Proposed next step: a technical scoping workshop with Rui, the week of 9 November, to look at the TMS data and the integration options. Pedro, our solutions engineer, would join from our side.",
+      "start_time": "2026-11-03T13:35:10Z",
+      "end_time": "2026-11-03T13:35:23Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "Yes, let's do that. I will make sure Rui joins.",
+      "start_time": "2026-11-03T13:35:27Z",
+      "end_time": "2026-11-03T13:35:31Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Great. I will send the workshop invite together with the reference case by Friday.",
+      "start_time": "2026-11-03T13:35:33Z",
+      "end_time": "2026-11-03T13:35:38Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "And Ana, if you have a short video of the mobile app, send it over. I'd like to show it to two of our senior reps.",
+      "start_time": "2026-11-03T13:41:50Z",
+      "end_time": "2026-11-03T13:41:57Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Sure, I'll include it in Friday's email.",
+      "start_time": "2026-11-03T13:41:58Z",
+      "end_time": "2026-11-03T13:42:01Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Felipe Nunes"
+      },
+      "text": "For what it's worth, I'm the one who pushed for this project internally. If the mobile app is as good as it looks, I'll get the reps on board myself.",
+      "start_time": "2026-11-03T13:42:20Z",
+      "end_time": "2026-11-03T13:42:32Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Marina Lopes"
+      },
+      "text": "Thanks, Ana. Talk soon.",
+      "start_time": "2026-11-03T13:42:48Z",
+      "end_time": "2026-11-03T13:42:50Z"
+    }
+  ]
+}

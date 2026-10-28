@@ -1,0 +1,137 @@
+[
+  {
+    "client_id": "CLI-001", "name": "Acme Logistics", "domain": "acmelogistics.example", "industry": "Logistics", "hq": "Campinas, Brazil",
+    "fields": {},
+    "contacts": [
+      { "name": "Marina Lopes", "title": "COO", "email": "marina.lopes@acmelogistics.example", "buying_role": "Executive sponsor" },
+      { "name": "Felipe Nunes", "title": "Sales Operations Manager", "email": "felipe.nunes@acmelogistics.example", "buying_role": "Champion" },
+      { "name": "Rui Tavares", "title": "IT Lead", "email": "rui.tavares@acmelogistics.example", "buying_role": "Technical evaluator" }
+    ]
+  },
+  {
+    "client_id": "CLI-002", "name": "Verde Retail", "domain": "verderetail.example", "industry": "Retail", "hq": "São Paulo, Brazil",
+    "fields": {},
+    "contacts": [
+      { "name": "Camila Rocha", "title": "Head of Retail Operations", "email": "camila.rocha@verderetail.example", "buying_role": "Champion" },
+      { "name": "Diego Faria", "title": "IT Manager", "email": "diego.faria@verderetail.example", "buying_role": "Technical evaluator" }
+    ]
+  },
+  {
+    "client_id": "CLI-003", "name": "Nimbus Health", "domain": "nimbushealth.example", "industry": "Healthcare", "hq": "Belo Horizonte, Brazil",
+    "fields": {
+      "employee_count": { "value": "1200", "approved": true },
+      "current_solution": { "value": "Patient-relations module of the clinic ERP, plus spreadsheets", "approved": true }
+    },
+    "contacts": [
+      { "name": "Roberto Lima", "title": "CIO", "email": "roberto.lima@nimbushealth.example", "buying_role": "Decision-maker" },
+      { "name": "Sandra Vieira", "title": "Patient Relations Manager", "email": "sandra.vieira@nimbushealth.example", "buying_role": "Champion" }
+    ]
+  },
+  {
+    "client_id": "CLI-004", "name": "Atlas Manufacturing", "domain": "atlasmfg.example", "industry": "Manufacturing", "hq": "Joinville, Brazil",
+    "fields": {
+      "employee_count": { "value": "2400", "approved": true },
+      "current_solution": { "value": "Spreadsheets and a shared inbox for distributor orders", "approved": true }
+    },
+    "contacts": [
+      { "name": "Tiago Mendes", "title": "Head of Operations", "email": "tiago.mendes@atlasmfg.example", "buying_role": "Champion" },
+      { "name": "Helena Duarte", "title": "CFO", "email": "helena.duarte@atlasmfg.example", "buying_role": "Decision-maker" }
+    ]
+  },
+  {
+    "client_id": "CLI-005", "name": "Horizonte Foods", "domain": "horizontefoods.example", "industry": "Food & Beverage", "hq": "Curitiba, Brazil",
+    "fields": {
+      "employee_count": { "value": "900", "approved": true },
+      "current_solution": { "value": "WhatsApp groups and spreadsheets per distributor", "approved": true }
+    },
+    "contacts": [
+      { "name": "Paula Reis", "title": "Supply Chain Director", "email": "paula.reis@horizontefoods.example", "buying_role": "Decision-maker" }
+    ]
+  },
+  {
+    "client_id": "CLI-006", "name": "Cedro Construtora", "domain": "cedroconstrutora.example", "industry": "Construction & Real Estate", "hq": "Recife, Brazil",
+    "fields": {},
+    "contacts": [
+      { "name": "Sofia Martins", "title": "Commercial Director", "email": "sofia.martins@cedroconstrutora.example", "buying_role": "Executive sponsor" },
+      { "name": "Andre Pires", "title": "Sales Manager", "email": "andre.pires@cedroconstrutora.example", "buying_role": "Champion" }
+    ]
+  },
+  {
+    "client_id": "CLI-007", "name": "Lumen Education", "domain": "lumeneducation.example", "industry": "Education", "hq": "Porto Alegre, Brazil",
+    "fields": {
+      "employee_count": { "value": "3100", "approved": true }
+    },
+    "contacts": [
+      { "name": "Daniela Freitas", "title": "VP of Admissions", "email": "daniela.freitas@lumeneducation.example", "buying_role": "Decision-maker" },
+      { "name": "Marcos Antunes", "title": "CIO", "email": "marcos.antunes@lumeneducation.example", "buying_role": "Technical evaluator" }
+    ]
+  },
+  {
+    "client_id": "CLI-008", "name": "Pampa Agro", "domain": "pampaagro.example", "industry": "Agribusiness", "hq": "Passo Fundo, Brazil",
+    "fields": {},
+    "contacts": [
+      { "name": "Paulo Becker", "title": "CEO", "email": "paulo.becker@pampaagro.example", "buying_role": "Executive sponsor" },
+      { "name": "Luiza Kranz", "title": "Sales Manager", "email": "luiza.kranz@pampaagro.example", "buying_role": "Champion" }
+    ]
+  },
+  {
+    "client_id": "CLI-009", "name": "Solaris Energy", "domain": "solarisenergy.example", "industry": "Energy", "hq": "Rio de Janeiro, Brazil",
+    "fields": {
+      "employee_count": { "value": "1800", "approved": true },
+      "current_solution": { "value": "Legacy on-premise CRM from 2014", "approved": true }
+    },
+    "contacts": [
+      { "name": "Henrique Prado", "title": "Commercial VP", "email": "henrique.prado@solarisenergy.example", "buying_role": "Decision-maker" },
+      { "name": "Talita Moura", "title": "Procurement Lead", "email": "talita.moura@solarisenergy.example", "buying_role": "Procurement" }
+    ]
+  },
+  {
+    "client_id": "CLI-010", "name": "Vetta Insurance", "domain": "vettainsurance.example", "industry": "Insurance", "hq": "São Paulo, Brazil",
+    "fields": {
+      "employee_count": { "value": "2600", "approved": true },
+      "current_solution": { "value": "Broker portal plus spreadsheets for the channel team", "approved": true }
+    },
+    "contacts": [
+      { "name": "Ricardo Alves", "title": "Head of Broker Channel", "email": "ricardo.alves@vettainsurance.example", "buying_role": "Decision-maker" },
+      { "name": "Mariana Couto", "title": "Legal Counsel", "email": "mariana.couto@vettainsurance.example", "buying_role": "Legal" }
+    ]
+  },
+  {
+    "client_id": "CLI-011", "name": "Rio Claro Beverages", "domain": "rioclaro.example", "industry": "Beverages", "hq": "Ribeirão Preto, Brazil",
+    "fields": {
+      "employee_count": { "value": "1500", "approved": true },
+      "current_solution": { "value": "Spreadsheets per key account manager", "approved": false }
+    },
+    "contacts": [
+      { "name": "Fernanda Lima", "title": "Key Account Director", "email": "fernanda.lima@rioclaro.example", "buying_role": "Decision-maker" },
+      { "name": "Otávio Sales", "title": "Trade Marketing Manager", "email": "otavio.sales@rioclaro.example", "buying_role": "User" }
+    ]
+  },
+  {
+    "client_id": "CLI-012", "name": "Boreal Fitness", "domain": "borealfitness.example", "industry": "Fitness", "hq": "Florianópolis, Brazil",
+    "fields": {},
+    "contacts": [
+      { "name": "Natália Ramos", "title": "Corporate Sales Lead", "email": "natalia.ramos@borealfitness.example", "buying_role": "Champion" }
+    ]
+  },
+  {
+    "client_id": "CLI-013", "name": "Quanta Labs", "domain": "quantalabs.example", "industry": "Diagnostics", "hq": "Goiânia, Brazil",
+    "fields": {
+      "employee_count": { "value": "700", "approved": true }
+    },
+    "contacts": [
+      { "name": "Eduardo Pinto", "title": "Commercial Director", "email": "eduardo.pinto@quantalabs.example", "buying_role": "Decision-maker" }
+    ]
+  },
+  {
+    "client_id": "CLI-014", "name": "Ipê Telecom", "domain": "ipetelecom.example", "industry": "Telecom", "hq": "Brasília, Brazil",
+    "fields": {
+      "employee_count": { "value": "5200", "approved": true },
+      "current_solution": { "value": "Two regional CRMs that do not share accounts", "approved": true }
+    },
+    "contacts": [
+      { "name": "Cláudia Torres", "title": "Enterprise Sales Director", "email": "claudia.torres@ipetelecom.example", "buying_role": "Decision-maker" },
+      { "name": "Renan Duarte", "title": "Procurement Manager", "email": "renan.duarte@ipetelecom.example", "buying_role": "Procurement" }
+    ]
+  }
+]

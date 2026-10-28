@@ -1,0 +1,36 @@
+# case: T7 - clean discovery call used for the seller-edit test
+# title: Cedro Construtora - discovery call
+# start: 2026-11-06T10:00:00-03:00
+# scheduled_minutes: 45
+# owner: ana.ribeiro@orbitacrm.example
+# attendees: Ana Ribeiro <ana.ribeiro@orbitacrm.example>; Sofia Martins <sofia.martins@cedroconstrutora.example>; Andre Pires <andre.pires@cedroconstrutora.example>
+# summary: Discovery call with Cedro Construtora's Commercial Director and Sales Manager. Leads from the website, WhatsApp and sales stands are tracked in spreadsheets and get lost. They want lead routing to brokers and a funnel per launch, for 105 users, live by March 2027, with about 60k USD a year. Ana sends a recorded demo by Tuesday; live demo on 12 November.
+[00:00:06] Ana Ribeiro (Orbita): Good morning, Sofia, Andre. Happy Friday!
+[00:00:11] Sofia Martins (Cedro Construtora): Good morning, Ana. Happy Friday. Andre has just come back from a sales stand, so he has fresh stories.
+[00:00:20] Andre Pires (Cedro Construtora): Plenty of them. We had three hundred visitors at the stand last weekend.
+[00:00:31] Ana Ribeiro (Orbita): That's a lot of leads. How do you capture them today?
+[00:00:36] Andre Pires (Cedro Construtora): Paper forms at the stand, the website form, and WhatsApp. Then someone types everything into a spreadsheet on Monday, if they remember.
+[00:01:02] Sofia Martins (Cedro Construtora): And that's the problem. Leads get lost between the stand, the website and WhatsApp, and the brokers fight over who saw a client first.
+[00:01:40] Ana Ribeiro (Orbita): So the need is to capture every lead in one place and route it to the right broker?
+[00:01:47] Sofia Martins (Cedro Construtora): Yes. Every lead from the website, WhatsApp and the sales stands in one place, routed automatically to a broker, with one sales funnel per launch.
+[00:02:05] Sofia Martins (Cedro Construtora): Today a lead from the website waits about two days for a call back. I want every lead called within two hours.
+[00:03:10] Ana Ribeiro (Orbita): How many people would use it?
+[00:03:14] Andre Pires (Cedro Construtora): We'd need a hundred and five users: twenty-five in our own sales team and eighty brokers.
+[00:03:29] Sofia Martins (Cedro Construtora): And our marketing team runs the website and the campaigns, so they need to see where the leads come from.
+[00:05:20] Andre Pires (Cedro Construtora): My concern is the brokers. They are not employees, and they won't use anything complicated. And the stands often have no mobile signal at all.
+[00:05:41] Ana Ribeiro (Orbita): Our mobile app works offline and syncs when the signal comes back. I can show you that.
+[00:07:15] Ana Ribeiro (Orbita): How big is Cedro today?
+[00:07:19] Sofia Martins (Cedro Construtora): About four hundred people, most of them on construction sites.
+[00:09:30] Ana Ribeiro (Orbita): Have you set a budget for this?
+[00:09:34] Sofia Martins (Cedro Construtora): We have around sixty thousand dollars a year for it.
+[00:12:10] Ana Ribeiro (Orbita): Who makes the decision on a project like this?
+[00:12:15] Sofia Martins (Cedro Construtora): I do. Our CEO only gets involved above two hundred thousand, so this is my call. Legal reviews the contract before I sign.
+[00:12:40] Ana Ribeiro (Orbita): And timing?
+[00:12:43] Sofia Martins (Cedro Construtora): We have three launches next year, the first one in April. I need this running by March 2027.
+[00:14:05] Ana Ribeiro (Orbita): Are you talking to other vendors?
+[00:14:09] Sofia Martins (Cedro Construtora): Not yet, you're the first.
+[00:20:50] Andre Pires (Cedro Construtora): For the funnel, we need to see each launch separately: leads, visits to the show apartment, proposals and contracts.
+[00:31:40] Ana Ribeiro (Orbita): Here's what I suggest: I'll send you a recorded demo of the lead routing by Tuesday, and then we do a live demo with your sales managers on Thursday the 12th.
+[00:31:55] Sofia Martins (Cedro Construtora): Yes, Thursday the 12th works for us.
+[00:32:02] Andre Pires (Cedro Construtora): I will send you the list of the three launches and the broker teams before the demo.
+[00:34:30] Sofia Martins (Cedro Construtora): Thanks, Ana. Have a great weekend.

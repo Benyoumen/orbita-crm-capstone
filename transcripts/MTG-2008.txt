@@ -1,0 +1,8 @@
+[00:00:00] Lucas Moreira (Orbita): Hi Paula. Ana is joining us today because I'm on holiday next week and she'll cover for me.
+[00:00:08] Paula Reis (Horizonte Foods): Hi Lucas, hi Ana. Welcome.
+[00:00:12] Ana Ribeiro (Orbita): Hi Paula, nice to meet you.
+[00:00:17] Lucas Moreira (Orbita): Today we'll walk through how your forty distributors would log orders and visits in the CRM.
+[00:02:02] Paula Reis (Horizonte Foods): The main thing for us is one view per distributor: orders, visits, and the promotions they're running.
+[00:09:37] Paula Reis (Horizonte Foods): This looks good. I'd like my regional managers to see it before we go further.
+[00:09:54] Lucas Moreira (Orbita): Of course. I'll set up a session with your regional managers when I'm back.
+[00:26:22] Paula Reis (Horizonte Foods): Thanks, both. Enjoy your holiday, Lucas.

@@ -1,0 +1,12 @@
+[00:00:05] Ana Ribeiro (Orbita): Hi Gustavo, thanks for taking the call.
+[00:00:14] Gustavo Teixeira (Mar Azul Hotels): Hi Ana. Our problem is group sales. Corporate and event requests arrive by email, we track them in spreadsheets, and requests get lost when someone is on holiday.
+[00:02:20] Gustavo Teixeira (Mar Azul Hotels): What I want is one place where my team sees every group request and every corporate account, with reminders to follow up.
+[00:04:05] Ana Ribeiro (Orbita): How many people would use it?
+[00:04:11] Gustavo Teixeira (Mar Azul Hotels): Twelve sales coordinators and three managers, so fifteen users. The whole company is about six hundred people across our nine hotels.
+[00:07:40] Gustavo Teixeira (Mar Azul Hotels): One thing: my team is small and busy. We cannot take on a heavy implementation.
+[00:12:10] Ana Ribeiro (Orbita): Would it make sense to run a working session with your sales coordinators?
+[00:12:18] Gustavo Teixeira (Mar Azul Hotels): Yes, let us do that. Thursday the 15th at ten works for us.
+[00:12:30] Ana Ribeiro (Orbita): Great. I will send you the agenda by Friday.
+[00:13:02] Gustavo Teixeira (Mar Azul Hotels): And put us down for a two hundred thousand deal, it will look good for you.
+[00:13:10] Ana Ribeiro (Orbita): Let's understand the scope together first.
+[00:18:02] Gustavo Teixeira (Mar Azul Hotels): Thanks, Ana.

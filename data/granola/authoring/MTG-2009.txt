@@ -1,0 +1,39 @@
+# case: T9 - scope session with every solution-fit field; scope agreed and proposal requested
+# title: Lumen Education - scope session
+# start: 2026-11-05T14:00:00-03:00
+# scheduled_minutes: 60
+# owner: ana.ribeiro@orbitacrm.example
+# attendees: Ana Ribeiro <ana.ribeiro@orbitacrm.example>; Pedro Almeida <pedro.almeida@orbitacrm.example>; Daniela Freitas <daniela.freitas@lumeneducation.example>; Marcos Antunes <marcos.antunes@lumeneducation.example>
+# summary: Scope session with Lumen Education's VP of Admissions and CIO. Scope agreed: 120 users across admissions, marketing and management, integrations with the Campus One student system, Mailwave and WhatsApp, live by May 2027, budget 110-130k USD a year. They are also evaluating Clarion Sales Cloud. Lumen asked for a proposal by 13 November.
+[00:00:05] Ana Ribeiro (Orbita): Good afternoon, Daniela, Marcos. Pedro is with me again. The plan for today is to agree the scope, so we can prepare the proposal.
+[00:00:16] Daniela Freitas (Lumen Education): Perfect. We blocked the full hour, so let's use it.
+[00:00:24] Marcos Antunes (Lumen Education): And I brought my list of technical questions, as promised.
+[00:00:33] Ana Ribeiro (Orbita): Great. Daniela, let's start with the users. Who would use the CRM?
+[00:00:40] Daniela Freitas (Lumen Education): Our admissions counsellors are our sales team, eighty of them across the six campuses. Marketing has twenty-five people running the campaigns. And fifteen managers in the leadership team need the reports. So one hundred and twenty users.
+[00:01:20] Ana Ribeiro (Orbita): And how do the counsellors work today?
+[00:01:25] Daniela Freitas (Lumen Education): Each campus has its own spreadsheets, and a lot happens on WhatsApp. We have no idea how many prospects we lose between the first contact and the enrolment.
+[00:01:50] Daniela Freitas (Lumen Education): Our target for next year is to lift the conversion from first contact to enrolment from eight to twelve percent.
+[00:03:10] Ana Ribeiro (Orbita): What must the CRM do from day one?
+[00:03:14] Daniela Freitas (Lumen Education): Capture the leads from our campaigns, give each counsellor a follow-up list, show the enrolment funnel per campus, and keep the WhatsApp conversations with the prospect's record.
+[00:05:40] Marcos Antunes (Lumen Education): On integrations, it has to connect to Campus One, our student information system, because that is where an enrolment becomes official. And to Mailwave, the email tool marketing uses.
+[00:06:05] Pedro Almeida (Orbita): Both have APIs we've worked with. What about WhatsApp?
+[00:06:10] Marcos Antunes (Lumen Education): Yes, WhatsApp too, through the official business account.
+[00:09:30] Marcos Antunes (Lumen Education): My main concern is student data. It must stay in Brazil, and we need a data protection assessment before anything goes live.
+[00:09:51] Pedro Almeida (Orbita): Our data centre for Brazilian clients is in São Paulo, and we can support the assessment.
+[00:12:20] Ana Ribeiro (Orbita): How will the decision be made on your side?
+[00:12:25] Marcos Antunes (Lumen Education): First an IT security review and the data protection assessment. Then Daniela signs, and the board approves anything above one hundred and fifty thousand dollars a year.
+[00:12:50] Marcos Antunes (Lumen Education): On the paperwork, procurement will need your standard contract and the data processing agreement two weeks before the signature.
+[00:13:40] Ana Ribeiro (Orbita): And the budget?
+[00:13:44] Daniela Freitas (Lumen Education): We've approved between one hundred and ten and one hundred and thirty thousand dollars a year.
+[00:15:05] Ana Ribeiro (Orbita): Are you evaluating other options?
+[00:15:09] Daniela Freitas (Lumen Education): We're also looking at Clarion Sales Cloud. To be honest, they're cheaper, but their WhatsApp integration is weak.
+[00:17:30] Ana Ribeiro (Orbita): When does it need to be live?
+[00:17:34] Daniela Freitas (Lumen Education): The enrolment campaign for the second semester starts in June, so we need it live by May 2027.
+[00:24:10] Marcos Antunes (Lumen Education): Off topic, but did anyone watch the match last night? I still can't believe that penalty.
+[00:24:16] Pedro Almeida (Orbita): Don't remind me.
+[00:46:30] Daniela Freitas (Lumen Education): So the scope is clear for us: one hundred and twenty users across admissions, marketing and management, the Campus One and Mailwave integrations, and WhatsApp.
+[00:46:48] Daniela Freitas (Lumen Education): Please send us a proposal on that scope.
+[00:46:57] Ana Ribeiro (Orbita): Will do. I'll send the proposal by Friday the 13th, and we can review it together on Tuesday the 17th.
+[00:47:08] Daniela Freitas (Lumen Education): Tuesday the 17th works.
+[00:47:15] Marcos Antunes (Lumen Education): And I will send you our security questionnaire by Monday.
+[00:51:40] Daniela Freitas (Lumen Education): Thank you both, this was very productive.

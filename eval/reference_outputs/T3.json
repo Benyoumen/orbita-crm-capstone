@@ -1,0 +1,80 @@
+{
+  "meeting_id": "MTG-2003",
+  "run_status": "Awaiting review",
+  "source_status": "Ready",
+  "block_reason": null,
+  "fields": [
+    {
+      "field": "call_summary",
+      "status": "proposed",
+      "value": "Short call with the CIO. The board froze all new IT projects until the January budget review, so Friday's demo with the clinic managers is cancelled and no new date was agreed. The budget is unchanged at USD 90,000 per year.",
+      "evidence": [
+        {
+          "quote": "The board froze all new IT projects until our budget review in January.",
+          "line": 2
+        },
+        {
+          "quote": "Please cancel the demo on Friday.",
+          "line": 4
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "status": "proposed",
+      "value": "The board froze all new IT projects until the January budget review",
+      "evidence": [
+        {
+          "quote": "The board froze all new IT projects until our budget review in January.",
+          "line": 2
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "status": "contradictory",
+      "value": null,
+      "evidence": [
+        {
+          "quote": "Please cancel the demo on Friday. There is no next step from our side for now",
+          "line": 4
+        }
+      ],
+      "note": "The approved demo on 6 Nov was cancelled and no new next step was agreed."
+    },
+    {
+      "field": "follow_up_due_date",
+      "status": "contradictory",
+      "value": null,
+      "evidence": [
+        {
+          "quote": "I can't commit to any date, not even a date to talk again.",
+          "line": 6
+        }
+      ],
+      "note": "The approved date was the cancelled demo; no new date was agreed."
+    },
+    {
+      "field": "budget",
+      "status": "proposed",
+      "value": "USD 90,000 per year",
+      "evidence": [
+        {
+          "quote": "the budget itself hasn't changed: it's still ninety thousand dollars a year.",
+          "line": 7
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "status": "no_evidence",
+      "value": null,
+      "evidence": [],
+      "note": "Solution exit criteria not met: no agreed scope and no request for a proposal."
+    }
+  ],
+  "ignored_out_of_scope": []
+}

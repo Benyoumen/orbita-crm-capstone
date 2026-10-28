@@ -1,0 +1,19 @@
+# case: T3 - short call that contradicts the approved next step and due date
+# title: Nimbus Health - demo planning
+# start: 2026-11-04T09:30:00-03:00
+# scheduled_minutes: 30
+# owner: ana.ribeiro@orbitacrm.example
+# attendees: Ana Ribeiro <ana.ribeiro@orbitacrm.example>; Pedro Almeida <pedro.almeida@orbitacrm.example>; Roberto Lima <roberto.lima@nimbushealth.example>
+# summary: Short call with Nimbus Health's CIO. The board froze all new IT projects until the January budget review, so the 6 November demo is cancelled and no new date was agreed. The budget itself is unchanged at 90k USD a year.
+[00:00:10] Ana Ribeiro (Orbita): Hi Roberto, good morning. Pedro is with me. We wanted to go through the plan for Friday's demo with the clinic managers.
+[00:00:21] Roberto Lima (Nimbus Health): Morning, both. I'm glad you called, because I have news, and it isn't good. The board froze all new IT projects until our budget review in January.
+[00:00:40] Ana Ribeiro (Orbita): I see. So Friday's demo...
+[00:00:43] Roberto Lima (Nimbus Health): Please cancel the demo on Friday. There is no next step from our side for now, and nothing has been agreed beyond waiting for the budget review.
+[00:01:05] Pedro Almeida (Orbita): Understood. Should we keep a placeholder in the calendar, maybe for December?
+[00:01:12] Roberto Lima (Nimbus Health): No, please drop it. I can't commit to any date, not even a date to talk again.
+[00:02:30] Roberto Lima (Nimbus Health): To be clear, the budget itself hasn't changed: it's still ninety thousand dollars a year. It's the timing that moved.
+[00:04:40] Ana Ribeiro (Orbita): That's clear. Is there anything we can send that would help with the budget review?
+[00:04:48] Roberto Lima (Nimbus Health): Not really. If the board approves the budget in January, I'll reach out to you.
+[00:05:02] Pedro Almeida (Orbita): Thanks for being upfront with us, Roberto.
+[00:08:30] Roberto Lima (Nimbus Health): Of course. I'm sorry about the timing. Take care, both of you.
+[00:08:38] Ana Ribeiro (Orbita): You too, Roberto. Thanks, bye.

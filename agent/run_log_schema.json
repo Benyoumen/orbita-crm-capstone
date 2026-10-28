@@ -1,0 +1,74 @@
+{
+  "description": "Append-only run log. One run = one conversation (meeting transcript or chat export) + one opportunity, existing or created by the run. Events are never edited or deleted.",
+  "run_record": {
+    "run_id": "RUN-0001",
+    "meeting_id": "MTG-D001",
+    "transcript_ref": "the conversation as the seller added it (file name, format, source); the text itself is not copied into the log",
+    "opportunity_id": "OPP-0142",
+    "run_as_user_id": "U01",
+    "stage_at_run": "Qualified Opportunity",
+    "source_status": "Ready | Missing | Incomplete | Unmatched | AccessDenied",
+    "run_status": "Awaiting review | Approved | Edited and approved | Written automatically | Rejected | Blocked",
+    "block_reason": null,
+    "field_decisions": [
+      {
+        "field": "customer_need",
+        "previous_value": "Interested in improving shipment tracking (from inbound web form)",
+        "agent_status": "proposed | no_evidence | contradictory | unchanged | off",
+        "agent_proposal": "Real-time shipment tracking visibility for customers",
+        "evidence": [
+          {
+            "timestamp": "00:03:52",
+            "speaker": "Marina Lopes (Acme Logistics)",
+            "quote": "Real-time tracking visibility for our customers, that is the priority."
+          }
+        ],
+        "seller_decision": "approve | edit | reject | keep | replace | clear",
+        "final_value": "Real-time shipment tracking visibility for customers",
+        "rejection_reason": null,
+        "reviewer_id": "U01",
+        "decided_at": "2026-11-03T10:52:10-03:00",
+        "write_result": "Succeeded | Failed | Not written",
+        "previous_approved": true,
+        "decided_by": "seller | permission (Always allow)",
+        "reverted_at": "set when the seller pressed Undo on a field written under Always allow"
+      }
+    ],
+    "source": {
+      "system": "file | paste | whatsapp | granola",
+      "file": "acme-logistics_discovery-call.vtt",
+      "format": "vtt | srt | otter | kit | plain | whatsapp"
+    },
+    "target": {
+      "kind": "new (only when no open opportunity matched)",
+      "client_id": "CLI-0xx or null for a new client",
+      "client_name": "Delta Pharma",
+      "opportunity_name": "Delta Pharma - CRM",
+      "contacts": [
+        "Livia Prado"
+      ],
+      "created": {
+        "client_id": "CLI-015",
+        "opportunity_id": "OPP-0157",
+        "new_client": true,
+        "auto": false
+      }
+    },
+    "permissions": {
+      "fields": {
+        "call_summary": "auto | ask | off"
+      },
+      "create_opportunity": "auto | ask | off"
+    }
+  },
+  "event": {
+    "run_id": "RUN-0001",
+    "seq": 1,
+    "timestamp": "2026-11-03T10:45:02-03:00",
+    "actor": "system | agent | U01",
+    "action": "run_created | opportunity_matched | access_checked | opportunity_read | transcript_checked | agent_called | agent_answered | output_validated | proposals_generated | review_ready | field_decided | client_created | opportunity_created | opportunity_not_created | crm_write_attempted | crm_write_result | crm_write_reverted | run_blocked",
+    "object_id": "OPP-0142",
+    "outcome": "ok | blocked | failed",
+    "detail": "free text, e.g. 'transcript_status=incomplete; last timestamp 00:04:12 of 45 min'"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "meeting_id": "MTG-2011",
+  "run_status": "Awaiting review",
+  "source_status": "Ready",
+  "block_reason": null,
+  "fields": [
+    {
+      "field": "call_summary",
+      "status": "proposed",
+      "value": "WhatsApp chat with the Commercial VP. Henrique accepted the revised commercial terms and asked for the contract for signature: procurement routes it on Monday and he signs right after. IT needs Microsoft Entra single sign-on from day one. Ana sends the contract tomorrow morning.",
+      "evidence": [
+        {
+          "quote": "We agree with the terms.",
+          "line": 2
+        },
+        {
+          "quote": "Please send me the contract for signature.",
+          "line": 3
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "status": "proposed",
+      "value": "Orbita (Ana): send the contract for signature by 6 Nov; Solaris (Henrique): sign right after procurement routes it on 9 Nov",
+      "evidence": [
+        {
+          "quote": "I'll send you the contract tomorrow morning.",
+          "line": 4
+        },
+        {
+          "quote": "Talita will route it through procurement on Monday and I'll sign right after that.",
+          "line": 3
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "status": "proposed",
+      "value": "Ana sends the contract for signature on 6 Nov; Talita routes it through procurement on 9 Nov and Henrique signs right after",
+      "evidence": [
+        {
+          "quote": "Please send me the contract for signature.",
+          "line": 3
+        },
+        {
+          "quote": "I'll send you the contract tomorrow morning.",
+          "line": 4
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "status": "proposed",
+      "value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "quote": "I'll send you the contract tomorrow morning.",
+          "line": 4
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "status": "proposed",
+      "value": "2026-11-06",
+      "evidence": [
+        {
+          "quote": "I'll send you the contract tomorrow morning.",
+          "line": 4
+        }
+      ],
+      "note": "'tomorrow' resolved from the message date, Thu 2026-11-05."
+    },
+    {
+      "field": "paper_process",
+      "status": "proposed",
+      "value": "Talita Moura (Procurement) routes the contract on 9 Nov; Henrique Prado signs right after",
+      "evidence": [
+        {
+          "quote": "Talita will route it through procurement on Monday and I'll sign right after that.",
+          "line": 3
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "integrations",
+      "status": "proposed",
+      "value": "Billing system; email and calendar; Microsoft Entra single sign-on",
+      "evidence": [
+        {
+          "quote": "our IT team needs single sign-on with Microsoft Entra from day one.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "status": "proposed",
+      "value": "110",
+      "evidence": [
+        {
+          "quote": "That's the list of the 110 users for the accounts, by the way.",
+          "line": 7
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "status": "proposed",
+      "value": "Contract",
+      "evidence": [
+        {
+          "quote": "We agree with the terms.",
+          "line": 2
+        },
+        {
+          "quote": "Please send me the contract for signature.",
+          "line": 3
+        }
+      ],
+      "note": "Negotiation exit criteria met: the decision-maker, Henrique Prado, agreed to the terms and asked for the contract for signature."
+    }
+  ],
+  "ignored_out_of_scope": []
+}

@@ -1,0 +1,439 @@
+{
+  "meeting_id": "MTG-2007",
+  "opportunity_id": "OPP-0146",
+  "client_id": "CLI-006",
+  "target": null,
+  "source_status": "Ready",
+  "run_status": "Awaiting review",
+  "block_reason": null,
+  "warnings": [],
+  "fields": [
+    {
+      "field": "call_summary",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Discovery call with the Commercial Director and the Sales Manager. Leads from the website, WhatsApp and sales stands are typed into a spreadsheet and get lost. They want automatic lead routing to brokers and a funnel per launch for 105 users, live by March 2027, with about USD 60,000 a year. A recorded demo comes by Tuesday and a live demo is set for 12 Nov.",
+      "evidence": [
+        {
+          "line": 6,
+          "timestamp": "00:00:56",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "Leads get lost between the stand, the website and WhatsApp"
+        },
+        {
+          "line": 26,
+          "timestamp": "00:31:34",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "and then we do a live demo with your sales managers on Thursday the 12th."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Brokers are external and won't use anything complicated; sales stands often have no mobile signal",
+      "evidence": [
+        {
+          "line": 13,
+          "timestamp": "00:05:14",
+          "speaker": "Andre Pires (Cedro Construtora)",
+          "quote": "They are not employees, and they won't use anything complicated. And the stands often have no mobile signal at all."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Orbita (Ana): send a recorded demo of the lead routing by 10 Nov; Cedro (Andre): send the list of launches and broker teams before the demo",
+      "evidence": [
+        {
+          "line": 26,
+          "timestamp": "00:31:34",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you a recorded demo of the lead routing by Tuesday"
+        },
+        {
+          "line": 28,
+          "timestamp": "00:31:56",
+          "speaker": "Andre Pires (Cedro Construtora)",
+          "quote": "I will send you the list of the three launches and the broker teams before the demo."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Live demo with Cedro's sales managers on 12 Nov, after a recorded demo of the lead routing",
+      "evidence": [
+        {
+          "line": 26,
+          "timestamp": "00:31:34",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "and then we do a live demo with your sales managers on Thursday the 12th."
+        },
+        {
+          "line": 27,
+          "timestamp": "00:31:49",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "Yes, Thursday the 12th works for us."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "line": 26,
+          "timestamp": "00:31:34",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you a recorded demo of the lead routing by Tuesday"
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "2026-11-10",
+      "evidence": [
+        {
+          "line": 26,
+          "timestamp": "00:31:34",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you a recorded demo of the lead routing by Tuesday"
+        }
+      ],
+      "note": "'Tuesday' resolved from the meeting date, Fri 2026-11-06."
+    },
+    {
+      "field": "metrics",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Every lead called back within two hours, instead of about two days",
+      "evidence": [
+        {
+          "line": 9,
+          "timestamp": "00:01:59",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "Today a lead from the website waits about two days for a call back. I want every lead called within two hours."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_maker",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Sofia Martins (Commercial Director)",
+      "evidence": [
+        {
+          "line": 20,
+          "timestamp": "00:12:09",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "I do. Our CEO only gets involved above two hundred thousand, so this is my call."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_criteria",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Lead capture from website, WhatsApp and stands; automatic routing to brokers; one funnel per launch with visits, proposals and contracts",
+      "evidence": [
+        {
+          "line": 8,
+          "timestamp": "00:01:41",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "routed automatically to a broker, with one sales funnel per launch."
+        },
+        {
+          "line": 25,
+          "timestamp": "00:20:44",
+          "speaker": "Andre Pires (Cedro Construtora)",
+          "quote": "we need to see each launch separately: leads, visits to the show apartment, proposals and contracts."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Sofia decides; the CEO only gets involved above USD 200,000",
+      "evidence": [
+        {
+          "line": 20,
+          "timestamp": "00:12:09",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "Our CEO only gets involved above two hundred thousand, so this is my call."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "paper_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Legal reviews the contract; then Sofia signs",
+      "evidence": [
+        {
+          "line": 20,
+          "timestamp": "00:12:09",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "Legal reviews the contract before I sign."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "customer_need",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Capture every lead from the website, WhatsApp and sales stands in one place, routed automatically to a broker, with one funnel per launch",
+      "evidence": [
+        {
+          "line": 8,
+          "timestamp": "00:01:41",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "Every lead from the website, WhatsApp and the sales stands in one place, routed automatically to a broker, with one sales funnel per launch."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "champion",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "competitors",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "105",
+      "evidence": [
+        {
+          "line": 11,
+          "timestamp": "00:03:08",
+          "speaker": "Andre Pires (Cedro Construtora)",
+          "quote": "We'd need a hundred and five users: twenty-five in our own sales team and eighty brokers."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "departments",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Sales; Marketing",
+      "evidence": [
+        {
+          "line": 11,
+          "timestamp": "00:03:08",
+          "speaker": "Andre Pires (Cedro Construtora)",
+          "quote": "We'd need a hundred and five users: twenty-five in our own sales team and eighty brokers."
+        },
+        {
+          "line": 12,
+          "timestamp": "00:03:23",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "our marketing team runs the website and the campaigns, so they need to see where the leads come from."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "integrations",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Website forms; WhatsApp",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:30",
+          "speaker": "Andre Pires (Cedro Construtora)",
+          "quote": "Paper forms at the stand, the website form, and WhatsApp."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "budget",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "USD 60,000 per year",
+      "evidence": [
+        {
+          "line": 18,
+          "timestamp": "00:09:28",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "We have around sixty thousand dollars a year for it."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "go_live_target",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "2027-03",
+      "evidence": [
+        {
+          "line": 22,
+          "timestamp": "00:12:37",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "I need this running by March 2027."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "employee_count",
+      "group": "company",
+      "record": "client",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "400",
+      "evidence": [
+        {
+          "line": 16,
+          "timestamp": "00:07:13",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "About four hundred people, most of them on construction sites."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "current_solution",
+      "group": "company",
+      "record": "client",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Paper forms, the website form and WhatsApp, typed into a spreadsheet",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:30",
+          "speaker": "Andre Pires (Cedro Construtora)",
+          "quote": "Then someone types everything into a spreadsheet on Monday, if they remember."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "group": "stage",
+      "record": "opportunity",
+      "current_value": "Qualified Opportunity",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Solution",
+      "evidence": [
+        {
+          "line": 8,
+          "timestamp": "00:01:41",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "Every lead from the website, WhatsApp and the sales stands in one place"
+        },
+        {
+          "line": 20,
+          "timestamp": "00:12:09",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "so this is my call."
+        },
+        {
+          "line": 22,
+          "timestamp": "00:12:37",
+          "speaker": "Sofia Martins (Cedro Construtora)",
+          "quote": "I need this running by March 2027."
+        }
+      ],
+      "note": "Qualified Opportunity exit criteria met: need confirmed, decision-maker identified (Sofia Martins) and timeline stated (March 2027)."
+    }
+  ],
+  "ignored_out_of_scope": [],
+  "validation_notes": [],
+  "usage": null
+}

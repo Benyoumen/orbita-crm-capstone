@@ -1,0 +1,72 @@
+[
+  {
+    "run_id": "RUN-1793215304149",
+    "seq": 1,
+    "timestamp": "2026-10-28T19:21:44.149Z",
+    "actor": "system",
+    "action": "run_created",
+    "object_id": "MTG-2006",
+    "outcome": "ok",
+    "detail": "user=U01"
+  },
+  {
+    "run_id": "RUN-1793215304149",
+    "seq": 2,
+    "timestamp": "2026-10-28T19:21:44.149Z",
+    "actor": "system",
+    "action": "access_checked",
+    "object_id": "OPP-0144",
+    "outcome": "ok",
+    "detail": "user=U01"
+  },
+  {
+    "run_id": "RUN-1793215304149",
+    "seq": 3,
+    "timestamp": "2026-10-28T19:21:44.149Z",
+    "actor": "system",
+    "action": "opportunity_read",
+    "object_id": "OPP-0144",
+    "outcome": "ok",
+    "detail": "stage=Proposal"
+  },
+  {
+    "run_id": "RUN-1793215304149",
+    "seq": 4,
+    "timestamp": "2026-10-28T19:21:44.149Z",
+    "actor": "system",
+    "action": "transcript_checked",
+    "object_id": "MTG-2006",
+    "outcome": "ok",
+    "detail": "status=complete; coverage=77% of 30 min; ends_mid_sentence=false"
+  },
+  {
+    "run_id": "RUN-1793215304149",
+    "seq": 5,
+    "timestamp": "2026-10-28T19:21:44.149Z",
+    "actor": "system",
+    "action": "agent_called",
+    "object_id": "MTG-2006",
+    "outcome": "ok",
+    "detail": "MOCK (reference output)"
+  },
+  {
+    "run_id": "RUN-1793215304149",
+    "seq": 6,
+    "timestamp": "2026-10-28T19:21:44.151Z",
+    "actor": "system",
+    "action": "output_validated",
+    "object_id": "MTG-2006",
+    "outcome": "ok",
+    "detail": "0 correction(s)"
+  },
+  {
+    "run_id": "RUN-1793215304149",
+    "seq": 7,
+    "timestamp": "2026-10-28T19:21:44.151Z",
+    "actor": "agent",
+    "action": "proposals_generated",
+    "object_id": "OPP-0144",
+    "outcome": "ok",
+    "detail": "call_summary=proposed, objection=no_evidence, commitment=proposed, next_step=proposed, follow_up_owner=unchanged, follow_up_due_date=proposed, metrics=no_evidence, decision_maker=no_evidence, decision_criteria=no_evidence, decision_process=no_evidence, paper_process=proposed, customer_need=no_evidence, champion=proposed, competitors=no_evidence, seats=unchanged, departments=unchanged, integrations=no_evidence, budget=proposed, go_live_target=no_evidence, employee_count=no_evidence, current_solution=no_evidence, stage=no_evidence"
+  }
+]

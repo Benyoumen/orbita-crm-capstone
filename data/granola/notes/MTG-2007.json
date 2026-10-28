@@ -1,0 +1,341 @@
+{
+  "id": "not_bb4eb9d0f23e81",
+  "object": "note",
+  "title": "Cedro Construtora - discovery call",
+  "owner": {
+    "name": "Ana Ribeiro",
+    "email": "ana.ribeiro@orbitacrm.example"
+  },
+  "created_at": "2026-11-06T13:00:00Z",
+  "updated_at": "2026-11-06T13:36:32Z",
+  "deleted_at": null,
+  "web_url": "https://notes.granola.ai/d/not_bb4eb9d0f23e81",
+  "calendar_event": {
+    "event_title": "Cedro Construtora - discovery call",
+    "invitees": [
+      {
+        "email": "ana.ribeiro@orbitacrm.example"
+      },
+      {
+        "email": "sofia.martins@cedroconstrutora.example"
+      },
+      {
+        "email": "andre.pires@cedroconstrutora.example"
+      }
+    ],
+    "organiser": "ana.ribeiro@orbitacrm.example",
+    "calendar_event_id": "evt_bb4eb9d0f23e81",
+    "scheduled_start_time": "2026-11-06T13:00:00Z",
+    "scheduled_end_time": "2026-11-06T13:45:00Z"
+  },
+  "attachments": [],
+  "attendees": [
+    {
+      "name": "Ana Ribeiro",
+      "email": "ana.ribeiro@orbitacrm.example"
+    },
+    {
+      "name": "Sofia Martins",
+      "email": "sofia.martins@cedroconstrutora.example"
+    },
+    {
+      "name": "Andre Pires",
+      "email": "andre.pires@cedroconstrutora.example"
+    }
+  ],
+  "folder_membership": [
+    {
+      "id": "fol_CRMsyncFolder1",
+      "object": "folder",
+      "name": "CRM sync",
+      "parent_folder_id": null,
+      "space_id": null
+    }
+  ],
+  "space_membership": [],
+  "summary_text": "Discovery call with Cedro Construtora's Commercial Director and Sales Manager. Leads from the website, WhatsApp and sales stands are tracked in spreadsheets and get lost. They want lead routing to brokers and a funnel per launch, for 105 users, live by March 2027, with about 60k USD a year. Ana sends a recorded demo by Tuesday; live demo on 12 November.",
+  "summary_markdown": "Discovery call with Cedro Construtora's Commercial Director and Sales Manager. Leads from the website, WhatsApp and sales stands are tracked in spreadsheets and get lost. They want lead routing to brokers and a funnel per launch, for 105 users, live by March 2027, with about 60k USD a year. Ana sends a recorded demo by Tuesday; live demo on 12 November.",
+  "private_notes_text": null,
+  "private_notes_markdown": null,
+  "transcript": [
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Good morning, Sofia, Andre. Happy Friday!",
+      "start_time": "2026-11-06T13:00:06Z",
+      "end_time": "2026-11-06T13:00:08Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Sofia Martins"
+      },
+      "text": "Good morning, Ana. Happy Friday. Andre has just come back from a sales stand, so he has fresh stories.",
+      "start_time": "2026-11-06T13:00:11Z",
+      "end_time": "2026-11-06T13:00:18Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Andre Pires"
+      },
+      "text": "Plenty of them. We had three hundred visitors at the stand last weekend.",
+      "start_time": "2026-11-06T13:00:20Z",
+      "end_time": "2026-11-06T13:00:25Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "That's a lot of leads. How do you capture them today?",
+      "start_time": "2026-11-06T13:00:31Z",
+      "end_time": "2026-11-06T13:00:35Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Andre Pires"
+      },
+      "text": "Paper forms at the stand, the website form, and WhatsApp. Then someone types everything into a spreadsheet on Monday, if they remember.",
+      "start_time": "2026-11-06T13:00:36Z",
+      "end_time": "2026-11-06T13:00:44Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Sofia Martins"
+      },
+      "text": "And that's the problem. Leads get lost between the stand, the website and WhatsApp, and the brokers fight over who saw a client first.",
+      "start_time": "2026-11-06T13:01:02Z",
+      "end_time": "2026-11-06T13:01:11Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "So the need is to capture every lead in one place and route it to the right broker?",
+      "start_time": "2026-11-06T13:01:40Z",
+      "end_time": "2026-11-06T13:01:46Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Sofia Martins"
+      },
+      "text": "Yes. Every lead from the website, WhatsApp and the sales stands in one place, routed automatically to a broker, with one sales funnel per launch.",
+      "start_time": "2026-11-06T13:01:47Z",
+      "end_time": "2026-11-06T13:01:57Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Sofia Martins"
+      },
+      "text": "Today a lead from the website waits about two days for a call back. I want every lead called within two hours.",
+      "start_time": "2026-11-06T13:02:05Z",
+      "end_time": "2026-11-06T13:02:13Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "How many people would use it?",
+      "start_time": "2026-11-06T13:03:10Z",
+      "end_time": "2026-11-06T13:03:12Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Andre Pires"
+      },
+      "text": "We'd need a hundred and five users: twenty-five in our own sales team and eighty brokers.",
+      "start_time": "2026-11-06T13:03:14Z",
+      "end_time": "2026-11-06T13:03:20Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Sofia Martins"
+      },
+      "text": "And our marketing team runs the website and the campaigns, so they need to see where the leads come from.",
+      "start_time": "2026-11-06T13:03:29Z",
+      "end_time": "2026-11-06T13:03:37Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Andre Pires"
+      },
+      "text": "My concern is the brokers. They are not employees, and they won't use anything complicated. And the stands often have no mobile signal at all.",
+      "start_time": "2026-11-06T13:05:20Z",
+      "end_time": "2026-11-06T13:05:30Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Our mobile app works offline and syncs when the signal comes back. I can show you that.",
+      "start_time": "2026-11-06T13:05:41Z",
+      "end_time": "2026-11-06T13:05:48Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "How big is Cedro today?",
+      "start_time": "2026-11-06T13:07:15Z",
+      "end_time": "2026-11-06T13:07:17Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Sofia Martins"
+      },
+      "text": "About four hundred people, most of them on construction sites.",
+      "start_time": "2026-11-06T13:07:19Z",
+      "end_time": "2026-11-06T13:07:23Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Have you set a budget for this?",
+      "start_time": "2026-11-06T13:09:30Z",
+      "end_time": "2026-11-06T13:09:33Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Sofia Martins"
+      },
+      "text": "We have around sixty thousand dollars a year for it.",
+      "start_time": "2026-11-06T13:09:34Z",
+      "end_time": "2026-11-06T13:09:38Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Who makes the decision on a project like this?",
+      "start_time": "2026-11-06T13:12:10Z",
+      "end_time": "2026-11-06T13:12:13Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Sofia Martins"
+      },
+      "text": "I do. Our CEO only gets involved above two hundred thousand, so this is my call. Legal reviews the contract before I sign.",
+      "start_time": "2026-11-06T13:12:15Z",
+      "end_time": "2026-11-06T13:12:24Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "And timing?",
+      "start_time": "2026-11-06T13:12:40Z",
+      "end_time": "2026-11-06T13:12:41Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Sofia Martins"
+      },
+      "text": "We have three launches next year, the first one in April. I need this running by March 2027.",
+      "start_time": "2026-11-06T13:12:43Z",
+      "end_time": "2026-11-06T13:12:50Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Are you talking to other vendors?",
+      "start_time": "2026-11-06T13:14:05Z",
+      "end_time": "2026-11-06T13:14:07Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Sofia Martins"
+      },
+      "text": "Not yet, you're the first.",
+      "start_time": "2026-11-06T13:14:09Z",
+      "end_time": "2026-11-06T13:14:11Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Andre Pires"
+      },
+      "text": "For the funnel, we need to see each launch separately: leads, visits to the show apartment, proposals and contracts.",
+      "start_time": "2026-11-06T13:20:50Z",
+      "end_time": "2026-11-06T13:20:57Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Here's what I suggest: I'll send you a recorded demo of the lead routing by Tuesday, and then we do a live demo with your sales managers on Thursday the 12th.",
+      "start_time": "2026-11-06T13:31:40Z",
+      "end_time": "2026-11-06T13:31:52Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Sofia Martins"
+      },
+      "text": "Yes, Thursday the 12th works for us.",
+      "start_time": "2026-11-06T13:31:55Z",
+      "end_time": "2026-11-06T13:31:58Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Andre Pires"
+      },
+      "text": "I will send you the list of the three launches and the broker teams before the demo.",
+      "start_time": "2026-11-06T13:32:02Z",
+      "end_time": "2026-11-06T13:32:09Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Sofia Martins"
+      },
+      "text": "Thanks, Ana. Have a great weekend.",
+      "start_time": "2026-11-06T13:34:30Z",
+      "end_time": "2026-11-06T13:34:32Z"
+    }
+  ]
+}

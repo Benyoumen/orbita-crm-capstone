@@ -1,0 +1,224 @@
+{
+  "version": 3,
+  "description": "Single source of truth for the Orbita CRM agent fields. The prompt's field dictionary, the output schema, the validator, the scorer, the review table, the permissions page, the record drawers and the CSV export are all derived from this file. Values are always stored as strings (or null); the type below says how a string is checked and normalised.",
+  "company": "Orbita CRM",
+  "seller_domain": "orbitacrm.example",
+  "currency": "USD",
+  "groups": [
+    { "id": "conversation", "label": "Conversation" },
+    { "id": "next_step", "label": "Next step" },
+    { "id": "qualification", "label": "Qualification (MEDDPICC)" },
+    { "id": "scope", "label": "Scope and budget" },
+    { "id": "company", "label": "Company profile" },
+    { "id": "stage", "label": "Stage" }
+  ],
+  "stages": ["New Lead", "Qualified Opportunity", "Solution", "Proposal", "Negotiation", "Contract", "Closed Won", "Closed Lost"],
+  "closed_stages": ["Closed Won", "Closed Lost"],
+  "departments": ["Sales", "Customer Success", "Customer Service", "Marketing", "Finance", "Operations", "Leadership", "IT"],
+  "seller_only": [
+    { "key": "amount_usd", "label": "Amount (USD per year)" },
+    { "key": "close_date", "label": "Close date" },
+    { "key": "owner", "label": "Owner" },
+    { "key": "contacts", "label": "Contacts" }
+  ],
+  "seller_only_note": "Deal amount, close date, probability, discount, price, contract term, owner and contacts are set by the seller only. The agent never proposes them; when the conversation asks for them, they go to ignored_out_of_scope.",
+  "permissions": {
+    "levels": [
+      { "id": "auto", "label": "Always allow", "help": "Written as soon as the update is prepared. You can undo it." },
+      { "id": "ask", "label": "Needs approval", "help": "Proposed for your review; written only after you approve." },
+      { "id": "off", "label": "Never", "help": "The agent leaves this field alone." }
+    ],
+    "create_opportunity": "ask",
+    "fixed_rules": [
+      "A proposal that contradicts a value you approved always waits for your decision.",
+      "The stage moves one step forward at most, and never to Closed Won or Closed Lost.",
+      "Amount, close date, probability, discount, owner and contacts are never written by the agent."
+    ]
+  },
+  "fields": [
+    {
+      "key": "call_summary", "label": "Summary", "group": "conversation", "record": "opportunity", "kind": "per_call", "type": "text", "max_words": 80, "permission": "auto",
+      "definition": "What the conversation was about, the key facts and the outcome.",
+      "evidence": "Only facts stated in the transcript. No opinions or predictions.",
+      "format": "2-4 sentences, 80 words max.",
+      "good": "Intro call with the Commercial Director. Group and corporate requests arrive by email and live in spreadsheets, so requests get lost. He wants one place for every request and account, for 15 users, without a heavy implementation. A working session was agreed for 15 Oct.",
+      "bad": "Great call, the customer loved us and will probably buy. (opinion, not facts)"
+    },
+    {
+      "key": "objection", "label": "Objections", "group": "conversation", "record": "opportunity", "kind": "per_call", "type": "text", "max_words": 40, "permission": "auto",
+      "definition": "Concerns, risks or blockers the customer raised in this conversation.",
+      "evidence": "A customer statement. Never the seller's speculation.",
+      "format": "40 words max; several objections separated by '; '.",
+      "good": "Small, busy team; cannot take on a heavy implementation",
+      "bad": "Price may be an issue (when price was never mentioned)"
+    },
+    {
+      "key": "commitment", "label": "Commitments", "group": "conversation", "record": "opportunity", "kind": "per_call", "type": "text", "max_words": 40, "permission": "auto",
+      "definition": "Explicit promises made by either side in this conversation.",
+      "evidence": "An explicit 'I will' or 'we will'. Intentions such as 'maybe', 'we'll see' or conditional promises do not count.",
+      "format": "Party (person): action (by date); several commitments separated by '; '.",
+      "good": "Orbita (Ana): send the working-session agenda by 9 Oct",
+      "bad": "Customer will think about it"
+    },
+    {
+      "key": "next_step", "label": "Next step", "group": "next_step", "record": "opportunity", "kind": "state", "type": "text", "max_words": 40, "permission": "ask",
+      "definition": "The agreed next action or meeting that moves the opportunity forward.",
+      "evidence": "Agreed by both sides: proposed by one side and accepted by the other. A step the customer declined is not a next step.",
+      "format": "40 words max.",
+      "good": "Working session with the Mar Azul sales coordinators on 15 Oct at 10:00",
+      "bad": "Second meeting with the team (when the customer said 'not yet')"
+    },
+    {
+      "key": "follow_up_owner", "label": "Follow-up owner", "group": "next_step", "record": "opportunity", "kind": "state", "type": "roster", "permission": "ask",
+      "definition": "The Orbita person responsible for the next follow-up.",
+      "evidence": "That person says they will do it, or is explicitly assigned. Must be in the team roster; customer-side people are not allowed.",
+      "format": "Full name exactly as in the roster.",
+      "good": "Ana Ribeiro",
+      "bad": "Gustavo Teixeira (customer side) or 'Ana' (not the full roster name)"
+    },
+    {
+      "key": "follow_up_due_date", "label": "Follow-up due date", "group": "next_step", "record": "opportunity", "kind": "state", "type": "date", "permission": "ask",
+      "definition": "The date by which the follow-up owner must act.",
+      "evidence": "An explicit date or day ('by Friday'), resolved from the conversation date. 'No rush', 'soon' or no timeframe means no evidence.",
+      "format": "YYYY-MM-DD",
+      "good": "Meeting on Tue 2026-10-06, 'by Friday' -> 2026-10-09",
+      "bad": "Inventing a date when the customer said 'no rush'"
+    },
+    {
+      "key": "metrics", "label": "Metrics", "group": "qualification", "record": "opportunity", "kind": "state", "type": "text", "max_words": 40, "permission": "ask",
+      "meddpicc": "M", "priority": 3, "ask": "What number should the CRM move, and by how much?",
+      "definition": "The measurable result the customer expects from the CRM: the number they want to move, and by how much.",
+      "evidence": "A target or measure stated by the customer (a rate, a time, a count, money saved). A vague wish ('be more efficient') is not a metric.",
+      "format": "40 words max; several metrics separated by '; '.",
+      "good": "Answer every group request within 24 hours; cut lost group bookings by half",
+      "bad": "Improve sales (no measure)"
+    },
+    {
+      "key": "decision_maker", "label": "Economic buyer", "group": "qualification", "record": "opportunity", "kind": "state", "type": "person", "permission": "ask",
+      "meddpicc": "E", "priority": 1, "ask": "Who gives the final yes and owns the budget? Have we met them?",
+      "definition": "The customer-side person who gives the final yes and owns the budget for this purchase.",
+      "evidence": "That person says they decide or hold the budget, or another customer names them as the one who decides or signs. The speaker must be identified: a statement from an unattributed speaker does not establish who decides.",
+      "format": "Full name (job title).",
+      "good": "Gustavo Teixeira (Commercial Director)",
+      "bad": "Ana Ribeiro (seller side) or 'the boss' (not a named person)"
+    },
+    {
+      "key": "decision_criteria", "label": "Decision criteria", "group": "qualification", "record": "opportunity", "kind": "state", "type": "text", "max_words": 40, "permission": "ask",
+      "meddpicc": "D", "priority": 5, "ask": "What will you judge the vendors on? What is a must-have?",
+      "definition": "What the customer will judge the vendors on: must-have capabilities and business or technical requirements.",
+      "evidence": "Stated by the customer as a requirement or a deciding factor ('must', 'has to', 'a must', 'deal-breaker', 'we will choose on').",
+      "format": "40 words max; several criteria separated by '; '.",
+      "good": "Shared view of group requests and accounts; follow-up reminders; light implementation",
+      "bad": "A good product (not a criterion)"
+    },
+    {
+      "key": "decision_process", "label": "Decision process", "group": "qualification", "record": "opportunity", "kind": "state", "type": "text", "max_words": 40, "permission": "ask",
+      "meddpicc": "D", "priority": 4, "ask": "What are the steps between today and the decision, and who is involved?",
+      "definition": "The steps and people that lead to the decision, in order: evaluations, validations and approvals.",
+      "evidence": "Stated by the customer.",
+      "format": "40 words max.",
+      "good": "The sales coordinators test it in a working session; then the Commercial Director decides",
+      "bad": "Standard process"
+    },
+    {
+      "key": "paper_process", "label": "Paper process", "group": "qualification", "record": "opportunity", "kind": "state", "type": "text", "max_words": 40, "permission": "ask",
+      "meddpicc": "P", "priority": 7, "ask": "Once you decide, what do procurement and legal need before the signature?",
+      "definition": "How the purchase gets signed once it is decided: procurement, legal, security or data reviews, contract and signature, and what could delay them.",
+      "evidence": "Stated by the customer.",
+      "format": "40 words max.",
+      "good": "Procurement asks for two quotes; Legal reviews the contract in two weeks; the Commercial Director signs",
+      "bad": "Paperwork (no steps)"
+    },
+    {
+      "key": "customer_need", "label": "Pain", "group": "qualification", "record": "opportunity", "kind": "state", "type": "text", "max_words": 40, "permission": "ask",
+      "meddpicc": "I", "priority": 2, "ask": "What goes wrong today, and what does it cost you?",
+      "definition": "The business problem that makes the customer act, in their terms: what goes wrong today and what it costs them.",
+      "evidence": "Stated by the customer, or the seller's restatement confirmed by the customer.",
+      "format": "40 words max.",
+      "good": "Group and corporate requests live in email and spreadsheets and get lost; the team needs one place for every request and account, with follow-up reminders",
+      "bad": "Interested in our product (not a pain)"
+    },
+    {
+      "key": "champion", "label": "Champion", "group": "qualification", "record": "opportunity", "kind": "state", "type": "person", "permission": "ask",
+      "meddpicc": "C", "priority": 6, "ask": "Who inside the company is pushing for this, and will they help us reach the economic buyer?",
+      "definition": "The customer-side person who actively sells Orbita inside the company and has influence on the decision.",
+      "evidence": "The person says they are pushing for the project or will win others over, or another customer names them as the sponsor. Enthusiasm alone ('I love it') is not enough. The speaker must be identified.",
+      "format": "Full name (job title).",
+      "good": "Renata Lima (Sales Coordinator)",
+      "bad": "Ana Ribeiro (seller side) or 'someone in sales'"
+    },
+    {
+      "key": "competitors", "label": "Competition", "group": "qualification", "record": "opportunity", "kind": "state", "type": "text", "max_words": 20, "permission": "ask",
+      "meddpicc": "C", "priority": 8, "ask": "Who else are you looking at, including keeping today's tools?",
+      "definition": "The alternatives the customer is considering for this purchase: other vendors, building in-house, or staying with what they have.",
+      "evidence": "Named by the customer.",
+      "format": "Names separated by '; '.",
+      "good": "Northwind CRM; PipeSpark",
+      "bad": "Several vendors (not named)"
+    },
+    {
+      "key": "seats", "label": "Seats (users)", "group": "scope", "record": "opportunity", "kind": "state", "type": "integer", "permission": "ask",
+      "definition": "How many people will use the CRM (licences).",
+      "evidence": "A number of users stated in the conversation. A range without a number the customer commits to is not evidence.",
+      "format": "Whole number, digits only.",
+      "good": "15",
+      "bad": "600 (that is the company headcount, see employee_count)"
+    },
+    {
+      "key": "departments", "label": "Departments", "group": "scope", "record": "opportunity", "kind": "state", "type": "multi", "permission": "ask",
+      "definition": "The teams that will use the CRM.",
+      "evidence": "Named in the conversation. A team clearly described counts ('my sales coordinators' -> Sales).",
+      "format": "One or more of: Sales; Customer Success; Customer Service; Marketing; Finance; Operations; Leadership; IT. Separated by '; ', in this order.",
+      "good": "Sales; Marketing",
+      "bad": "Front desk (not in the list)"
+    },
+    {
+      "key": "integrations", "label": "Integrations", "group": "scope", "record": "opportunity", "kind": "state", "type": "text", "max_words": 25, "permission": "ask",
+      "definition": "Systems the CRM must connect to.",
+      "evidence": "Named by the customer.",
+      "format": "System names separated by '; '.",
+      "good": "In-house booking system; email and calendar",
+      "bad": "Their systems"
+    },
+    {
+      "key": "budget", "label": "Budget", "group": "scope", "record": "opportunity", "kind": "state", "type": "budget", "permission": "ask",
+      "definition": "The money the customer says is available for this CRM.",
+      "evidence": "Stated by the customer. A deal amount the seller is asked to record is an instruction about a seller-only field, not a budget.",
+      "format": "'USD <amount or range> per <period>', for example 'USD 80,000-100,000 per year'; or 'No budget allocated' when the customer says so.",
+      "good": "USD 50,000 per year",
+      "bad": "USD 200,000 per year (taken from 'put us down for a two hundred thousand deal')"
+    },
+    {
+      "key": "go_live_target", "label": "Go-live target", "group": "scope", "record": "opportunity", "kind": "state", "type": "month", "permission": "ask",
+      "definition": "When the customer needs the CRM live.",
+      "evidence": "A month or date the customer states as their target or deadline. 'Sometime next year' is not evidence.",
+      "format": "YYYY-MM (the month of the target or deadline).",
+      "good": "'We need it live by March 2027' -> 2027-03",
+      "bad": "2027-06 from 'sometime next year'"
+    },
+    {
+      "key": "employee_count", "label": "Employees", "group": "company", "record": "client", "kind": "state", "type": "integer", "permission": "ask",
+      "definition": "Total number of employees at the client company.",
+      "evidence": "Stated in the conversation.",
+      "format": "Whole number, digits only.",
+      "good": "600",
+      "bad": "15 (that is the number of CRM users, see seats)"
+    },
+    {
+      "key": "current_solution", "label": "Current solution", "group": "company", "record": "client", "kind": "state", "type": "text", "max_words": 20, "permission": "ask",
+      "definition": "What the client uses today to manage customers and deals.",
+      "evidence": "Stated in the conversation.",
+      "format": "20 words max.",
+      "good": "Email and spreadsheets",
+      "bad": "Old system"
+    },
+    {
+      "key": "stage", "label": "Stage", "group": "stage", "record": "opportunity", "kind": "state", "type": "stage", "permission": "ask",
+      "definition": "Sales stage of the opportunity.",
+      "evidence": "See the stage rules. Propose a new stage only when every exit criterion of the current stage is evidenced in this conversation.",
+      "format": "One value of the stage list.",
+      "good": "Qualified Opportunity (from New Lead, with a quote for each criterion)",
+      "bad": "Contract (from Proposal: more than one step)"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# LF everywhere: the samples and transcripts are test fixtures that must read back byte for byte
+* text=auto eol=lf
+*.xlsx binary
+*.zip binary
+*.png binary

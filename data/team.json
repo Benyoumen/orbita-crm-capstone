@@ -1,0 +1,8 @@
+[
+  { "user_id": "U01", "name": "Ana Ribeiro", "role": "Account Executive", "email": "ana.ribeiro@orbitacrm.example", "access": "own_opportunities" },
+  { "user_id": "U02", "name": "Lucas Moreira", "role": "Account Executive", "email": "lucas.moreira@orbitacrm.example", "access": "own_opportunities" },
+  { "user_id": "U03", "name": "Carla Mendes", "role": "Account Executive", "email": "carla.mendes@orbitacrm.example", "access": "own_opportunities" },
+  { "user_id": "U04", "name": "Juliana Costa", "role": "Sales Manager", "email": "juliana.costa@orbitacrm.example", "access": "all_opportunities_read" },
+  { "user_id": "U05", "name": "Pedro Almeida", "role": "Solutions Engineer", "email": "pedro.almeida@orbitacrm.example", "access": "none" },
+  { "user_id": "U06", "name": "Beatriz Souza", "role": "Implementation Lead", "email": "beatriz.souza@orbitacrm.example", "access": "none" }
+]

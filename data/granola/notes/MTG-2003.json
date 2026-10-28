@@ -1,0 +1,178 @@
+{
+  "id": "not_bf301fd97469d3",
+  "object": "note",
+  "title": "Nimbus Health - demo planning",
+  "owner": {
+    "name": "Ana Ribeiro",
+    "email": "ana.ribeiro@orbitacrm.example"
+  },
+  "created_at": "2026-11-04T12:30:00Z",
+  "updated_at": "2026-11-04T12:40:40Z",
+  "deleted_at": null,
+  "web_url": "https://notes.granola.ai/d/not_bf301fd97469d3",
+  "calendar_event": {
+    "event_title": "Nimbus Health - demo planning",
+    "invitees": [
+      {
+        "email": "ana.ribeiro@orbitacrm.example"
+      },
+      {
+        "email": "pedro.almeida@orbitacrm.example"
+      },
+      {
+        "email": "roberto.lima@nimbushealth.example"
+      }
+    ],
+    "organiser": "ana.ribeiro@orbitacrm.example",
+    "calendar_event_id": "evt_bf301fd97469d3",
+    "scheduled_start_time": "2026-11-04T12:30:00Z",
+    "scheduled_end_time": "2026-11-04T13:00:00Z"
+  },
+  "attachments": [],
+  "attendees": [
+    {
+      "name": "Ana Ribeiro",
+      "email": "ana.ribeiro@orbitacrm.example"
+    },
+    {
+      "name": "Pedro Almeida",
+      "email": "pedro.almeida@orbitacrm.example"
+    },
+    {
+      "name": "Roberto Lima",
+      "email": "roberto.lima@nimbushealth.example"
+    }
+  ],
+  "folder_membership": [
+    {
+      "id": "fol_CRMsyncFolder1",
+      "object": "folder",
+      "name": "CRM sync",
+      "parent_folder_id": null,
+      "space_id": null
+    }
+  ],
+  "space_membership": [],
+  "summary_text": "Short call with Nimbus Health's CIO. The board froze all new IT projects until the January budget review, so the 6 November demo is cancelled and no new date was agreed. The budget itself is unchanged at 90k USD a year.",
+  "summary_markdown": "Short call with Nimbus Health's CIO. The board froze all new IT projects until the January budget review, so the 6 November demo is cancelled and no new date was agreed. The budget itself is unchanged at 90k USD a year.",
+  "private_notes_text": null,
+  "private_notes_markdown": null,
+  "transcript": [
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Hi Roberto, good morning. Pedro is with me. We wanted to go through the plan for Friday's demo with the clinic managers.",
+      "start_time": "2026-11-04T12:30:10Z",
+      "end_time": "2026-11-04T12:30:18Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Roberto Lima"
+      },
+      "text": "Morning, both. I'm glad you called, because I have news, and it isn't good. The board froze all new IT projects until our budget review in January.",
+      "start_time": "2026-11-04T12:30:21Z",
+      "end_time": "2026-11-04T12:30:31Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "I see. So Friday's demo...",
+      "start_time": "2026-11-04T12:30:40Z",
+      "end_time": "2026-11-04T12:30:42Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Roberto Lima"
+      },
+      "text": "Please cancel the demo on Friday. There is no next step from our side for now, and nothing has been agreed beyond waiting for the budget review.",
+      "start_time": "2026-11-04T12:30:43Z",
+      "end_time": "2026-11-04T12:30:53Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Pedro Almeida"
+      },
+      "text": "Understood. Should we keep a placeholder in the calendar, maybe for December?",
+      "start_time": "2026-11-04T12:31:05Z",
+      "end_time": "2026-11-04T12:31:10Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Roberto Lima"
+      },
+      "text": "No, please drop it. I can't commit to any date, not even a date to talk again.",
+      "start_time": "2026-11-04T12:31:12Z",
+      "end_time": "2026-11-04T12:31:19Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Roberto Lima"
+      },
+      "text": "To be clear, the budget itself hasn't changed: it's still ninety thousand dollars a year. It's the timing that moved.",
+      "start_time": "2026-11-04T12:32:30Z",
+      "end_time": "2026-11-04T12:32:38Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "That's clear. Is there anything we can send that would help with the budget review?",
+      "start_time": "2026-11-04T12:34:40Z",
+      "end_time": "2026-11-04T12:34:46Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Roberto Lima"
+      },
+      "text": "Not really. If the board approves the budget in January, I'll reach out to you.",
+      "start_time": "2026-11-04T12:34:48Z",
+      "end_time": "2026-11-04T12:34:54Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Pedro Almeida"
+      },
+      "text": "Thanks for being upfront with us, Roberto.",
+      "start_time": "2026-11-04T12:35:02Z",
+      "end_time": "2026-11-04T12:35:05Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Roberto Lima"
+      },
+      "text": "Of course. I'm sorry about the timing. Take care, both of you.",
+      "start_time": "2026-11-04T12:38:30Z",
+      "end_time": "2026-11-04T12:38:35Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "You too, Roberto. Thanks, bye.",
+      "start_time": "2026-11-04T12:38:38Z",
+      "end_time": "2026-11-04T12:38:40Z"
+    }
+  ]
+}

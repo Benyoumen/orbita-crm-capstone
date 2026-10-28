@@ -1,0 +1,8 @@
+[2026-11-05 18:02] Ana Ribeiro (Orbita): Hi Henrique, good evening! I've just emailed you the revised commercial terms: 8% off for the three-year term, as we discussed with Talita.
+[2026-11-05 18:40] Henrique Prado (Solaris Energy): Thanks Ana, I've read them. Eight percent on three years works for us. We agree with the terms.
+[2026-11-05 18:41] Henrique Prado (Solaris Energy): Please send me the contract for signature. Talita will route it through procurement on Monday and I'll sign right after that.
+[2026-11-05 18:45] Ana Ribeiro (Orbita): Great news! I'll send you the contract tomorrow morning.
+[2026-11-05 18:46] Henrique Prado (Solaris Energy): Perfect. One more thing: our IT team needs single sign-on with Microsoft Entra from day one.
+[2026-11-05 18:47] Ana Ribeiro (Orbita): Noted. Beatriz, our implementation lead, will include it in the kickoff plan.
+[2026-11-05 18:50] Henrique Prado (Solaris Energy): That's the list of the 110 users for the accounts, by the way.
+[2026-11-05 18:52] Ana Ribeiro (Orbita): 👍 Thanks, Henrique. Have a good evening.

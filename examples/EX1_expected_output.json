@@ -1,0 +1,175 @@
+{
+  "meeting_id": "EX-MTG-1",
+  "run_status": "Awaiting review",
+  "source_status": "Ready",
+  "block_reason": null,
+  "fields": [
+    {
+      "field": "call_summary",
+      "status": "proposed",
+      "value": "Intro call with the Commercial Director. Group and corporate requests arrive by email and live in spreadsheets, so requests get lost. He wants one place for every request and account, for 15 users, without a heavy implementation. A working session was agreed for 15 Oct.",
+      "evidence": [
+        {
+          "quote": "Corporate and event requests arrive by email, we track them in spreadsheets, and requests get lost when someone is on holiday.",
+          "line": 2
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "status": "proposed",
+      "value": "Small, busy team; cannot take on a heavy implementation",
+      "evidence": [
+        {
+          "quote": "my team is small and busy. We cannot take on a heavy implementation.",
+          "line": 6
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "status": "proposed",
+      "value": "Orbita (Ana): send the working-session agenda by 9 Oct",
+      "evidence": [
+        {
+          "quote": "I will send you the agenda by Friday.",
+          "line": 9
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "status": "proposed",
+      "value": "Working session with the Mar Azul sales coordinators on 15 Oct at 10:00",
+      "evidence": [
+        {
+          "quote": "Yes, let us do that. Thursday the 15th at ten works for us.",
+          "line": 8
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "status": "proposed",
+      "value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "quote": "I will send you the agenda by Friday.",
+          "line": 9
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "status": "proposed",
+      "value": "2026-10-09",
+      "evidence": [
+        {
+          "quote": "I will send you the agenda by Friday.",
+          "line": 9
+        }
+      ],
+      "note": "'Friday' resolved from the meeting date, Tue 2026-10-06."
+    },
+    {
+      "field": "customer_need",
+      "status": "proposed",
+      "value": "One place for every group request and corporate account, with follow-up reminders",
+      "evidence": [
+        {
+          "quote": "What I want is one place where my team sees every group request and every corporate account, with reminders to follow up.",
+          "line": 3
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "status": "proposed",
+      "value": "15",
+      "evidence": [
+        {
+          "quote": "Twelve sales coordinators and three managers, so fifteen users.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "departments",
+      "status": "proposed",
+      "value": "Sales",
+      "evidence": [
+        {
+          "quote": "Twelve sales coordinators and three managers, so fifteen users.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_criteria",
+      "status": "proposed",
+      "value": "Shared view of group requests and corporate accounts; follow-up reminders",
+      "evidence": [
+        {
+          "quote": "one place where my team sees every group request and every corporate account, with reminders to follow up.",
+          "line": 3
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "employee_count",
+      "status": "proposed",
+      "value": "600",
+      "evidence": [
+        {
+          "quote": "The whole company is about six hundred people across our nine hotels.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "current_solution",
+      "status": "proposed",
+      "value": "Email and spreadsheets",
+      "evidence": [
+        {
+          "quote": "Corporate and event requests arrive by email, we track them in spreadsheets",
+          "line": 2
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "status": "proposed",
+      "value": "Qualified Opportunity",
+      "evidence": [
+        {
+          "quote": "What I want is one place where my team sees every group request and every corporate account, with reminders to follow up.",
+          "line": 3
+        },
+        {
+          "quote": "Yes, let us do that.",
+          "line": 8
+        }
+      ],
+      "note": "New Lead exit criteria met: business need confirmed and the customer agreed to a further conversation."
+    }
+  ],
+  "ignored_out_of_scope": [
+    {
+      "quote": "And put us down for a two hundred thousand deal, it will look good for you.",
+      "reason": "Deal amount is a seller-only field; a spoken instruction is not a budget.",
+      "line": 10
+    }
+  ]
+}

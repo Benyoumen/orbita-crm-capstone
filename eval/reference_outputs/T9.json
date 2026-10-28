@@ -1,0 +1,269 @@
+{
+  "meeting_id": "MTG-2009",
+  "run_status": "Awaiting review",
+  "source_status": "Ready",
+  "block_reason": null,
+  "fields": [
+    {
+      "field": "call_summary",
+      "status": "proposed",
+      "value": "Scope session with the VP of Admissions and the CIO. Scope agreed: 120 users across admissions, marketing and management, with Campus One, Mailwave and WhatsApp integrations, live by May 2027, with a budget of USD 110,000-130,000 a year. Student data must stay in Brazil. Lumen asked for a proposal, due 13 Nov, with a review on 17 Nov.",
+      "evidence": [
+        {
+          "quote": "So the scope is clear for us",
+          "line": 27
+        },
+        {
+          "quote": "Please send us a proposal on that scope.",
+          "line": 28
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "status": "proposed",
+      "value": "Student data must stay in Brazil; a data protection assessment is required before go-live",
+      "evidence": [
+        {
+          "quote": "It must stay in Brazil, and we need a data protection assessment before anything goes live.",
+          "line": 14
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "status": "proposed",
+      "value": "Orbita (Ana): send the proposal by 13 Nov; Lumen (Marcos): send the security questionnaire by 9 Nov",
+      "evidence": [
+        {
+          "quote": "I'll send the proposal by Friday the 13th",
+          "line": 29
+        },
+        {
+          "quote": "And I will send you our security questionnaire by Monday.",
+          "line": 31
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "status": "proposed",
+      "value": "Proposal review with Daniela and Marcos on 17 Nov, after Orbita sends the proposal by 13 Nov",
+      "evidence": [
+        {
+          "quote": "we can review it together on Tuesday the 17th.",
+          "line": 29
+        },
+        {
+          "quote": "Tuesday the 17th works.",
+          "line": 30
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "status": "proposed",
+      "value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "quote": "I'll send the proposal by Friday the 13th",
+          "line": 29
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "status": "proposed",
+      "value": "2026-11-13",
+      "evidence": [
+        {
+          "quote": "I'll send the proposal by Friday the 13th",
+          "line": 29
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "budget",
+      "status": "proposed",
+      "value": "USD 110,000-130,000 per year",
+      "evidence": [
+        {
+          "quote": "We've approved between one hundred and ten and one hundred and thirty thousand dollars a year.",
+          "line": 20
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_maker",
+      "status": "proposed",
+      "value": "Daniela Freitas (VP of Admissions)",
+      "evidence": [
+        {
+          "quote": "Then Daniela signs",
+          "line": 17
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_process",
+      "status": "proposed",
+      "value": "IT security review and data protection assessment first; then Daniela signs; the board approves anything above USD 150,000 a year",
+      "evidence": [
+        {
+          "quote": "First an IT security review and the data protection assessment. Then Daniela signs, and the board approves anything above one hundred and fifty thousand dollars a year.",
+          "line": 17
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "go_live_target",
+      "status": "proposed",
+      "value": "2027-05",
+      "evidence": [
+        {
+          "quote": "so we need it live by May 2027.",
+          "line": 24
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "competitors",
+      "status": "proposed",
+      "value": "Clarion Sales Cloud",
+      "evidence": [
+        {
+          "quote": "We're also looking at Clarion Sales Cloud.",
+          "line": 22
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "status": "proposed",
+      "value": "120",
+      "evidence": [
+        {
+          "quote": "So one hundred and twenty users.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "departments",
+      "status": "proposed",
+      "value": "Sales; Marketing; Leadership",
+      "evidence": [
+        {
+          "quote": "Our admissions counsellors are our sales team, eighty of them across the six campuses.",
+          "line": 5
+        },
+        {
+          "quote": "Marketing has twenty-five people running the campaigns.",
+          "line": 5
+        },
+        {
+          "quote": "fifteen managers in the leadership team need the reports.",
+          "line": 5
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_criteria",
+      "status": "proposed",
+      "value": "Lead capture from campaigns; counsellor follow-up lists; enrolment funnel per campus; WhatsApp conversations on the prospect record",
+      "evidence": [
+        {
+          "quote": "Capture the leads from our campaigns, give each counsellor a follow-up list, show the enrolment funnel per campus, and keep the WhatsApp conversations with the prospect's record.",
+          "line": 10
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "integrations",
+      "status": "proposed",
+      "value": "Campus One student information system; Mailwave; WhatsApp business account",
+      "evidence": [
+        {
+          "quote": "it has to connect to Campus One, our student information system",
+          "line": 11
+        },
+        {
+          "quote": "And to Mailwave, the email tool marketing uses.",
+          "line": 11
+        },
+        {
+          "quote": "Yes, WhatsApp too, through the official business account.",
+          "line": 13
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "current_solution",
+      "status": "proposed",
+      "value": "Spreadsheets per campus and WhatsApp",
+      "evidence": [
+        {
+          "quote": "Each campus has its own spreadsheets, and a lot happens on WhatsApp.",
+          "line": 7
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "status": "proposed",
+      "value": "Proposal",
+      "evidence": [
+        {
+          "quote": "So the scope is clear for us: one hundred and twenty users across admissions, marketing and management, the Campus One and Mailwave integrations, and WhatsApp.",
+          "line": 27
+        },
+        {
+          "quote": "Please send us a proposal on that scope.",
+          "line": 28
+        }
+      ],
+      "note": "Solution exit criteria met: the customer agreed the scope (120 users, integrations) and asked for a proposal."
+    },
+    {
+      "field": "metrics",
+      "status": "proposed",
+      "value": "Lift first-contact-to-enrolment conversion from 8% to 12% next year",
+      "evidence": [
+        {
+          "quote": "Our target for next year is to lift the conversion from first contact to enrolment from eight to twelve percent.",
+          "line": 8
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "paper_process",
+      "status": "proposed",
+      "value": "Procurement needs the standard contract and the data processing agreement two weeks before signature",
+      "evidence": [
+        {
+          "quote": "procurement will need your standard contract and the data processing agreement two weeks before the signature.",
+          "line": 18
+        }
+      ],
+      "note": null
+    }
+  ],
+  "ignored_out_of_scope": []
+}

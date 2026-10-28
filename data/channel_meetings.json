@@ -1,0 +1,28 @@
+[
+  {
+    "meeting_id": "MTG-2011",
+    "source": {
+      "system": "whatsapp",
+      "file": "WhatsApp Chat with Henrique Prado.txt",
+      "format": "whatsapp"
+    },
+    "title": "WhatsApp chat with Henrique Prado",
+    "start": "2026-11-05T18:02:00-03:00",
+    "scheduled_minutes": null,
+    "recorded_minutes": null,
+    "chat": true,
+    "organiser_id": "U01",
+    "owner_email": "ana.ribeiro@orbitacrm.example",
+    "transcript_status": "complete",
+    "ends_mid_sentence": false,
+    "granola_summary": null,
+    "linked_opportunity_id": "OPP-0149",
+    "client_id": "CLI-009",
+    "match_reason": "Henrique Prado is a contact at Solaris Energy",
+    "participants": [
+      "Ana Ribeiro (Orbita)",
+      "Henrique Prado (Solaris Energy)"
+    ],
+    "transcript_file": "transcripts/MTG-2011.txt"
+  }
+]

@@ -1,0 +1,67 @@
+1
+00:00:00,000 --> 00:00:05,000
+Ana Ribeiro: Hi Tiago, how are you? I wanted to check how the proposal landed.
+
+2
+00:00:06,000 --> 00:00:09,077
+Tiago Mendes: Honestly, I love it. Let's sign next week.
+
+3
+00:00:13,000 --> 00:00:17,615
+Ana Ribeiro: Great to hear. Has Helena had a chance to look at it?
+
+4
+00:00:18,000 --> 00:00:27,615
+Tiago Mendes: Not yet. Our CFO, Helena Duarte, hasn't seen the proposal. She signs anything above a hundred thousand. I will forward it to her this week.
+
+5
+00:00:41,000 --> 00:00:47,538
+Tiago Mendes: I've been pushing for this internally since your demo, and I'll walk Helena through the proposal myself.
+
+6
+00:01:01,000 --> 00:01:09,077
+Tiago Mendes: And you can put it down as a one million dollar deal in your system. It'll make your quarter look great.
+
+7
+00:01:13,000 --> 00:01:19,923
+Ana Ribeiro: Let's see what Helena says first. Has she raised any concerns on pricing or contract terms so far?
+
+8
+00:01:21,000 --> 00:01:23,692
+Tiago Mendes: No, nothing yet. She hasn't seen it.
+
+9
+00:02:56,000 --> 00:03:04,077
+Tiago Mendes: For the record, we have one hundred and twenty thousand dollars a year approved for the CRM in next year's budget.
+
+10
+00:03:11,000 --> 00:03:16,385
+Ana Ribeiro: That's useful, thanks. And the scope is still the seventy-five users in the proposal?
+
+11
+00:03:17,000 --> 00:03:21,231
+Tiago Mendes: Yes, seventy-five users to start, sales and the customer service desk.
+
+12
+00:03:36,000 --> 00:03:42,923
+Tiago Mendes: Once Helena approves, our legal team needs about two weeks to review the contract, and then she signs.
+
+13
+00:06:31,000 --> 00:06:37,538
+Tiago Mendes: Sorry, my son just texted me, he scored in his football match this morning. Proud dad moment.
+
+14
+00:06:38,000 --> 00:06:39,500
+Ana Ribeiro: Congratulations to him!
+
+15
+00:12:31,000 --> 00:12:39,077
+Ana Ribeiro: Next step then: you forward proposal v1 to Helena this week, and I'll check in with you on Thursday the 12th.
+
+16
+00:12:43,000 --> 00:12:44,538
+Tiago Mendes: Deal. Thursday the 12th.
+
+17
+00:22:56,000 --> 00:22:57,538
+Tiago Mendes: Thanks, Ana. Talk then.

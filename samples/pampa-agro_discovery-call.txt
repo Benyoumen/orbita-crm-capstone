@@ -1,0 +1,26 @@
+[00:00:00] Ana Ribeiro: Good morning, Paulo, Luiza. Can you hear me well? The connection from the countryside sometimes struggles.
+[00:00:08] Speaker 2: We can hear you. We're in the meeting room at the head office today, the signal is good here.
+[00:00:17] Ana Ribeiro: Great. Tell me how the commercial side of Pampa Agro works.
+[00:00:23] Speaker 2: We sell seeds and fertiliser through about two hundred dealers in the south, and our field reps visit them every week.
+[00:00:58] Speaker 2: After each visit the rep fills in a paper report, and on Friday someone types it into a spreadsheet. We never know what a dealer ordered or what the rep promised.
+[00:01:37] Ana Ribeiro: So the need is one place with every dealer visit, order and promise?
+[00:01:44] Speaker 2: Yes. We need to know which dealer was visited, what they ordered and what was promised, in one place.
+[00:03:13] Ana Ribeiro: How many people would use it?
+[00:03:18] Speaker 2: Thirty-two field reps in sales, and six people in the leadership team who want the reports. So thirty-eight users.
+[00:04:33] Speaker 2: The problem is there's no mobile signal in the fields. Anything that needs the internet all the time won't work. And the reps are not used to apps.
+[00:04:58] Ana Ribeiro: Our app works offline and syncs later, and the visit check-in uses GPS.
+[00:05:08] Speaker 2: Then it must work offline and have the GPS check-in, those two are non-negotiable.
+[00:07:23] Ana Ribeiro: What systems would it need to talk to?
+[00:07:27] Speaker 2: Our ERP is Orion ERP. The dealer orders need to flow there.
+[00:09:03] Ana Ribeiro: How big is the company overall?
+[00:09:07] Speaker 2: We're about four hundred and fifty people.
+[00:12:33] Ana Ribeiro: Who decides on a project like this?
+[00:12:37] Speaker 2: I make the final call on this, and I'm fine with the budget.
+[00:12:48] Ana Ribeiro: And what budget do you have in mind?
+[00:12:53] Speaker 2: About seventy thousand dollars a year.
+[00:13:23] Speaker 2: Between us, I'm the one pushing for this inside the company. The other directors still think paper works.
+[00:14:13] Ana Ribeiro: And when would you need it?
+[00:14:17] Speaker 2: Before the planting season sales in August, so live by July 2027.
+[00:29:58] Ana Ribeiro: I'll send you a short video of the offline mode by Monday. And would a field demo with two of your reps work next Wednesday, the 11th?
+[00:30:11] Speaker 2: Yes, Wednesday the 11th works. We'll pick two reps.
+[00:37:43] Speaker 2: Thanks, Ana. Talk soon.

@@ -1,0 +1,143 @@
+{
+  "run_at": "2026-10-28T19:21:44.456Z",
+  "cases": [
+    {
+      "case_id": "T1",
+      "prd_case": 1,
+      "name": "Happy path - complete discovery call",
+      "proves": "A complete discovery call fills every field with a quote, and the stage moves only when the need, the decision-maker and the timeline are all on the call."
+    },
+    {
+      "case_id": "T2",
+      "prd_case": 2,
+      "name": "No evidence - no follow-up date or further meeting agreed",
+      "proves": "When no date or next meeting is agreed, the agent leaves the due date and the stage empty instead of guessing, and records 'no budget' only because the customer said so."
+    },
+    {
+      "case_id": "T3",
+      "prd_case": 3,
+      "name": "Contradiction with seller-approved values (short call)",
+      "proves": "When the call cancels an approved next step without agreeing a new one, the agent flags the conflict and lets the seller decide; a short call that ended normally is still usable."
+    },
+    {
+      "case_id": "T4",
+      "prd_case": 4,
+      "name": "Unusable source - recording cut off mid-sentence",
+      "proves": "A recording that stops mid-sentence is blocked before the agent runs: no proposals and nothing to submit."
+    },
+    {
+      "case_id": "T5",
+      "prd_case": 4,
+      "name": "New client - a meeting with a company that is not in the CRM",
+      "proves": "A conversation with a company the CRM does not know becomes a proposal for a new client and opportunity: nothing is created until the seller approves (or Settings allow it), and the fields are proposed like any other run."
+    },
+    {
+      "case_id": "T6",
+      "prd_case": 5,
+      "name": "Stage boundary - 'let's sign' before the decision-maker has the proposal, spoken deal amount, stated budget",
+      "proves": "'Let's sign' from someone who is not the decision-maker does not move the stage; a spoken deal amount is ignored while the stated budget is kept."
+    },
+    {
+      "case_id": "T7",
+      "prd_case": 6,
+      "name": "Seller edits a proposal",
+      "proves": "The seller can rewrite a proposal: the CRM receives the seller's text and the record keeps both versions, who decided and when."
+    },
+    {
+      "case_id": "T8",
+      "prd_case": 7,
+      "name": "Access boundary - seller does not own the opportunity",
+      "proves": "A seller who does not own the opportunity sees nothing from it, and the attempt is logged."
+    },
+    {
+      "case_id": "T9",
+      "prd_case": 8,
+      "name": "Solution fit - scope session with every typed field; scope agreed and proposal requested",
+      "proves": "A scope session fills users, teams, integrations, competitors and go-live in valid formats, and the stage moves to Proposal only when the scope is agreed and a proposal is requested."
+    },
+    {
+      "case_id": "T10",
+      "prd_case": 9,
+      "name": "Granola speaker attribution - customer voices without a name",
+      "proves": "When Granola cannot tell who is speaking, the agent still records the facts but does not name a decision-maker or move the stage on that statement."
+    },
+    {
+      "case_id": "T11",
+      "prd_case": 10,
+      "name": "WhatsApp chat - terms agreed in an exported chat",
+      "proves": "A WhatsApp export is read like a meeting: it is attributed to the right opportunity by its contact, relative dates come from the message that says them, and the decision-maker's written yes plus the request for the contract move Negotiation to Contract."
+    }
+  ],
+  "labels": {
+    "mock": {
+      "passed": 11,
+      "total": 11,
+      "usage": {
+        "calls": 0,
+        "input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "cost_per_call_usd": null,
+      "rows": [
+        {
+          "case_id": "T1",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T2",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T3",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T4",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T5",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T6",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T7",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T8",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T9",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T10",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T11",
+          "verdict": "PASS",
+          "fails": []
+        }
+      ]
+    }
+  }
+}

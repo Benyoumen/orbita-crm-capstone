@@ -1,0 +1,27 @@
+{
+  "meeting": {
+    "meeting_id": "EX-MTG-2",
+    "source": { "system": "granola" },
+    "title": "Bela Vista Clinics - demo follow-up",
+    "start": "2026-10-14T15:00:00-03:00",
+    "scheduled_minutes": 30,
+    "recorded_minutes": 12,
+    "participants": ["Ana Ribeiro (Orbita)", "Renata Gomes (Bela Vista Clinics)"]
+  },
+  "client": {
+    "client_id": "EX-CLI-2", "name": "Bela Vista Clinics", "industry": "Healthcare",
+    "contacts": [{ "name": "Renata Gomes", "title": "Operations Director" }],
+    "fields": {}
+  },
+  "opportunity": {
+    "opportunity_id": "EX-OPP-2", "client_id": "EX-CLI-2", "name": "Patient relations CRM", "owner_id": "U01",
+    "fields": {
+      "next_step": { "value": "Demo for the clinic managers on 20 Oct", "approved": true },
+      "follow_up_owner": { "value": "Ana Ribeiro", "approved": true },
+      "follow_up_due_date": { "value": "2026-10-20", "approved": true },
+      "budget": { "value": "USD 50,000 per year", "approved": true },
+      "seats": { "value": "40", "approved": true },
+      "stage": { "value": "Solution", "approved": true }
+    }
+  }
+}

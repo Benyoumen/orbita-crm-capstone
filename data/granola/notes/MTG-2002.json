@@ -1,0 +1,274 @@
+{
+  "id": "not_f300792adfb164",
+  "object": "note",
+  "title": "Verde Retail - intro call",
+  "owner": {
+    "name": "Ana Ribeiro",
+    "email": "ana.ribeiro@orbitacrm.example"
+  },
+  "created_at": "2026-11-02T17:00:00Z",
+  "updated_at": "2026-11-02T17:29:42Z",
+  "deleted_at": null,
+  "web_url": "https://notes.granola.ai/d/not_f300792adfb164",
+  "calendar_event": {
+    "event_title": "Verde Retail - intro call",
+    "invitees": [
+      {
+        "email": "ana.ribeiro@orbitacrm.example"
+      },
+      {
+        "email": "camila.rocha@verderetail.example"
+      }
+    ],
+    "organiser": "ana.ribeiro@orbitacrm.example",
+    "calendar_event_id": "evt_f300792adfb164",
+    "scheduled_start_time": "2026-11-02T17:00:00Z",
+    "scheduled_end_time": "2026-11-02T17:30:00Z"
+  },
+  "attachments": [],
+  "attendees": [
+    {
+      "name": "Ana Ribeiro",
+      "email": "ana.ribeiro@orbitacrm.example"
+    },
+    {
+      "name": "Camila Rocha",
+      "email": "camila.rocha@verderetail.example"
+    }
+  ],
+  "folder_membership": [
+    {
+      "id": "fol_CRMsyncFolder1",
+      "object": "folder",
+      "name": "CRM sync",
+      "parent_folder_id": null,
+      "space_id": null
+    }
+  ],
+  "space_membership": [],
+  "summary_text": "Intro call with Verde Retail's Head of Retail Operations. Franchise and wholesale sales are managed in WhatsApp groups and spreadsheets. A previous BI project failed on adoption. No budget yet; Camila will read a case study after Black Friday, with no date and no meeting booked.",
+  "summary_markdown": "Intro call with Verde Retail's Head of Retail Operations. Franchise and wholesale sales are managed in WhatsApp groups and spreadsheets. A previous BI project failed on adoption. No budget yet; Camila will read a case study after Black Friday, with no date and no meeting booked.",
+  "private_notes_text": null,
+  "private_notes_markdown": null,
+  "transcript": [
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Hi Camila, thanks for taking the call on a Monday afternoon.",
+      "start_time": "2026-11-02T17:00:05Z",
+      "end_time": "2026-11-02T17:00:09Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "Hi Ana. Sorry if I sound tired, we're three weeks from Black Friday and the stores are going crazy.",
+      "start_time": "2026-11-02T17:00:10Z",
+      "end_time": "2026-11-02T17:00:17Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "I can imagine. I'll keep it focused. You reached out about managing your franchise network, right?",
+      "start_time": "2026-11-02T17:00:19Z",
+      "end_time": "2026-11-02T17:00:25Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "Yes. We have thirty-eight own stores, but the growth is in the franchise and wholesale channel: forty franchisees and around two hundred wholesale buyers.",
+      "start_time": "2026-11-02T17:00:26Z",
+      "end_time": "2026-11-02T17:00:35Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "Today all of that runs on WhatsApp groups and spreadsheets. When a franchisee complains or a buyer asks for a reorder, it's lost in a chat somewhere.",
+      "start_time": "2026-11-02T17:00:44Z",
+      "end_time": "2026-11-02T17:00:54Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "So what you'd want is one place where your team sees every franchisee and wholesale buyer, with their orders, visits and complaints?",
+      "start_time": "2026-11-02T17:01:10Z",
+      "end_time": "2026-11-02T17:01:18Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "Yes, that's exactly it. One place for the franchisees and the wholesale buyers, instead of fifty WhatsApp groups.",
+      "start_time": "2026-11-02T17:01:21Z",
+      "end_time": "2026-11-02T17:01:28Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "How big is Verde overall?",
+      "start_time": "2026-11-02T17:02:40Z",
+      "end_time": "2026-11-02T17:02:42Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "About one thousand two hundred employees, most of them in the stores.",
+      "start_time": "2026-11-02T17:02:44Z",
+      "end_time": "2026-11-02T17:02:49Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "And how many people would use a CRM?",
+      "start_time": "2026-11-02T17:04:15Z",
+      "end_time": "2026-11-02T17:04:18Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "Honestly, I don't know yet. Maybe the regional managers, maybe more. I'd have to think about it.",
+      "start_time": "2026-11-02T17:04:20Z",
+      "end_time": "2026-11-02T17:04:27Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "One thing I should tell you. Two years ago we bought a BI tool and it failed. It was too complicated and the store teams stopped using it after a month. I can't go through that again.",
+      "start_time": "2026-11-02T17:06:30Z",
+      "end_time": "2026-11-02T17:06:44Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "That's important to know. Simplicity would be a requirement, then.",
+      "start_time": "2026-11-02T17:06:52Z",
+      "end_time": "2026-11-02T17:06:56Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Is there a budget for this kind of project?",
+      "start_time": "2026-11-02T17:08:10Z",
+      "end_time": "2026-11-02T17:08:13Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "Not right now. There's no budget allocated for this yet, it would have to go into next year's plan.",
+      "start_time": "2026-11-02T17:08:14Z",
+      "end_time": "2026-11-02T17:08:21Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "By the way, my daughter started at the same school as your colleague's son, small world.",
+      "start_time": "2026-11-02T17:11:30Z",
+      "end_time": "2026-11-02T17:11:35Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Really? That's funny, I'll tell him.",
+      "start_time": "2026-11-02T17:11:36Z",
+      "end_time": "2026-11-02T17:11:38Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "We work with a fashion retailer with a franchise model very similar to yours. I'll send you our product overview and that case study.",
+      "start_time": "2026-11-02T17:16:05Z",
+      "end_time": "2026-11-02T17:16:14Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "Please do. I'll read it with my team after Black Friday.",
+      "start_time": "2026-11-02T17:16:18Z",
+      "end_time": "2026-11-02T17:16:22Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Would it make sense to book a short demo for the end of November?",
+      "start_time": "2026-11-02T17:16:25Z",
+      "end_time": "2026-11-02T17:16:30Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "Let's not book anything yet. Send me the case study first and I'll come back to you. No rush, honestly.",
+      "start_time": "2026-11-02T17:16:31Z",
+      "end_time": "2026-11-02T17:16:39Z"
+    },
+    {
+      "speaker": {
+        "source": "microphone",
+        "attribution": "me"
+      },
+      "text": "Understood, no pressure.",
+      "start_time": "2026-11-02T17:16:42Z",
+      "end_time": "2026-11-02T17:16:43Z"
+    },
+    {
+      "speaker": {
+        "source": "speaker",
+        "attribution": "them",
+        "name": "Camila Rocha"
+      },
+      "text": "Thanks Ana, have a good week.",
+      "start_time": "2026-11-02T17:27:40Z",
+      "end_time": "2026-11-02T17:27:42Z"
+    }
+  ]
+}

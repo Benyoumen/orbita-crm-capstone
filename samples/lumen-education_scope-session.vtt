@@ -1,0 +1,129 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:09.231
+<v Ana Ribeiro>Good afternoon, Daniela, Marcos. Pedro is with me again. The plan for today is to agree the scope, so we can prepare the proposal.</v>
+
+2
+00:00:11.000 --> 00:00:14.846
+<v Daniela Freitas>Perfect. We blocked the full hour, so let's use it.</v>
+
+3
+00:00:19.000 --> 00:00:22.846
+<v Marcos Antunes>And I brought my list of technical questions, as promised.</v>
+
+4
+00:00:28.000 --> 00:00:32.615
+<v Ana Ribeiro>Great. Daniela, let's start with the users. Who would use the CRM?</v>
+
+5
+00:00:35.000 --> 00:00:49.231
+<v Daniela Freitas>Our admissions counsellors are our sales team, eighty of them across the six campuses. Marketing has twenty-five people running the campaigns. And fifteen managers in the leadership team need the reports. So one hundred and twenty users.</v>
+
+6
+00:01:15.000 --> 00:01:17.692
+<v Ana Ribeiro>And how do the counsellors work today?</v>
+
+7
+00:01:20.000 --> 00:01:30.769
+<v Daniela Freitas>Each campus has its own spreadsheets, and a lot happens on WhatsApp. We have no idea how many prospects we lose between the first contact and the enrolment.</v>
+
+8
+00:01:45.000 --> 00:01:52.692
+<v Daniela Freitas>Our target for next year is to lift the conversion from first contact to enrolment from eight to twelve percent.</v>
+
+9
+00:03:05.000 --> 00:03:08.077
+<v Ana Ribeiro>What must the CRM do from day one?</v>
+
+10
+00:03:09.000 --> 00:03:19.385
+<v Daniela Freitas>Capture the leads from our campaigns, give each counsellor a follow-up list, show the enrolment funnel per campus, and keep the WhatsApp conversations with the prospect's record.</v>
+
+11
+00:05:35.000 --> 00:05:46.154
+<v Marcos Antunes>On integrations, it has to connect to Campus One, our student information system, because that is where an enrolment becomes official. And to Mailwave, the email tool marketing uses.</v>
+
+12
+00:06:00.000 --> 00:06:03.462
+<v Pedro Almeida>Both have APIs we've worked with. What about WhatsApp?</v>
+
+13
+00:06:05.000 --> 00:06:08.077
+<v Marcos Antunes>Yes, WhatsApp too, through the official business account.</v>
+
+14
+00:09:25.000 --> 00:09:33.462
+<v Marcos Antunes>My main concern is student data. It must stay in Brazil, and we need a data protection assessment before anything goes live.</v>
+
+15
+00:09:46.000 --> 00:09:52.154
+<v Pedro Almeida>Our data centre for Brazilian clients is in São Paulo, and we can support the assessment.</v>
+
+16
+00:12:15.000 --> 00:12:18.462
+<v Ana Ribeiro>How will the decision be made on your side?</v>
+
+17
+00:12:20.000 --> 00:12:30.385
+<v Marcos Antunes>First an IT security review and the data protection assessment. Then Daniela signs, and the board approves anything above one hundred and fifty thousand dollars a year.</v>
+
+18
+00:12:45.000 --> 00:12:52.308
+<v Marcos Antunes>On the paperwork, procurement will need your standard contract and the data processing agreement two weeks before the signature.</v>
+
+19
+00:13:35.000 --> 00:13:36.500
+<v Ana Ribeiro>And the budget?</v>
+
+20
+00:13:39.000 --> 00:13:45.154
+<v Daniela Freitas>We've approved between one hundred and ten and one hundred and thirty thousand dollars a year.</v>
+
+21
+00:15:00.000 --> 00:15:01.923
+<v Ana Ribeiro>Are you evaluating other options?</v>
+
+22
+00:15:04.000 --> 00:15:10.923
+<v Daniela Freitas>We're also looking at Clarion Sales Cloud. To be honest, they're cheaper, but their WhatsApp integration is weak.</v>
+
+23
+00:17:25.000 --> 00:17:27.692
+<v Ana Ribeiro>When does it need to be live?</v>
+
+24
+00:17:29.000 --> 00:17:35.923
+<v Daniela Freitas>The enrolment campaign for the second semester starts in June, so we need it live by May 2027.</v>
+
+25
+00:24:05.000 --> 00:24:10.800
+<v Marcos Antunes>Off topic, but did anyone watch the match last night? I still can't believe that penalty.</v>
+
+26
+00:24:11.000 --> 00:24:12.500
+<v Pedro Almeida>Don't remind me.</v>
+
+27
+00:46:25.000 --> 00:46:34.615
+<v Daniela Freitas>So the scope is clear for us: one hundred and twenty users across admissions, marketing and management, the Campus One and Mailwave integrations, and WhatsApp.</v>
+
+28
+00:46:43.000 --> 00:46:46.077
+<v Daniela Freitas>Please send us a proposal on that scope.</v>
+
+29
+00:46:52.000 --> 00:46:59.692
+<v Ana Ribeiro>Will do. I'll send the proposal by Friday the 13th, and we can review it together on Tuesday the 17th.</v>
+
+30
+00:47:03.000 --> 00:47:04.538
+<v Daniela Freitas>Tuesday the 17th works.</v>
+
+31
+00:47:10.000 --> 00:47:13.846
+<v Marcos Antunes>And I will send you our security questionnaire by Monday.</v>
+
+32
+00:51:35.000 --> 00:51:37.692
+<v Daniela Freitas>Thank you both, this was very productive.</v>

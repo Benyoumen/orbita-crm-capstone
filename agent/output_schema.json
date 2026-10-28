@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Call-to-CRM agent output (sparse, line-cited). Generated from agent/field_schema.json by scripts/build_data.mjs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_status",
+    "source_status",
+    "block_reason",
+    "fields",
+    "ignored_out_of_scope"
+  ],
+  "properties": {
+    "run_status": {
+      "type": "string",
+      "enum": [
+        "Awaiting review",
+        "Blocked"
+      ]
+    },
+    "source_status": {
+      "type": "string",
+      "enum": [
+        "Ready",
+        "Unmatched"
+      ]
+    },
+    "block_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "field",
+          "status",
+          "value",
+          "evidence",
+          "note"
+        ],
+        "properties": {
+          "field": {
+            "type": "string",
+            "enum": [
+              "call_summary",
+              "objection",
+              "commitment",
+              "next_step",
+              "follow_up_owner",
+              "follow_up_due_date",
+              "metrics",
+              "decision_maker",
+              "decision_criteria",
+              "decision_process",
+              "paper_process",
+              "customer_need",
+              "champion",
+              "competitors",
+              "seats",
+              "departments",
+              "integrations",
+              "budget",
+              "go_live_target",
+              "employee_count",
+              "current_solution",
+              "stage"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "proposed",
+              "no_evidence",
+              "contradictory"
+            ]
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "line",
+                "quote"
+              ],
+              "properties": {
+                "line": {
+                  "type": "integer"
+                },
+                "quote": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ignored_out_of_scope": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "line",
+          "quote",
+          "reason"
+        ],
+        "properties": {
+          "line": {
+            "type": "integer"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

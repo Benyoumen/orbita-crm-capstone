@@ -1,0 +1,12 @@
+[00:00:00] Ana Ribeiro (Orbita): Hi Roberto, good morning. Pedro is with me. We wanted to go through the plan for Friday's demo with the clinic managers.
+[00:00:11] Roberto Lima (Nimbus Health): Morning, both. I'm glad you called, because I have news, and it isn't good. The board froze all new IT projects until our budget review in January.
+[00:00:30] Ana Ribeiro (Orbita): I see. So Friday's demo...
+[00:00:33] Roberto Lima (Nimbus Health): Please cancel the demo on Friday. There is no next step from our side for now, and nothing has been agreed beyond waiting for the budget review.
+[00:00:55] Pedro Almeida (Orbita): Understood. Should we keep a placeholder in the calendar, maybe for December?
+[00:01:02] Roberto Lima (Nimbus Health): No, please drop it. I can't commit to any date, not even a date to talk again.
+[00:02:20] Roberto Lima (Nimbus Health): To be clear, the budget itself hasn't changed: it's still ninety thousand dollars a year. It's the timing that moved.
+[00:04:30] Ana Ribeiro (Orbita): That's clear. Is there anything we can send that would help with the budget review?
+[00:04:38] Roberto Lima (Nimbus Health): Not really. If the board approves the budget in January, I'll reach out to you.
+[00:04:52] Pedro Almeida (Orbita): Thanks for being upfront with us, Roberto.
+[00:08:20] Roberto Lima (Nimbus Health): Of course. I'm sorry about the timing. Take care, both of you.
+[00:08:28] Ana Ribeiro (Orbita): You too, Roberto. Thanks, bye.

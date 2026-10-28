@@ -1,0 +1,12 @@
+meeting_id,source,granola_note_id,title,start,scheduled_minutes,recorded_minutes,organiser_id,client_id,linked_opportunity_id,match_reason,transcript_status,transcript_file
+MTG-2001,granola,not_36a1e72a50a658,Acme Logistics - discovery call,2026-11-03T10:00:00-03:00,45,43,U01,CLI-001,OPP-0142,attendee e-mail domain acmelogistics.example,complete,transcripts/MTG-2001.txt
+MTG-2002,granola,not_f300792adfb164,Verde Retail - intro call,2026-11-02T14:00:00-03:00,30,28,U01,CLI-002,OPP-0141,attendee e-mail domain verderetail.example,complete,transcripts/MTG-2002.txt
+MTG-2003,granola,not_bf301fd97469d3,Nimbus Health - demo planning,2026-11-04T09:30:00-03:00,30,9,U01,CLI-003,OPP-0143,attendee e-mail domain nimbushealth.example,complete,transcripts/MTG-2003.txt
+MTG-2004,granola,not_b7cd41f134e9de,Verde Retail - POS data questions,2026-11-05T15:00:00-03:00,45,4,U01,CLI-002,OPP-0141,attendee e-mail domain verderetail.example,complete,transcripts/MTG-2004.txt
+MTG-2005,granola,not_d1c744f836648e,Intro call - Delta Pharma,2026-11-04T16:00:00-03:00,30,26,U01,,,no client found for the attendees or the title,complete,transcripts/MTG-2005.txt
+MTG-2006,granola,not_09cff89e095d3c,Atlas Manufacturing - proposal check-in,2026-11-05T11:00:00-03:00,30,23,U01,CLI-004,OPP-0144,attendee e-mail domain atlasmfg.example,complete,transcripts/MTG-2006.txt
+MTG-2007,granola,not_bb4eb9d0f23e81,Cedro Construtora - discovery call,2026-11-06T10:00:00-03:00,45,34,U01,CLI-006,OPP-0146,attendee e-mail domain cedroconstrutora.example,complete,transcripts/MTG-2007.txt
+MTG-2008,granola,not_f8ab64b7311c96,Horizonte Foods - solution walkthrough,2026-11-03T15:00:00-03:00,30,26,U01,CLI-005,OPP-0145,attendee e-mail domain horizontefoods.example,complete,transcripts/MTG-2008.txt
+MTG-2009,granola,not_d74b8928e3bde6,Lumen Education - scope session,2026-11-05T14:00:00-03:00,60,52,U01,CLI-007,OPP-0147,attendee e-mail domain lumeneducation.example,complete,transcripts/MTG-2009.txt
+MTG-2010,granola,not_6506e02f59babb,Pampa Agro - discovery call,2026-11-04T11:00:00-03:00,45,38,U01,CLI-008,OPP-0148,attendee e-mail domain pampaagro.example,complete,transcripts/MTG-2010.txt
+MTG-2011,whatsapp,,WhatsApp chat with Henrique Prado,2026-11-05T18:02:00-03:00,,,U01,CLI-009,OPP-0149,Henrique Prado is a contact at Solaris Energy,complete,transcripts/MTG-2011.txt
