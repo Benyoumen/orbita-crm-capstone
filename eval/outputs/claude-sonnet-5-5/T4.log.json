@@ -1,0 +1,52 @@
+[
+  {
+    "run_id": "RUN-1793222714781",
+    "seq": 1,
+    "timestamp": "2026-10-28T21:25:14.782Z",
+    "actor": "system",
+    "action": "run_created",
+    "object_id": "MTG-2004",
+    "outcome": "ok",
+    "detail": "user=U01"
+  },
+  {
+    "run_id": "RUN-1793222714781",
+    "seq": 2,
+    "timestamp": "2026-10-28T21:25:14.782Z",
+    "actor": "system",
+    "action": "access_checked",
+    "object_id": "OPP-0141",
+    "outcome": "ok",
+    "detail": "user=U01"
+  },
+  {
+    "run_id": "RUN-1793222714781",
+    "seq": 3,
+    "timestamp": "2026-10-28T21:25:14.782Z",
+    "actor": "system",
+    "action": "opportunity_read",
+    "object_id": "OPP-0141",
+    "outcome": "ok",
+    "detail": "stage=New Lead"
+  },
+  {
+    "run_id": "RUN-1793222714781",
+    "seq": 4,
+    "timestamp": "2026-10-28T21:25:14.782Z",
+    "actor": "system",
+    "action": "transcript_checked",
+    "object_id": "MTG-2004",
+    "outcome": "blocked",
+    "detail": "status=complete; coverage=9% of 45 min; ends_mid_sentence=true"
+  },
+  {
+    "run_id": "RUN-1793222714781",
+    "seq": 5,
+    "timestamp": "2026-10-28T21:25:14.782Z",
+    "actor": "system",
+    "action": "run_blocked",
+    "object_id": "MTG-2004",
+    "outcome": "blocked",
+    "detail": "The transcript looks incomplete: the recording covers 9% of the scheduled 45 min and stops mid-sentence. No update will be proposed. If the meeting really ended there, confirm it and prepare the update again."
+  }
+]

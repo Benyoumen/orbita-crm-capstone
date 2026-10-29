@@ -75,21 +75,23 @@ def eval_text(tests):
         lines.append("Platform check (saved answers through the same reading, attribution, pre-checks, validator and write path, no model): %d/%d cases pass." % (m["passed"], m["total"]))
     lines.append("")
     if live:
-        lines.append("Live model results (run %s):" % res["run_at"][:10])
-        for k, v in live.items():
+        names = {"claude-sonnet-5-5": "Sonnet 5.5", "claude-opus-5-5": "Opus 5.5", "claude-haiku-5-5": "Haiku 5.5"}
+        lines.append("Live model results (run %s; tokens per call in eval/results.md):" % res["run_at"][:10])
+        for k, v in sorted(live.items(), key=lambda kv: (-kv[1]["passed"], kv[1]["usage"]["cost_usd"])):
             u = v["usage"]
-            lines.append("- %s: %d/%d cases pass · %d model calls · %s input + %s cached + %s output tokens · USD %.4f in total, USD %.4f per analysed conversation."
-                         % (k, v["passed"], v["total"], u["calls"], f"{u['input_tokens']:,}", f"{u['cache_read_input_tokens']:,}", f"{u['output_tokens']:,}", u["cost_usd"], v["cost_per_call_usd"] or 0))
+            lines.append("- %s: %d/%d cases pass · USD %.3f per conversation (%d calls, USD %.2f in total)."
+                         % (names.get(k, k), v["passed"], v["total"], v["cost_per_call_usd"] or 0, u["calls"], u["cost_usd"]))
             for row in v["rows"]:
                 if row["verdict"] != "PASS":
                     lines.append("  · %s failed (%s): %s" % (row["case_id"], cases[row["case_id"]]["name"].split(" - ")[0], "; ".join(row["fails"])[:220]))
+        lines.append("Eval fix found by the first live run: T10 failed on all three models (and T6 on Haiku) because the oracle still asked for the old term 'decision-maker' after the field became 'Economic buyer'; the oracle was aligned with the stage rules. A fix to the eval, not to the model.")
         lines.append("Where a human was needed: every field that needs approval still goes through the seller's review; the failures above are what the seller would have had to catch.")
     else:
         lines.append("Live model results: NOT RUN YET. On 2026-10-28 this machine had no Anthropic API key, so no model was called. The comparison is ready to run (node agent/pipeline.mjs --all --model claude-sonnet-5-5 | claude-haiku-5-5 | claude-opus-5-5, then node eval/run_eval.mjs); this row is regenerated from eval/results.json by scripts/fill_prd.py, failures included.")
     g_ok, g_tot = tests["guardrails"]
     l_ok, l_tot = tests["granola"]
     lines.append("")
-    lines.append("Guardrails in code: %d/%d tests pass (eval/guardrail_tests.mjs). Each feeds a deliberate defect and checks that the code catches it, for example: an invented quote, a stage jump, Closed Won, an impossible date, an unattributed economic buyer or champion, a seller-only field, a cut recording, another seller's opportunity, fields written before the new opportunity is approved, an automatic write on a contradiction, a field set to Never, an ambiguous match, a WhatsApp date that reads both ways, and Explore asked about an opportunity the user cannot read." % (g_ok, g_tot))
+    lines.append("Guardrails in code: %d/%d tests pass (eval/guardrail_tests.mjs). Each feeds a deliberate defect and checks that the code catches it, for example: an invented quote, a stage jump, an unattributed economic buyer, another seller's opportunity, an automatic write on a contradiction, and Explore asked about an opportunity the user cannot read." % (g_ok, g_tot))
     lines.append("Optional Granola connector: %d/%d tests pass against a fake public API." % (l_ok, l_tot))
     lines.append("Prototype: the mockup gate passes %d behaviour and design checks in Edge at 1440 and 1280 px (each sample file dropped or pasted, attribution, new opportunity, permissions and Undo, Explore, contrast, accessibility, no prototype jargon) and %d checks of the full loop through the local server." % (GATE["probe"], GATE["server"]))
     return "\n".join(lines)

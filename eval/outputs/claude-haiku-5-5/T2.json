@@ -1,0 +1,339 @@
+{
+  "meeting_id": "MTG-2002",
+  "opportunity_id": "OPP-0141",
+  "client_id": "CLI-002",
+  "target": null,
+  "source_status": "Ready",
+  "run_status": "Awaiting review",
+  "block_reason": null,
+  "warnings": [],
+  "fields": [
+    {
+      "field": "call_summary",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Intro call with the Head of Retail Operations. Verde's franchise and wholesale growth runs on WhatsApp groups and spreadsheets, so requests get lost. No budget is allocated; it would go into next year's plan. Orbita will send the product overview and a case study; no demo was booked.",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:39",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "Today all of that runs on WhatsApp groups and spreadsheets."
+        },
+        {
+          "line": 15,
+          "timestamp": "00:08:09",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "There's no budget allocated for this yet"
+        },
+        {
+          "line": 18,
+          "timestamp": "00:16:00",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you our product overview and that case study."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Previous BI tool was too complicated and failed; store teams stopped using it; no budget allocated yet",
+      "evidence": [
+        {
+          "line": 12,
+          "timestamp": "00:06:25",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "It was too complicated and the store teams stopped using it after a month."
+        },
+        {
+          "line": 15,
+          "timestamp": "00:08:09",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "There's no budget allocated for this yet"
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Orbita (Ana): send the product overview and case study",
+      "evidence": [
+        {
+          "line": 18,
+          "timestamp": "00:16:00",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you our product overview and that case study."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "line": 18,
+          "timestamp": "00:16:00",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you our product overview and that case study."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "metrics",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_maker",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_criteria",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": "Simplicity was raised as a problem with a past tool, not stated as a requirement for this purchase."
+    },
+    {
+      "field": "decision_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "paper_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "customer_need",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Franchisee complaints and wholesale buyer reorders run on WhatsApp groups and spreadsheets and get lost; needs one place for every franchisee and buyer",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:39",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "Today all of that runs on WhatsApp groups and spreadsheets. When a franchisee complains or a buyer asks for a reorder, it's lost in a chat somewhere."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "champion",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "competitors",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "departments",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "integrations",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "budget",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "No budget allocated",
+      "evidence": [
+        {
+          "line": 15,
+          "timestamp": "00:08:09",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "There's no budget allocated for this yet"
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "go_live_target",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "employee_count",
+      "group": "company",
+      "record": "client",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "1200",
+      "evidence": [
+        {
+          "line": 9,
+          "timestamp": "00:02:39",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "About one thousand two hundred employees, most of them in the stores."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "current_solution",
+      "group": "company",
+      "record": "client",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "WhatsApp groups and spreadsheets",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:39",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "Today all of that runs on WhatsApp groups and spreadsheets."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "group": "stage",
+      "record": "opportunity",
+      "current_value": "New Lead",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": "Qualified Opportunity exit criteria not met: the customer declined to book a demo and agreed only to read the case study, not to a further conversation."
+    }
+  ],
+  "ignored_out_of_scope": [],
+  "validation_notes": [],
+  "usage": {
+    "input_tokens": 1653,
+    "output_tokens": 4336,
+    "cache_read_input_tokens": 11814,
+    "cache_creation_input_tokens": 0,
+    "model": "claude-haiku-5-5",
+    "served_by": "claude-haiku-5-5",
+    "cost_usd": 0.002451
+  }
+}

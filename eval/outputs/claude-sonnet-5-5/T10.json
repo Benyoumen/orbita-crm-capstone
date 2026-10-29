@@ -1,0 +1,394 @@
+{
+  "meeting_id": "MTG-2010",
+  "opportunity_id": "OPP-0148",
+  "client_id": "CLI-008",
+  "target": null,
+  "source_status": "Ready",
+  "run_status": "Awaiting review",
+  "block_reason": null,
+  "warnings": [],
+  "fields": [
+    {
+      "field": "call_summary",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Discovery call about field sales. Dealer visits are recorded on paper and typed into a spreadsheet weekly, so orders and promises are not visible. They need one place for this, for 38 users, working offline with GPS check-in, with orders flowing to Orion ERP. A field demo with two reps was agreed for 11 Nov.",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:58",
+          "speaker": "Customer (unattributed)",
+          "quote": "After each visit the rep fills in a paper report, and on Friday someone types it into a spreadsheet."
+        },
+        {
+          "line": 25,
+          "timestamp": "00:30:11",
+          "speaker": "Customer (unattributed)",
+          "quote": "Yes, Wednesday the 11th works. We'll pick two reps."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "No mobile signal in the fields, so anything needing constant internet won't work; reps are not used to apps",
+      "evidence": [
+        {
+          "line": 10,
+          "timestamp": "00:04:33",
+          "speaker": "Customer (unattributed)",
+          "quote": "The problem is there's no mobile signal in the fields. Anything that needs the internet all the time won't work. And the reps are not used to apps."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Orbita (Ana): send a short video of the offline mode by 9 Nov; Pampa Agro: pick two reps for the field demo",
+      "evidence": [
+        {
+          "line": 24,
+          "timestamp": "00:29:58",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you a short video of the offline mode by Monday."
+        },
+        {
+          "line": 25,
+          "timestamp": "00:30:11",
+          "speaker": "Customer (unattributed)",
+          "quote": "We'll pick two reps."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Field demo with two Pampa Agro reps on 11 Nov",
+      "evidence": [
+        {
+          "line": 24,
+          "timestamp": "00:29:58",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "would a field demo with two of your reps work next Wednesday, the 11th?"
+        },
+        {
+          "line": 25,
+          "timestamp": "00:30:11",
+          "speaker": "Customer (unattributed)",
+          "quote": "Yes, Wednesday the 11th works."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "line": 24,
+          "timestamp": "00:29:58",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you a short video of the offline mode by Monday."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "2026-11-09",
+      "evidence": [
+        {
+          "line": 24,
+          "timestamp": "00:29:58",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you a short video of the offline mode by Monday."
+        }
+      ],
+      "note": "'Monday' resolved from the meeting date, Wed 2026-11-04."
+    },
+    {
+      "field": "metrics",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_maker",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": "The statement about who makes the final call comes from an unattributed speaker, so the decision-maker is not identified."
+    },
+    {
+      "field": "decision_criteria",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Must work offline; GPS check-in",
+      "evidence": [
+        {
+          "line": 12,
+          "timestamp": "00:05:08",
+          "speaker": "Customer (unattributed)",
+          "quote": "Then it must work offline and have the GPS check-in, those two are non-negotiable."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "paper_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "customer_need",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Dealer visits and orders tracked in one place (from a trade-fair lead)",
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Visits are on paper and typed into a spreadsheet weekly, so they never know what a dealer ordered or what was promised; they need one place for dealer visits, orders and promises",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:58",
+          "speaker": "Customer (unattributed)",
+          "quote": "We never know what a dealer ordered or what the rep promised."
+        },
+        {
+          "line": 7,
+          "timestamp": "00:01:44",
+          "speaker": "Customer (unattributed)",
+          "quote": "We need to know which dealer was visited, what they ordered and what was promised, in one place."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "champion",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": "The statement about pushing for the project comes from an unattributed speaker, so the champion is not identified."
+    },
+    {
+      "field": "competitors",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "38",
+      "evidence": [
+        {
+          "line": 9,
+          "timestamp": "00:03:18",
+          "speaker": "Customer (unattributed)",
+          "quote": "So thirty-eight users."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "departments",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Sales; Leadership",
+      "evidence": [
+        {
+          "line": 9,
+          "timestamp": "00:03:18",
+          "speaker": "Customer (unattributed)",
+          "quote": "Thirty-two field reps in sales, and six people in the leadership team who want the reports."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "integrations",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Orion ERP",
+      "evidence": [
+        {
+          "line": 14,
+          "timestamp": "00:07:27",
+          "speaker": "Customer (unattributed)",
+          "quote": "Our ERP is Orion ERP. The dealer orders need to flow there."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "budget",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "USD 70,000 per year",
+      "evidence": [
+        {
+          "line": 20,
+          "timestamp": "00:12:53",
+          "speaker": "Customer (unattributed)",
+          "quote": "About seventy thousand dollars a year."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "go_live_target",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "2027-07",
+      "evidence": [
+        {
+          "line": 23,
+          "timestamp": "00:14:17",
+          "speaker": "Customer (unattributed)",
+          "quote": "so live by July 2027."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "employee_count",
+      "group": "company",
+      "record": "client",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "450",
+      "evidence": [
+        {
+          "line": 16,
+          "timestamp": "00:09:07",
+          "speaker": "Customer (unattributed)",
+          "quote": "We're about four hundred and fifty people."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "current_solution",
+      "group": "company",
+      "record": "client",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Paper reports typed into a spreadsheet",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:58",
+          "speaker": "Customer (unattributed)",
+          "quote": "After each visit the rep fills in a paper report, and on Friday someone types it into a spreadsheet."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "group": "stage",
+      "record": "opportunity",
+      "current_value": "Qualified Opportunity",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": "Solution exit criteria not met: pain and timeline are stated, but the economic buyer is not identified because the speaker is unattributed."
+    }
+  ],
+  "ignored_out_of_scope": [],
+  "validation_notes": [],
+  "usage": {
+    "input_tokens": 1660,
+    "output_tokens": 2451,
+    "cache_read_input_tokens": 11814,
+    "cache_creation_input_tokens": 0,
+    "model": "claude-sonnet-5-5",
+    "served_by": "claude-sonnet-5-5",
+    "cost_usd": 0.030193
+  }
+}

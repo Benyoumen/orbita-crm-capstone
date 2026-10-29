@@ -1,0 +1,25 @@
+# Render Blueprint: one free web service that runs the Orbita CRM server (the page and the live agent).
+# Render > New > Blueprint > this repository. It asks for the two secrets marked sync: false.
+# Free instances sleep after 15 minutes without visits; the first visit then waits about a minute.
+services:
+  - type: web
+    name: orbita-crm
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: node mockups/server.mjs
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: HOST
+        value: 0.0.0.0
+      # model spend allowed per UTC day; set it to 0 to stop every model call at once
+      - key: ORBITA_DAILY_BUDGET_USD
+        value: "3"
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      # the code you give your reviewers (browser sign-in: any user name, this code as the password)
+      - key: ORBITA_ACCESS_CODE
+        sync: false

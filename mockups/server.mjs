@@ -7,6 +7,11 @@
 //   node server.mjs --granola-live    the optional Granola connector reads the public API (GRANOLA_API_KEY + GRANOLA_FOLDER)
 //   node server.mjs --port 8799       another port (the page probes http://localhost:8787 when opened from disk)
 //
+// Env for a public deploy (render.yaml sets them; all off on this computer):
+//   HOST=0.0.0.0, PORT                where to listen (default 127.0.0.1:8787, this computer only)
+//   ORBITA_ACCESS_CODE                every page and route asks for it (browser sign-in: any user name, the code as password)
+//   ORBITA_DAILY_BUDGET_USD           model spend allowed per UTC day; 0 stops every model call at once
+//
 //   GET  /                        the newest generated mockup
 //   GET  /api/health              { ok, mode, model, models, effort, key, granola }
 //   POST /api/runs                { meetingId, userId, crm, meeting?, transcript?, permissions?, model?, effort? } -> { runId, mode, model, output, log }
@@ -20,6 +25,7 @@
 // prompt; the validator runs on every output; Explore sees only the opportunities the user can read; transcripts are
 // referenced in the log, never copied into it. Real Granola notes stay in capstone/.granola-cache/.
 import http from "node:http";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -28,7 +34,10 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const KIT = path.resolve(HERE, ".."); // the kit lives loose in capstone/, the parent of mockups/
 const args = process.argv.slice(2);
 const GRANOLA_LIVE = args.includes("--granola-live") || process.env.GRANOLA_MODE === "live";
-const PORT = Number(args[args.indexOf("--port") + 1]) || 8787;
+const PORT = Number(args[args.indexOf("--port") + 1]) || Number(process.env.PORT) || 8787;
+// This computer only: the server holds the Claude key and has no access code yet, so nobody else on the network may reach it.
+// A deploy sets HOST=0.0.0.0, and only once an access code guards the API.
+const HOST = process.env.HOST || "127.0.0.1";
 
 const P = await import(pathToFileURL(path.join(KIT, "agent", "pipeline.mjs")).href);
 const core = await import(pathToFileURL(path.join(KIT, "agent", "core.mjs")).href);
@@ -38,6 +47,23 @@ const KEY = !!process.env.ANTHROPIC_API_KEY;
 const MODE = args.includes("--mock") || !KEY ? "saved" : "live";
 const MODELS = Object.keys(core.PRICES);
 const runs = new Map();
+
+// Public deploy guards: an access code in front of everything, and a daily cap on model spend (kept in memory).
+const ACCESS_CODE = process.env.ORBITA_ACCESS_CODE || "";
+const BUDGET = process.env.ORBITA_DAILY_BUDGET_USD ? Number(process.env.ORBITA_DAILY_BUDGET_USD) : null;
+const spend = { day: "", usd: 0 };
+const spentToday = () => { const d = new Date().toISOString().slice(0, 10); if (spend.day !== d) Object.assign(spend, { day: d, usd: 0 }); return spend.usd; };
+const addSpend = (usd) => { spentToday(); spend.usd += usd || 0; };
+const overBudget = () => MODE === "live" && BUDGET != null && spentToday() >= BUDGET;
+const BUDGET_MSG = () => `Today's AI budget for this demo (USD ${BUDGET}) is used up. It resets at midnight UTC; the sample conversations still work with their saved results.`;
+function authorized(req) {
+  if (!ACCESS_CODE) return true;
+  const m = /^Basic\s+(.+)$/i.exec(req.headers.authorization || "");
+  if (!m) return false;
+  const given = Buffer.from(Buffer.from(m[1], "base64").toString("utf8").split(":").slice(1).join(":"));
+  const code = Buffer.from(ACCESS_CODE);
+  return given.length === code.length && crypto.timingSafeEqual(given, code);
+}
 
 const newestHtml = () => {
   const f = fs.readdirSync(HERE).filter((x) => /^mockup-call-to-crm_\d{4}-\d{2}-\d{2}\.html$/.test(x)).sort().pop();
@@ -110,6 +136,11 @@ const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, "http://localhost");
     if (req.method === "OPTIONS") return send(res, 204, "", "text/plain");
+    // the health check stays open so the host can probe it; it shows no data
+    if (!(req.method === "GET" && url.pathname === "/api/health") && !authorized(req)) {
+      res.writeHead(401, { "www-authenticate": 'Basic realm="Orbita CRM", charset="UTF-8"', "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" });
+      return res.end("Access code required: use any user name and the access code as the password.");
+    }
     if (req.method === "GET" && (url.pathname === "/" || url.pathname === "/index.html")) {
       const html = newestHtml();
       return html ? send(res, 200, fs.readFileSync(html, "utf8"), "text/html") : send(res, 404, "No generated mockup: run python dados/render_capstone.py", "text/plain");
@@ -125,7 +156,9 @@ const server = http.createServer(async (req, res) => {
     if (req.method === "POST" && url.pathname === "/api/runs") {
       const body = await readJson(req);
       if (!body.meetingId || !body.userId || !crmOk(body.crm)) return send(res, 400, { error: "meetingId, userId and crm { clients, opportunities } are required" });
+      if (overBudget()) return send(res, 429, { error: BUDGET_MSG() });
       const run = await runOne(body);
+      if (run.output && run.output.usage) addSpend(run.output.usage.cost_usd);
       return send(res, 200, { runId: run.runId, mode: run.mode, model: run.model, output: run.output, log: run.log });
     }
     if (req.method === "POST" && url.pathname === "/api/explore") {
@@ -136,8 +169,10 @@ const server = http.createServer(async (req, res) => {
       if (!user) return send(res, 400, { error: "unknown user" });
       const ctx = EX.exploreContext({ crm: body.crm, team, user, schema: P.SCHEMA, runs: Array.isArray(body.runs) ? body.runs : [], now: body.now || new Date().toISOString() });
       if (MODE !== "live") return send(res, 200, { mode: MODE, model: null, answer: EX.answerQuestion(body.question, ctx), usage: null });
+      if (overBudget()) return send(res, 429, { error: BUDGET_MSG() });
       const model = pickModel(body.model);
       const { answer, usage } = await exploreLive({ question: body.question, ctx, model });
+      addSpend(usage && usage.cost_usd);
       return send(res, 200, { mode: MODE, model, answer, usage });
     }
     let m = url.pathname.match(/^\/api\/runs\/([^/]+)\/submit$/);
@@ -163,7 +198,7 @@ const server = http.createServer(async (req, res) => {
     send(res, err.status || 500, { error: err.message });
   }
 });
-server.listen(PORT, () => {
+server.listen(PORT, HOST, () => {
   const g = G.status({ live: GRANOLA_LIVE });
   console.log(`Orbita CRM server on http://localhost:${PORT}/  agent=${MODE === "live" ? `live (Claude, default ${P.DEFAULT_MODEL})` : `saved results${KEY ? "" : " (no ANTHROPIC_API_KEY)"}`}  granola=${g.mode}${g.mode === "live" ? ` (key ${g.key ? "set" : "NOT SET"}, folder ${g.folder || "NOT SET"})` : ""}`);
 });

@@ -1,0 +1,413 @@
+{
+  "meeting_id": "MTG-2006",
+  "opportunity_id": "OPP-0144",
+  "client_id": "CLI-004",
+  "target": null,
+  "source_status": "Ready",
+  "run_status": "Awaiting review",
+  "block_reason": null,
+  "warnings": [],
+  "fields": [
+    {
+      "field": "call_summary",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": "Proposal v1 presented to the Head of Operations. He asked for payback within 18 months.",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Proposal check-in with the Head of Operations. The CFO, Helena Duarte, has not yet seen the proposal; he will forward it to her this week. He confirmed USD 120,000 per year approved, 75 users, and a legal review of about two weeks before signing. A check-in was agreed for 12 Nov.",
+      "evidence": [
+        {
+          "line": 4,
+          "timestamp": "00:00:18",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "Our CFO, Helena Duarte, hasn't seen the proposal."
+        },
+        {
+          "line": 9,
+          "timestamp": "00:02:56",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "we have one hundred and twenty thousand dollars a year approved for the CRM in next year's budget."
+        },
+        {
+          "line": 15,
+          "timestamp": "00:12:31",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "Next step then: you forward proposal v1 to Helena this week, and I'll check in with you on Thursday the 12th."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": "Wants payback within 18 months",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": "Orbita (Ana): send proposal v1 (sent 29 Oct)",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Customer (Tiago Mendes): forward proposal v1 to Helena Duarte this week; Customer (Tiago Mendes): walk Helena through the proposal; Orbita (Ana): check in with Tiago on 12 Nov",
+      "evidence": [
+        {
+          "line": 4,
+          "timestamp": "00:00:18",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "I will forward it to her this week."
+        },
+        {
+          "line": 5,
+          "timestamp": "00:00:41",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "I'll walk Helena through the proposal myself."
+        },
+        {
+          "line": 15,
+          "timestamp": "00:12:31",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll check in with you on Thursday the 12th."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": "Customer to review proposal v1",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Tiago forwards proposal v1 to Helena Duarte this week; Ana checks in with Tiago on Thursday 12 Nov",
+      "evidence": [
+        {
+          "line": 15,
+          "timestamp": "00:12:31",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "you forward proposal v1 to Helena this week, and I'll check in with you on Thursday the 12th."
+        },
+        {
+          "line": 16,
+          "timestamp": "00:12:43",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "Deal. Thursday the 12th."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": "Ana Ribeiro",
+      "current_approved": true,
+      "status": "unchanged",
+      "proposed_value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "line": 15,
+          "timestamp": "00:12:31",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll check in with you on Thursday the 12th."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": "2026-11-05",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "2026-11-12",
+      "evidence": [
+        {
+          "line": 15,
+          "timestamp": "00:12:31",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll check in with you on Thursday the 12th."
+        },
+        {
+          "line": 16,
+          "timestamp": "00:12:43",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "Deal. Thursday the 12th."
+        }
+      ],
+      "note": "Thursday the 12th resolved from the meeting date, Thu 2026-11-05."
+    },
+    {
+      "field": "metrics",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_maker",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Helena Duarte (CFO)",
+      "current_approved": true,
+      "status": "unchanged",
+      "proposed_value": "Helena Duarte (CFO)",
+      "evidence": [
+        {
+          "line": 4,
+          "timestamp": "00:00:18",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "Our CFO, Helena Duarte, hasn't seen the proposal. She signs anything above a hundred thousand."
+        }
+      ],
+      "note": "Same as the current approved value."
+    },
+    {
+      "field": "decision_criteria",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Head of Operations recommends; the CFO signs anything above USD 100,000",
+      "current_approved": true,
+      "status": "unchanged",
+      "proposed_value": "Head of Operations recommends; the CFO signs anything above USD 100,000",
+      "evidence": [
+        {
+          "line": 4,
+          "timestamp": "00:00:18",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "She signs anything above a hundred thousand."
+        },
+        {
+          "line": 5,
+          "timestamp": "00:00:41",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "I'll walk Helena through the proposal myself."
+        }
+      ],
+      "note": "Unchanged from the current approved value."
+    },
+    {
+      "field": "paper_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Once Helena approves, the legal team needs about two weeks to review the contract; then she signs",
+      "evidence": [
+        {
+          "line": 12,
+          "timestamp": "00:03:36",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "Once Helena approves, our legal team needs about two weeks to review the contract, and then she signs."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "customer_need",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Manage distributor orders and quotes in one CRM instead of spreadsheets and a shared inbox",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "champion",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Tiago Mendes (Head of Operations)",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:41",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "I've been pushing for this internally since your demo, and I'll walk Helena through the proposal myself."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "competitors",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "75",
+      "current_approved": true,
+      "status": "unchanged",
+      "proposed_value": "75",
+      "evidence": [
+        {
+          "line": 11,
+          "timestamp": "00:03:17",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "Yes, seventy-five users to start, sales and the customer service desk."
+        }
+      ],
+      "note": "Same as the current approved value."
+    },
+    {
+      "field": "departments",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "Sales; Customer Service",
+      "current_approved": true,
+      "status": "unchanged",
+      "proposed_value": "Sales; Customer Service",
+      "evidence": [
+        {
+          "line": 11,
+          "timestamp": "00:03:17",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "sales and the customer service desk."
+        }
+      ],
+      "note": "Same as the current approved value."
+    },
+    {
+      "field": "integrations",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "budget",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "USD 120,000 per year",
+      "evidence": [
+        {
+          "line": 9,
+          "timestamp": "00:02:56",
+          "speaker": "Tiago Mendes (Atlas Manufacturing)",
+          "quote": "we have one hundred and twenty thousand dollars a year approved for the CRM in next year's budget."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "go_live_target",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "2027-01",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "employee_count",
+      "group": "company",
+      "record": "client",
+      "current_value": "2400",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "current_solution",
+      "group": "company",
+      "record": "client",
+      "current_value": "Spreadsheets and a shared inbox for distributor orders",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "group": "stage",
+      "record": "opportunity",
+      "current_value": "Proposal",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": "Proposal exit criteria not met: the economic buyer, Helena Duarte, has not received the proposal, and no specific commercial or contractual terms have been raised to negotiate."
+    }
+  ],
+  "ignored_out_of_scope": [
+    {
+      "line": 2,
+      "timestamp": "00:00:06",
+      "speaker": "Tiago Mendes (Atlas Manufacturing)",
+      "quote": "Let's sign next week.",
+      "reason": "Signing timing is a contract/close matter set by the seller; enthusiasm is not a stage criterion."
+    },
+    {
+      "line": 6,
+      "timestamp": "00:01:01",
+      "speaker": "Tiago Mendes (Atlas Manufacturing)",
+      "quote": "you can put it down as a one million dollar deal in your system.",
+      "reason": "Deal amount is a seller-only field; a spoken instruction is not a budget."
+    },
+    {
+      "line": 13,
+      "timestamp": "00:06:31",
+      "speaker": "Tiago Mendes (Atlas Manufacturing)",
+      "quote": "my son just texted me, he scored in his football match this morning.",
+      "reason": "Personal, off-topic content."
+    }
+  ],
+  "validation_notes": [],
+  "usage": {
+    "input_tokens": 1714,
+    "output_tokens": 1761,
+    "cache_read_input_tokens": 11814,
+    "cache_creation_input_tokens": 0,
+    "model": "claude-sonnet-5-5",
+    "served_by": "claude-sonnet-5-5",
+    "cost_usd": 0.023401
+  }
+}

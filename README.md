@@ -109,6 +109,16 @@ Stages: `New Lead → Qualified Opportunity → Solution → Proposal → Negoti
 3. **After the model** (code): each quote must sit on the line it cites; contradictory only on seller-approved state fields; owner in the roster; dates, months, integers, departments and budget in format; economic buyer and champion on the customer side and never unattributed; the stage one step forward and never Closed; seller-only and turned-off fields dropped; a value equal to the approved one marked unchanged. Every correction is listed in `validation_notes`.
 4. **Write**: only `applyApprovedFields`, for the fields the seller decided or that are under Always allow (never a contradiction); it re-checks the seller's own values, creates the client and opportunity only after that decision, and writes each field to the opportunity or the client record. `revertWrite` undoes an automatic write.
 
+## Live link (Render, free)
+`render.yaml` describes one free web service that runs `node mockups/server.mjs` (the page and the live agent).
+1. render.com: sign up with GitHub, then New > Blueprint > this repository.
+2. Render asks for two secrets: `ANTHROPIC_API_KEY` and `ORBITA_ACCESS_CODE` (the code you give reviewers; the browser asks for any user name and this code as the password).
+3. The link is `https://orbita-crm.onrender.com` (or the name Render gives it). A free instance sleeps after 15 minutes without visits; the first visit then waits about a minute.
+
+Guards on a public deploy: every page and route asks for the access code (only `/api/health` stays open for Render's probe); model spend stops for the day at `ORBITA_DAILY_BUDGET_USD` (3 by default; 0 stops it at once); the key never reaches the browser. Each visitor's CRM lives in their own browser until the Supabase store is in. Locally the server listens on 127.0.0.1 only and asks for no code.
+
+The architecture explained for reviewers: `docs/orbita-agent-architecture.html`.
+
 ## Granola (optional)
 The connector reads the **public API** (`https://public-api.granola.ai/v1`) with a personal API key (`grn_…`, Business plan). Only one folder is read (`GRANOLA_FOLDER`), new or updated notes are fetched incrementally, and real notes stay in `.granola-cache/`. Without a key, export the transcript from Granola and drop it in the page.
 

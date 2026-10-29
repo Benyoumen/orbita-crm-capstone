@@ -1,0 +1,82 @@
+[
+  {
+    "run_id": "RUN-1793222800870",
+    "seq": 1,
+    "timestamp": "2026-10-28T21:26:40.871Z",
+    "actor": "system",
+    "action": "run_created",
+    "object_id": "MTG-2009",
+    "outcome": "ok",
+    "detail": "user=U01"
+  },
+  {
+    "run_id": "RUN-1793222800870",
+    "seq": 2,
+    "timestamp": "2026-10-28T21:26:40.871Z",
+    "actor": "system",
+    "action": "access_checked",
+    "object_id": "OPP-0147",
+    "outcome": "ok",
+    "detail": "user=U01"
+  },
+  {
+    "run_id": "RUN-1793222800870",
+    "seq": 3,
+    "timestamp": "2026-10-28T21:26:40.871Z",
+    "actor": "system",
+    "action": "opportunity_read",
+    "object_id": "OPP-0147",
+    "outcome": "ok",
+    "detail": "stage=Solution"
+  },
+  {
+    "run_id": "RUN-1793222800870",
+    "seq": 4,
+    "timestamp": "2026-10-28T21:26:40.872Z",
+    "actor": "system",
+    "action": "transcript_checked",
+    "object_id": "MTG-2009",
+    "outcome": "ok",
+    "detail": "status=complete; coverage=87% of 60 min; ends_mid_sentence=false"
+  },
+  {
+    "run_id": "RUN-1793222800870",
+    "seq": 5,
+    "timestamp": "2026-10-28T21:26:40.872Z",
+    "actor": "system",
+    "action": "agent_called",
+    "object_id": "MTG-2009",
+    "outcome": "ok",
+    "detail": "claude-opus-5-5 · effort medium"
+  },
+  {
+    "run_id": "RUN-1793222800870",
+    "seq": 6,
+    "timestamp": "2026-10-28T21:27:09.209Z",
+    "actor": "system",
+    "action": "agent_answered",
+    "object_id": "MTG-2009",
+    "outcome": "ok",
+    "detail": "in=2330 cache_read=11814 cache_write=0 out=3809 cost=$0.0879"
+  },
+  {
+    "run_id": "RUN-1793222800870",
+    "seq": 7,
+    "timestamp": "2026-10-28T21:27:09.211Z",
+    "actor": "system",
+    "action": "output_validated",
+    "object_id": "MTG-2009",
+    "outcome": "ok",
+    "detail": "0 correction(s)"
+  },
+  {
+    "run_id": "RUN-1793222800870",
+    "seq": 8,
+    "timestamp": "2026-10-28T21:27:09.211Z",
+    "actor": "agent",
+    "action": "proposals_generated",
+    "object_id": "OPP-0147",
+    "outcome": "ok",
+    "detail": "call_summary=proposed, objection=proposed, commitment=proposed, next_step=proposed, follow_up_owner=unchanged, follow_up_due_date=proposed, metrics=proposed, decision_maker=unchanged, decision_criteria=proposed, decision_process=proposed, paper_process=proposed, customer_need=proposed, champion=no_evidence, competitors=proposed, seats=proposed, departments=proposed, integrations=proposed, budget=proposed, go_live_target=proposed, employee_count=no_evidence, current_solution=proposed, stage=proposed"
+  }
+]

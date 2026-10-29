@@ -52,7 +52,8 @@ for (const [label, r] of Object.entries(result.labels)) {
   const u = r.usage;
   md += `| ${label} | ${r.passed}/${r.total} | ${u.calls} | ${fmt(u.input_tokens)} | ${fmt(u.cache_read_input_tokens)} | ${fmt(u.cache_creation_input_tokens)} | ${fmt(u.output_tokens)} | ${u.calls ? u.cost_usd.toFixed(4) : "-"} | ${r.cost_per_call_usd != null ? r.cost_per_call_usd.toFixed(4) : "-"} |\n`;
 }
-md += "\nBlocked cases (T4, T5, T8) stop in code before any model call, so a full live run makes 7 calls. `mock` replays the reference answers through the same validator: it proves the platform, not the model.\n";
+const blocked = cases.filter((c) => c.expected_run_status === "Blocked").map((c) => c.case_id);
+md += `\nBlocked cases (${blocked.join(", ")}) stop in code before any model call, so a full live run makes ${cases.length - blocked.length} calls. \`mock\` replays the reference answers through the same validator: it proves the platform, not the model.\n`;
 for (const [label, r] of Object.entries(result.labels)) {
   md += `\n## Cases: ${label}\n\n| Case | PRD case | Scenario | Result | Issues |\n|---|---|---|---|---|\n`;
   for (const row of r.rows) {

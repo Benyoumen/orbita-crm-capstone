@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Error discovery · Orbita CRM agent</title>
+<style>
+:root {
+  --ink: #1b1b1f; --ink2: rgba(27,27,31,.72); --ink3: rgba(27,27,31,.56); --line: rgba(27,27,31,.13);
+  --bg: #f5f5f2; --panel: #fff; --accent: #2f4ac0;
+  --seller: #1864ab; --customer: #2b8a3e; --unattr: #c2255c;
+  --hl: rgba(255, 212, 59, .6); --sug: rgba(112, 72, 232, .13); --sug-b: #7048e8; --pend: rgba(116, 192, 252, .6);
+  --bad: #c92a2a; --lit: #e8590c;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+button, select, input { font: inherit; }
+a { color: var(--accent); }
+
+.top { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 16px; padding: 10px 20px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.brand { font-weight: 650; white-space: nowrap; }
+.brand span { font-weight: 400; color: var(--ink3); margin-left: 8px; font-size: 13px; }
+.views { display: flex; gap: 2px; }
+.views button { border: 0; background: none; padding: 6px 12px; border-radius: 6px; color: var(--ink2); cursor: pointer; }
+.views button.on { background: rgba(47,74,192,.1); color: var(--accent); font-weight: 600; }
+.nav { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+.nav button { border: 1px solid var(--line); background: var(--panel); border-radius: 6px; width: 30px; height: 30px; cursor: pointer; font-size: 18px; line-height: 1; }
+.nav select { padding: 4px 8px; max-width: 340px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+.save { font-size: 12px; color: var(--ink3); min-width: 84px; text-align: right; }
+.toast { position: fixed; top: 60px; left: 50%; transform: translateX(-50%); z-index: 40; background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 8px; font-size: 13px; max-width: 80vw; }
+
+main { padding: 20px; }
+.view { display: none; }
+.view.on { display: block; }
+.empty { color: var(--ink3); }
+
+/* record header */
+.rh { max-width: 1000px; margin: 0 auto 20px; }
+.rh-1 { font-size: 18px; font-weight: 650; display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.case { color: var(--accent); }
+.scen { font-weight: 400; color: var(--ink2); font-size: 15px; }
+.rh-2 { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 8px; }
+.chip { font-size: 12px; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); white-space: nowrap; }
+.chip.bad { border-color: rgba(201,42,42,.45); color: var(--bad); }
+.flag { font-size: 12px; padding: 2px 8px; border-radius: 4px; background: rgba(27,27,31,.06); color: var(--ink2); }
+.sibs { font-size: 12.5px; color: var(--ink3); margin-left: 4px; }
+.done { margin-left: auto; font-size: 13px; color: var(--ink2); display: flex; gap: 6px; align-items: center; cursor: pointer; }
+.rh-3 { font-size: 12.5px; color: var(--ink3); margin-top: 6px; }
+.fails { font-size: 13px; margin-top: 8px; color: var(--ink2); }
+.fails summary { cursor: pointer; }
+.fails ul { margin: 6px 0 0; padding-left: 18px; }
+
+/* two columns: content and margin notes */
+.cols { display: flex; gap: 24px; max-width: 1000px; margin: 0 auto; align-items: flex-start; }
+.body { flex: 1; max-width: 720px; min-width: 0; }
+.margin { width: 240px; flex: none; position: relative; }
+.sec { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin-bottom: 40px; }
+.sec > h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink3); margin: 0 0 14px; font-weight: 650; }
+.sec > h2 .muted { text-transform: none; letter-spacing: 0; font-weight: 400; margin-left: 6px; }
+.grp { margin-bottom: 22px; }
+.grp:last-child { margin-bottom: 0; }
+.grp > h3 { font-size: 14px; margin: 0 0 6px; }
+.fld { padding: 6px 0 6px 12px; border-left: 2px solid var(--line); margin-bottom: 6px; }
+.fld.st-contradictory { border-left-color: var(--bad); }
+.fh { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.fl { font-weight: 650; font-size: 14px; }
+.st { font-size: 12px; color: var(--ink3); }
+.st-contradictory .st { color: var(--bad); font-weight: 650; }
+.reck { font-size: 11px; color: var(--ink3); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; }
+.cur { font-size: 13px; color: var(--ink2); margin-top: 2px; }
+.k { font-size: 11.5px; color: var(--ink3); margin-right: 4px; }
+.val { margin-top: 3px; }
+.ev { list-style: none; padding: 0; margin: 5px 0 0; font-size: 13.5px; }
+.ev li { margin: 2px 0; }
+.ln { font: 12px ui-monospace, Consolas, monospace; text-decoration: none; color: var(--ink3); margin-right: 4px; }
+.ln:hover { text-decoration: underline; }
+.spk { font-size: 12.5px; font-weight: 650; margin-right: 6px; }
+.s-seller { color: var(--seller); }
+.s-customer { color: var(--customer); }
+.s-unattributed { color: var(--unattr); }
+q { quotes: "\201C" "\201D"; }
+.note { font-size: 13px; color: var(--ink2); margin-top: 3px; }
+.none { font-size: 13px; color: var(--ink2); margin: 4px 0 0; }
+.plat { list-style: none; padding: 0; margin: 0; }
+.plat li { margin: 6px 0; font-size: 14px; }
+.block-reason { margin: 0; }
+
+/* conversation */
+.legend-sides { font-size: 12px; color: var(--ink3); margin: -6px 0 10px; }
+.legend-sides span { margin-right: 12px; font-weight: 650; }
+.lines { list-style: none; padding: 0; margin: 0; }
+.lines li { display: grid; grid-template-columns: 42px 64px 1fr; gap: 8px; padding: 3px 6px; border-radius: 4px; font-size: 14px; }
+.lines li.cited { background: rgba(47,74,192,.05); }
+.lines li.flash { background: rgba(47,74,192,.2); }
+.no, .ts { font: 12px ui-monospace, Consolas, monospace; color: var(--ink3); padding-top: 2px; }
+.ts { font-size: 11px; }
+.cby { display: block; font-size: 11.5px; color: var(--ink3); margin-top: 1px; }
+
+/* marks */
+.mk.hl { background: var(--hl); border-radius: 2px; }
+.mk.sg { background: var(--sug); border-bottom: 1.5px dashed var(--sug-b); }
+.mk.pend { background: var(--pend); }
+.mk.lit { outline: 2px solid var(--lit); outline-offset: 1px; }
+.mk.flash { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* margin notes */
+.mn { position: absolute; left: 0; right: 0; background: var(--panel); border: 1px solid var(--line); border-left: 3px solid #f2c200; border-radius: 6px; padding: 7px 10px; font-size: 12.5px; line-height: 1.45; cursor: default; }
+.mn.sug { border-left-color: var(--sug-b); border-style: dashed solid dashed solid; border-left-style: solid; }
+.mn.lit { box-shadow: 0 0 0 2px var(--lit); }
+.mn-tag { font-size: 11px; color: var(--sug-b); font-weight: 650; margin-bottom: 2px; }
+.mn-q { color: var(--ink3); font-style: italic; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.mn-t { margin-top: 2px; white-space: pre-wrap; }
+.mn-t input { width: 100%; padding: 3px 6px; border: 1px solid var(--line); border-radius: 4px; }
+.mn-a { display: none; gap: 6px; margin-top: 6px; }
+.mn:hover .mn-a, .mn-a.show { display: flex; }
+.mn-a button { font-size: 12px; border: 1px solid var(--line); background: var(--panel); border-radius: 4px; padding: 2px 8px; cursor: pointer; }
+.mn-a button.pri { border-color: var(--sug-b); color: var(--sug-b); font-weight: 600; }
+
+.pop { position: fixed; z-index: 30; background: var(--panel); border: 1px solid var(--line); box-shadow: 0 8px 28px rgba(0,0,0,.14); border-radius: 8px; padding: 8px; width: 360px; }
+.pop-q { font-size: 12px; color: var(--ink3); font-style: italic; margin: 0 2px 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pop input { width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px; }
+.tip { position: fixed; z-index: 40; background: var(--ink); color: #fff; font-size: 12px; padding: 6px 9px; border-radius: 6px; pointer-events: none; max-width: 300px; line-height: 1.45; }
+
+/* map */
+.mapwrap { max-width: 1100px; margin: 0 auto; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; }
+.maphead { font-size: 13px; color: var(--ink2); margin-bottom: 8px; }
+#map { width: 100%; height: 560px; display: block; }
+#map .pt { cursor: default; }
+#map .pt.smp { cursor: pointer; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 12.5px; color: var(--ink2); margin-top: 8px; }
+.legend i { font-style: normal; margin-right: 4px; }
+
+/* progress */
+#prog { max-width: 1100px; margin: 0 auto; }
+.stats { display: flex; flex-wrap: wrap; gap: 28px; margin-bottom: 20px; }
+.stats div { display: flex; flex-direction: column; }
+.stats b { font-size: 18px; }
+.stats span { font-size: 12.5px; color: var(--ink3); }
+.ph { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink3); margin: 24px 0 10px; }
+.tm { position: relative; height: 400px; }
+.tb { position: absolute; border: 2px solid var(--panel); border-radius: 8px; padding: 10px 12px; overflow: auto; font-size: 12.5px; }
+.tb h4 { margin: 0; font-size: 14px; }
+.tb .tc { color: var(--ink3); font-size: 12px; margin: 1px 0 4px; }
+.tb .td { color: var(--ink2); margin-bottom: 6px; }
+.tb ul { margin: 0; padding-left: 16px; }
+.tb li { margin: 2px 0; }
+.tb a { color: var(--ink); text-decoration: none; }
+.tb a:hover { text-decoration: underline; }
+.qbar { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; font-size: 13px; }
+.qbar button { border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+.q { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; font-size: 13px; }
+.q td { padding: 7px 10px; border-top: 1px solid var(--line); vertical-align: top; }
+.q tr:first-child td { border-top: 0; }
+.q-mode { color: var(--sug-b); font-weight: 600; white-space: nowrap; }
+.q-note { color: var(--ink3); margin-top: 2px; }
+.q-rec { color: var(--ink3); white-space: nowrap; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">Error discovery<span>Orbita CRM agent · live eval traces</span></div>
+  <nav class="views" aria-label="Views">
+    <button type="button" data-view="review" class="on">Review</button>
+    <button type="button" data-view="map">Map</button>
+    <button type="button" data-view="progress">Progress</button>
+  </nav>
+  <div class="nav">
+    <button type="button" id="prev" aria-label="Previous record" title="Previous (left arrow)">&#8249;</button>
+    <select id="pick" aria-label="Record in the sample"></select>
+    <button type="button" id="next" aria-label="Next record" title="Next (right arrow)">&#8250;</button>
+  </div>
+  <div id="save" class="save" aria-live="polite">Saved</div>
+</header>
+<div id="toast" class="toast" role="status" hidden></div>
+<main>
+  <section id="v-review" class="view on"><div id="rec"></div></section>
+  <section id="v-map" class="view">
+    <div class="mapwrap">
+      <div class="maphead" id="maphead"></div>
+      <svg id="map" role="img" aria-label="Map of every record"></svg>
+      <div class="legend" id="legend"></div>
+    </div>
+  </section>
+  <section id="v-progress" class="view"><div id="prog"></div></section>
+</main>
+<div id="pop" class="pop" hidden>
+  <div class="pop-q" id="pop-q"></div>
+  <input id="pop-in" type="text" autocomplete="off" aria-label="Note" placeholder="What is wrong here? Enter saves, Esc cancels">
+</div>
+<div id="tip" class="tip" hidden></div>
+
+<script>
+"use strict";
+const S = { records: [], ids: [], batches: [], idx: 0, ann: [], reviewed: {}, sug: [], patterns: { modes: [] }, graph: { points: [] }, view: "review", total: 0, draft: null };
+const LS = "ed.orbita.v1";
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pad = (n) => String(n).padStart(3, "0");
+const clip = (s, n) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
+const uid = (p) => p + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+const STATUS = { proposed: "Proposed", unchanged: "Same as CRM", contradictory: "Contradicts CRM", no_evidence: "No evidence" };
+const GLYPH = { "claude-sonnet-5-5": "●", "claude-opus-5-5": "■", "claude-haiku-5-5": "▲", platform: "◆" };
+const SHAPE = { "claude-sonnet-5-5": "circle", "claude-opus-5-5": "square", "claude-haiku-5-5": "triangle", platform: "diamond" };
+const MODEL_NAME = { "claude-sonnet-5-5": "Sonnet 5.5", "claude-opus-5-5": "Opus 5.5", "claude-haiku-5-5": "Haiku 5.5", platform: "Blocked before the model" };
+const CLUSTER = ["#4263eb", "#0ca678", "#ae3ec9", "#1098ad", "#5c940d", "#d6336c", "#495057", "#9c36b5"];
+const ANNOTATED = "#f76707";
+
+async function api(path, body) {
+  const init = body === undefined ? { cache: "no-store" } : { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) };
+  const r = await fetch(path, init);
+  if (!r.ok) throw new Error(path + " " + r.status);
+  return r.json();
+}
+const rec = () => S.records[S.idx] || null;
+const annOf = (id) => S.ann.filter((a) => a.record_id === id);
+const sugOf = (id) => S.sug.filter((s) => s.record_id === id && s.status === "pending");
+const isReviewed = (id) => !!S.reviewed[id] || S.ann.some((a) => a.record_id === id);
+const fmtVal = (v) => (Array.isArray(v) ? v.join("; ") : typeof v === "number" ? v.toLocaleString("en-US") : String(v));
+const sideOf = (sp) => (/\(orbita\)/i.test(sp || "") ? "seller" : /unattributed/i.test(sp || "") ? "unattributed" : "customer");
+const blockEl = (b) => $(`#body [data-block="${CSS.escape(b)}"]`);
+
+// ------------------------------------------------------------------ samples and navigation
+function applySamples(s) {
+  const cur = rec() && rec().id;
+  S.ids = s.ids || []; S.batches = s.batches || []; S.total = s.total || S.ids.length; S.records = s.records || [];
+  if (cur) { const i = S.records.findIndex((r) => r.id === cur); if (i >= 0) S.idx = i; }
+}
+function renderPick() {
+  $("#pick").innerHTML = S.records.map((r, i) => `<option value="${i}"${i === S.idx ? " selected" : ""}>${isReviewed(r.id) ? "✓ " : ""}${esc(r.case_id)} · ${esc(r.model_short)} · ${esc(r.client || "")}</option>`).join("");
+}
+function step(d) { if (!S.records.length) return; closePop(); S.idx = (S.idx + d + S.records.length) % S.records.length; renderPick(); renderRecord(); window.scrollTo(0, 0); }
+function gotoId(id, flashId) {
+  const i = S.records.findIndex((r) => r.id === id);
+  if (i < 0) { toast("That record is not in the sample yet."); return; }
+  closePop(); S.idx = i; setView("review"); renderPick(); renderRecord();
+  if (flashId) setTimeout(() => { const m = $(`#body .mk[data-id="${CSS.escape(flashId)}"]`); if (m) { m.scrollIntoView({ block: "center" }); m.classList.add("flash"); setTimeout(() => m.classList.remove("flash"), 1600); } }, 30);
+  else window.scrollTo(0, 0);
+}
+function setView(v) {
+  S.view = v;
+  $$(".views button").forEach((b) => b.classList.toggle("on", b.dataset.view === v));
+  $$(".view").forEach((s) => s.classList.toggle("on", s.id === "v-" + v));
+  $(".nav").style.visibility = v === "review" ? "visible" : "hidden";
+  if (v === "map") renderMap();
+  if (v === "progress") renderProgress();
+  if (v === "review") layoutMargin();
+}
+
+// ------------------------------------------------------------------ record view
+function groupsOf(r) {
+  const order = []; const by = {};
+  for (const f of r.fields) { if (!by[f.group]) { by[f.group] = { id: f.group, label: f.group_label, fields: [] }; order.push(by[f.group]); } by[f.group].fields.push(f); }
+  return order;
+}
+function headHtml(r) {
+  const sc = r.scorer || { verdict: "", fails: [] };
+  const check = r.model === "platform" ? "" : sc.fails.length ? `<span class="chip bad">${sc.fails.length} code check${sc.fails.length > 1 ? "s" : ""} failed</span>` : '<span class="chip">Code checks pass</span>';
+  const u = r.usage;
+  const ctx = [
+    r.opportunity && `Opportunity: ${esc(r.opportunity)}`,
+    r.stage_before && `stage before: ${esc(r.stage_before)}`,
+    r.seller && `run as ${esc(r.seller)}`,
+    r.source && esc(r.source),
+    r.scheduled_minutes ? `scheduled ${r.scheduled_minutes} min, recorded ${r.recorded_minutes ?? "?"} min` : "",
+    `${r.lines.length} lines`,
+    u && `${(u.output_tokens || 0).toLocaleString("en-US")} output tokens · $${(u.cost_usd || 0).toFixed(4)}`,
+  ].filter(Boolean).join(" · ");
+  const sibs = S.records.filter((x) => x.case_id === r.case_id && x.id !== r.id);
+  const comp = sibs.length ? `<span class="sibs">Same case: ${sibs.map((x) => `<a href="#" data-goto="${esc(x.id)}">${esc(x.model_short)}</a>`).join(" · ")}</span>` : "";
+  const proves = Array.isArray(r.proves) ? r.proves.join("; ") : r.proves;
+  return `<div class="rh">
+    <div class="rh-1"><span class="case">${esc(r.case_id)}</span><span>${esc(r.client || "")}</span><span class="scen">${esc(r.case_name)}</span></div>
+    <div class="rh-2"><span class="chip">${GLYPH[r.model] || ""} ${esc(r.model_short)}</span>${check}${(r.flags || []).map((f) => `<span class="flag">${esc(f)}</span>`).join("")}${comp}
+      <label class="done"><input type="checkbox" id="done"${S.reviewed[r.id] ? " checked" : ""}> Reviewed</label></div>
+    <div class="rh-3">${ctx}</div>
+    ${proves ? `<div class="rh-3">Built to test: ${esc(proves)}</div>` : ""}
+    ${sc.fails.length ? `<details class="fails"><summary>What the code checks flagged</summary><ul>${sc.fails.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></details>` : ""}
+  </div>`;
+}
+function fieldHtml(f) {
+  const has = (v) => v !== null && v !== undefined && v !== "" && !(Array.isArray(v) && !v.length);
+  const cur = has(f.current_value) ? `<div class="cur"><span class="k">CRM now${f.current_approved ? " (seller-approved)" : ""}</span><span class="ab" data-block="f.${f.field}.current">${esc(fmtVal(f.current_value))}</span></div>` : "";
+  const val = has(f.proposed_value) ? `<div class="val ab" data-block="f.${f.field}.value">${esc(fmtVal(f.proposed_value))}</div>` : "";
+  const ev = (f.evidence || []).map((e, i) => { const sd = sideOf(e.speaker); return `<li><a class="ln" href="#" data-line="${e.line}">L${pad(e.line)}</a><span class="spk s-${sd}">${esc(e.speaker || "")}</span><q class="ab" data-block="f.${f.field}.ev${i}">${esc(e.quote)}</q></li>`; }).join("");
+  const note = f.note ? `<div class="note ab" data-block="f.${f.field}.note">${esc(f.note)}</div>` : "";
+  return `<div class="fld st-${f.status}"><div class="fh"><span class="fl">${esc(f.label)}</span><span class="st ab" data-block="f.${f.field}.status">${STATUS[f.status] || esc(f.status)}</span>${f.record === "client" ? '<span class="reck">client record</span>' : ""}</div>${cur}${val}${ev ? `<ul class="ev">${ev}</ul>` : ""}${note}</div>`;
+}
+function itemText(x) {
+  if (typeof x === "string") return x;
+  if (x && x.quote) return `“${x.quote}” — ${x.reason || ""}${x.line ? ` (L${pad(x.line)})` : ""}`;
+  if (x && (x.field || x.message)) return [x.field, x.message || x.note || x.reason].filter(Boolean).join(": ");
+  return JSON.stringify(x);
+}
+function bodyHtml(r, citedBy) {
+  let h = "";
+  if (r.run_status === "Blocked") {
+    h += `<section class="sec"><h2>Stopped before the model <span class="muted">${esc(r.source_status || "")}</span></h2><p class="block-reason ab" data-block="h.block">${esc(r.block_reason || "")}</p></section>`;
+  } else {
+    if (r.target && r.target.kind === "new") {
+      const t = r.target;
+      h += `<section class="sec"><h2>Attribution</h2><p class="ab" data-block="h.target" style="margin:0">New ${t.client_id ? "opportunity for" : "client and opportunity:"} ${esc(t.client_name || "")} · ${esc(t.opportunity_name || "")}${(t.contacts || []).length ? ` · contacts: ${esc(t.contacts.join(", "))}` : ""}</p></section>`;
+    }
+    h += '<section class="sec"><h2>Agent proposals</h2>';
+    for (const g of groupsOf(r)) {
+      const shown = g.fields.filter((f) => f.status !== "no_evidence" || f.note);
+      const bare = g.fields.filter((f) => f.status === "no_evidence" && !f.note);
+      h += `<div class="grp"><h3>${esc(g.label)}</h3>${shown.map(fieldHtml).join("")}`;
+      if (bare.length) h += `<p class="none ab" data-block="g.${g.id}.empty">No evidence: ${bare.map((f) => esc(f.label)).join(", ")}</p>`;
+      h += "</div>";
+    }
+    h += "</section>";
+    const plat = [];
+    (r.warnings || []).forEach((w, i) => plat.push(`<li><span class="k">Warning</span><span class="ab" data-block="p.warn${i}">${esc(itemText(w))}</span></li>`));
+    (r.validation_notes || []).forEach((w, i) => plat.push(`<li><span class="k">Validator corrected</span><span class="ab" data-block="p.vn${i}">${esc(itemText(w))}</span></li>`));
+    (r.ignored_out_of_scope || []).forEach((w, i) => plat.push(`<li><span class="k">Ignored as out of scope</span><span class="ab" data-block="p.ig${i}">${esc(itemText(w))}</span></li>`));
+    if (plat.length) h += `<section class="sec"><h2>Platform</h2><ul class="plat">${plat.join("")}</ul></section>`;
+  }
+  const lines = r.lines.map((l) => {
+    const by = citedBy.get(l.n);
+    return `<li id="ln-${l.n}"${by ? ' class="cited"' : ""}><span class="no">L${pad(l.n)}</span><span class="ts">${esc(l.ts)}</span><span><span class="spk s-${l.side}">${esc(l.speaker)}</span><span class="tx ab" data-block="t.L${l.n}">${esc(l.text)}</span>${by ? `<span class="cby">cited by ${esc([...by].join(", "))}</span>` : ""}</span></li>`;
+  }).join("");
+  h += `<section class="sec"><h2>Conversation <span class="muted">${r.lines.length} lines</span></h2><div class="legend-sides"><span class="s-seller">Seller side (Orbita)</span><span class="s-customer">Customer</span><span class="s-unattributed">Unattributed voice</span></div><ol class="lines">${lines}</ol></section>`;
+  return h;
+}
+function renderRecord() {
+  const r = rec(); const box = $("#rec");
+  if (!r) { box.innerHTML = '<p class="empty">No records in the sample yet.</p>'; return; }
+  history.replaceState(null, "", "#" + encodeURIComponent(r.id));
+  const citedBy = new Map();
+  for (const f of r.fields) for (const e of f.evidence || []) { if (!citedBy.has(e.line)) citedBy.set(e.line, new Set()); citedBy.get(e.line).add(f.label); }
+  box.innerHTML = headHtml(r) + `<div class="cols"><article class="body" id="body">${bodyHtml(r, citedBy)}</article><aside class="margin" id="margin" aria-label="Notes"></aside></div>`;
+  paintMarks();
+}
+
+// ------------------------------------------------------------------ highlights
+function locate(el, item) {
+  const t = el.textContent;
+  if (item.start != null && item.end != null && t.slice(item.start, item.end) === item.text) return [item.start, item.end];
+  if (item.text) {
+    let i = t.indexOf(item.text);
+    if (i < 0) i = t.toLowerCase().indexOf(item.text.toLowerCase());
+    if (i >= 0) return [i, i + item.text.length];
+  }
+  return [0, t.length];
+}
+function wrapRange(el, start, end, cls, id) {
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  const parts = []; let pos = 0;
+  for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+    const len = n.nodeValue.length; const a = Math.max(start, pos), b = Math.min(end, pos + len);
+    if (a < b) parts.push([n, a - pos, b - pos]);
+    pos += len; if (pos >= end) break;
+  }
+  for (const [n, a, b] of parts) {
+    let node = n;
+    if (b < node.nodeValue.length) node.splitText(b);
+    if (a > 0) node = node.splitText(a);
+    const span = document.createElement("span");
+    span.className = "mk " + cls; span.dataset.id = id;
+    node.parentNode.insertBefore(span, node); span.appendChild(node);
+  }
+}
+function unwrap(id) {
+  for (const s of $$(`#body .mk[data-id="${CSS.escape(id)}"]`)) { const p = s.parentNode; while (s.firstChild) p.insertBefore(s.firstChild, s); p.removeChild(s); p.normalize(); }
+}
+function paintMarks() {
+  const r = rec(); if (!r || !$("#body")) return;
+  for (const a of annOf(r.id)) { const el = blockEl(a.block); if (el) { const [s, e] = locate(el, a); wrapRange(el, s, e, "hl", a.id); } }
+  for (const g of sugOf(r.id)) { const el = blockEl(g.block); if (el) { const [s, e] = locate(el, g); wrapRange(el, s, e, "sg", g.id); } }
+  layoutMargin();
+}
+
+// ------------------------------------------------------------------ margin notes
+function noteHtml(kind, x) {
+  if (kind === "sug") return `<div class="mn sug" data-id="${esc(x.id)}"><div class="mn-tag">Agent suggestion${x.mode ? " · " + esc(x.mode) : ""}</div><div class="mn-q">“${esc(clip(x.text || "", 120))}”</div>${x.note ? `<div class="mn-t">${esc(x.note)}</div>` : ""}<div class="mn-a show"><button type="button" class="pri" data-act="accept">Accept</button><button type="button" data-act="dismiss">Dismiss</button></div></div>`;
+  return `<div class="mn" data-id="${esc(x.id)}"><div class="mn-q">“${esc(clip(x.text || "", 120))}”</div><div class="mn-t">${esc(x.note)}</div><div class="mn-a"><button type="button" data-act="edit">Edit</button><button type="button" data-act="del">Delete</button></div></div>`;
+}
+function layoutMargin() {
+  const m = $("#margin"); const r = rec(); if (!m || !r) return;
+  const items = [...annOf(r.id).map((x) => ["ann", x]), ...sugOf(r.id).map((x) => ["sug", x])];
+  m.innerHTML = items.map(([k, x]) => noteHtml(k, x)).join("");
+  const base = m.getBoundingClientRect().top;
+  const placed = items.map(([, x], i) => {
+    const span = $(`#body .mk[data-id="${CSS.escape(x.id)}"]`);
+    return { el: m.children[i], top: span ? span.getBoundingClientRect().top - base : 0 };
+  }).sort((a, b) => a.top - b.top);
+  let floor = 0;
+  for (const p of placed) { const t = Math.max(p.top, floor); p.el.style.top = t + "px"; floor = t + p.el.offsetHeight + 8; }
+  m.style.minHeight = floor + "px";
+}
+function lit(id, on) { if (id) $$(`[data-id="${CSS.escape(id)}"]`).forEach((x) => x.classList.toggle("lit", on)); }
+
+// ------------------------------------------------------------------ annotating
+function openPop(draft, rect) {
+  closePop();
+  const el = blockEl(draft.block); if (!el) return;
+  wrapRange(el, draft.start, draft.end, "pend", "pending"); // keep the text visibly selected before the input takes focus
+  S.draft = draft;
+  const pop = $("#pop"); $("#pop-q").textContent = "“" + clip(draft.text, 140) + "”";
+  pop.hidden = false;
+  pop.style.top = Math.min(window.innerHeight - 100, rect.bottom + 8) + "px";
+  pop.style.left = Math.max(8, Math.min(window.innerWidth - 376, rect.left)) + "px";
+  const inp = $("#pop-in"); inp.value = ""; inp.focus();
+}
+function closePop() { if (S.draft) unwrap("pending"); S.draft = null; $("#pop").hidden = true; }
+function saveDraft(note) {
+  const d = S.draft; const r = rec(); if (!d || !r) return;
+  unwrap("pending"); S.draft = null; $("#pop").hidden = true;
+  const a = { id: uid("a"), record_id: r.id, block: d.block, start: d.start, end: d.end, text: d.text, note, created_at: new Date().toISOString() };
+  S.ann.push(a); saveAnn();
+  const el = blockEl(a.block); if (el) wrapRange(el, a.start, a.end, "hl", a.id);
+  layoutMargin(); renderPick();
+}
+document.addEventListener("mouseup", (ev) => {
+  if (S.view !== "review" || ev.target.closest(".pop, .margin, .rh, header")) return;
+  const sel = window.getSelection(); if (!sel || sel.isCollapsed || !sel.rangeCount) return;
+  const range = sel.getRangeAt(0);
+  const startEl = range.startContainer.nodeType === 1 ? range.startContainer : range.startContainer.parentElement;
+  const block = startEl && startEl.closest(".ab");
+  if (!block || !$("#body") || !$("#body").contains(block)) return;
+  const pre = document.createRange(); pre.selectNodeContents(block); pre.setEnd(range.startContainer, range.startOffset);
+  let start = pre.toString().length; let end = block.textContent.length;
+  if (block.contains(range.endContainer)) { const p2 = document.createRange(); p2.selectNodeContents(block); p2.setEnd(range.endContainer, range.endOffset); end = p2.toString().length; }
+  const raw = block.textContent.slice(start, end);
+  if (!raw.trim()) return;
+  start += raw.length - raw.trimStart().length; end -= raw.length - raw.trimEnd().length;
+  const rect = range.getBoundingClientRect();
+  sel.removeAllRanges();
+  openPop({ block: block.dataset.block, start, end, text: block.textContent.slice(start, end) }, rect);
+});
+document.addEventListener("mousedown", (ev) => { if (S.draft && !ev.target.closest(".pop")) closePop(); });
+$("#pop-in").addEventListener("keydown", (e) => {
+  if (e.key === "Escape") { e.preventDefault(); closePop(); }
+  else if (e.key === "Enter") { e.preventDefault(); const v = e.target.value.trim(); if (v) saveDraft(v); }
+});
+
+function act(kind, id) {
+  const r = rec();
+  if (kind === "del") { S.ann = S.ann.filter((a) => a.id !== id); unwrap(id); saveAnn(); layoutMargin(); renderPick(); return; }
+  if (kind === "edit") {
+    const a = S.ann.find((x) => x.id === id); const box = $(`.mn[data-id="${CSS.escape(id)}"] .mn-t`); if (!a || !box) return;
+    box.innerHTML = `<input type="text" value="${esc(a.note)}" aria-label="Edit note">`;
+    const inp = box.querySelector("input"); inp.focus(); inp.select();
+    inp.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") { e.preventDefault(); const v = inp.value.trim(); if (v) { a.note = v; a.updated_at = new Date().toISOString(); saveAnn(); } layoutMargin(); }
+      else if (e.key === "Escape") { e.preventDefault(); layoutMargin(); }
+    });
+    return;
+  }
+  const s = S.sug.find((x) => x.id === id); if (!s) return;
+  if (kind === "accept") acceptSug([s]); else dismissSug([s]);
+  if (r) { unwrap(id); paintAgain(); }
+}
+function paintAgain() { const r = rec(); if (!r) return; for (const a of annOf(r.id)) if (!$(`#body .mk[data-id="${CSS.escape(a.id)}"]`)) { const el = blockEl(a.block); if (el) { const [s, e] = locate(el, a); wrapRange(el, s, e, "hl", a.id); } } layoutMargin(); }
+function acceptSug(list) {
+  for (const s of list) {
+    s.status = "accepted"; s.decided_at = new Date().toISOString();
+    S.ann.push({ id: uid("a"), record_id: s.record_id, block: s.block, start: s.start ?? null, end: s.end ?? null, text: s.text, note: s.note || s.mode || "Accepted suggestion", mode: s.mode || null, from_suggestion: s.id, created_at: s.decided_at });
+  }
+  api("/api/suggestions", { suggestions: list }).catch(() => {});
+  saveAnn(); renderPick();
+}
+function dismissSug(list) {
+  for (const s of list) { s.status = "dismissed"; s.decided_at = new Date().toISOString(); }
+  api("/api/suggestions", { suggestions: list }).catch(() => {});
+}
+
+let saveTimer = null;
+function saveAnn() {
+  if (S.selftest) return;
+  try { localStorage.setItem(LS, JSON.stringify({ annotations: S.ann, reviewed: S.reviewed })); } catch (e) { /* private window */ }
+  $("#save").textContent = "Saving…";
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(async () => {
+    try { await api("/api/annotations", { annotations: S.ann, reviewed: S.reviewed }); $("#save").textContent = "Saved"; }
+    catch (e) { $("#save").textContent = "Not saved: is the server running?"; }
+  }, 150);
+}
+
+// ------------------------------------------------------------------ map
+function hull(pts) {
+  const p = [...pts].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  if (p.length < 3) return p;
+  const cross = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const lo = []; for (const q of p) { while (lo.length >= 2 && cross(lo[lo.length - 2], lo[lo.length - 1], q) <= 0) lo.pop(); lo.push(q); }
+  const up = []; for (const q of p.slice().reverse()) { while (up.length >= 2 && cross(up[up.length - 2], up[up.length - 1], q) <= 0) up.pop(); up.push(q); }
+  return lo.slice(0, -1).concat(up.slice(0, -1));
+}
+function shapePath(kind, x, y, r) {
+  if (kind === "square") return `<rect x="${x - r}" y="${y - r}" width="${2 * r}" height="${2 * r}" rx="1.5"`;
+  if (kind === "triangle") return `<polygon points="${x},${y - r * 1.2} ${x + r * 1.1},${y + r * 0.8} ${x - r * 1.1},${y + r * 0.8}"`;
+  if (kind === "diamond") return `<polygon points="${x},${y - r * 1.25} ${x + r * 1.25},${y} ${x},${y + r * 1.25} ${x - r * 1.25},${y}"`;
+  return `<circle cx="${x}" cy="${y}" r="${r}"`;
+}
+function renderMap() {
+  const svg = $("#map"); const pts = S.graph.points || [];
+  const W = svg.clientWidth || 1000, H = 560, P = 46;
+  if (!pts.length) { svg.innerHTML = ""; $("#maphead").textContent = "No map yet: run prepare.py."; return; }
+  const xs = pts.map((p) => p.x), ys = pts.map((p) => p.y);
+  const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
+  const sx = (v) => P + ((v - x0) / (x1 - x0 || 1)) * (W - 2 * P), sy = (v) => H - P - ((v - y0) / (y1 - y0 || 1)) * (H - 2 * P);
+  const sample = new Set(S.ids);
+  let h = "";
+  const byC = {}; for (const p of pts) (byC[p.cluster] = byC[p.cluster] || []).push([sx(p.x), sy(p.y)]);
+  for (const [c, list] of Object.entries(byC)) {
+    const col = CLUSTER[c % CLUSTER.length]; const hp = hull(list);
+    if (hp.length >= 3) h += `<path d="M${hp.map((q) => q.join(",")).join("L")}Z" fill="${col}" fill-opacity=".08" stroke="${col}" stroke-opacity=".22" stroke-width="34" stroke-linejoin="round"/>`;
+    else if (hp.length === 2) h += `<line x1="${hp[0][0]}" y1="${hp[0][1]}" x2="${hp[1][0]}" y2="${hp[1][1]}" stroke="${col}" stroke-opacity=".14" stroke-width="34" stroke-linecap="round"/>`;
+    else h += `<circle cx="${hp[0][0]}" cy="${hp[0][1]}" r="17" fill="${col}" fill-opacity=".12"/>`;
+  }
+  for (const p of pts) {
+    const inS = sample.has(p.id); const annotated = S.ann.some((a) => a.record_id === p.id);
+    const fill = annotated ? ANNOTATED : CLUSTER[p.cluster % CLUSTER.length];
+    h += `${shapePath(SHAPE[p.model] || "circle", sx(p.x), sy(p.y), inS ? 8 : 5.5)} class="pt${inS ? " smp" : ""}" data-id="${esc(p.id)}" fill="${fill}" fill-opacity="${inS ? 1 : 0.55}" stroke="${inS ? "#1b1b1f" : "none"}" stroke-width="${inS ? 2 : 0}"/>`;
+  }
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.innerHTML = h;
+  $("#maphead").textContent = `${pts.length} records (one per case and model), placed by what the agent produced: fields proposed, left empty or contradicted, quotes, validator fixes, output length. Colors are clusters; shapes are models. Click a record in the sample to review it.`;
+  $("#legend").innerHTML = Object.entries(SHAPE).map(([m, s]) => `<span><i>${GLYPH[m]}</i>${esc(MODEL_NAME[m])}</span>`).join("") + `<span><i style="color:${ANNOTATED}">●</i>has notes</span><span><i>◉</i>bold outline: in the sample</span>`;
+}
+function tipFor(p) {
+  const n = S.ann.filter((a) => a.record_id === p.id).length;
+  return `<b>${esc(p.case_id)} · ${esc(p.model_short)}</b><br>${esc(p.case_name)}<br>Cluster ${p.cluster + 1} · ${p.model === "platform" ? "no model call" : p.code_check_failures ? p.code_check_failures + " code check(s) failed" : "code checks pass"} · ${n} note${n === 1 ? "" : "s"}${S.ids.includes(p.id) ? " · in the sample" : ""}`;
+}
+$("#map").addEventListener("mousemove", (e) => {
+  const t = e.target.closest(".pt"); const tip = $("#tip");
+  if (!t) { tip.hidden = true; return; }
+  const p = (S.graph.points || []).find((x) => x.id === t.dataset.id); if (!p) return;
+  tip.innerHTML = tipFor(p); tip.hidden = false;
+  tip.style.left = Math.min(window.innerWidth - 310, e.clientX + 14) + "px"; tip.style.top = e.clientY + 14 + "px";
+});
+$("#map").addEventListener("mouseleave", () => { $("#tip").hidden = true; });
+$("#map").addEventListener("click", (e) => { const t = e.target.closest(".pt.smp"); if (t) { $("#tip").hidden = true; gotoId(t.dataset.id); } });
+
+// ------------------------------------------------------------------ progress
+function treemap(items, W, H) {
+  const total = items.reduce((s, i) => s + i.value, 0) || 1;
+  const nodes = items.map((i) => ({ ...i, area: (i.value / total) * W * H })).sort((a, b) => b.area - a.area);
+  const out = []; let x = 0, y = 0, w = W, h = H; let row = [];
+  const worst = (rw, side) => { const s = rw.reduce((a, r) => a + r.area, 0); const mx = Math.max(...rw.map((r) => r.area)), mn = Math.min(...rw.map((r) => r.area)); return Math.max((side * side * mx) / (s * s), (s * s) / (side * side * mn)); };
+  const lay = (rw) => {
+    const s = rw.reduce((a, r) => a + r.area, 0);
+    if (w >= h) { const cw = s / h; let yy = y; for (const r of rw) { const ch = r.area / cw; out.push({ ...r, x, y: yy, w: cw, h: ch }); yy += ch; } x += cw; w -= cw; }
+    else { const ch = s / w; let xx = x; for (const r of rw) { const cw = r.area / ch; out.push({ ...r, x: xx, y, w: cw, h: ch }); xx += cw; } y += ch; h -= ch; }
+  };
+  for (const n of nodes) { const side = Math.min(w, h); if (!row.length || worst([...row, n], side) <= worst(row, side)) row.push(n); else { lay(row); row = [n]; } }
+  if (row.length) lay(row);
+  return out;
+}
+function recLabel(id) { const r = S.records.find((x) => x.id === id); return r ? `${r.case_id} · ${r.model_short}` : id; }
+function renderProgress() {
+  const reviewed = S.ids.filter(isReviewed).length;
+  const pend = S.sug.filter((s) => s.status === "pending");
+  const modes = (S.patterns.modes || []).filter((m) => (m.count || 0) + (m.suggested || 0) > 0);
+  let h = `<div class="stats"><div><b>${reviewed} of ${S.ids.length}</b><span>sampled records reviewed (${S.total} in all)</span></div><div><b>${S.ann.length}</b><span>notes</span></div><div><b>${modes.length}</b><span>failure modes</span></div><div><b>${pend.length}</b><span>agent suggestions waiting</span></div></div>`;
+  h += '<h2 class="ph">Failure modes</h2>';
+  h += modes.length ? '<div class="tm" id="tm"></div>' : '<p class="empty">Failure modes appear here as you write notes. You never have to categorize: I group your notes into modes and you correct me.</p>';
+  h += '<h2 class="ph">Agent suggestions to review</h2>';
+  if (!pend.length) h += '<p class="empty">No suggestions waiting.</p>';
+  else {
+    h += '<div class="qbar"><label><input type="checkbox" id="q-all"> Select all</label><button type="button" id="q-acc">Accept selected</button><button type="button" id="q-dis">Dismiss selected</button></div><table class="q"><tbody>';
+    h += pend.map((s) => `<tr><td><input type="checkbox" class="q-c" data-id="${esc(s.id)}" aria-label="Select suggestion"></td><td class="q-mode">${esc(s.mode || "")}</td><td><a href="#" data-gosug="${esc(s.id)}">“${esc(clip(s.text || "", 140))}”</a>${s.note ? `<div class="q-note">${esc(s.note)}</div>` : ""}</td><td class="q-rec">${esc(recLabel(s.record_id))}</td></tr>`).join("");
+    h += "</tbody></table>";
+  }
+  $("#prog").innerHTML = h;
+  if (!modes.length) return;
+  const tm = $("#tm"); const W = tm.clientWidth, H = 400;
+  const rects = treemap(modes.map((m, i) => ({ ...m, i, value: Math.max(1, (m.count || 0) + 0.5 * (m.suggested || 0)) })), W, H);
+  tm.innerHTML = rects.map((r) => {
+    const col = CLUSTER[r.i % CLUSTER.length];
+    const notes = (r.annotation_ids || []).map((id) => S.ann.find((a) => a.id === id)).filter(Boolean);
+    return `<div class="tb" style="left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;background:${col}1f;border-color:var(--panel)"><h4 style="color:${col}">${esc(r.name)}</h4><div class="tc">${r.count || 0} note${r.count === 1 ? "" : "s"}${r.suggested ? ` · ${r.suggested} suggested` : ""}</div>${r.description ? `<div class="td">${esc(r.description)}</div>` : ""}<ul>${notes.map((a) => `<li><a href="#" data-goann="${esc(a.id)}">${esc(recLabel(a.record_id))}: ${esc(clip(a.note, 110))}</a></li>`).join("")}</ul></div>`;
+  }).join("");
+}
+$("#prog").addEventListener("click", (e) => {
+  const ga = e.target.closest("[data-goann]"); if (ga) { e.preventDefault(); const a = S.ann.find((x) => x.id === ga.dataset.goann); if (a) gotoId(a.record_id, a.id); return; }
+  const gs = e.target.closest("[data-gosug]"); if (gs) { e.preventDefault(); const s = S.sug.find((x) => x.id === gs.dataset.gosug); if (s) gotoId(s.record_id, s.id); return; }
+  if (e.target.id === "q-acc" || e.target.id === "q-dis") {
+    const ids = $$(".q-c:checked").map((c) => c.dataset.id); const list = S.sug.filter((s) => ids.includes(s.id));
+    if (!list.length) return;
+    if (e.target.id === "q-acc") acceptSug(list); else dismissSug(list);
+    renderProgress();
+  }
+});
+$("#prog").addEventListener("change", (e) => { if (e.target.id === "q-all") $$(".q-c").forEach((c) => (c.checked = e.target.checked)); });
+
+// ------------------------------------------------------------------ wiring, polling, boot
+$$(".views button").forEach((b) => b.addEventListener("click", () => setView(b.dataset.view)));
+$("#prev").addEventListener("click", () => step(-1));
+$("#next").addEventListener("click", () => step(1));
+$("#pick").addEventListener("change", (e) => { closePop(); S.idx = +e.target.value; renderRecord(); window.scrollTo(0, 0); });
+$("#rec").addEventListener("click", (e) => {
+  const go = e.target.closest("[data-goto]"); if (go) { e.preventDefault(); gotoId(go.dataset.goto); return; }
+  const ln = e.target.closest("a.ln"); if (ln) { e.preventDefault(); const li = $("#ln-" + ln.dataset.line); if (li) { li.scrollIntoView({ block: "center" }); li.classList.add("flash"); setTimeout(() => li.classList.remove("flash"), 1400); } return; }
+  const btn = e.target.closest(".mn button"); if (btn) act(btn.dataset.act, btn.closest(".mn").dataset.id);
+});
+$("#rec").addEventListener("change", (e) => {
+  if (e.target.id !== "done") return;
+  const r = rec(); if (e.target.checked) S.reviewed[r.id] = new Date().toISOString(); else delete S.reviewed[r.id];
+  saveAnn(); renderPick();
+});
+$("#rec").addEventListener("mouseover", (e) => { const n = e.target.closest(".mn, .mk"); if (n) lit(n.dataset.id, true); });
+$("#rec").addEventListener("mouseout", (e) => { const n = e.target.closest(".mn, .mk"); if (n) lit(n.dataset.id, false); });
+document.addEventListener("keydown", (e) => {
+  if (e.target.closest("input, textarea, select")) return;
+  if (e.key === "ArrowRight" && S.view === "review") step(1);
+  else if (e.key === "ArrowLeft" && S.view === "review") step(-1);
+  else if (e.key === "Escape") closePop();
+});
+window.addEventListener("resize", () => { if (S.view === "review") layoutMargin(); else if (S.view === "map") renderMap(); else renderProgress(); });
+
+let toastTimer = null;
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => (t.hidden = true), 6000); }
+
+async function poll() {
+  try {
+    const [smp, sug, pat] = await Promise.all([api("/api/samples"), api("/api/suggestions"), api("/api/patterns")]);
+    const added = (smp.ids || []).filter((i) => !S.ids.includes(i));
+    if (added.length) {
+      applySamples(smp); renderPick();
+      const last = (smp.batches || []).slice(-1)[0];
+      toast(`${added.length} record${added.length > 1 ? "s" : ""} added to the sample${last && last.reason ? ": " + last.reason : ""}`);
+    }
+    const fresh = (sug.suggestions || []).filter((s) => !S.sug.some((x) => x.id === s.id));
+    if (fresh.length) {
+      const known = new Map(S.sug.map((s) => [s.id, s]));
+      S.sug = (sug.suggestions || []).map((s) => (known.has(s.id) && known.get(s.id).status !== "pending" ? known.get(s.id) : s));
+      toast(`${fresh.length} new agent suggestion${fresh.length > 1 ? "s" : ""}: see Progress, or the purple highlights`);
+      if (S.view === "review" && !S.draft) renderRecord();
+    }
+    if (JSON.stringify(pat) !== JSON.stringify(S.patterns)) { S.patterns = pat; if (S.view === "progress") renderProgress(); }
+    if (S.view === "progress" && (added.length || fresh.length)) renderProgress();
+  } catch (e) { $("#save").textContent = "Server not reachable"; }
+}
+
+async function boot() {
+  const [smp, ann, sug, pat, graph] = await Promise.all([api("/api/samples"), api("/api/annotations"), api("/api/suggestions"), api("/api/patterns"), api("/api/graph")]);
+  applySamples(smp);
+  S.ann = ann.annotations || []; S.reviewed = ann.reviewed || {};
+  if (!S.ann.length) {
+    try { const b = JSON.parse(localStorage.getItem(LS) || "null"); if (b && (b.annotations || []).length) { S.ann = b.annotations; S.reviewed = b.reviewed || {}; saveAnn(); toast(`Restored ${S.ann.length} notes from this browser's backup`); } } catch (e) { /* no backup */ }
+  }
+  S.sug = sug.suggestions || []; S.patterns = pat || { modes: [] }; S.graph = graph || { points: [] };
+  const h = decodeURIComponent(location.hash.slice(1)); const i = S.records.findIndex((r) => r.id === h); if (i >= 0) S.idx = i;
+  renderPick(); renderRecord();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => layoutMargin());
+  const q = new URLSearchParams(location.search);
+  if (["map", "progress"].includes(q.get("view"))) setView(q.get("view"));
+  if (q.has("selftest")) return selftest();
+  setInterval(poll, 3000);
+}
+
+// ?selftest: drives the annotation loop in the page (nothing is saved) and prints PASS/FAIL lines into #selftest
+function selftest() {
+  S.selftest = true; const out = [];
+  const ok = (name, cond) => out.push((cond ? "PASS " : "FAIL ") + name);
+  const r = rec();
+  ok("record rendered", !!$("#body .fld") || !!$("#body .block-reason"));
+  ok("every conversation line rendered", $$("#body .lines li").length === r.lines.length);
+  const blk = $("#body .val.ab") || $("#body .tx.ab");
+  const tn = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT).nextNode();
+  const range = document.createRange(); range.setStart(tn, 0); range.setEnd(tn, Math.min(14, tn.nodeValue.length));
+  const sel = getSelection(); sel.removeAllRanges(); sel.addRange(range);
+  blk.dispatchEvent(new MouseEvent("mouseup", { bubbles: true }));
+  ok("popover opens on a selection", !$("#pop").hidden);
+  ok("selected text stays highlighted while typing", !!$("#body .mk.pend"));
+  const before = S.ann.length; $("#pop-in").value = "selftest note";
+  $("#pop-in").dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+  ok("Enter saves the note", S.ann.length === before + 1);
+  const a = S.ann[S.ann.length - 1] || {};
+  const hl = $(`#body .mk.hl[data-id="${a.id}"]`);
+  ok("highlight painted on the selected text", !!hl && hl.textContent === a.text);
+  ok("pending highlight removed", !$("#body .mk.pend"));
+  const note = $(`.mn[data-id="${a.id}"]`);
+  ok("margin note shown", !!note);
+  if (note && hl) { const dy = Math.abs(note.getBoundingClientRect().top - hl.getBoundingClientRect().top); ok(`margin note level with its highlight (${Math.round(dy)}px)`, dy < 4); }
+  const textBefore = blk.textContent;
+  act("del", a.id);
+  ok("delete removes the note and the highlight", !$(`.mn[data-id="${a.id}"]`) && !$(`#body .mk[data-id="${a.id}"]`));
+  ok("text intact after delete", blk.textContent === textBefore && !blk.querySelector(".mk"));
+  document.body.insertAdjacentHTML("beforeend", `<pre id="selftest">${esc(out.join("\n"))}</pre>`);
+}
+boot().catch((e) => { $("#rec").innerHTML = `<p class="empty">Could not load the data (${esc(e.message)}). Start the server: python eval/error_discovery/server.py</p>`; });
+</script>
+</body>
+</html>
