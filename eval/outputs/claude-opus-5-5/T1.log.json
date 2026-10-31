@@ -1,0 +1,82 @@
+[
+  {
+    "run_id": "RUN-1793222677534",
+    "seq": 1,
+    "timestamp": "2026-10-28T21:24:37.546Z",
+    "actor": "system",
+    "action": "run_created",
+    "object_id": "MTG-2001",
+    "outcome": "ok",
+    "detail": "user=U01"
+  },
+  {
+    "run_id": "RUN-1793222677534",
+    "seq": 2,
+    "timestamp": "2026-10-28T21:24:37.550Z",
+    "actor": "system",
+    "action": "access_checked",
+    "object_id": "OPP-0142",
+    "outcome": "ok",
+    "detail": "user=U01"
+  },
+  {
+    "run_id": "RUN-1793222677534",
+    "seq": 3,
+    "timestamp": "2026-10-28T21:24:37.550Z",
+    "actor": "system",
+    "action": "opportunity_read",
+    "object_id": "OPP-0142",
+    "outcome": "ok",
+    "detail": "stage=Qualified Opportunity"
+  },
+  {
+    "run_id": "RUN-1793222677534",
+    "seq": 4,
+    "timestamp": "2026-10-28T21:24:37.552Z",
+    "actor": "system",
+    "action": "transcript_checked",
+    "object_id": "MTG-2001",
+    "outcome": "ok",
+    "detail": "status=complete; coverage=96% of 45 min; ends_mid_sentence=false"
+  },
+  {
+    "run_id": "RUN-1793222677534",
+    "seq": 5,
+    "timestamp": "2026-10-28T21:24:37.564Z",
+    "actor": "system",
+    "action": "agent_called",
+    "object_id": "MTG-2001",
+    "outcome": "ok",
+    "detail": "claude-opus-5-5 · effort medium"
+  },
+  {
+    "run_id": "RUN-1793222677534",
+    "seq": 6,
+    "timestamp": "2026-10-28T21:25:10.456Z",
+    "actor": "system",
+    "action": "agent_answered",
+    "object_id": "MTG-2001",
+    "outcome": "ok",
+    "detail": "in=3444 cache_read=0 cache_write=11814 out=3812 cost=$0.1491"
+  },
+  {
+    "run_id": "RUN-1793222677534",
+    "seq": 7,
+    "timestamp": "2026-10-28T21:25:10.463Z",
+    "actor": "system",
+    "action": "output_validated",
+    "object_id": "MTG-2001",
+    "outcome": "ok",
+    "detail": "0 correction(s)"
+  },
+  {
+    "run_id": "RUN-1793222677534",
+    "seq": 8,
+    "timestamp": "2026-10-28T21:25:10.463Z",
+    "actor": "agent",
+    "action": "proposals_generated",
+    "object_id": "OPP-0142",
+    "outcome": "ok",
+    "detail": "call_summary=proposed, objection=proposed, commitment=proposed, next_step=proposed, follow_up_owner=proposed, follow_up_due_date=proposed, metrics=proposed, decision_maker=proposed, decision_criteria=proposed, decision_process=proposed, paper_process=proposed, customer_need=proposed, champion=proposed, competitors=proposed, seats=proposed, departments=proposed, integrations=proposed, budget=proposed, go_live_target=proposed, employee_count=proposed, current_solution=proposed, stage=proposed"
+  }
+]

@@ -1,0 +1,573 @@
+<title>Orbita Agent Architecture</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column on Orbita's grey desk; figures use the full 880px; lane colors say who does each step (code, Claude, seller) */
+:root {
+  --bg: #F5F5F5;
+  --surface: #FFFFFF;
+  --ink: #0A0A0A;
+  --text: rgba(10,10,10,.86);
+  --text-2: rgba(10,10,10,.70);
+  --text-3: rgba(10,10,10,.58);
+  --line: rgba(10,10,10,.10);
+  --line-strong: rgba(10,10,10,.24);
+  --claude: #D6005A;
+  --claude-tint: rgba(255,0,102,.07);
+  --seller: #1E4B99;
+  --seller-tint: rgba(30,75,153,.07);
+  --code: #52525B;
+  --code-tint: rgba(10,10,10,.035);
+  --write: #2F6B3A;
+  --write-tint: rgba(34,163,90,.10);
+  --done: #2F6B3A;
+  --done-bg: #E5F4EA;
+  --doing: #7A5B14;
+  --doing-bg: #F8EED6;
+  --todo: #52525B;
+  --todo-bg: #ECECEE;
+  --bar: rgba(10,10,10,.28);
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F0F11; --surface: #18181B; --ink: #F4F4F5;
+    --text: rgba(244,244,245,.88); --text-2: rgba(244,244,245,.72); --text-3: rgba(244,244,245,.60);
+    --line: rgba(255,255,255,.10); --line-strong: rgba(255,255,255,.26);
+    --claude: #FF4D8D; --claude-tint: rgba(255,77,141,.10);
+    --seller: #8DB3F5; --seller-tint: rgba(141,179,245,.10);
+    --code: #A1A1AA; --code-tint: rgba(255,255,255,.035);
+    --write: #5CC98A; --write-tint: rgba(92,201,138,.12);
+    --done: #7FD6A0; --done-bg: rgba(92,201,138,.14);
+    --doing: #E8C46A; --doing-bg: rgba(232,196,106,.14);
+    --todo: #C4C4CC; --todo-bg: rgba(255,255,255,.08);
+    --bar: rgba(255,255,255,.30);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F0F11; --surface: #18181B; --ink: #F4F4F5;
+  --text: rgba(244,244,245,.88); --text-2: rgba(244,244,245,.72); --text-3: rgba(244,244,245,.60);
+  --line: rgba(255,255,255,.10); --line-strong: rgba(255,255,255,.26);
+  --claude: #FF4D8D; --claude-tint: rgba(255,77,141,.10);
+  --seller: #8DB3F5; --seller-tint: rgba(141,179,245,.10);
+  --code: #A1A1AA; --code-tint: rgba(255,255,255,.035);
+  --write: #5CC98A; --write-tint: rgba(92,201,138,.12);
+  --done: #7FD6A0; --done-bg: rgba(92,201,138,.14);
+  --doing: #E8C46A; --doing-bg: rgba(232,196,106,.14);
+  --todo: #C4C4CC; --todo-bg: rgba(255,255,255,.08);
+  --bar: rgba(255,255,255,.30);
+  color-scheme: dark;
+}
+
+body { background: var(--bg); color: var(--text); font: 15px/1.6 var(--font); }
+.page { max-width: 880px; margin: 0 auto; padding-block: 40px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 56px; }
+h1, h2, h3 { color: var(--ink); text-wrap: balance; margin: 0; }
+h1 { font-size: 32px; line-height: 1.15; font-weight: 700; letter-spacing: -.01em; }
+h2 { font-size: 22px; line-height: 1.25; font-weight: 650; letter-spacing: -.005em; }
+h3 { font-size: 15px; font-weight: 650; }
+p { margin: 0; max-width: 68ch; }
+a { color: var(--seller); }
+:focus-visible { outline: 2px solid var(--seller); outline-offset: 2px; border-radius: 3px; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); }
+.mono { font-family: var(--mono); font-size: .92em; }
+section { display: flex; flex-direction: column; gap: 18px; }
+section > header { display: flex; flex-direction: column; gap: 8px; }
+.lede { font-size: 17px; line-height: 1.6; color: var(--text); max-width: 64ch; }
+.muted { color: var(--text-2); }
+
+/* top */
+.top { display: flex; flex-direction: column; gap: 14px; }
+.toc { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; }
+.toc a { color: var(--text-2); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+.toc a:hover { color: var(--ink); }
+
+/* deliverable status */
+.status { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.status div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.status b { font-size: 14px; color: var(--ink); font-weight: 600; }
+.status span.note { font-size: 13px; color: var(--text-2); line-height: 1.45; }
+.chip { align-self: flex-start; font-size: 11.5px; font-weight: 600; letter-spacing: .02em; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.chip.done { color: var(--done); background: var(--done-bg); }
+.chip.doing { color: var(--doing); background: var(--doing-bg); }
+.chip.todo { color: var(--todo); background: var(--todo-bg); }
+
+/* figures */
+figure { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 18px 14px; display: flex; flex-direction: column; gap: 12px; }
+figure .scroll { overflow-x: auto; }
+figure svg { display: block; width: 100%; height: auto; color: var(--text); }
+figure .scroll svg.wide { min-width: 640px; }
+figcaption { font-size: 13px; color: var(--text-2); line-height: 1.5; max-width: 72ch; }
+svg text { fill: currentColor; font-family: var(--font); }
+svg .t { font-size: 13px; font-weight: 600; fill: var(--ink); }
+svg .s { font-size: 11px; fill: var(--text-2); }
+svg .lbl { font-size: 11px; fill: var(--text-3); }
+svg .lane-h { font-size: 11px; font-weight: 650; letter-spacing: .07em; }
+svg .lane-seller { fill: var(--seller-tint); }
+svg .lane-code { fill: var(--code-tint); }
+svg .lane-claude { fill: var(--claude-tint); }
+svg .h-seller { fill: var(--seller); }
+svg .h-code { fill: var(--code); }
+svg .h-claude { fill: var(--claude); }
+svg .box { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1; }
+svg .box.claude { stroke: var(--claude); stroke-width: 1.6; }
+svg .box.seller { stroke: var(--seller); stroke-width: 1.6; }
+svg .box.write { fill: var(--write-tint); stroke: var(--write); stroke-width: 1.6; }
+svg .box.blocked { stroke-dasharray: 4 3; }
+svg .box.pick { stroke: var(--ink); stroke-width: 2; }
+svg .panel { fill: none; stroke: var(--line); stroke-width: 1; }
+svg .panel.pick { stroke: var(--ink); stroke-width: 1.6; }
+svg .arrow { fill: none; stroke: var(--text-3); stroke-width: 1.4; }
+svg .head { fill: var(--text-3); }
+svg .axis { stroke: var(--line-strong); stroke-width: 1; }
+svg .grid { stroke: var(--line); stroke-width: 1; }
+svg .seg-cached { fill: var(--code-tint); stroke: var(--line-strong); }
+svg .seg-call { fill: var(--seller-tint); stroke: var(--seller); }
+svg .seg-out { fill: var(--claude-tint); stroke: var(--claude); }
+svg .bar { fill: var(--bar); }
+svg .bar.pick { fill: var(--ink); }
+svg .tbl-h { fill: var(--code-tint); stroke: var(--line-strong); }
+svg .tbl { fill: var(--surface); stroke: var(--line-strong); }
+svg .key { font-family: var(--mono); font-size: 11px; fill: var(--text-2); }
+svg .tname { font-family: var(--mono); font-size: 12px; font-weight: 500; fill: var(--ink); }
+
+/* steps */
+ol.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; counter-reset: s; }
+ol.steps li { counter-increment: s; display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+ol.steps li::before { content: counter(s); font: 600 13px var(--mono); color: var(--text-2); border: 1px solid var(--line-strong); border-radius: 999px; width: 26px; height: 26px; display: grid; place-items: center; margin-top: 1px; }
+ol.steps li > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+ol.steps b { color: var(--ink); font-weight: 600; }
+.who { font-size: 11px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; }
+.who.code { color: var(--code); }
+.who.claude { color: var(--claude); }
+.who.seller { color: var(--seller); }
+.who.write { color: var(--write); }
+
+/* tables */
+.tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-top: 1px solid var(--line); }
+thead th { border-top: 0; font-size: 11.5px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); background: var(--code-tint); }
+td.k { font-weight: 600; color: var(--ink); white-space: nowrap; }
+td.n { font-family: var(--mono); font-size: 12.5px; color: var(--text-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ev { display: flex; flex-direction: column; gap: 3px; }
+.ev .q { color: var(--text-2); font-size: 13.5px; }
+.ev .src { font-size: 12px; color: var(--text-3); }
+.ev .src .mono { color: var(--text-2); }
+
+/* callouts and lists */
+.say { border-left: 3px solid var(--ink); padding: 4px 0 4px 16px; font-size: 16px; color: var(--ink); max-width: 66ch; }
+.say span { display: block; font-size: 11.5px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
+.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
+.rules div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-size: 14px; min-width: 0; }
+.rules b { display: block; color: var(--ink); margin-bottom: 2px; }
+ul.facts { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; max-width: 70ch; }
+ul.facts li::marker { color: var(--text-3); }
+.tag { font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; color: var(--doing); background: var(--doing-bg); align-self: flex-start; }
+ol.next { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; counter-reset: n; }
+ol.next li { counter-increment: n; display: grid; grid-template-columns: 30px 1fr auto; gap: 12px; align-items: baseline; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+ol.next li::before { content: counter(n); font: 600 13px var(--mono); color: var(--text-3); }
+ol.next .own { font-size: 12px; color: var(--text-2); white-space: nowrap; }
+footer { font-size: 12.5px; color: var(--text-3); border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 560px) {
+  h1 { font-size: 26px; }
+  ol.next li { grid-template-columns: 26px 1fr; }
+  ol.next .own { grid-column: 2; }
+}
+</style>
+
+<main class="page">
+
+<div class="top">
+  <div class="eyebrow">Product Faculty capstone · 4D Agentic AI PRD</div>
+  <h1>Orbita Agent Architecture</h1>
+  <p class="lede">Orbita is a CRM for B2B sales teams with an agent inside. A seller adds a sales conversation: a meeting transcript or a WhatsApp chat. The agent finds the right opportunity, proposes updates to 22 CRM fields, and backs every value with the line where it was said. The seller decides what is written.</p>
+  <nav class="toc" aria-label="On this page">
+    <a href="#kind">What kind of AI system</a>
+    <a href="#pipeline">One conversation, start to finish</a>
+    <a href="#claude">What Claude sees</a>
+    <a href="#control">Human control</a>
+    <a href="#data">Data</a>
+    <a href="#evals">Evaluation</a>
+    <a href="#capstone">Capstone fit</a>
+    <a href="#next">Next steps</a>
+  </nav>
+  <div class="status" aria-label="Deliverables">
+    <div><span class="chip done">Done</span><b>Working prototype</b><span class="note">Runs live with Claude on this machine</span></div>
+    <div><span class="chip done">Done</span><b>Live evaluation</b><span class="note">11 of 11 cases on Claude Sonnet 5.5</span></div>
+    <div><span class="chip doing">In progress</span><b>Trace review</b><span class="note">15 agent traces for the domain expert</span></div>
+    <div><span class="chip doing">In progress</span><b>PRD</b><span class="note">38 answers written, final pass to do</span></div>
+    <div><span class="chip todo">To do</span><b>4-minute video</b><span class="note">Outline ready in PRD row 43</span></div>
+  </div>
+</div>
+
+<section id="kind">
+  <header>
+    <div class="eyebrow">1 · Architecture type</div>
+    <h2>What kind of AI system is this?</h2>
+    <p class="muted">AI products sit on a ladder. What separates the rungs is who decides the next step.</p>
+  </header>
+  <figure>
+    <div class="scroll">
+      <svg class="wide" viewBox="0 0 760 262" role="img" aria-label="Three patterns side by side. Assistant: the seller asks and Claude answers. Agentic workflow: a new conversation starts fixed code steps, Claude does one step, code checks it and the seller approves. Autonomous agent: Claude loops between deciding and calling tools until it returns a result. Orbita's main agent is the agentic workflow.">
+        <defs>
+          <marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker>
+        </defs>
+        <!-- panel 1: assistant -->
+        <rect class="panel" x="1" y="1" width="236" height="232" rx="10"/>
+        <text class="t" x="119" y="26" text-anchor="middle">Assistant</text>
+        <rect class="box seller" x="54" y="54" width="130" height="30" rx="6"/><text class="s" x="119" y="73" text-anchor="middle">Seller asks</text>
+        <rect class="box claude" x="54" y="120" width="130" height="30" rx="6"/><text class="s" x="119" y="139" text-anchor="middle">Claude answers</text>
+        <rect class="box seller" x="54" y="186" width="130" height="30" rx="6"/><text class="s" x="119" y="205" text-anchor="middle">Seller reads</text>
+        <path class="arrow" d="M119,84 V118" marker-end="url(#ah1)"/>
+        <path class="arrow" d="M119,150 V184" marker-end="url(#ah1)"/>
+        <text class="lbl" x="127" y="105">question</text>
+        <text class="lbl" x="127" y="171">answer</text>
+        <text class="lbl" x="119" y="254" text-anchor="middle">Orbita: the Explore tab</text>
+
+        <!-- panel 2: agentic workflow (Orbita's agent) -->
+        <rect class="panel pick" x="262" y="1" width="236" height="232" rx="10"/>
+        <text class="t" x="380" y="26" text-anchor="middle">Agentic workflow</text>
+        <rect class="box" x="315" y="42" width="130" height="26" rx="6"/><text class="s" x="380" y="59" text-anchor="middle">New conversation</text>
+        <rect class="box" x="315" y="84" width="130" height="26" rx="6"/><text class="s" x="380" y="101" text-anchor="middle">Code: fixed steps</text>
+        <rect class="box claude" x="315" y="126" width="130" height="26" rx="6"/><text class="s" x="380" y="143" text-anchor="middle">Claude: one step</text>
+        <rect class="box" x="315" y="168" width="130" height="26" rx="6"/><text class="s" x="380" y="185" text-anchor="middle">Code: checks</text>
+        <rect class="box seller" x="315" y="200" width="130" height="26" rx="6"/><text class="s" x="380" y="217" text-anchor="middle">Seller approves</text>
+        <path class="arrow" d="M380,68 V82" marker-end="url(#ah1)"/>
+        <path class="arrow" d="M380,110 V124" marker-end="url(#ah1)"/>
+        <path class="arrow" d="M380,152 V166" marker-end="url(#ah1)"/>
+        <path class="arrow" d="M380,194 V198" marker-end="url(#ah1)"/>
+        <text class="lbl" x="380" y="254" text-anchor="middle">Orbita: conversation to CRM</text>
+
+        <!-- panel 3: autonomous agent -->
+        <rect class="panel" x="523" y="1" width="236" height="232" rx="10"/>
+        <text class="t" x="641" y="26" text-anchor="middle">Autonomous agent</text>
+        <rect class="box" x="576" y="54" width="130" height="30" rx="6"/><text class="s" x="641" y="73" text-anchor="middle">Goal</text>
+        <rect class="box claude" x="545" y="122" width="104" height="30" rx="6"/><text class="s" x="597" y="141" text-anchor="middle">Claude decides</text>
+        <rect class="box" x="680" y="122" width="66" height="30" rx="6"/><text class="s" x="713" y="141" text-anchor="middle">Tools</text>
+        <rect class="box" x="576" y="186" width="130" height="30" rx="6"/><text class="s" x="641" y="205" text-anchor="middle">Result</text>
+        <path class="arrow" d="M620,84 V120" marker-end="url(#ah1)"/>
+        <path class="arrow" d="M649,130 C660,118 668,118 678,128" marker-end="url(#ah1)"/>
+        <path class="arrow" d="M680,146 C670,156 660,156 651,146" marker-end="url(#ah1)"/>
+        <path class="arrow" d="M597,152 V184" marker-end="url(#ah1)"/>
+        <text class="lbl" x="664" y="112" text-anchor="middle">loop</text>
+        <text class="lbl" x="641" y="254" text-anchor="middle">Orbita: not used, on purpose</text>
+      </svg>
+    </div>
+    <figcaption>The loop between Claude and its tools only exists in the third pattern. Orbita's main agent is the middle one: the steps are fixed in code and Claude does the one step that needs language understanding.</figcaption>
+  </figure>
+  <div class="rules">
+    <div><b>Assistant</b>You ask, it answers, nothing else happens. Explore works this way: a seller asks about the pipeline and Claude answers from the records that seller can read.</div>
+    <div><b>Agentic workflow</b>An event starts it, code runs the steps in a fixed order, and Claude does one of them. It acts for the seller, within permissions the seller sets.</div>
+    <div><b>Autonomous agent</b>Claude picks its own next step and tools, in a loop. Updating a system of record follows the same steps every time, so fixed steps are easier to test, cheaper and easier to audit.</div>
+  </div>
+  <p class="say"><span>One sentence for reviewers</span>Orbita is an agentic workflow: one Claude step inside a deterministic pipeline, acting on the CRM through per-field permissions, with a human in the loop. Explore is the assistant layer.</p>
+</section>
+
+<section id="pipeline">
+  <header>
+    <div class="eyebrow">2 · The loop</div>
+    <h2>One conversation, start to finish</h2>
+    <p class="muted">Each lane is who does the work. Eight of the nine steps are code or the seller; the model runs once.</p>
+  </header>
+  <figure>
+    <div class="scroll">
+      <svg class="wide" viewBox="0 0 760 700" role="img" aria-label="Swimlane diagram in three lanes: seller, code and Claude. The seller adds a conversation; code reads it, finds the opportunity and runs pre-checks; a failed pre-check stops with a reason and no model call; otherwise Claude proposes 22 fields with quotes; code validates them and applies permissions; fields that need approval go to the seller, fields set to Always allow go straight to the write; one function writes to the CRM.">
+        <defs>
+          <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker>
+        </defs>
+        <rect class="lane-seller" x="8" y="36" width="240" height="652" rx="10"/>
+        <rect class="lane-code" x="260" y="36" width="240" height="652" rx="10"/>
+        <rect class="lane-claude" x="512" y="36" width="240" height="652" rx="10"/>
+        <text class="lane-h h-seller" x="128" y="24" text-anchor="middle">SELLER</text>
+        <text class="lane-h h-code" x="380" y="24" text-anchor="middle">CODE · FIXED RULES</text>
+        <text class="lane-h h-claude" x="632" y="24" text-anchor="middle">CLAUDE · ONE CALL</text>
+
+        <rect class="box seller" x="26" y="48" width="204" height="48" rx="8"/>
+        <text class="t" x="128" y="68" text-anchor="middle">Adds a conversation</text>
+        <text class="s" x="128" y="85" text-anchor="middle">file · pasted text · WhatsApp</text>
+
+        <rect class="box" x="278" y="120" width="204" height="48" rx="8"/>
+        <text class="t" x="380" y="140" text-anchor="middle">Reads it</text>
+        <text class="s" x="380" y="157" text-anchor="middle">any format → numbered lines</text>
+
+        <rect class="box" x="278" y="192" width="204" height="48" rx="8"/>
+        <text class="t" x="380" y="212" text-anchor="middle">Finds the opportunity</text>
+        <text class="s" x="380" y="229" text-anchor="middle">contacts · company · domain</text>
+
+        <rect class="box" x="278" y="264" width="204" height="48" rx="8"/>
+        <text class="t" x="380" y="284" text-anchor="middle">Runs pre-checks</text>
+        <text class="s" x="380" y="301" text-anchor="middle">access · complete · may create</text>
+
+        <rect class="box seller blocked" x="26" y="264" width="204" height="48" rx="8"/>
+        <text class="t" x="128" y="284" text-anchor="middle">Sees why it stopped</text>
+        <text class="s" x="128" y="301" text-anchor="middle">no model call, no cost</text>
+
+        <rect class="box claude" x="530" y="336" width="204" height="48" rx="8"/>
+        <text class="t" x="632" y="356" text-anchor="middle">Proposes 22 fields</text>
+        <text class="s" x="632" y="373" text-anchor="middle">each with a quoted line</text>
+
+        <rect class="box" x="278" y="408" width="204" height="48" rx="8"/>
+        <text class="t" x="380" y="428" text-anchor="middle">Validates the answer</text>
+        <text class="s" x="380" y="445" text-anchor="middle">quote · format · stage rules</text>
+
+        <rect class="box" x="278" y="480" width="204" height="48" rx="8"/>
+        <text class="t" x="380" y="500" text-anchor="middle">Applies permissions</text>
+        <text class="s" x="380" y="517" text-anchor="middle">per field: write · wait · skip</text>
+
+        <rect class="box seller" x="26" y="552" width="204" height="48" rx="8"/>
+        <text class="t" x="128" y="572" text-anchor="middle">Reviews and submits</text>
+        <text class="s" x="128" y="589" text-anchor="middle">approve · edit · reject</text>
+
+        <rect class="box write" x="278" y="624" width="204" height="48" rx="8"/>
+        <text class="t" x="380" y="644" text-anchor="middle">Writes to the CRM</text>
+        <text class="s" x="380" y="661" text-anchor="middle">one function · history · log</text>
+
+        <path class="arrow" d="M230,72 H380 V118" marker-end="url(#ah2)"/>
+        <text class="lbl" x="305" y="65" text-anchor="middle">transcript</text>
+        <path class="arrow" d="M380,168 V190" marker-end="url(#ah2)"/>
+        <text class="lbl" x="390" y="184">numbered lines</text>
+        <path class="arrow" d="M380,240 V262" marker-end="url(#ah2)"/>
+        <text class="lbl" x="390" y="256">opportunity</text>
+        <path class="arrow" d="M278,288 H232" marker-end="url(#ah2)"/>
+        <text class="lbl" x="255" y="281" text-anchor="middle">fails</text>
+        <path class="arrow" d="M482,288 H632 V334" marker-end="url(#ah2)"/>
+        <text class="lbl" x="557" y="281" text-anchor="middle">passes</text>
+        <path class="arrow" d="M632,384 V432 H484" marker-end="url(#ah2)"/>
+        <text class="lbl" x="642" y="412">fields + quotes</text>
+        <path class="arrow" d="M380,456 V478" marker-end="url(#ah2)"/>
+        <text class="lbl" x="390" y="472">checked</text>
+        <path class="arrow" d="M278,504 H128 V550" marker-end="url(#ah2)"/>
+        <text class="lbl" x="200" y="497" text-anchor="middle">needs approval</text>
+        <path class="arrow" d="M380,528 V622" marker-end="url(#ah2)"/>
+        <text class="lbl" x="390" y="568">always allow</text>
+        <text class="lbl" x="390" y="582">(with Undo)</text>
+        <path class="arrow" d="M230,576 H330 V622" marker-end="url(#ah2)"/>
+        <text class="lbl" x="268" y="569" text-anchor="middle">decisions</text>
+      </svg>
+    </div>
+    <figcaption>A conversation that fails a pre-check never reaches the model, so it costs nothing and the seller sees the reason. Fields set to Always allow go straight to the write; the rest wait for the seller. The green box is the only code path that changes a CRM record.</figcaption>
+  </figure>
+  <ol class="steps">
+    <li><div><span class="who seller">Seller</span><b>Adds a conversation.</b><span class="muted">Drops a file or pastes text: Teams or Zoom captions (.vtt), .srt, Otter, Granola, plain "Name: text", or a WhatsApp export.</span></div></li>
+    <li><div><span class="who code">Code</span><b>Reads it.</b><span class="muted">Every format becomes numbered lines with a speaker. Names from the sales team are marked as the seller's side.</span></div></li>
+    <li><div><span class="who code">Code</span><b>Finds the opportunity.</b><span class="muted">Contacts, the company in the title, email domains and mentions point to one open opportunity. If none fits it proposes a new client and opportunity; if two fit, the seller chooses.</span></div></li>
+    <li><div><span class="who code">Code</span><b>Runs the pre-checks.</b><span class="muted">The seller must be allowed to read the opportunity, a recording cut mid-sentence is blocked, and creating an opportunity must be allowed.</span></div></li>
+    <li><div><span class="who claude">Claude</span><b>Reads the conversation once.</b><span class="muted">It gets the agent's rules and the current CRM values, and returns only the fields it found evidence for, each with a quoted line.</span></div></li>
+    <li><div><span class="who code">Code</span><b>Validates the answer.</b><span class="muted">Each quote must be on the line it cites; dates, numbers and departments must be in format; the stage moves one step forward at most; an economic buyer or champion must be a named person on the customer side.</span></div></li>
+    <li><div><span class="who code">Code</span><b>Applies the permissions.</b><span class="muted">Always allow writes at once, with Undo. Needs approval waits. Never skips the field. A value that contradicts one the seller approved always waits.</span></div></li>
+    <li><div><span class="who seller">Seller</span><b>Reviews and submits.</b><span class="muted">Approves, edits or rejects each waiting field.</span></div></li>
+    <li><div><span class="who write">Code · write</span><b>One function writes to the CRM.</b><span class="muted">It keeps the old and new value, who decided and when, in the activity log.</span></div></li>
+  </ol>
+</section>
+
+<section id="claude">
+  <header>
+    <div class="eyebrow">3 · The model step</div>
+    <h2>What Claude receives, and what it returns</h2>
+    <p class="muted">Each call has two parts. The first never changes: the agent's policy, the definitions of the 22 fields, the stage rules and two worked examples. It is cached, so from the second call it is read at a tenth of the input price. The second part is this conversation: the current CRM values and the numbered transcript.</p>
+  </header>
+  <figure>
+    <div class="scroll">
+      <svg class="wide" viewBox="0 0 760 168" role="img" aria-label="Token bars drawn to one scale. Input: 11,814 cached tokens of rules plus about 1,800 tokens for the conversation. Output: about 2,300 tokens of fields with evidence.">
+        <text class="t" x="0" y="44">Input</text>
+        <rect class="seg-cached" x="110" y="26" width="394" height="28" rx="4"/>
+        <text class="s" x="120" y="44">rules, 22 fields, stage rules, 2 examples · 11,814 cached</text>
+        <rect class="seg-call" x="504" y="26" width="61" height="28" rx="4"/>
+        <text class="s" x="575" y="38">this conversation</text>
+        <text class="s" x="575" y="52">about 1,800</text>
+        <text class="t" x="0" y="104">Output</text>
+        <rect class="seg-out" x="110" y="86" width="76" height="28" rx="4"/>
+        <text class="s" x="196" y="98">fields with evidence only</text>
+        <text class="s" x="196" y="112">about 2,300</text>
+        <line class="axis" x1="110" y1="134" x2="610" y2="134"/>
+        <line class="axis" x1="110" y1="134" x2="110" y2="139"/><text class="lbl" x="110" y="154" text-anchor="middle">0</text>
+        <line class="axis" x1="210" y1="134" x2="210" y2="139"/><text class="lbl" x="210" y="154" text-anchor="middle">3k</text>
+        <line class="axis" x1="310" y1="134" x2="310" y2="139"/><text class="lbl" x="310" y="154" text-anchor="middle">6k</text>
+        <line class="axis" x1="410" y1="134" x2="410" y2="139"/><text class="lbl" x="410" y="154" text-anchor="middle">9k</text>
+        <line class="axis" x1="510" y1="134" x2="510" y2="139"/><text class="lbl" x="510" y="154" text-anchor="middle">12k</text>
+        <line class="axis" x1="610" y1="134" x2="610" y2="139"/><text class="lbl" x="610" y="154" text-anchor="middle">15k tokens</text>
+      </svg>
+    </div>
+    <figcaption>Averages per conversation on Claude Sonnet 5.5 over the 9 live eval calls. The answer is sparse: Claude never repeats current values, and quotes point to line numbers, so the output stays small.</figcaption>
+  </figure>
+  <h3>A real answer, from the Acme Logistics discovery call</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Field</th><th>Proposed value</th><th>Evidence Claude cited</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Pain</td><td>One place for every account and deal, with renewal reminders, and a pipeline Marina can trust on Monday morning; today history is lost and renewals are missed</td><td><div class="ev"><span class="q">“One place for every account and every deal, with renewal reminders, and a pipeline I can trust on Monday morning.”</span><span class="src"><span class="mono">L011</span> · Marina Lopes, Acme Logistics</span></div></td></tr>
+        <tr><td class="k">Economic buyer</td><td>Marina Lopes (COO)</td><td><div class="ev"><span class="q">“I make the decision on this. It sits in my operations budget.”</span><span class="src"><span class="mono">L035</span> · Marina Lopes, Acme Logistics</span></div></td></tr>
+        <tr><td class="k">Budget</td><td>USD 80,000–100,000 per year</td><td><div class="ev"><span class="q">“We have between eighty and a hundred thousand dollars a year for the CRM, licences and support included.”</span><span class="src"><span class="mono">L028</span> · Marina Lopes, Acme Logistics</span></div></td></tr>
+        <tr><td class="k">Stage</td><td>Qualified Opportunity → Solution</td><td><div class="ev"><span class="q">Exit criteria met: pain confirmed, economic buyer identified, timeline stated.</span><span class="src">Agent's note, checked by the stage rules</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">The 22 fields come in six groups: Conversation (3), Next step (3), Qualification in MEDDPICC (8), Scope and budget (5), Company profile (2) and Stage (1). The deal amount, close date, probability, discount and owner belong to the seller: the agent never proposes them, and the code drops them if it tries.</p>
+</section>
+
+<section id="control">
+  <header>
+    <div class="eyebrow">4 · Human boundary</div>
+    <h2>Where humans stay in control</h2>
+    <p class="muted">The seller sets, field by field, how much the agent may do on its own, in three levels.</p>
+  </header>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Level</th><th>What happens</th><th>Default for</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Always allow</td><td>Written at once, with Undo</td><td>Summary, Objections, Commitments</td></tr>
+        <tr><td class="k">Needs approval</td><td>Waits for the seller's decision</td><td>Every other field, and creating a new opportunity</td></tr>
+        <tr><td class="k">Never</td><td>Not proposed and not written</td><td>Chosen by the seller, field by field</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="rules">
+    <div><b>Contradictions always wait</b>If the conversation contradicts a value the seller approved, no setting writes over it.</div>
+    <div><b>One way to write</b>Every change goes through the same function, which records who decided: the seller or a permission.</div>
+    <div><b>Access before reading</b>A seller can't run the agent on another seller's opportunity; the attempt is logged and nothing is shown.</div>
+  </div>
+</section>
+
+<section id="data">
+  <header>
+    <div class="eyebrow">5 · Data</div>
+    <h2>The data, today and next</h2>
+    <p class="muted">All data is synthetic: 14 client companies, 16 opportunities across six stages from New Lead to Contract, a six-person team with access rules, and 11 test conversations in six formats, including a WhatsApp chat. Today the records live in the repository as JSON, and each browser keeps its own working copy.</p>
+  </header>
+  <span class="tag">Planned · waiting for the database connection</span>
+  <figure>
+    <div class="scroll">
+      <svg class="wide" viewBox="0 0 760 352" role="img" aria-label="Planned database schema in Supabase. Clients have contacts and opportunities. Team members own opportunities. Opportunities have current field values; every change adds a row to the field history. Conversations have agent runs, and each run is linked to the history rows it justified.">
+        <defs>
+          <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker>
+        </defs>
+        <rect class="tbl" x="10" y="16" width="200" height="82" rx="6"/><rect class="tbl-h" x="10" y="16" width="200" height="24" rx="6"/>
+        <text class="tname" x="22" y="33">clients</text><text class="key" x="22" y="58">name · domain · industry</text><text class="key" x="22" y="76">employees · current tool</text>
+
+        <rect class="tbl" x="10" y="134" width="200" height="82" rx="6"/><rect class="tbl-h" x="10" y="134" width="200" height="24" rx="6"/>
+        <text class="tname" x="22" y="151">contacts</text><text class="key" x="22" y="176">client · name · title</text><text class="key" x="22" y="194">email · buying role</text>
+
+        <rect class="tbl" x="10" y="252" width="200" height="82" rx="6"/><rect class="tbl-h" x="10" y="252" width="200" height="24" rx="6"/>
+        <text class="tname" x="22" y="269">team_members</text><text class="key" x="22" y="294">name · role</text><text class="key" x="22" y="312">what they may read</text>
+
+        <rect class="tbl" x="280" y="16" width="200" height="82" rx="6"/><rect class="tbl-h" x="280" y="16" width="200" height="24" rx="6"/>
+        <text class="tname" x="292" y="33">opportunities</text><text class="key" x="292" y="58">client · owner · stage</text><text class="key" x="292" y="76">amount · close date</text>
+
+        <rect class="tbl" x="280" y="134" width="200" height="82" rx="6"/><rect class="tbl-h" x="280" y="134" width="200" height="24" rx="6"/>
+        <text class="tname" x="292" y="151">field_values</text><text class="key" x="292" y="176">record · field · value</text><text class="key" x="292" y="194">approved · updated</text>
+
+        <rect class="tbl" x="280" y="252" width="200" height="82" rx="6"/><rect class="tbl-h" x="280" y="252" width="200" height="24" rx="6"/>
+        <text class="tname" x="292" y="269">field_history</text><text class="key" x="292" y="294">before · after · decided by</text><text class="key" x="292" y="312">run · quoted line · when</text>
+
+        <rect class="tbl" x="550" y="16" width="200" height="82" rx="6"/><rect class="tbl-h" x="550" y="16" width="200" height="24" rx="6"/>
+        <text class="tname" x="562" y="33">conversations</text><text class="key" x="562" y="58">content key · format</text><text class="key" x="562" y="76">lines · started at</text>
+
+        <rect class="tbl" x="550" y="134" width="200" height="82" rx="6"/><rect class="tbl-h" x="550" y="134" width="200" height="24" rx="6"/>
+        <text class="tname" x="562" y="151">runs</text><text class="key" x="562" y="176">conversation · model</text><text class="key" x="562" y="194">answer · tokens · cost</text>
+
+        <rect class="tbl" x="550" y="252" width="200" height="82" rx="6"/><rect class="tbl-h" x="550" y="252" width="200" height="24" rx="6"/>
+        <text class="tname" x="562" y="269">activity</text><text class="key" x="562" y="294">who · what · when</text><text class="key" x="562" y="312">blocked attempts too</text>
+
+        <path class="arrow" d="M110,98 V132" marker-end="url(#ah3)"/><text class="lbl" x="118" y="120">has</text>
+        <path class="arrow" d="M210,57 H278" marker-end="url(#ah3)"/><text class="lbl" x="244" y="50" text-anchor="middle">has</text>
+        <path class="arrow" d="M210,293 C246,293 246,80 278,80" marker-end="url(#ah3)"/><text class="lbl" x="232" y="230" text-anchor="middle">owns</text>
+        <path class="arrow" d="M380,98 V132" marker-end="url(#ah3)"/><text class="lbl" x="388" y="120">current values</text>
+        <path class="arrow" d="M380,216 V250" marker-end="url(#ah3)"/><text class="lbl" x="388" y="238">every change</text>
+        <path class="arrow" d="M650,98 V132" marker-end="url(#ah3)"/><text class="lbl" x="658" y="120">read by</text>
+        <path class="arrow" d="M550,190 C515,190 515,300 482,300" marker-end="url(#ah3)"/><text class="lbl" x="522" y="244" text-anchor="end">proves</text>
+      </svg>
+    </div>
+    <figcaption>Planned schema in Supabase (Postgres). The arrow that matters is “proves”: every change the agent wrote links back to the run and the quoted line behind it.</figcaption>
+  </figure>
+  <div class="rules">
+    <div><b>Every value has a source</b>A change made by the agent links to the run and the quoted line that justified it.</div>
+    <div><b>History is never edited</b>Each change is a new row: before, after, who decided, when. Current values sit in their own table for fast reads.</div>
+    <div><b>Conversations are stored once</b>A content key recognises the same conversation whatever format it arrives in.</div>
+    <div><b>Only the server can reach it</b>The CRM gets its own schema, not exposed through Supabase's public API; the database password stays on the server.</div>
+  </div>
+</section>
+
+<section id="evals">
+  <header>
+    <div class="eyebrow">6 · Evaluation</div>
+    <h2>How we know it works</h2>
+    <p class="muted">The evaluation follows the evals-skills method: audit the eval, read real traces, name the failure modes in plain words, then turn each one into a check. Eleven test conversations cover the complete discovery call and the edge cases: a recording cut mid-sentence, another seller's opportunity, voices the notetaker could not name, a deal amount said out loud, terms agreed on WhatsApp.</p>
+  </header>
+  <figure>
+    <div class="scroll">
+      <svg class="wide" viewBox="0 0 760 178" role="img" aria-label="Cost per conversation on one scale: Haiku 5.5 about 0.3 cents and 10 of 11 cases; Sonnet 5.5 about 3.2 cents and 11 of 11, the default; Opus 5.5 about 7 cents and 11 of 11.">
+        <line class="grid" x1="290" y1="12" x2="290" y2="142"/>
+        <line class="grid" x1="410" y1="12" x2="410" y2="142"/>
+        <line class="grid" x1="530" y1="12" x2="530" y2="142"/>
+        <line class="grid" x1="650" y1="12" x2="650" y2="142"/>
+        <text class="t" x="0" y="32">Haiku 5.5</text><text class="lbl" x="0" y="47">10 of 11 cases</text>
+        <rect class="bar" x="170" y="20" width="18" height="26" rx="3"/>
+        <text class="s" x="196" y="37">USD 0.003</text>
+        <text class="t" x="0" y="78">Sonnet 5.5 · default</text><text class="lbl" x="0" y="93">11 of 11 cases</text>
+        <rect class="bar pick" x="170" y="66" width="191" height="26" rx="3"/>
+        <text class="s" x="369" y="83">USD 0.032</text>
+        <text class="t" x="0" y="124">Opus 5.5</text><text class="lbl" x="0" y="139">11 of 11 cases</text>
+        <rect class="bar" x="170" y="112" width="422" height="26" rx="3"/>
+        <text class="s" x="600" y="129">USD 0.070</text>
+        <line class="axis" x1="170" y1="150" x2="650" y2="150"/>
+        <text class="lbl" x="170" y="168" text-anchor="middle">0</text>
+        <text class="lbl" x="290" y="168" text-anchor="middle">0.02</text>
+        <text class="lbl" x="410" y="168" text-anchor="middle">0.04</text>
+        <text class="lbl" x="530" y="168" text-anchor="middle">0.06</text>
+        <text class="lbl" x="650" y="168" text-anchor="middle">USD 0.08 per conversation</text>
+      </svg>
+    </div>
+    <figcaption>Live run on 28 Oct 2026, 9 model calls per model. Sonnet 5.5 stays the default: Opus scores the same at 2.2 times the cost, and Haiku missed part of the decision criteria in one case.</figcaption>
+  </figure>
+  <ul class="facts">
+    <li>Two of the eleven cases are stopped by code before the model, which is why a full run costs 9 calls.</li>
+    <li>The first live run found a bug in the eval itself: the expected answer still used the old term decision-maker after the field was renamed Economic buyer. The eval was fixed, not the model.</li>
+    <li>49 adversarial tests each feed the code one deliberate defect, such as an invented quote, a stage jump or another seller's opportunity, and check that it is caught.</li>
+    <li>536 checks of the prototype's screens at two screen widths, and 12 checks of the full loop through the local server.</li>
+    <li>Through the page's server, the Acme call was read in 21 seconds for USD 0.07, with all 22 fields backed by a quote.</li>
+    <li>Next: the domain expert reviews 15 traces in an error-discovery tool and writes what is wrong in plain words. The notes become failure modes, fixes and new test cases.</li>
+  </ul>
+</section>
+
+<section id="capstone">
+  <header>
+    <div class="eyebrow">7 · Capstone fit</div>
+    <h2>How this answers the capstone</h2>
+    <p class="muted">The capstone asks for a working LLM prototype and two graded deliverables: the PRD, which shows the rigor, and a 4-minute video, which tells the story. The PRD must stand on its own, with no links out, so every row below is written in the sheet itself.</p>
+  </header>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Phase</th><th>PRD rows</th><th>What answers it</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Discovery</td><td class="n">9–18</td><td>The user (a B2B account executive), the after-call CRM update, the trigger, the pain, why an agent, the synthetic data plan, the human boundary, the success metric and the demo idea.</td><td><span class="chip done">Written</span></td></tr>
+        <tr><td class="k">Design</td><td class="n">19–28</td><td>The loop above: observe, decide, act and check are steps 2 to 7; tools are the readers, the attribution and the CRM write; memory is the CRM and its history, while transcripts are referenced, not copied; escalation is the blocks and the choice of opportunity; approval is the review and the permissions.</td><td><span class="chip done">Written and built</span></td></tr>
+        <tr><td class="k">Develop</td><td class="n">29–36</td><td>The prototype loop, what the seller does, the data, the 11 eval cases, the live results, the improvements, the known limits and the demo evidence.</td><td><span class="chip doing">Row 34 after the review</span></td></tr>
+        <tr><td class="k">Deploy</td><td class="n">37–43</td><td>Pilot readiness, risks, the operating model, monitoring, feedback, the pilot plan and the video outline.</td><td><span class="chip doing">Drafted</span></td></tr>
+        <tr><td class="k">Final</td><td class="n">44–46</td><td>A self-contained PRD, a clear prototype loop, and the 4-minute video.</td><td><span class="chip todo">To do</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="next">
+  <header>
+    <div class="eyebrow">8 · Plan</div>
+    <h2>Next steps</h2>
+  </header>
+  <ol class="next">
+    <li><span>Review the 15 agent traces and write down what is wrong, in plain words.</span><span class="own">Domain expert · about 40 min</span></li>
+    <li><span>Turn the notes into fixes and new test cases, then rerun the live eval.</span><span class="own">Claude Code</span></li>
+    <li><span>Move the CRM into Supabase, with the schema above.</span><span class="own">Connection string, then Claude Code</span></li>
+    <li><span>Publish a live link on Render, behind an access code and a daily spending cap.</span><span class="own">Render account, then Claude Code</span></li>
+    <li><span>Record the 4-minute video from the outline in PRD row 43.</span><span class="own">Domain expert</span></li>
+    <li><span>Final pass on the PRD, then submit the PRD and the video.</span><span class="own">Together</span></li>
+  </ol>
+</section>
+
+<footer>All data is synthetic. Figures come from the live runs of 28 Oct 2026 on Claude Sonnet 5.5, Opus 5.5 and Haiku 5.5; the whole evaluation so far cost about USD 1 in API calls.</footer>
+
+</main>

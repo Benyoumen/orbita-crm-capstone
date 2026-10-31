@@ -1,0 +1,42 @@
+{
+ "ids": [
+  "T1-claude-opus-5-5",
+  "T2-claude-sonnet-5-5",
+  "T2-claude-opus-5-5",
+  "T3-claude-opus-5-5",
+  "T4-platform",
+  "T5-claude-opus-5-5",
+  "T5-claude-haiku-5-5",
+  "T6-claude-sonnet-5-5",
+  "T7-claude-opus-5-5",
+  "T7-claude-haiku-5-5",
+  "T9-claude-haiku-5-5",
+  "T10-claude-haiku-5-5",
+  "T11-claude-sonnet-5-5",
+  "T11-claude-opus-5-5",
+  "T11-claude-haiku-5-5"
+ ],
+ "batches": [
+  {
+   "at": null,
+   "reason": "Initial sample: 10 cluster representatives and 5 random picks",
+   "ids": [
+    "T1-claude-opus-5-5",
+    "T2-claude-sonnet-5-5",
+    "T2-claude-opus-5-5",
+    "T3-claude-opus-5-5",
+    "T4-platform",
+    "T5-claude-opus-5-5",
+    "T5-claude-haiku-5-5",
+    "T6-claude-sonnet-5-5",
+    "T7-claude-opus-5-5",
+    "T7-claude-haiku-5-5",
+    "T9-claude-haiku-5-5",
+    "T10-claude-haiku-5-5",
+    "T11-claude-sonnet-5-5",
+    "T11-claude-opus-5-5",
+    "T11-claude-haiku-5-5"
+   ]
+  }
+ ]
+}

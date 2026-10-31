@@ -1,8 +1,8 @@
 [
   {
-    "run_id": "RUN-1793215304171",
+    "run_id": "RUN-1793226459290",
     "seq": 1,
-    "timestamp": "2026-10-28T19:21:44.172Z",
+    "timestamp": "2026-10-28T22:27:39.291Z",
     "actor": "system",
     "action": "run_created",
     "object_id": "MTG-2010",
@@ -10,9 +10,9 @@
     "detail": "user=U01"
   },
   {
-    "run_id": "RUN-1793215304171",
+    "run_id": "RUN-1793226459290",
     "seq": 2,
-    "timestamp": "2026-10-28T19:21:44.172Z",
+    "timestamp": "2026-10-28T22:27:39.291Z",
     "actor": "system",
     "action": "access_checked",
     "object_id": "OPP-0148",
@@ -20,9 +20,9 @@
     "detail": "user=U01"
   },
   {
-    "run_id": "RUN-1793215304171",
+    "run_id": "RUN-1793226459290",
     "seq": 3,
-    "timestamp": "2026-10-28T19:21:44.172Z",
+    "timestamp": "2026-10-28T22:27:39.291Z",
     "actor": "system",
     "action": "opportunity_read",
     "object_id": "OPP-0148",
@@ -30,9 +30,9 @@
     "detail": "stage=Qualified Opportunity"
   },
   {
-    "run_id": "RUN-1793215304171",
+    "run_id": "RUN-1793226459290",
     "seq": 4,
-    "timestamp": "2026-10-28T19:21:44.172Z",
+    "timestamp": "2026-10-28T22:27:39.291Z",
     "actor": "system",
     "action": "transcript_checked",
     "object_id": "MTG-2010",
@@ -40,9 +40,9 @@
     "detail": "status=complete; coverage=84% of 45 min; ends_mid_sentence=false"
   },
   {
-    "run_id": "RUN-1793215304171",
+    "run_id": "RUN-1793226459290",
     "seq": 5,
-    "timestamp": "2026-10-28T19:21:44.173Z",
+    "timestamp": "2026-10-28T22:27:39.292Z",
     "actor": "system",
     "action": "agent_called",
     "object_id": "MTG-2010",
@@ -50,9 +50,9 @@
     "detail": "MOCK (reference output)"
   },
   {
-    "run_id": "RUN-1793215304171",
+    "run_id": "RUN-1793226459290",
     "seq": 6,
-    "timestamp": "2026-10-28T19:21:44.175Z",
+    "timestamp": "2026-10-28T22:27:39.296Z",
     "actor": "system",
     "action": "output_validated",
     "object_id": "MTG-2010",
@@ -60,9 +60,9 @@
     "detail": "0 correction(s)"
   },
   {
-    "run_id": "RUN-1793215304171",
+    "run_id": "RUN-1793226459290",
     "seq": 7,
-    "timestamp": "2026-10-28T19:21:44.175Z",
+    "timestamp": "2026-10-28T22:27:39.296Z",
     "actor": "agent",
     "action": "proposals_generated",
     "object_id": "OPP-0148",

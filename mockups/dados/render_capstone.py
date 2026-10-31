@@ -25,6 +25,7 @@ Decisoes desta peca, registradas no LEIAME.md ao lado:
 
 Nunca editar o HTML gerado: mude o gerador e rode de novo.
 """
+import base64
 import hashlib
 import json
 import os
@@ -105,6 +106,12 @@ def monograma(nome):
     return {"letter": letra, "color": cor}
 
 
+def icone():
+    """o favicon da Orbita (planeta, orbita e satelite em magenta), de ../orbita-icon.svg, embutido como data URI"""
+    with open(os.path.join(MOCKUP, "orbita-icon.svg"), "rb") as f:
+        return "data:image/svg+xml;base64," + base64.b64encode(f.read()).decode("ascii")
+
+
 DOC = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,6 +119,7 @@ DOC = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="only light">
 <title>Orbita CRM</title>
+<link rel="icon" type="image/svg+xml" href="%(icone)s">
 <style>%(fontes)s%(css)s</style>
 </head>
 <body>
@@ -155,6 +163,7 @@ def montar():
           .replace("__FOTO__", json.dumps(foto, ensure_ascii=False).replace("</", "<\\/"))
           .replace("__ICO__", json.dumps({n: ic(n) for n in ICONES_JS}, ensure_ascii=False).replace("</", "<\\/")))
     return DOC % {
+        "icone": icone(),
         "fontes": FT.CSS if FT else "",
         "css": CS.CSS,
         "lado": VC.lateral(ic),

@@ -664,6 +664,7 @@
           "note_must_include": [
             [
               "CFO",
+              "economic buyer",
               "decision-maker",
               "decision maker",
               "Helena"
@@ -1258,6 +1259,7 @@
           "status": "no_evidence",
           "note_must_include": [
             [
+              "economic buyer",
               "decision-maker",
               "decision maker"
             ]

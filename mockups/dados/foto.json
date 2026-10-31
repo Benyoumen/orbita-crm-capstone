@@ -4146,6 +4146,7 @@
       "note_must_include": [
        [
         "CFO",
+        "economic buyer",
         "decision-maker",
         "decision maker",
         "Helena"
@@ -4740,6 +4741,7 @@
       "status": "no_evidence",
       "note_must_include": [
        [
+        "economic buyer",
         "decision-maker",
         "decision maker"
        ]
@@ -4873,7 +4875,7 @@
   ]
  },
  "eval_results": {
-  "run_at": "2026-10-28T19:21:44.456Z",
+  "run_at": "2026-10-29T02:41:12.511Z",
   "cases": [
    {
     "case_id": "T1",
@@ -4955,6 +4957,218 @@
      "cost_usd": 0
     },
     "cost_per_call_usd": null,
+    "rows": [
+     {
+      "case_id": "T1",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T2",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T3",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T4",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T5",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T6",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T7",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T8",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T9",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T10",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T11",
+      "verdict": "PASS",
+      "fails": []
+     }
+    ]
+   },
+   "claude-haiku-5-5": {
+    "passed": 10,
+    "total": 11,
+    "usage": {
+     "calls": 9,
+     "input_tokens": 16492,
+     "cache_read_input_tokens": 106326,
+     "cache_creation_input_tokens": 0,
+     "output_tokens": 48745,
+     "cost_usd": 0.027084
+    },
+    "cost_per_call_usd": 0.003009,
+    "rows": [
+     {
+      "case_id": "T1",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T2",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T3",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T4",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T5",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T6",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T7",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T8",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T9",
+      "verdict": "FAIL",
+      "fails": [
+       "decision_criteria: missing key facts [[\"lead\",\"campaign\"],[\"funnel\",\"enrol\"],[\"WhatsApp\"]]"
+      ]
+     },
+     {
+      "case_id": "T10",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T11",
+      "verdict": "PASS",
+      "fails": []
+     }
+    ]
+   },
+   "claude-opus-5-5": {
+    "passed": 11,
+    "total": 11,
+    "usage": {
+     "calls": 9,
+     "input_tokens": 16492,
+     "cache_read_input_tokens": 94512,
+     "cache_creation_input_tokens": 11814,
+     "output_tokens": 24492,
+     "cost_usd": 0.633782
+    },
+    "cost_per_call_usd": 0.07042,
+    "rows": [
+     {
+      "case_id": "T1",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T2",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T3",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T4",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T5",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T6",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T7",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T8",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T9",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T10",
+      "verdict": "PASS",
+      "fails": []
+     },
+     {
+      "case_id": "T11",
+      "verdict": "PASS",
+      "fails": []
+     }
+    ]
+   },
+   "claude-sonnet-5-5": {
+    "passed": 11,
+    "total": 11,
+    "usage": {
+     "calls": 9,
+     "input_tokens": 16492,
+     "cache_read_input_tokens": 94512,
+     "cache_creation_input_tokens": 11814,
+     "output_tokens": 20591,
+     "cost_usd": 0.287333
+    },
+    "cost_per_call_usd": 0.031926,
     "rows": [
      {
       "case_id": "T1",

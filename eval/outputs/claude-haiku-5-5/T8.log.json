@@ -1,0 +1,32 @@
+[
+  {
+    "run_id": "RUN-1793222806843",
+    "seq": 1,
+    "timestamp": "2026-10-28T21:26:46.843Z",
+    "actor": "system",
+    "action": "run_created",
+    "object_id": "MTG-2008",
+    "outcome": "ok",
+    "detail": "user=U01"
+  },
+  {
+    "run_id": "RUN-1793222806843",
+    "seq": 2,
+    "timestamp": "2026-10-28T21:26:46.844Z",
+    "actor": "system",
+    "action": "access_checked",
+    "object_id": "OPP-0145",
+    "outcome": "blocked",
+    "detail": "user=U01"
+  },
+  {
+    "run_id": "RUN-1793222806843",
+    "seq": 3,
+    "timestamp": "2026-10-28T21:26:46.844Z",
+    "actor": "system",
+    "action": "run_blocked",
+    "object_id": "MTG-2008",
+    "outcome": "blocked",
+    "detail": "You do not have access to this opportunity. No data has been shown."
+  }
+]

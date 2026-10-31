@@ -1,0 +1,11 @@
+{
+  "meeting_id": "MTG-2008",
+  "opportunity_id": null,
+  "source_status": "AccessDenied",
+  "run_status": "Blocked",
+  "block_reason": "You do not have access to this opportunity. No data has been shown.",
+  "warnings": [],
+  "fields": [],
+  "ignored_out_of_scope": [],
+  "validation_notes": []
+}

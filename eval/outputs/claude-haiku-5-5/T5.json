@@ -1,0 +1,346 @@
+{
+  "meeting_id": "MTG-2005",
+  "opportunity_id": null,
+  "client_id": null,
+  "target": {
+    "kind": "new",
+    "client_id": null,
+    "client_name": "Delta Pharma",
+    "opportunity_name": "Delta Pharma - CRM",
+    "contacts": [
+      "Livia Prado"
+    ]
+  },
+  "source_status": "Ready",
+  "run_status": "Awaiting review",
+  "block_reason": null,
+  "warnings": [],
+  "fields": [
+    {
+      "field": "call_summary",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Intro call with Livia Prado from a mid-sized pharmaceutical company with about 150 medical representatives. Visit reports sit in a very old system nobody likes; she wants to plan visits, record discussions and track samples on a tablet. Ana will send a short overview after the call, and Livia will share it with her director.",
+      "evidence": [
+        {
+          "line": 4,
+          "timestamp": "00:00:23",
+          "speaker": "Livia Prado",
+          "quote": "We're a mid-sized pharmaceutical company."
+        },
+        {
+          "line": 5,
+          "timestamp": "00:01:08",
+          "speaker": "Livia Prado",
+          "quote": "Their visit reports are in a very old system that nobody likes."
+        },
+        {
+          "line": 8,
+          "timestamp": "00:09:13",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you a short overview after the call."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Orbita (Ana): send a short overview after the call",
+      "evidence": [
+        {
+          "line": 8,
+          "timestamp": "00:09:13",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you a short overview after the call."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Orbita sends Livia Prado a short overview after the call",
+      "evidence": [
+        {
+          "line": 8,
+          "timestamp": "00:09:13",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you a short overview after the call."
+        },
+        {
+          "line": 9,
+          "timestamp": "00:09:24",
+          "speaker": "Livia Prado",
+          "quote": "I'll share it with my director."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "line": 8,
+          "timestamp": "00:09:13",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you a short overview after the call."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "metrics",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_maker",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": "Livia will share the overview with her director, who is not named; no one is identified as the decision-maker."
+    },
+    {
+      "field": "decision_criteria",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Plans visits; records visit discussions; tracks samples; works on a tablet",
+      "evidence": [
+        {
+          "line": 7,
+          "timestamp": "00:03:40",
+          "speaker": "Livia Prado",
+          "quote": "Plan the visits, record what was discussed, and track samples. And it has to work on a tablet."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "paper_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "customer_need",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Visit reports sit in a very old system nobody likes; reps need to plan visits, record discussions and track samples on a tablet",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:01:08",
+          "speaker": "Livia Prado",
+          "quote": "Their visit reports are in a very old system that nobody likes."
+        },
+        {
+          "line": 7,
+          "timestamp": "00:03:40",
+          "speaker": "Livia Prado",
+          "quote": "Plan the visits, record what was discussed, and track samples. And it has to work on a tablet."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "champion",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "competitors",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": "About 150 medical representatives are mentioned, but it is not stated that they will use the CRM."
+    },
+    {
+      "field": "departments",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "integrations",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "budget",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "go_live_target",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "employee_count",
+      "group": "company",
+      "record": "client",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": "150 is the number of medical representatives, not the total headcount, which is not stated."
+    },
+    {
+      "field": "current_solution",
+      "group": "company",
+      "record": "client",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Very old system for visit reports",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:01:08",
+          "speaker": "Livia Prado",
+          "quote": "Their visit reports are in a very old system that nobody likes."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "group": "stage",
+      "record": "opportunity",
+      "current_value": "New Lead",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": "Qualified Opportunity exit criteria not met: pain is confirmed, but no further conversation is agreed (Livia will only share the overview with her director)."
+    }
+  ],
+  "ignored_out_of_scope": [],
+  "validation_notes": [],
+  "usage": {
+    "input_tokens": 843,
+    "output_tokens": 4890,
+    "cache_read_input_tokens": 11814,
+    "cache_creation_input_tokens": 0,
+    "model": "claude-haiku-5-5",
+    "served_by": "claude-haiku-5-5",
+    "cost_usd": 0.002647
+  }
+}

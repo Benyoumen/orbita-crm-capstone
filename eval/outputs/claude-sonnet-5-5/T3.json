@@ -1,0 +1,326 @@
+{
+  "meeting_id": "MTG-2003",
+  "opportunity_id": "OPP-0143",
+  "client_id": "CLI-003",
+  "target": null,
+  "source_status": "Ready",
+  "run_status": "Awaiting review",
+  "block_reason": null,
+  "warnings": [
+    "Short recording: 30% of the scheduled 30 min, with a normal ending."
+  ],
+  "fields": [
+    {
+      "field": "call_summary",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": "Solution review with the CIO. Nimbus wants patient-relations and referral tracking for 14 clinics, with all patient data hosted in Brazil.",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Planning call for the Friday demo. Roberto said the board froze all new IT projects until the January budget review and asked to cancel the demo. No date was agreed. The budget is unchanged at USD 90,000 per year.",
+      "evidence": [
+        {
+          "line": 2,
+          "timestamp": "00:00:11",
+          "speaker": "Roberto Lima (Nimbus Health)",
+          "quote": "The board froze all new IT projects until our budget review in January."
+        },
+        {
+          "line": 4,
+          "timestamp": "00:00:33",
+          "speaker": "Roberto Lima (Nimbus Health)",
+          "quote": "Please cancel the demo on Friday."
+        },
+        {
+          "line": 7,
+          "timestamp": "00:02:20",
+          "speaker": "Roberto Lima (Nimbus Health)",
+          "quote": "it's still ninety thousand dollars a year."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": "Patient data must stay in Brazil",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Board froze all new IT projects until the budget review in January; cannot commit to any date",
+      "evidence": [
+        {
+          "line": 2,
+          "timestamp": "00:00:11",
+          "speaker": "Roberto Lima (Nimbus Health)",
+          "quote": "The board froze all new IT projects until our budget review in January."
+        },
+        {
+          "line": 6,
+          "timestamp": "00:01:02",
+          "speaker": "Roberto Lima (Nimbus Health)",
+          "quote": "I can't commit to any date, not even a date to talk again."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": "Nimbus (Roberto): share the referral volumes per clinic",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": "Product demo for the 14 clinic managers on 6 Nov",
+      "current_approved": true,
+      "status": "contradictory",
+      "proposed_value": null,
+      "evidence": [
+        {
+          "line": 4,
+          "timestamp": "00:00:33",
+          "speaker": "Roberto Lima (Nimbus Health)",
+          "quote": "Please cancel the demo on Friday."
+        },
+        {
+          "line": 4,
+          "timestamp": "00:00:33",
+          "speaker": "Roberto Lima (Nimbus Health)",
+          "quote": "There is no next step from our side for now"
+        }
+      ],
+      "note": "The approved demo was cancelled and no new next step was agreed."
+    },
+    {
+      "field": "follow_up_owner",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": "Pedro Almeida",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": "2026-11-06",
+      "current_approved": true,
+      "status": "contradictory",
+      "proposed_value": null,
+      "evidence": [
+        {
+          "line": 6,
+          "timestamp": "00:01:02",
+          "speaker": "Roberto Lima (Nimbus Health)",
+          "quote": "I can't commit to any date, not even a date to talk again."
+        }
+      ],
+      "note": "The approved date was the cancelled demo; no new date was agreed."
+    },
+    {
+      "field": "metrics",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_maker",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Roberto Lima (CIO)",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_criteria",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Referral tracking; patient-relations cases; clinic dashboards",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "paper_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "customer_need",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Track patient relations and doctor referrals for 14 clinics in one CRM, with data hosted in Brazil",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "champion",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "competitors",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "45",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "departments",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "Customer Service; Operations",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "integrations",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "Clinic scheduling system",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "budget",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "USD 90,000 per year",
+      "current_approved": true,
+      "status": "unchanged",
+      "proposed_value": "USD 90,000 per year",
+      "evidence": [
+        {
+          "line": 7,
+          "timestamp": "00:02:20",
+          "speaker": "Roberto Lima (Nimbus Health)",
+          "quote": "the budget itself hasn't changed: it's still ninety thousand dollars a year."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "go_live_target",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "2027-03",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "employee_count",
+      "group": "company",
+      "record": "client",
+      "current_value": "1200",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "current_solution",
+      "group": "company",
+      "record": "client",
+      "current_value": "Patient-relations module of the clinic ERP, plus spreadsheets",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "group": "stage",
+      "record": "opportunity",
+      "current_value": "Solution",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": "Solution exit criteria not met: no request for a proposal and no agreed solution scope in this conversation; the project is on hold."
+    }
+  ],
+  "ignored_out_of_scope": [],
+  "validation_notes": [],
+  "usage": {
+    "input_tokens": 1491,
+    "output_tokens": 694,
+    "cache_read_input_tokens": 11814,
+    "cache_creation_input_tokens": 0,
+    "model": "claude-sonnet-5-5",
+    "served_by": "claude-sonnet-5-5",
+    "cost_usd": 0.012285
+  }
+}
