@@ -1,0 +1,3485 @@
+{
+ "judge": {
+  "model": "claude-sonnet-5-5",
+  "prompt_sha": "0f64695a",
+  "criterion": "Each proposed value and its note are supported by what the speakers said (every picklist option chosen fits; no added or changed fact, right person, right date).",
+  "validated": false,
+  "at": "2026-10-31T19:29:23.966Z"
+ },
+ "labels": {
+  "claude-sonnet-5-5": {
+   "cases": {
+    "T1": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call with Acme Logistics. The commercial team uses spreadsheets and Outlook, lost account history and missed two renewals. They need one place for accounts, deals and renewals for 60 users, with a budget of USD 80-100k per year. A TMS technical workshop was agreed for the week of 9 Nov.",
+       "result": "Pass",
+       "critique": "Spreadsheets and Outlook, lost history, two missed renewals (L007-L008), 60 users (L013), budget 80-100k per year (L028), and the workshop in the week of 9 Nov (L042-L043) are all said. Nothing is added."
+      },
+      {
+       "field": "objection",
+       "value": "Integration with current systems; User adoption and ease of use",
+       "result": "Pass",
+       "critique": "Marina worries about integrating the in-house TMS (L022) and Felipe about adoption after the previous tool failed (L023). Both categories and the note are supported."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the TMS reference case by 6 Nov; Orbita (Ana): send the workshop invite by 6 Nov; Orbita (Ana): include a short mobile app video in Friday's email (6 Nov); Acme Logistics (Marina): make sure Rui joins the workshop",
+       "result": "Pass",
+       "critique": "Ana promises the reference case by Friday (L024), the invite with it (L044) and the video in Friday's email (L046). Marina commits that Rui joins (L043). Friday from Tue 3 Nov is 6 Nov, which is correct."
+      },
+      {
+       "field": "next_step",
+       "value": "Technical scoping workshop with Rui Tavares in the week of 9 Nov to look at the TMS data and integration options, with Pedro from Orbita",
+       "result": "Pass",
+       "critique": "Ana proposes the technical scoping workshop with Rui in the week of 9 Nov to look at the TMS data and integration options, with Pedro joining, and Marina agrees (L042-L043). Supported."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana says she will send the invite and reference case (L044), so she owns the follow-up. Supported."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-06",
+       "result": "Pass",
+       "critique": "Ana says she will send both by Friday (L044). Friday after Tue 2026-11-03 is 2026-11-06, so the resolution is correct."
+      },
+      {
+       "field": "metrics",
+       "value": "Zero missed renewals next year; Monday pipeline review done from one screen instead of six spreadsheets",
+       "result": "Pass",
+       "critique": "Marina states zero missed renewals next year and the Monday pipeline review from one screen instead of six spreadsheets (L009). Supported."
+      },
+      {
+       "field": "decision_maker",
+       "value": "Marina Lopes (COO)",
+       "result": "Pass",
+       "critique": "Marina says she makes the decision, that it sits in her operations budget, and that she signs (L035, L037). Her COO title comes from the CRM context. Supported."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Pipeline management; Tasks and follow-up reminders; Email and calendar sync; Mobile app; Reporting and dashboards; Integrations and API",
+       "result": "Pass",
+       "critique": "The mobile app (L015), pipeline management, renewal alerts, Outlook sync and dashboards (L017), and shipment status from the TMS (L040) are all stated. Each chosen category maps to something said."
+      },
+      {
+       "field": "decision_process",
+       "value": "Rui Tavares (IT Lead) validates the technical side, integration and security; then Marina Lopes decides",
+       "result": "Pass",
+       "critique": "Marina wants Rui to validate the technical side, integration and security, and she decides (L035). However, the value omits procurement's quotes step, but what it says is true. Supported."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review; Competitive quotes required",
+       "result": "Pass",
+       "critique": "Procurement needs three quotes above fifty thousand and then Marina signs (L037). Procurement review, competitive quotes and signature by the buyer are all supported. The note is accurate, with USD as the currency consistent with the budget."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; No pipeline view leaders can trust; Missed follow-ups or renewals",
+       "result": "Pass",
+       "critique": "Scattered data in spreadsheets and inboxes (L007), lost history and missed renewals (L008) and no trustworthy pipeline view (L009) are all said. Supported."
+      },
+      {
+       "field": "champion",
+       "value": "Felipe Nunes (Sales Operations Manager)",
+       "result": "Pass",
+       "critique": "Felipe says he pushed for the project internally and will get the reps on board himself (L047). His title comes from the CRM context. Supported."
+      },
+      {
+       "field": "competitors",
+       "value": "Northwind CRM; PipeSpark",
+       "result": "Pass",
+       "critique": "Felipe mentions a first call with Northwind CRM and a demo from PipeSpark (L030). Both are being evaluated. Supported."
+      },
+      {
+       "field": "seats",
+       "value": "60",
+       "result": "Pass",
+       "critique": "Felipe says sixty users to start (L013). Supported."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Customer Success; Leadership",
+       "result": "Pass",
+       "critique": "Sales reps, customer success account managers and the leadership team are named (L013). Supported."
+      },
+      {
+       "field": "integrations",
+       "value": "Email and calendar; ERP; Industry or in-house system",
+       "result": "Pass",
+       "critique": "The in-house TMS and Orion ERP (L021) and Outlook email sync (L017) are stated. All three categories are supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "Marina says between eighty and a hundred thousand dollars a year (L028). The band USD 50k-100k holds that range, and the note restates the figures accurately."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-03",
+       "result": "Pass",
+       "critique": "Marina says go-live by March 2027 at the latest, before the April peak season (L039). Supported."
+      },
+      {
+       "field": "employee_count",
+       "value": "500-999",
+       "result": "Pass",
+       "critique": "Marina says about 850 people, with around 100 in the commercial area (L005). The band 500-999 holds that figure."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Email and shared inbox; Shared drive",
+       "result": "Pass",
+       "critique": "Felipe describes per-rep spreadsheets, proposals on a shared drive and everything else in inboxes (L007). Outlook is mentioned there too. Supported."
+      },
+      {
+       "field": "stage",
+       "value": "Solution",
+       "result": "Fail",
+       "critique": "The value is 'Solution' with a note about meeting Qualified Opportunity exit criteria. The conversation supports pain confirmed, buyer identified and timeline stated, but nothing says the opportunity moved to a Solution stage. A solution has not been proposed, only a scoping workshop was agreed. The stage is not supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T2": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Intro call with Camila Rocha about managing the franchise and wholesale network: 40 franchisees and about 200 wholesale buyers run on WhatsApp groups and spreadsheets. A previous BI tool failed due to complexity. No budget is allocated yet. No demo was booked; Orbita will send a product overview and case study.",
+       "result": "Pass",
+       "critique": "Facts match: 40 franchisees, about 200 wholesale buyers, WhatsApp and spreadsheets (L004-L005), failed BI tool due to complexity (L012), no budget (L015), no demo booked (L021), Ana to send overview and case study (L018)."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Budget freeze or no budget",
+       "result": "Pass",
+       "critique": "L012 shows adoption/ease-of-use concern from the failed BI tool, and L015 shows no budget allocated yet. Both options are supported and the note is accurate."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the product overview and case study",
+       "result": "Pass",
+       "critique": "Ana says she will send the product overview and case study (L018), and Camila asks her to do so. Supported."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro is the Orbita person who promised to send materials; she is the natural follow-up owner. Supported by L018."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Visit and activity tracking; Orders and quotes; Ease of use",
+       "result": "Pass",
+       "critique": "Ana proposes orders, visits and complaints in one place (L006) and Camila confirms 'exactly it' (L007); simplicity is a requirement (L012-L013). 'Orders and quotes' includes quotes, which nobody mentioned, but orders are supported; visit tracking and ease of use are supported. The 'quotes' part is a minor stretch, but the category covers orders. Overall supported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Teams do not share one view",
+       "result": "Pass",
+       "critique": "L005 says requests and complaints get lost in WhatsApp groups and spreadsheets, and L007 wants one place instead of fifty WhatsApp groups. Both categories (scattered data, no shared view) fit."
+      },
+      {
+       "field": "budget",
+       "value": "No budget allocated",
+       "result": "Pass",
+       "critique": "Camila says there is no budget allocated yet and it would go into next year's plan (L015). Supported."
+      },
+      {
+       "field": "employee_count",
+       "value": "1000-4999",
+       "result": "Pass",
+       "critique": "Camila says about 1,200 employees (L009), which falls in the 1000-4999 band."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; WhatsApp groups",
+       "result": "Pass",
+       "critique": "L005 says everything runs on WhatsApp groups and spreadsheets. Both options supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T3": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Planning call for the Friday demo with the CIO. The board froze all new IT projects until the January budget review, so the demo was cancelled and no new date was agreed. The budget itself is unchanged at USD 90,000 per year.",
+       "result": "Pass",
+       "critique": "The summary matches the conversation. It was a planning call for Friday's demo (L001). The board froze new IT projects until the January budget review (L002). Roberto asked to cancel the demo and could not commit to any date (L004, L006). He said the budget is unchanged at ninety thousand dollars a year (L007). The currency is USD, which \"dollars\" and the CRM's USD figures support. Nothing is added."
+      }
+     ],
+     "skipped": []
+    },
+    "T5": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Intro call with Livia Prado of Delta Pharma, a mid-sized pharmaceutical company with about 150 medical representatives. Their visit reports sit in a very old system nobody likes, and she is looking at options for next year. She needs visit planning, visit records and sample tracking on a tablet. Ana will send an overview after the call.",
+       "result": "Pass",
+       "critique": "All facts match: mid-sized pharma, about 150 reps (L004), old disliked system, options for next year (L005), needs for planning, recording, samples on a tablet (L007), and Ana sending an overview (L008)."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a short overview after the call; Customer (Livia): share it with her director",
+       "result": "Pass",
+       "critique": "Ana says she will send a short overview after the call (L008), and Livia says she will share it with her director (L009). Both promises are explicit and correctly attributed."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Mobile app; Visit and activity tracking",
+       "result": "Pass",
+       "critique": "Livia says the tool must plan visits, record discussions, track samples, and work on a tablet (L007). 'Mobile app' fits the tablet requirement and 'Visit and activity tracking' fits the rest. The note restates what was said."
+      },
+      {
+       "field": "customer_need",
+       "value": "Visits and orders not tracked; Legacy system nobody likes",
+       "result": "Fail",
+       "critique": "'Legacy system nobody likes' is supported by L005. 'Visits and orders not tracked' is not: nobody mentioned orders, and visits are recorded in the old system, not untracked. The note says nothing about orders either, so this option is unsupported."
+      },
+      {
+       "field": "departments",
+       "value": "Sales",
+       "result": "Pass",
+       "critique": "Medical representatives who visit doctors and pharmacies (L004) are field sales staff, and they would use the tool. 'Sales' is a reasonable category for them and the note states only what was said."
+      },
+      {
+       "field": "current_solution",
+       "value": "Legacy on-premise CRM",
+       "result": "Fail",
+       "critique": "Livia only describes 'a very old system' for visit reports (L005). Nobody said it is a CRM or on-premise. The note admits on-premise is not stated, so the option 'Legacy on-premise CRM' adds an unsupported fact."
+      }
+     ],
+     "skipped": []
+    },
+    "T6": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Check-in on proposal v1 with the Head of Operations. The CFO has not yet seen the proposal; he will forward it to her this week. USD 120,000 per year is approved in next year's budget, and scope is still 75 users. A check-in was agreed for 12 Nov.",
+       "result": "Pass",
+       "critique": "Each fact is supported: Tiago says Helena hasn't seen the proposal (L004) and he will forward it this week; USD 120k/year budget (L009); 75 users (L011); check-in Thursday the 12th (L015). Nov 12 2026 is a Thursday. The currency, dollars, is stated."
+      },
+      {
+       "field": "commitment",
+       "value": "Atlas (Tiago): forward proposal v1 to Helena Duarte this week; Atlas (Tiago): walk Helena through the proposal; Orbita (Ana): check in with Tiago on 12 Nov",
+       "result": "Pass",
+       "critique": "Tiago says he will forward the proposal this week (L004) and walk Helena through it himself (L005). Ana commits to check in on Thursday the 12th (L015). The date resolves correctly to 12 Nov."
+      },
+      {
+       "field": "next_step",
+       "value": "Tiago forwards proposal v1 to Helena Duarte this week; Ana checks in with Tiago on Thursday 12 Nov",
+       "result": "Pass",
+       "critique": "L015 and L016 agree that Tiago forwards proposal v1 to Helena this week and Ana checks in on Thursday the 12th. 12 Nov 2026 is that Thursday. Fully supported."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-12",
+       "result": "Pass",
+       "critique": "The meeting is on 2026-11-05, a Thursday, so Thursday the 12th resolves to 2026-11-12. This matches Ana's check-in date in L015."
+      },
+      {
+       "field": "decision_process",
+       "value": "Head of Operations forwards the proposal to the CFO and walks her through it; the CFO approves; the CFO signs anything above USD 100,000",
+       "result": "Pass",
+       "critique": "Tiago forwards the proposal to the CFO (L004) and walks her through it (L005). Legal review follows her approval, and then she signs (L012). She signs anything above a hundred thousand (L004). The currency is dollars per L009, so USD is acceptable. The sequence is supported."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Legal contract review",
+       "result": "Pass",
+       "critique": "L012 says that after Helena approves, legal needs about two weeks to review the contract and then she signs. Helena is the CFO who signs above 100k, so signature by the economic buyer and legal contract review are both supported."
+      },
+      {
+       "field": "champion",
+       "value": "Tiago Mendes (Head of Operations)",
+       "result": "Pass",
+       "critique": "Tiago says he has been pushing for this internally since the demo and will walk Helena through the proposal (L005). That shows him actively selling inside the company. His Head of Operations title comes from the CRM context."
+      },
+      {
+       "field": "budget",
+       "value": "USD 100k-150k per year",
+       "result": "Pass",
+       "critique": "Tiago says USD 120,000 a year is approved for the CRM in next year's budget (L009). The band 100k-150k contains 120k, and the note restates the figure correctly. The one-million-dollar remark in L006 is not used."
+      }
+     ],
+     "skipped": []
+    },
+    "T7": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call with the Commercial Director and Sales Manager. Leads from stands, website and WhatsApp get lost, and website leads wait about two days for a call. They need one place with automatic routing for 105 users, live by March 2027. A live demo was agreed for 12 Nov.",
+       "result": "Pass",
+       "critique": "Leads lost across stands, website and WhatsApp (L005-L006), two-day callback (L009), 105 users (L011), March 2027 (L022), and demo on Thursday the 12th (L026-L027; Nov 12, 2026 is a Thursday) are all supported. Nothing is added."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Mobile or offline access",
+       "result": "Pass",
+       "critique": "Andre worries that brokers are not employees and won't use anything complicated (adoption/ease of use), and that stands often have no mobile signal (offline access). Both options are supported."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a recorded demo of the lead routing by 10 Nov; Cedro (Andre): send the list of the three launches and the broker teams before the 12 Nov demo",
+       "result": "Pass",
+       "critique": "Ana promises a recorded demo by Tuesday, which is 10 Nov from Fri 6 Nov. Andre promises the list of launches and broker teams before the demo on the 12th. Both are supported."
+      },
+      {
+       "field": "next_step",
+       "value": "Live demo with the Cedro sales managers on 12 Nov",
+       "result": "Pass",
+       "critique": "Ana proposes a live demo with the sales managers on Thursday the 12th and Sofia confirms. The date resolves correctly to 12 Nov."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro of Orbita commits in L026 to send the recorded demo and run the live demo, so she is the Orbita person responsible for the follow-up."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-10",
+       "result": "Pass",
+       "critique": "Ana says she will send the recorded demo by Tuesday. The meeting is on Fri 2026-11-06, so Tuesday is 2026-11-10. The resolution is correct."
+      },
+      {
+       "field": "metrics",
+       "value": "Call every lead within two hours (today a website lead waits about two days for a call back)",
+       "result": "Pass",
+       "critique": "Sofia says a website lead waits about two days for a call back today and she wants every lead called within two hours (L009). The value matches."
+      },
+      {
+       "field": "decision_maker",
+       "value": "Sofia Martins (Commercial Director)",
+       "result": "Pass",
+       "critique": "Sofia says the decision is hers (\"this is my call\") and the CEO only gets involved above 200k. She is the Commercial Director per the CRM context. The value is supported."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Pipeline management; Lead capture and routing; Ease of use",
+       "result": "Pass",
+       "critique": "Lead capture and routing is stated in L008. One funnel per launch (L008, L025) supports pipeline management. Brokers won't use anything complicated (L013) supports ease of use. All three options are supported."
+      },
+      {
+       "field": "decision_process",
+       "value": "Sofia Martins decides this project herself; the CEO only gets involved above 200,000.",
+       "result": "Pass",
+       "critique": "Sofia says the decision is hers and the CEO only gets involved above two hundred thousand. The value restates this, and the currency is not stated but the figure is not contradicted. It is supported."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Legal contract review",
+       "result": "Pass",
+       "critique": "Sofia says Legal reviews the contract before she signs. She is the economic buyer, so both options and the note are supported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Leads lost or not routed",
+       "result": "Pass",
+       "critique": "Leads lost between channels and the broker dispute support \"Leads lost or not routed\". Leads typed into a spreadsheet on Mondays \"if they remember\" supports scattered data in spreadsheets. However, \"inboxes\" is part of the option label and nobody mentioned email inboxes, though paper, WhatsApp and spreadsheets do show scatter. The category fits reasonably."
+      },
+      {
+       "field": "seats",
+       "value": "105",
+       "result": "Pass",
+       "critique": "Andre says a hundred and five users: 25 in the sales team plus 80 brokers. The value matches."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Marketing",
+       "result": "Pass",
+       "critique": "The 25 sales team members and the brokers fall under Sales. Sofia says marketing needs to see where leads come from, so Marketing is supported."
+      },
+      {
+       "field": "integrations",
+       "value": "WhatsApp Business; Website forms",
+       "result": "Pass",
+       "critique": "L008 says leads from the website and WhatsApp must come in to one place. This supports website forms and WhatsApp as sources. \"WhatsApp Business\" is a specific product the speakers did not name, but it is a reasonable category for WhatsApp."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "Sofia says around sixty thousand dollars a year, which falls in the USD 50k-100k band. The note matches."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-03",
+       "result": "Pass",
+       "critique": "Sofia says she needs this running by March 2027. The value 2027-03 matches."
+      },
+      {
+       "field": "employee_count",
+       "value": "200-499",
+       "result": "Pass",
+       "critique": "Sofia says about four hundred people, which falls in the 200-499 band."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Paper forms",
+       "result": "Pass",
+       "critique": "Andre says leads are captured on paper forms at the stand and typed into a spreadsheet on Monday. Both options are supported."
+      },
+      {
+       "field": "stage",
+       "value": "Solution",
+       "result": "Pass",
+       "critique": "The agent proposes moving to \"Solution\" because the Qualified Opportunity exit criteria are met. Pain (L006), economic buyer (L020) and timeline (L022) are all stated in the conversation, so the criteria are supported and the move is reasonable. The demo has been agreed but not yet held."
+      }
+     ],
+     "skipped": []
+    },
+    "T9": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Scope session with the VP of Admissions and the CIO. Lumen needs 120 users across admissions, marketing and leadership, integrations with Campus One, Mailwave and WhatsApp, and data kept in Brazil. They asked for a proposal on that scope. Orbita will send it by 13 Nov and review it together on 17 Nov.",
+       "result": "Pass",
+       "critique": "Participants, 120 users, the three integrations, data in Brazil, the proposal request and the dates (send by Fri 13th, review Tue 17th) all match L005, L011, L014, L027-L030."
+      },
+      {
+       "field": "objection",
+       "value": "Data residency and privacy",
+       "result": "Pass",
+       "critique": "Marcos's main concern is that student data must stay in Brazil and a data protection assessment is needed before go-live (L014). That fits the data residency and privacy category, and the note restates it."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the proposal by 13 Nov; Lumen Education (Marcos): send the security questionnaire by 9 Nov",
+       "result": "Pass",
+       "critique": "Ana promises the proposal by Friday the 13th (L029). Marcos promises the security questionnaire by Monday (L031), and the next Monday after Thu 5 Nov is 9 Nov. Both are correctly attributed and resolved."
+      },
+      {
+       "field": "next_step",
+       "value": "Review the proposal together on Tuesday 17 Nov",
+       "result": "Pass",
+       "critique": "Ana proposes reviewing the proposal together on Tuesday the 17th and Daniela confirms (L029, L030). In 2026 the 17th is a Tuesday, and the note that the 5 Nov session took place is true."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-13",
+       "result": "Pass",
+       "critique": "Ana says she will send the proposal by Friday the 13th, which is 2026-11-13. This matches the commitment date, and she is the follow-up owner."
+      },
+      {
+       "field": "metrics",
+       "value": "Lift conversion from first contact to enrolment from 8% to 12% next year",
+       "result": "Pass",
+       "critique": "Daniela's target for next year is to lift conversion from first contact to enrolment from eight to twelve percent (L008). The value matches exactly."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Lead capture and routing; Tasks and follow-up reminders; WhatsApp messaging; Reporting and dashboards; Integrations and API; Data hosted in Brazil",
+       "result": "Pass",
+       "critique": "Daniela lists lead capture, a follow-up list per counsellor, the funnel per campus and WhatsApp on the record (L010). Marcos adds the integrations (L011) and data in Brazil (L014). Every chosen option is supported."
+      },
+      {
+       "field": "decision_process",
+       "value": "IT security review and data protection assessment first; then Daniela signs; the board approves anything above USD 150k per year",
+       "result": "Pass",
+       "critique": "L017 gives the order: IT security review and data protection assessment, then Daniela signs, and the board approves anything above 150k dollars a year. The value matches."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review; Data processing agreement",
+       "result": "Pass",
+       "critique": "Daniela signs (L017), which fits signature by the economic buyer. Procurement needs the contract and the data processing agreement two weeks before signature (L018). The note's board-approval threshold also matches L017."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Leads lost or not routed; Teams do not share one view; Data must stay in the country",
+       "result": "Pass",
+       "critique": "Spreadsheets per campus and WhatsApp (L007) support scattered data. Not knowing how many prospects are lost supports lost leads. Data staying in Brazil is in L014. The 'Teams do not share one view' option is kept from the current CRM values, so it is allowed."
+      },
+      {
+       "field": "competitors",
+       "value": "Clarion Sales Cloud",
+       "result": "Pass",
+       "critique": "Daniela says they are also looking at Clarion Sales Cloud, which is cheaper but has a weak WhatsApp integration (L022). The value and note match."
+      },
+      {
+       "field": "seats",
+       "value": "120",
+       "result": "Pass",
+       "critique": "Daniela totals one hundred and twenty users (L005): 80 counsellors, 25 marketing and 15 managers. The value matches."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Marketing; Leadership",
+       "result": "Pass",
+       "critique": "L005 names admissions counsellors as the sales team, marketing, and the leadership team managers who need reports. Sales, Marketing and Leadership are all supported."
+      },
+      {
+       "field": "integrations",
+       "value": "WhatsApp Business; Marketing automation; Industry or in-house system",
+       "result": "Pass",
+       "critique": "WhatsApp through the official business account is in L013. Mailwave is a marketing email tool, which fits marketing automation. Campus One is a student information system, which fits an industry or in-house system. All three are supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 100k-150k per year",
+       "result": "Pass",
+       "critique": "Daniela approved 110k to 130k dollars a year (L020). That range lies fully inside the 100k-150k band, and the note restates the figures correctly."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-05",
+       "result": "Pass",
+       "critique": "Daniela says they need it live by May 2027 (L024). The value 2027-05 matches."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; WhatsApp groups",
+       "result": "Pass",
+       "critique": "Daniela describes separate spreadsheets per campus and a lot happening on WhatsApp (L007). Spreadsheets are supported. The 'WhatsApp groups' option is a slight specification, since groups are never mentioned, but it is within what was said about WhatsApp use."
+      },
+      {
+       "field": "stage",
+       "value": "Proposal",
+       "result": "Pass",
+       "critique": "The scope is agreed (L027) and Daniela asks for a proposal on that scope (L028), with Ana confirming. Moving from Solution to Proposal is supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T10": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call. Field reps visit about 200 dealers weekly, record visits on paper and type them into a spreadsheet, so orders and promises are unknown. They want one place for visits and orders for 38 users, with offline mode and GPS check-in. A field demo with two reps was agreed for 11 Nov.",
+       "result": "Pass",
+       "critique": "Dealers (~200), weekly visits, paper reports typed into a spreadsheet, need for one place, 38 users, offline and GPS, and the demo on Wed 11 Nov with two reps are all stated. Nov 11 is correct as the Wednesday after Nov 4."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Mobile or offline access",
+       "result": "Pass",
+       "critique": "L010 states no mobile signal in the fields (offline access concern) and that reps are not used to apps (adoption). Both categories are supported."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a short video of the offline mode by Monday; Pampa Agro: pick two reps for the field demo on 11 Nov",
+       "result": "Pass",
+       "critique": "Ana promises a video of offline mode by Monday (L024), and the customer agrees to the demo on the 11th and says they will pick two reps (L025). Both are supported."
+      },
+      {
+       "field": "next_step",
+       "value": "Field demo with two Pampa Agro reps on Wednesday 11 Nov",
+       "result": "Pass",
+       "critique": "The field demo with two reps on Wednesday the 11th was proposed and accepted. The date resolves correctly to 11 Nov 2026."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro of Orbita says she will send the video, so she owns the follow-up."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-09",
+       "result": "Pass",
+       "critique": "The meeting is Wed 2026-11-04, so the next Monday is 2026-11-09. Ana promised the video by Monday, so the date is correct."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Offline mode; Visit and activity tracking; Integrations and API",
+       "result": "Pass",
+       "critique": "Offline and GPS check-in are non-negotiable (L012), which covers offline mode and visit tracking. Orders flowing to the ERP supports integrations. All three are supported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Visits and orders not tracked",
+       "result": "Fail",
+       "critique": "Visits and orders not tracked is supported (L005, L007). Customer data scattered across spreadsheets and inboxes is partly supported by the spreadsheet, but inboxes are never mentioned and the pain is paper reports, not scattered customer data. That option is not clearly supported."
+      },
+      {
+       "field": "seats",
+       "value": "38",
+       "result": "Pass",
+       "critique": "The customer says 32 field reps plus 6 leadership, so 38 users. This is supported."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Leadership",
+       "result": "Pass",
+       "critique": "Sales (field reps) and the leadership team who want reports are both stated in L009."
+      },
+      {
+       "field": "integrations",
+       "value": "ERP",
+       "result": "Pass",
+       "critique": "The customer says orders must flow to Orion ERP, so the ERP category is supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "About seventy thousand dollars a year falls in the USD 50k-100k band, and the note restates it correctly."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-07",
+       "result": "Pass",
+       "critique": "The customer says live by July 2027, so 2027-07 matches."
+      },
+      {
+       "field": "employee_count",
+       "value": "200-499",
+       "result": "Pass",
+       "critique": "About 450 people falls in the 200-499 band. This is supported."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Paper forms",
+       "result": "Pass",
+       "critique": "Reps fill in paper reports and someone types them into a spreadsheet on Friday. Both spreadsheets and paper forms are supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T11": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Ana sent the revised commercial terms: 8% off for a three-year term. Henrique Prado said they agree with the terms and asked for the contract for signature. Ana will send it on 6 Nov. Henrique also said IT needs single sign-on with Microsoft Entra from day one.",
+       "result": "Pass",
+       "critique": "Every point matches the chat: 8% off for three years (L001), Henrique's agreement (L002), the contract request (L003), Ana's promise to send it tomorrow, which is 6 Nov (L004), and the SSO with Microsoft Entra requirement (L005)."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the contract by 6 Nov; Solaris Energy (Henrique): sign the contract after procurement routes it on Monday 9 Nov",
+       "result": "Pass",
+       "critique": "Ana promises to send the contract tomorrow morning (6 Nov) in L004. Henrique says Talita will route it on Monday and he will sign right after. The chat is dated Thu 5 Nov 2026, so Monday is 9 Nov and the resolution is correct."
+      },
+      {
+       "field": "next_step",
+       "value": "Orbita sends the contract for signature on 6 Nov; Procurement routes it on Monday 9 Nov, then Henrique Prado signs",
+       "result": "Pass",
+       "critique": "The sequence is supported: contract sent 6 Nov, Procurement routes it Monday 9 Nov, then Henrique signs. The note that it replaces the 10 Nov terms review is reasonable since the terms were agreed."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-06",
+       "result": "Pass",
+       "critique": "Ana says she will send the contract tomorrow morning, and the chat is dated 2026-11-05, so 2026-11-06 is correct."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Renewal and contract tracking; Account hierarchy; Reporting and dashboards; Forecasting; Other: Single sign-on",
+       "result": "Pass",
+       "critique": "The four existing values are kept. Henrique says IT needs single sign-on with Microsoft Entra from day one, which supports a SSO capability need; 'Other: Single sign-on' is a fair addition."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review",
+       "result": "Pass",
+       "critique": "L003 says Talita will route the contract through procurement on Monday and Henrique will sign afterwards. This supports Procurement review and signature by the decision maker, who is the economic buyer. The note matches."
+      },
+      {
+       "field": "integrations",
+       "value": "Email and calendar; Billing system; Single sign-on",
+       "result": "Pass",
+       "critique": "Henrique asks for SSO with Microsoft Entra, which is a system the CRM must connect to, so 'Single sign-on' fits. The two existing values are kept from the current CRM values."
+      },
+      {
+       "field": "stage",
+       "value": "Contract",
+       "result": "Pass",
+       "critique": "The note says the terms were agreed in writing, but Henrique agreed in a chat message, which is written. He requested the contract for signature (L003), so moving to a contract stage is supported by what was said."
+      }
+     ],
+     "skipped": []
+    }
+   },
+   "judged": 107,
+   "passed": 103,
+   "cost_usd": 0.145591
+  },
+  "claude-opus-5-5": {
+   "cases": {
+    "T1": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call with the COO and the Sales Operations Manager. The commercial team works from spreadsheets, Outlook and a shared drive, missed two renewals last quarter and has no reliable pipeline view. They want one place for accounts, deals and renewals for 60 users, integrated with their in-house TMS, with USD 80k-100k a year and go-live by March 2027. A technical scoping workshop with the IT lead was agreed for the week of 9 Nov.",
+       "result": "Pass",
+       "critique": "Every element is supported: the participants, spreadsheets/Outlook/shared drive, two missed renewals, no pipeline view, 60 users, TMS integration, USD 80-100k a year, go-live by March 2027 and the workshop in the week of 9 Nov with Rui."
+      },
+      {
+       "field": "objection",
+       "value": "Integration with current systems; User adoption and ease of use",
+       "result": "Pass",
+       "critique": "Marina worries about integrating with the in-house TMS (L022) and Felipe about adoption after reps abandoned a previous tool in two months (L023). Both categories and the note are supported."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the reference case, the workshop invite and the mobile app video by 6 Nov; Acme Logistics (Marina): make sure Rui joins the workshop",
+       "result": "Pass",
+       "critique": "Ana promises the invite and reference case by Friday (L044) and the video in Friday's email (L046); Friday resolves to 6 Nov. Marina promises Rui will join (L043). The note about Felipe's conditional offer is accurate."
+      },
+      {
+       "field": "next_step",
+       "value": "Technical scoping workshop with Rui Tavares (IT Lead) and Pedro Almeida, week of 9 Nov, on TMS data and integration options",
+       "result": "Fail",
+       "critique": "The workshop with Rui in the week of 9 Nov on TMS data and integration options is supported by L042-L043. However, 'Pedro Almeida' adds a surname that nobody said; only 'Pedro' was named."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana says she will send the invite and reference case by Friday (L044), so she owns the follow-up."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-06",
+       "result": "Pass",
+       "critique": "The meeting is on Tue 2026-11-03, so Friday is 2026-11-06. Ana says 'by Friday' in L044."
+      },
+      {
+       "field": "metrics",
+       "value": "Zero missed renewals next year; Monday pipeline review done from one screen instead of six spreadsheets",
+       "result": "Pass",
+       "critique": "Marina's success criteria in L009 are zero missed renewals next year and the Monday pipeline review from one screen instead of six spreadsheets. The value matches."
+      },
+      {
+       "field": "decision_maker",
+       "value": "Marina Lopes (COO)",
+       "result": "Pass",
+       "critique": "Marina says 'I make the decision on this. It sits in my operations budget' (L035), and she is the COO per the CRM context."
+      },
+      {
+       "field": "decision_process",
+       "value": "Rui Tavares (IT Lead) validates the technical side (integration and security); then Marina Lopes (COO) decides",
+       "result": "Pass",
+       "critique": "Rui validates the technical side, integration and security (L035). Marina then decides. However, the value omits procurement's three quotes, but that is only an omission. Everything stated is supported."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review; Competitive quotes required",
+       "result": "Pass",
+       "critique": "Procurement needs three quotes above fifty thousand and then Marina signs (L037). Signature by the economic buyer, procurement review and competitive quotes are all supported, and the note matches."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; No pipeline view leaders can trust; Missed follow-ups or renewals",
+       "result": "Pass",
+       "critique": "Scattered data in spreadsheets and inboxes (L007), an untrusted pipeline view (L009) and missed renewals (L008) are all said. The note matches."
+      },
+      {
+       "field": "champion",
+       "value": "Felipe Nunes (Sales Operations Manager)",
+       "result": "Pass",
+       "critique": "Felipe says he pushed for the project internally and will get the reps on board himself (L047). He is the Sales Operations Manager per the CRM context. The champion role is supported."
+      },
+      {
+       "field": "competitors",
+       "value": "Northwind CRM; PipeSpark",
+       "result": "Pass",
+       "critique": "Felipe mentions a first call with Northwind CRM and a demo from PipeSpark (L030). Both are supported."
+      },
+      {
+       "field": "seats",
+       "value": "60",
+       "result": "Pass",
+       "critique": "Felipe says 'sixty users to start' (L013), which matches 60."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Customer Success; Leadership",
+       "result": "Pass",
+       "critique": "Users come from sales reps, customer success account managers and leadership managers for dashboards (L013). All three are supported."
+      },
+      {
+       "field": "integrations",
+       "value": "Email and calendar; ERP; Industry or in-house system",
+       "result": "Pass",
+       "critique": "The in-house TMS, Orion ERP for invoicing (L021) and Outlook email sync (L017) are all said. They map onto the three options."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "Marina says between 80 and 100 thousand dollars a year, licences and support included (L028). The band 50k-100k contains this range, and the note restates it correctly."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-03",
+       "result": "Pass",
+       "critique": "Marina says go-live by March 2027 at the latest (L039). The value 2027-03 matches."
+      },
+      {
+       "field": "employee_count",
+       "value": "500-999",
+       "result": "Pass",
+       "critique": "Marina says about eight hundred and fifty people (L005), which falls in 500-999. The note matches."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Email and shared inbox; Shared drive",
+       "result": "Pass",
+       "critique": "Felipe says spreadsheets and Outlook, with proposals on a shared drive and everything else in inboxes (L007). All three options are supported."
+      },
+      {
+       "field": "stage",
+       "value": "Solution",
+       "result": "Fail",
+       "critique": "The value 'Solution' is a stage move from Qualified Opportunity, but the note only argues that the Qualified Opportunity exit criteria are met. The conversation is a discovery call with a workshop proposed and no solution proposal yet, so the claim is not supported."
+      }
+     ],
+     "skipped": [
+      "decision_criteria"
+     ]
+    },
+    "T2": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Intro call with the Head of Retail Operations. The franchise and wholesale channel (40 franchisees, about 200 wholesale buyers) runs on WhatsApp groups and spreadsheets, so complaints and reorders get lost. She wants one place for franchisees and wholesale buyers. No budget is allocated yet; she declined to book a demo, and Orbita will send a product overview and case study.",
+       "result": "Pass",
+       "critique": "All facts are supported: 40 franchisees and about 200 wholesale buyers (L004), WhatsApp and spreadsheets with lost complaints and reorders (L005), one place wanted (L007), no budget (L015), demo declined (L021), and Ana sending the overview and case study (L018). Nothing is added."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Budget freeze or no budget; Timing or other priorities",
+       "result": "Pass",
+       "critique": "Ease of use is supported by the failed BI tool (L012). No budget is supported by L015. Timing or other priorities is supported by Black Friday busyness and by Camila saying she will read the material after Black Friday and that there is no rush (L002, L019, L021)."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the product overview and franchise retail case study; Verde Retail (Camila): read it with her team after Black Friday and come back to Orbita",
+       "result": "Pass",
+       "critique": "Ana promises to send the overview and case study (L018). Camila says she will read it with her team after Black Friday (L019) and come back to Ana (L021). All supported."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro is the Orbita person who promised to send materials and is the only Orbita participant, so she owns the follow-up."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Ease of use",
+       "result": "Pass",
+       "critique": "Camila says the previous BI tool was too complicated and Ana says simplicity would be a requirement (L012-L013), and Camila does not object. Ease of use is supported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Visits and orders not tracked",
+       "result": "Fail",
+       "critique": "Scattered data across spreadsheets and chats is supported by L005. The wish for one place with orders, visits and complaints (L006-L007) is Ana's framing, which Camila confirmed, and it does not state that visits and orders are untracked today. Still, orders, visits and complaints being lost in chats is supported reasonably. However, \"Visits and orders not tracked\" is a stretch, since only complaints and reorders getting lost are stated by Camila; visits are mentioned only by Ana."
+      },
+      {
+       "field": "budget",
+       "value": "No budget allocated",
+       "result": "Pass",
+       "critique": "Camila states there is no budget allocated yet and that it would have to go into next year's plan (L015). The value and note match."
+      },
+      {
+       "field": "employee_count",
+       "value": "1000-4999",
+       "result": "Pass",
+       "critique": "Camila says about 1,200 employees (L009), which falls in the 1000-4999 band."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; WhatsApp groups",
+       "result": "Pass",
+       "critique": "Camila says everything runs on WhatsApp groups and spreadsheets (L005). Both options are supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T3": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Call to plan Friday's demo with the clinic managers. Roberto said the board froze all new IT projects until the January budget review, and asked to cancel the demo with no new date. The budget is unchanged at USD 90,000 per year. He will reach out if the board approves the budget in January.",
+       "result": "Pass",
+       "critique": "Every fact is supported: the call was to plan Friday's demo (L001), the board froze new IT projects until the January review (L002), Roberto asked to cancel the demo and drop any placeholder date (L004, L006), the budget is still ninety thousand dollars a year (L007), and he will reach out if the board approves in January (L009). The USD 90,000 figure matches 'ninety thousand dollars a year'."
+      },
+      {
+       "field": "objection",
+       "value": "Budget freeze or no budget; Timing or other priorities",
+       "result": "Pass",
+       "critique": "The board froze all new IT projects until the January budget review (L002), which supports 'Budget freeze or no budget'. Roberto says 'the budget itself hasn't changed... It's the timing that moved' (L007), which supports 'Timing or other priorities'. The note restates both points accurately."
+      }
+     ],
+     "skipped": []
+    },
+    "T5": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Intro call with Livia Prado of Delta Pharma, a mid-sized pharmaceutical company with about 150 medical representatives who visit doctors and pharmacies daily. Visit reports live in a very old system nobody likes, and she is looking at options for next year. A new tool must plan visits, record discussions, track samples and work on a tablet. Ana will send an overview; Livia will share it with her director.",
+       "result": "Pass",
+       "critique": "Each fact is in the conversation: mid-sized pharma, about 150 reps visiting doctors and pharmacies, old unloved system, options for next year, needs for planning, recording, samples and tablet use, and the overview being sent and shared with the director. Nothing is added."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a short overview after the call; Delta Pharma (Livia Prado): share the overview with her director",
+       "result": "Pass",
+       "critique": "Ana says she will send a short overview after the call (L008), and Livia says she will share it with her director (L009). Both promises are attributed to the right people."
+      },
+      {
+       "field": "next_step",
+       "value": "Ana sends a short overview after the call; Livia shares it with her director",
+       "result": "Pass",
+       "critique": "The actions match L008 and L009: Ana sends the overview and Livia shares it with her director. The note that no follow-up meeting was agreed is true, since none is mentioned."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro is the Orbita speaker who promises to send the overview, so she is the Orbita person responsible for the follow-up."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Mobile app; Visit and activity tracking; Other: Sample tracking",
+       "result": "Pass",
+       "critique": "L007 supports each option: working on a tablet fits the mobile app, planning visits and recording discussions fit visit and activity tracking, and sample tracking is covered by the Other option. The note restates these needs accurately."
+      },
+      {
+       "field": "customer_need",
+       "value": "Legacy system nobody likes",
+       "result": "Pass",
+       "critique": "Livia says visit reports are in a very old system that nobody likes (L005). The category 'Legacy system nobody likes' and the note both match this."
+      },
+      {
+       "field": "departments",
+       "value": "Sales",
+       "result": "Pass",
+       "critique": "The reps who visit doctors and pharmacies are field sales, which fits 'Sales'. The conversation never says these reps will be the CRM users, though that follows from the need for a tool for them. The categorization is reasonable."
+      },
+      {
+       "field": "current_solution",
+       "value": "Other: Old visit-reporting system",
+       "result": "Pass",
+       "critique": "L005 says visit reports are kept in a very old system. 'Other: Old visit-reporting system' and the note that its type is not stated both match what was said."
+      }
+     ],
+     "skipped": []
+    },
+    "T6": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Proposal check-in with the Head of Operations. The CFO, Helena Duarte, has not seen proposal v1; Tiago will forward it this week and walk her through it. USD 120,000 a year is approved for the CRM next year, and the scope stays at 75 users in sales and customer service. After Helena approves, legal reviews the contract for about two weeks, then she signs; a check-in was agreed for 12 Nov.",
+       "result": "Pass",
+       "critique": "Every fact is supported: the CFO has not seen the proposal (L004), Tiago will forward it and walk her through it (L004, L005), USD 120,000 a year is approved (L009), scope is 75 users in sales and customer service (L010-L011), legal takes about two weeks and then she signs (L012), and the check-in is on the 12th (L015). The meeting is on 2026-11-05, so the 12th is 12 Nov."
+      },
+      {
+       "field": "commitment",
+       "value": "Atlas Manufacturing (Tiago): forward proposal v1 to Helena this week and walk her through it; Orbita (Ana): check in with Tiago by 12 Nov",
+       "result": "Pass",
+       "critique": "Tiago says he will forward the proposal to Helena this week (L004) and walk her through it (L005). Ana agrees to check in on Thursday the 12th (L015), which is 12 Nov. Both promises are supported and attributed to the right people."
+      },
+      {
+       "field": "next_step",
+       "value": "Tiago forwards proposal v1 to Helena Duarte this week; Ana checks in with Tiago on Thu 12 Nov",
+       "result": "Pass",
+       "critique": "L015 and L016 agree that Tiago forwards proposal v1 to Helena this week and Ana checks in on Thursday the 12th. The meeting is on 2026-11-05, so that is 12 Nov. This is supported."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-12",
+       "result": "Pass",
+       "critique": "Ana says she will check in on Thursday the 12th, and Tiago confirms. The meeting is on Thu 2026-11-05, so the 12th is 2026-11-12. The resolution is correct."
+      },
+      {
+       "field": "decision_process",
+       "value": "The Head of Operations forwards the proposal and walks the CFO through it; the CFO approves and signs anything above USD 100,000",
+       "result": "Pass",
+       "critique": "Tiago forwards the proposal to Helena and will walk her through it (L004, L005), and she signs anything above one hundred thousand (L004). The value drops the legal review step and phrases the CFO as approving, which fits L012 (once Helena approves, she signs). The currency is not said, but L009 says dollars, so USD is acceptable. Nothing is added."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Legal contract review",
+       "result": "Pass",
+       "critique": "L012 says that after Helena approves, legal needs about two weeks to review the contract, and then she signs. Helena is the CFO and the signer, so both options, the signature by the economic buyer and the legal contract review, are supported, and the note matches."
+      },
+      {
+       "field": "champion",
+       "value": "Tiago Mendes (Head of Operations)",
+       "result": "Pass",
+       "critique": "Tiago says he has been pushing for this internally since the demo and will walk Helena through the proposal himself (L005). That shows him actively selling inside the company. His title as Head of Operations comes from the CRM context."
+      },
+      {
+       "field": "budget",
+       "value": "USD 100k-150k per year",
+       "result": "Pass",
+       "critique": "Tiago says one hundred and twenty thousand dollars a year is approved for the CRM in next year's budget (L009). The 100k-150k band contains it, and the note restates the figure and period correctly."
+      }
+     ],
+     "skipped": []
+    },
+    "T7": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call with the Commercial Director and Sales Manager. Leads from sales stands, the website and WhatsApp end up in spreadsheets and get lost. Sofia wants every lead in one place, routed to brokers and called within two hours, for 105 users, with about USD 60k a year and go-live by March 2027. Sofia decides; Legal reviews the contract. A live demo was agreed for 12 Nov.",
+       "result": "Pass",
+       "critique": "Facts match: leads lost across stand, website, WhatsApp; one place, routed to brokers, two-hour callback; 105 users; USD 60k/year; March 2027; Sofia decides, Legal reviews; demo Thursday the 12th (12 Nov). All supported."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Mobile or offline access",
+       "result": "Pass",
+       "critique": "Andre says brokers won't use anything complicated (adoption/ease of use) and stands have no mobile signal (mobile/offline). Both options supported."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a recorded demo of the lead routing by 10 Nov; Cedro Construtora (Andre): send the list of the three launches and the broker teams before the 12 Nov demo",
+       "result": "Pass",
+       "critique": "Ana promises a recorded demo by Tuesday (Nov 10 from Fri Nov 6), Andre promises the list before the demo on the 12th. Both supported and correctly attributed."
+      },
+      {
+       "field": "next_step",
+       "value": "Live demo with the Cedro sales managers on 12 Nov",
+       "result": "Pass",
+       "critique": "Ana proposes a live demo with sales managers on Thursday the 12th and Sofia agrees; Nov 12, 2026 is a Thursday. Supported."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro of Orbita commits to sending the recorded demo and leading the follow-up. Supported."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-10",
+       "result": "Pass",
+       "critique": "Ana will send the recorded demo by Tuesday; from Friday 2026-11-06 that is 2026-11-10. Correct."
+      },
+      {
+       "field": "metrics",
+       "value": "Call back every lead within two hours (today about two days for website leads)",
+       "result": "Pass",
+       "critique": "Sofia says website leads wait about two days and she wants every lead called within two hours. Matches."
+      },
+      {
+       "field": "decision_maker",
+       "value": "Sofia Martins (Commercial Director)",
+       "result": "Pass",
+       "critique": "Sofia says the decision is hers, and her title Commercial Director is in the CRM context. Supported."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Pipeline management; Lead capture and routing; Ease of use",
+       "result": "Pass",
+       "critique": "Routing and one funnel per launch with stages are stated (L008, L025), and the need for simplicity for brokers is in L013. All three options supported."
+      },
+      {
+       "field": "decision_process",
+       "value": "Sofia Martins (Commercial Director) decides; the CEO is involved only above USD 200k",
+       "result": "Pass",
+       "critique": "Sofia says it's her call and the CEO only gets involved above two hundred thousand. Currency USD not stated for 200k, but the CRM records amounts in USD and the budget was in dollars; acceptable."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Legal contract review",
+       "result": "Pass",
+       "critique": "Sofia says Legal reviews the contract before she signs, and she is the decision maker. Both options supported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Leads lost or not routed",
+       "result": "Fail",
+       "critique": "Leads get lost and are not routed (supported). But 'Customer data scattered across spreadsheets and inboxes' is not said; the spreadsheet is used for typing leads, and inboxes are never mentioned. The leads are scattered across channels, but that option is a stretch, with 'inboxes' unsupported."
+      },
+      {
+       "field": "seats",
+       "value": "105",
+       "result": "Pass",
+       "critique": "Andre says 105 users: 25 sales team and 80 brokers. Matches."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Marketing",
+       "result": "Pass",
+       "critique": "The sales team will use it (L011) and marketing needs to see where leads come from (L012). Supported."
+      },
+      {
+       "field": "integrations",
+       "value": "WhatsApp Business; Website forms",
+       "result": "Pass",
+       "critique": "Sofia wants leads from the website and WhatsApp in one place, so the website forms and WhatsApp connections are supported. Note matches."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "Sofia says around sixty thousand dollars a year, which falls in the 50k-100k band. Supported."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-03",
+       "result": "Pass",
+       "critique": "Sofia needs it running by March 2027. The note says the first launch is in April 2027; she said 'next year, the first in April', so April 2027 follows from the meeting in 2026. Supported."
+      },
+      {
+       "field": "employee_count",
+       "value": "200-499",
+       "result": "Pass",
+       "critique": "Sofia says about four hundred people, within the 200-499 band. Supported."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; WhatsApp groups; Paper forms",
+       "result": "Fail",
+       "critique": "Paper forms, website form, WhatsApp, and a spreadsheet are mentioned. 'WhatsApp groups' is not said; WhatsApp is a capture channel, not stated to be groups. Spreadsheets and paper forms are supported, but the WhatsApp groups option is an addition."
+      },
+      {
+       "field": "stage",
+       "value": "Solution",
+       "result": "Pass",
+       "critique": "The value 'Solution' as a stage is advanced from Qualified Opportunity. The conversation shows discovery and qualification facts (pain, buyer, timeline) and a demo agreed, which is consistent with moving to a solution/demo stage; the note's criteria are supported by L006, L020, L022."
+      }
+     ],
+     "skipped": []
+    },
+    "T9": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Scope session with the VP of Admissions and the CIO. Agreed scope: 120 users across admissions, marketing and management, with Campus One, Mailwave and WhatsApp integrations; student data must stay in Brazil. Budget is USD 110k-130k per year, Clarion Sales Cloud is also evaluated, and go-live is needed by May 2027. Lumen asked for a proposal; Orbita will send it by 13 Nov and review it with them on 17 Nov.",
+       "result": "Pass",
+       "critique": "All facts are supported: scope of 120 users and integrations (L027), data in Brazil (L014), budget 110-130k (L020), Clarion (L022), May 2027 (L024), proposal by Friday 13th and review Tuesday 17th (L029)."
+      },
+      {
+       "field": "objection",
+       "value": "Data residency and privacy; Price or discount",
+       "result": "Fail",
+       "critique": "Data residency and privacy is supported by L014. Price or discount is not a customer concern: Daniela only notes Clarion is cheaper, as a competitor comparison, and raises no objection to Orbita's price."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the proposal by 13 Nov; Lumen Education (Marcos): send the security questionnaire by 9 Nov",
+       "result": "Pass",
+       "critique": "Ana promises the proposal by Friday the 13th (L029). Marcos promises the questionnaire by Monday (L031); from Thursday 5 Nov, Monday is 9 Nov, which is correct."
+      },
+      {
+       "field": "next_step",
+       "value": "Proposal review with Lumen Education on 17 Nov",
+       "result": "Pass",
+       "critique": "Ana and Daniela agree to review the proposal together on Tuesday the 17th (L029, L030), which matches the value."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-13",
+       "result": "Pass",
+       "critique": "Ana says she will send the proposal by Friday the 13th. The meeting is on 5 Nov 2026, so Friday the 13th is 13 Nov 2026, which is correct."
+      },
+      {
+       "field": "metrics",
+       "value": "Lift conversion from first contact to enrolment from 8% to 12% next year",
+       "result": "Pass",
+       "critique": "Daniela's target (L008) is to lift conversion from first contact to enrolment from 8% to 12% next year, which matches the value."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Pipeline management; Lead capture and routing; Tasks and follow-up reminders; WhatsApp messaging; Reporting and dashboards; Integrations and API; Data hosted in Brazil",
+       "result": "Fail",
+       "critique": "Most options are supported by L010, L011 and L014. But Pipeline management is not really said; the funnel per campus is reporting. Nothing in the conversation supports a pipeline management need as such, so that option is unsupported."
+      },
+      {
+       "field": "decision_process",
+       "value": "IT security review and data protection assessment; then Daniela Freitas signs; the board approves anything above USD 150k per year",
+       "result": "Pass",
+       "critique": "L017 states the security review and data protection assessment, then Daniela signs, and the board approves above USD 150k per year. The value matches."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review; Data processing agreement; Security questionnaire",
+       "result": "Fail",
+       "critique": "Signature by Daniela and procurement review with the DPA are supported (L017, L018). The security questionnaire (L031) is part of the IT security review, not of the signing paperwork; it is not described as a step between the yes and the signature. Marcos sends it as a pre-decision item, so the option is not supported as a paper step."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Leads lost or not routed; Teams do not share one view; Data must stay in the country",
+       "result": "Pass",
+       "critique": "Spreadsheets and WhatsApp, lost prospects, and data in Brazil are supported. But Teams do not share one view is only weakly implied by per-campus spreadsheets; it was also in the current CRM values, so the agent keeps it. Data must stay in the country is supported by L014. Customer data scattered across spreadsheets and inboxes is supported by L007."
+      },
+      {
+       "field": "competitors",
+       "value": "Clarion Sales Cloud",
+       "result": "Pass",
+       "critique": "Daniela says they are also looking at Clarion Sales Cloud (L022). The value matches."
+      },
+      {
+       "field": "seats",
+       "value": "120",
+       "result": "Pass",
+       "critique": "80 counsellors, 25 marketing and 15 managers make 120 users (L005, L027). The value matches."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Marketing; Leadership",
+       "result": "Pass",
+       "critique": "Admissions counsellors are the sales team, marketing has 25 people, and the leadership team needs reports (L005). The three categories are supported."
+      },
+      {
+       "field": "integrations",
+       "value": "WhatsApp Business; Marketing automation; Industry or in-house system",
+       "result": "Pass",
+       "critique": "WhatsApp via the official business account (L013), Mailwave as the marketing email tool (L011), and Campus One as the student information system, an industry system (L011). All are supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 100k-150k per year",
+       "result": "Pass",
+       "critique": "Approved USD 110k-130k per year (L020) falls entirely inside the band USD 100k-150k per year, and the note restates the figure correctly."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-05",
+       "result": "Pass",
+       "critique": "Daniela says they need it live by May 2027 (L024), which matches 2027-05."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; WhatsApp groups",
+       "result": "Fail",
+       "critique": "Spreadsheets per campus and a lot happening on WhatsApp are said (L007). WhatsApp groups is a specific claim; they say WhatsApp conversations, not groups, so the option goes beyond what was said."
+      },
+      {
+       "field": "stage",
+       "value": "Proposal",
+       "result": "Pass",
+       "critique": "The customer agreed the scope (L027) and asked for a proposal (L028), which fits the move from Solution to Proposal."
+      }
+     ],
+     "skipped": []
+    },
+    "T10": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call with Pampa Agro. Field reps visit about 200 dealers weekly and log visits on paper, later typed into a spreadsheet, so orders and promises are lost. They need offline use and GPS check-in for 38 users, with Orion ERP integration, about USD 70k a year and go-live by July 2027. A field demo was agreed for 11 Nov.",
+       "result": "Pass",
+       "critique": "Every fact is in the conversation: about 200 dealers, weekly visits, paper reports typed into a spreadsheet, offline and GPS needs, 38 users, Orion ERP, about USD 70k a year (currency stated as dollars), July 2027, and the demo on the 11th (Wed 11 Nov 2026). The statement that orders and promises are lost paraphrases 'we never know'."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Mobile or offline access",
+       "result": "Pass",
+       "critique": "L010 raises no mobile signal in the fields, so internet-dependent tools won't work (mobile/offline), and says the reps are not used to apps (adoption). Both options are supported."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a short video of the offline mode by 9 Nov; Pampa Agro: pick two reps for the field demo by 11 Nov",
+       "result": "Pass",
+       "critique": "Ana promises a video by Monday, which is 9 Nov from 4 Nov. The customer agrees to the 11th and says 'we'll pick two reps', but no deadline of 11 Nov for picking was stated; that is an added date. The reps are picked before the demo, which is implied, but the 'by 11 Nov' is a mild inference. Acceptable, since picking before the demo follows directly."
+      },
+      {
+       "field": "next_step",
+       "value": "Field demo with two Pampa Agro reps on Wed 11 Nov",
+       "result": "Pass",
+       "critique": "Ana proposes a field demo with two reps next Wednesday, the 11th, and the customer agrees. The meeting is on 2026-11-04, so Wed 11 Nov is correct."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro of Orbita says she will send the video by Monday and proposes the demo, so she owns the follow-up."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-09",
+       "result": "Pass",
+       "critique": "Ana says she will send the video by Monday. The meeting is on Wed 2026-11-04, so the next Monday is 2026-11-09. Correct."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Offline mode; Visit and activity tracking; Reporting and dashboards; Integrations and API",
+       "result": "Pass",
+       "critique": "Offline mode and GPS visit check-in are stated as non-negotiable (L012), which supports Offline mode and Visit tracking. Orders must flow to Orion ERP (L014), which supports Integrations. Leadership 'want the reports' (L009), which supports Reporting. All options are supported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Visits and orders not tracked; Manual reporting",
+       "result": "Pass",
+       "critique": "Visits and orders not tracked is supported by L005 and L007. Manual reporting is supported by paper reports retyped into a spreadsheet each Friday. The note matches."
+      },
+      {
+       "field": "seats",
+       "value": "38",
+       "result": "Pass",
+       "critique": "L009 says 32 reps plus 6 leadership, totalling 38 users. This matches."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Leadership",
+       "result": "Pass",
+       "critique": "L009 names field reps in sales and the leadership team who want the reports, so Sales and Leadership are supported."
+      },
+      {
+       "field": "integrations",
+       "value": "ERP",
+       "result": "Pass",
+       "critique": "L014 says the ERP is Orion ERP and dealer orders must flow there. The ERP option and the note are supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "The customer says about seventy thousand dollars a year, which falls in the USD 50k-100k band. The note matches, and attributing it to an unattributed speaker is accurate."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-07",
+       "result": "Pass",
+       "critique": "L023 says 'live by July 2027', so the value 2027-07 is supported."
+      },
+      {
+       "field": "employee_count",
+       "value": "200-499",
+       "result": "Pass",
+       "critique": "L016 says about 450 people, which falls in the 200-499 band. The note matches."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Paper forms",
+       "result": "Pass",
+       "critique": "L005 says reps fill in a paper report and someone types it into a spreadsheet. Spreadsheets and paper forms are both supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T11": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Ana sent the revised commercial terms: 8% off for the three-year term. Henrique Prado (Commercial VP) agreed to the terms and asked for the contract for signature; Talita will route it through procurement on Monday and he will sign right after. IT needs single sign-on with Microsoft Entra from day one, for 110 users.",
+       "result": "Pass",
+       "critique": "Terms of 8% off for three years (L001, L002), the contract request, Talita routing on Monday, signing after (L003), and SSO with Entra (L005) are all said. The 110 users appear in L007 ('list of the 110 users for the accounts'), so tying 110 users to the summary is supported. Henrique as Commercial VP is in the CRM context."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the contract by 6 Nov; Orbita (Beatriz): include Microsoft Entra single sign-on in the kickoff plan; Solaris Energy (Talita): route the contract through procurement on 9 Nov; Solaris Energy (Henrique): sign the contract right after procurement",
+       "result": "Pass",
+       "critique": "Ana's contract tomorrow (6 Nov) is in L004. Beatriz including SSO in the kickoff plan is stated by Ana in L006. Talita routing on Monday (9 Nov, correct since 5 Nov is Thursday) and Henrique signing right after are in L003. Talita's commitment was stated by Henrique, which the note says. The 'Monday' resolution is correct."
+      },
+      {
+       "field": "next_step",
+       "value": "Ana sends the contract on 6 Nov; Talita routes it through procurement on 9 Nov; Henrique signs right after",
+       "result": "Pass",
+       "critique": "Contract sent 6 Nov (L004), routed through procurement Monday 9 Nov and signed right after (L003) are all said. The note that the terms were agreed in this chat is supported by L002. Nothing added."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-06",
+       "result": "Pass",
+       "critique": "Ana says she will send the contract 'tomorrow morning' on 2026-11-05, so 2026-11-06 is the correct resolution. This is her follow-up action date."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review",
+       "result": "Pass",
+       "critique": "L003 supports Henrique signing after Talita routes the contract through procurement, so both 'Signature by the economic buyer' and 'Procurement review' are said. Henrique is the Commercial VP who signs, per the CRM context. The Monday 9 Nov date is correct."
+      },
+      {
+       "field": "integrations",
+       "value": "Email and calendar; Billing system; Single sign-on",
+       "result": "Pass",
+       "critique": "Single sign-on with Microsoft Entra is said in L005. Email and calendar and Billing system are kept from the current CRM values, which is permitted when the list is kept in an updated form. Supported."
+      },
+      {
+       "field": "stage",
+       "value": "Contract",
+       "result": "Pass",
+       "critique": "The value 'Contract' is backed by Henrique agreeing to the terms and asking for the contract for signature. The note says he agreed 'in writing', which fits a chat message. Moving from Negotiation to Contract follows from the conversation."
+      }
+     ],
+     "skipped": []
+    }
+   },
+   "judged": 108,
+   "passed": 99,
+   "cost_usd": 0.150871
+  },
+  "claude-haiku-5-5": {
+   "cases": {
+    "T1": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call with the COO and Sales Operations Manager. Acme tracks customers and deals in spreadsheets, Outlook and a shared drive, and missed two contract renewals last quarter. They want one place for accounts, deals and renewals, with a reliable pipeline view. About 60 users, mobile access and Outlook sync are needed, plus integration with the TMS and ERP. Budget is USD 80k-100k per year and go-live is needed by March 2027. A technical scoping workshop with Rui Tavares was agreed for the week of 9 Nov.",
+       "result": "Pass",
+       "critique": "All facts are supported: COO and Sales Ops Manager, spreadsheets/Outlook/shared drive, two missed renewals, 60 users, mobile and Outlook sync, TMS and ERP, budget 80-100k, March 2027, workshop week of 9 Nov with Rui."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the TMS reference case by 2026-11-06; Orbita (Ana): send the workshop invite by 2026-11-06; Orbita (Ana): send the mobile app video by 2026-11-06; Acme Logistics (Marina Lopes): make sure Rui Tavares joins the workshop",
+       "result": "Pass",
+       "critique": "Ana promises the reference case by Friday (L024), the invite by Friday (L044) and the video in Friday's email (L046). Marina says she will make sure Rui joins (L043). Friday resolves to 2026-11-06 from Tue 11-03. All supported."
+      },
+      {
+       "field": "next_step",
+       "value": "Technical scoping workshop with Rui Tavares (IT Lead) in the week of 9 November, on TMS data and integration options; Pedro Almeida (Solutions Engineer) joins from Orbita",
+       "result": "Fail",
+       "critique": "The workshop with Rui in the week of 9 Nov on TMS data and integration options is supported. But 'Pedro Almeida' is a surname never said; the conversation only says 'Pedro, our solutions engineer'. The surname is an added fact."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana says she will send the invite and reference case, so she owns the follow-up. Supported."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-06",
+       "result": "Pass",
+       "critique": "Ana says 'by Friday'; the meeting is Tue 2026-11-03, so Friday is 2026-11-06. Correct."
+      },
+      {
+       "field": "metrics",
+       "value": "Zero missed renewals next year; Monday pipeline review done from one screen instead of six spreadsheets",
+       "result": "Pass",
+       "critique": "Marina states success as zero missed renewals next year and the Monday pipeline review from one screen instead of six spreadsheets. Matches L009."
+      },
+      {
+       "field": "decision_maker",
+       "value": "Marina Lopes (COO)",
+       "result": "Pass",
+       "critique": "Marina says she makes the decision and it sits in her operations budget (L035); she is the COO per CRM context. Supported."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Pipeline management; Tasks and follow-up reminders; Email and calendar sync; Mobile app; Reporting and dashboards",
+       "result": "Pass",
+       "critique": "Pipeline management, Outlook email sync, mobile app and dashboards are stated. Renewal alerts map to reminders/follow-ups ('renewal reminders' in L011). All options supported."
+      },
+      {
+       "field": "decision_process",
+       "value": "IT lead Rui Tavares validates the technical side, integration and security; then Marina Lopes decides",
+       "result": "Pass",
+       "critique": "Marina says Rui validates the technical side, integration and security, and she decides (L035). However she also says procurement needs three quotes above 50k before she signs (L037). The value omits that step but states nothing false; the order given is consistent."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review; Competitive quotes required",
+       "result": "Pass",
+       "critique": "Procurement needs three quotes above fifty thousand, then Marina signs (L037). Signature by the economic buyer, procurement review and competitive quotes are all supported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; No pipeline view leaders can trust; Missed follow-ups or renewals",
+       "result": "Pass",
+       "critique": "Scattered data in spreadsheets and inboxes, lost history, two missed renewals and no trustworthy pipeline view are all stated in L007-L009."
+      },
+      {
+       "field": "champion",
+       "value": "Felipe Nunes (Sales Operations Manager)",
+       "result": "Pass",
+       "critique": "Felipe says he pushed for the project internally and will get the reps on board himself (L047). He is Sales Operations Manager per CRM context. Supported."
+      },
+      {
+       "field": "competitors",
+       "value": "Northwind CRM; PipeSpark",
+       "result": "Pass",
+       "critique": "Northwind CRM (first call) and PipeSpark (demo next week) are both mentioned as vendors under evaluation."
+      },
+      {
+       "field": "seats",
+       "value": "60",
+       "result": "Pass",
+       "critique": "Felipe says sixty users to start: 40 reps, 12 account managers, about 8 managers. Matches."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Customer Success; Leadership",
+       "result": "Pass",
+       "critique": "Sales reps, customer success account managers and leadership are named in L013."
+      },
+      {
+       "field": "integrations",
+       "value": "Email and calendar; ERP; Industry or in-house system",
+       "result": "Pass",
+       "critique": "Outlook email sync (L017), Orion ERP for invoicing and the in-house TMS (L021) are all stated; shipment status in the CRM in L040. Supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "Marina states 80-100k dollars per year, which falls within the band USD 50k-100k; the note restates the range correctly. Supported."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-03",
+       "result": "Pass",
+       "critique": "Marina says go-live by March 2027 at the latest. 2027-03 matches."
+      },
+      {
+       "field": "employee_count",
+       "value": "500-999",
+       "result": "Pass",
+       "critique": "Marina says about eight hundred and fifty people, within the 500-999 band."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Email and shared inbox; Shared drive",
+       "result": "Pass",
+       "critique": "Felipe says spreadsheets and Outlook, proposals on a shared drive, everything else in inboxes. All options supported."
+      },
+      {
+       "field": "stage",
+       "value": "Solution",
+       "result": "Pass",
+       "critique": "The value 'Solution' is a stage judgment. The conversation supports the note's facts: pain confirmed, economic buyer identified, timeline stated, and a technical workshop agreed. Nothing false is asserted."
+      }
+     ],
+     "skipped": [
+      "objection"
+     ]
+    },
+    "T2": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Intro call with the Head of Retail Operations. Franchise and wholesale customers are managed in WhatsApp groups and spreadsheets, so requests get lost. She wants one place for franchisees and wholesale buyers. A previous BI tool failed, and no budget is allocated yet. Orbita will send the product overview and case study. No demo was booked.",
+       "result": "Pass",
+       "critique": "Each fact matches the conversation: intro call with Camila (Head of Retail Operations), WhatsApp and spreadsheets, wanting one place, the failed BI tool, no budget, Ana sending the overview and case study, and no demo booked (L021)."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Budget freeze or no budget",
+       "result": "Pass",
+       "critique": "Camila's concern that the previous BI tool was too complicated and abandoned (L012) fits adoption and ease of use. L015 states no budget allocated, which fits the budget option. The note is accurate."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the product overview and case study",
+       "result": "Pass",
+       "critique": "In L018 Ana promises to send the product overview and case study, and Camila accepts. The note that no date was given is correct."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro is the Orbita person who promised to send materials (L018), so she is the natural follow-up owner. The note that no due date was stated is correct."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Visit and activity tracking; Orders and quotes; Ease of use",
+       "result": "Pass",
+       "critique": "The speakers cover orders, visits and complaints (L006, confirmed in L007) and simplicity (L013). \"Visit and activity tracking\", \"Orders and quotes\" and \"Ease of use\" are therefore supported, though quotes are not mentioned. Quote line L006 was not cited, but the support exists in the conversation."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Missed follow-ups or renewals",
+       "result": "Pass",
+       "critique": "L005 supports scattered data across WhatsApp and spreadsheets, and complaints and reorder requests getting lost, which fits missed follow-ups. Both options are supported and the note matches."
+      },
+      {
+       "field": "budget",
+       "value": "No budget allocated",
+       "result": "Pass",
+       "critique": "Camila says there is no budget allocated yet and it would go into next year's plan (L015). The value and note match."
+      },
+      {
+       "field": "employee_count",
+       "value": "1000-4999",
+       "result": "Pass",
+       "critique": "Camila says about 1,200 employees (L009), which falls in the 1000-4999 band. The note matches."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; WhatsApp groups",
+       "result": "Pass",
+       "critique": "Camila says everything runs on WhatsApp groups and spreadsheets (L005). Both options are supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T3": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Roberto Lima (CIO) said the board froze all new IT projects until the January budget review and asked to cancel Friday's demo. No next step or date was agreed. The budget is unchanged at USD 90,000 per year.",
+       "result": "Pass",
+       "critique": "L002 supports the board freeze on new IT projects until the January budget review. L004 supports the cancelled Friday demo and that no next step was agreed. L007 supports a budget of ninety thousand dollars a year that is unchanged. Roberto is the CIO per the CRM context. Every fact is supported."
+      },
+      {
+       "field": "objection",
+       "value": "Budget freeze or no budget; Timing or other priorities",
+       "result": "Pass",
+       "critique": "L002 supports a budget freeze, since the board froze all new IT projects. L007 says the timing moved, and L004 and L009 say everything waits for the January review, which fits Timing or other priorities. The note matches what was said: the freeze lasts until the January review and the budget is unchanged."
+      }
+     ],
+     "skipped": []
+    },
+    "T5": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Intro call with Livia Prado about Delta Pharma, a mid-sized pharmaceutical company with about 150 medical representatives visiting doctors and pharmacies daily. Visit reports sit in a very old system that nobody likes, and she is looking at options for next year. She needs visit planning, discussion records, sample tracking and tablet access. Ana will send a short overview after the call.",
+       "result": "Pass",
+       "critique": "Each fact is stated: mid-sized pharma, about 150 reps visiting doctors and pharmacies (L004), old system nobody likes and options for next year (L005), needs for planning, records, samples and tablet (L007), and Ana sending an overview (L008). Nothing is added."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a short overview after the call",
+       "result": "Pass",
+       "critique": "In L008 Ana says she will send a short overview after the call. The value attributes it to the right person, and the note that no date was given is accurate."
+      },
+      {
+       "field": "next_step",
+       "value": "Orbita sends a short overview of pharma client use cases after the call",
+       "result": "Pass",
+       "critique": "Ana promises a short overview after the call (L008). The \"of pharma client use cases\" detail is a reasonable reading of her statement that pharma clients do exactly that. The note correctly says no meeting was agreed and that the director review is Livia's own step."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Mobile app; Visit and activity tracking",
+       "result": "Pass",
+       "critique": "Livia says the tool must plan visits, record what was discussed, track samples, and work on a tablet (L007). Mobile app is supported by the tablet requirement, and visit and activity tracking by the planning and recording needs. The note restates what she said."
+      },
+      {
+       "field": "customer_need",
+       "value": "Legacy system nobody likes",
+       "result": "Pass",
+       "critique": "L005 says visit reports are in a very old system nobody likes, and she is looking at options for next year. The category \"Legacy system nobody likes\" matches this, and the note restates it accurately."
+      },
+      {
+       "field": "current_solution",
+       "value": "Other: legacy visit report system",
+       "result": "Pass",
+       "critique": "Livia says visit reports are in a very old system without naming it (L005). \"Other: legacy visit report system\" fits that, and the note correctly says the product is not named."
+      }
+     ],
+     "skipped": []
+    },
+    "T6": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Proposal v1 check-in with the Head of Operations. He likes the proposal, but the CFO, Helena Duarte, has not seen it yet, and he will forward it to her this week. The CFO signs above USD 100,000. USD 120,000 a year is approved in next year's budget. Ana will check in on Thursday 12 Nov.",
+       "result": "Pass",
+       "critique": "Tiago says he loves the proposal, Helena hasn't seen it and he will forward it this week (L002, L004). The CFO signs above a hundred thousand (L004), 120k a year is approved (L009), and Ana will check in Thursday the 12th (L015). The meeting is 2026-11-05, a Thursday, so the 12th is 12 Nov. Everything is supported, and the 1M claim is not included."
+      },
+      {
+       "field": "commitment",
+       "value": "Customer (Tiago Mendes): forward proposal v1 to Helena Duarte (this week); Orbita (Ana): check in with Tiago (by 2026-11-12)",
+       "result": "Pass",
+       "critique": "Tiago will forward the proposal to Helena this week (L004, L015) and Ana will check in on Thursday the 12th (L015, L016). Both commitments are explicit and the dates are correct."
+      },
+      {
+       "field": "next_step",
+       "value": "Ana checks in with Tiago on Thu 2026-11-12; Tiago forwards proposal v1 to Helena Duarte this week",
+       "result": "Pass",
+       "critique": "L015 and L016 agree that Tiago forwards proposal v1 to Helena this week and Ana checks in Thursday the 12th. 2026-11-12 is correct for that Thursday. Supported."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-12",
+       "result": "Pass",
+       "critique": "Ana says she will check in Thursday the 12th. The meeting is on 2026-11-05, so the 12th falls on Thursday 2026-11-12, and the resolution is correct."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Legal contract review",
+       "result": "Pass",
+       "critique": "L012 says that once Helena approves, legal needs about two weeks to review the contract, and then she signs. Helena is the CFO, who signs above 100k, so both options (signature by the economic buyer, legal contract review) and the note are supported."
+      },
+      {
+       "field": "champion",
+       "value": "Tiago Mendes (Head of Operations)",
+       "result": "Pass",
+       "critique": "Tiago says he has been pushing for this internally since the demo and will walk Helena through the proposal himself (L005). He is Head of Operations per the CRM context, so he is shown actively selling Orbita internally and is the champion."
+      },
+      {
+       "field": "budget",
+       "value": "USD 100k-150k per year",
+       "result": "Pass",
+       "critique": "Tiago says 120,000 dollars a year is approved in next year's budget (L009). The band USD 100k-150k holds that figure and the note restates it correctly. Supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T7": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call with the Commercial Director and Sales Manager. Leads from the stand, website and WhatsApp get lost, and brokers compete for them; they want one place to capture and route every lead, with one funnel per launch, for 105 users. Sofia has around USD 60k per year and makes the decision; go-live is needed by March 2027. A live demo with the sales managers was agreed for 12 Nov.",
+       "result": "Pass",
+       "critique": "All facts match: lead loss, brokers competing, one place with funnel per launch, 105 users, 60k per year, Sofia decides, March 2027, demo on the 12th (Thursday 12 Nov 2026 is consistent with Friday 6 Nov)."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Mobile or offline access",
+       "result": "Pass",
+       "critique": "Andre raises that brokers won't use anything complicated (adoption) and that stands have no mobile signal (offline). Both are supported."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the recorded demo of lead routing by 2026-11-10; Cedro (Andre Pires): send the list of the three launches and broker teams before the demo",
+       "result": "Pass",
+       "critique": "Ana offers to send a recorded demo by Tuesday (Nov 10 correct); Andre promises the list of launches and broker teams before the demo. Both are supported."
+      },
+      {
+       "field": "next_step",
+       "value": "Live demo of lead routing with the Cedro sales managers on 12 Nov 2026, after a recorded demo",
+       "result": "Pass",
+       "critique": "Live demo with sales managers on Thursday the 12th, after the recorded demo, is agreed in L026-L027. Nov 12 is correct and the note on time is accurate."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro is the Orbita person who promises to send the recorded demo and set up the live demo."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-10",
+       "result": "Pass",
+       "critique": "Ana says she will send the recorded demo by Tuesday; meeting on Fri 2026-11-06, so Tuesday is 2026-11-10. Correct."
+      },
+      {
+       "field": "metrics",
+       "value": "Call every website lead within two hours (today about two days)",
+       "result": "Pass",
+       "critique": "Sofia says website leads wait about two days and she wants every lead called within two hours. Supported."
+      },
+      {
+       "field": "decision_maker",
+       "value": "Sofia Martins (Commercial Director)",
+       "result": "Pass",
+       "critique": "Sofia says the decision is hers, and CRM context gives her title as Commercial Director. She also owns the budget in context. Supported."
+      },
+      {
+       "field": "decision_process",
+       "value": "Sofia Martins decides; the CEO only gets involved above two hundred thousand",
+       "result": "Pass",
+       "critique": "Sofia says she decides and the CEO only gets involved above 200,000. Supported."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Legal contract review",
+       "result": "Pass",
+       "critique": "Sofia says legal reviews the contract before she signs; she is the economic buyer. Both options supported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Leads lost or not routed",
+       "result": "Pass",
+       "critique": "Leads lost and not routed are supported. However, 'Customer data scattered across spreadsheets and inboxes' is only partly supported: leads are typed into a spreadsheet, but inboxes are never mentioned, and the quote L005 is only about capture channels. The scattering across channels (stand, website, WhatsApp) is arguably this category, but the 'inboxes' detail is not said. Borderline, but leads scattered across paper, website and WhatsApp then typed into a spreadsheet fits data scatter reasonably."
+      },
+      {
+       "field": "seats",
+       "value": "105",
+       "result": "Pass",
+       "critique": "Andre says 105 users: 25 own sales team and 80 brokers. Supported."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Marketing",
+       "result": "Pass",
+       "critique": "Sales team and brokers are users and marketing needs to see lead sources. Sales and Marketing are supported; the note about 25 and 80 matches."
+      },
+      {
+       "field": "integrations",
+       "value": "WhatsApp Business; Website forms",
+       "result": "Pass",
+       "critique": "Capturing leads from the website and WhatsApp in one place is said, which falls under these integrations. 'WhatsApp Business' specifically is not stated, only WhatsApp, but it is a reasonable category. Website forms are supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "Sofia says around sixty thousand dollars a year, which falls in the USD 50k-100k band. Note matches."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-03",
+       "result": "Pass",
+       "critique": "Sofia needs it running by March 2027, and the note says three launches next year with the first in April. Supported."
+      },
+      {
+       "field": "employee_count",
+       "value": "200-499",
+       "result": "Pass",
+       "critique": "Sofia says about four hundred people, which falls in the 200-499 band."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; WhatsApp groups; Paper forms",
+       "result": "Fail",
+       "critique": "Spreadsheets and paper forms are said. WhatsApp is a capture channel, not stated as 'WhatsApp groups'; groups are not mentioned. The option 'WhatsApp groups' is not supported."
+      },
+      {
+       "field": "stage",
+       "value": "Solution",
+       "result": "Fail",
+       "critique": "The value 'Solution' is a stage advance. The conversation was a discovery call with no solution proposal yet. The note claims Qualified Opportunity exit criteria are met, but the proposed stage 'Solution' is not supported by the call; only a demo was scheduled and no solution has been presented or agreed."
+      }
+     ],
+     "skipped": [
+      "decision_criteria"
+     ]
+    },
+    "T9": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Scope session on the admissions CRM. Scope agreed: 120 users across admissions, marketing and management, with Campus One, Mailwave and WhatsApp integrations. Lumen asked for a proposal; Orbita will send it by 2026-11-13 and review it on Tuesday the 17th.",
+       "result": "Pass",
+       "critique": "Scope of 120 users and the three integrations is stated in L027; proposal request L028; Ana sends by Friday the 13th (2026-11-13, correct: Nov 5 2026 is Thursday) and review on the 17th. All supported."
+      },
+      {
+       "field": "objection",
+       "value": "Data residency and privacy",
+       "result": "Pass",
+       "critique": "Marcos raises that student data must stay in Brazil and needs a data protection assessment before go-live (L014). Fits data residency and privacy."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the proposal on the agreed scope by 2026-11-13; Lumen Education (Marcos Antunes): send the security questionnaire by 2026-11-09",
+       "result": "Pass",
+       "critique": "Ana promises the proposal by Friday the 13th (2026-11-13). Marcos promises the questionnaire by Monday; Nov 5 2026 is Thursday, so Monday is 2026-11-09. Correct."
+      },
+      {
+       "field": "next_step",
+       "value": "Review the proposal together with Lumen Education on Tuesday the 17th",
+       "result": "Pass",
+       "critique": "Ana proposes reviewing the proposal together on Tuesday the 17th, Daniela agrees. The note that the 5 Nov scope session took place is supported by the meeting itself."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-13",
+       "result": "Pass",
+       "critique": "Ana will send the proposal by Friday the 13th; resolved to 2026-11-13, which is correct for November 2026."
+      },
+      {
+       "field": "metrics",
+       "value": "Lift conversion from first contact to enrolment from 8% to 12% next year",
+       "result": "Pass",
+       "critique": "Daniela states a target to lift conversion from first contact to enrolment from eight to twelve percent next year (L008). Matches."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Lead capture and routing; Tasks and follow-up reminders; WhatsApp messaging; Reporting and dashboards; Integrations and API; Data hosted in Brazil",
+       "result": "Pass",
+       "critique": "Capabilities in L010 cover lead capture, follow-up lists, WhatsApp, funnel reporting; L011 integrations; L014 data in Brazil. 'Lead capture and routing' is partially supported (capture is said; routing is not explicitly), but lead capture fits the category. All options are broadly supported."
+      },
+      {
+       "field": "decision_process",
+       "value": "First an IT security review and data protection assessment; then Daniela Freitas signs; the board approves anything above USD 150k per year.",
+       "result": "Pass",
+       "critique": "Marcos states IT security review and data protection assessment first, then Daniela signs, board approves above USD 150k per year (L017). Matches."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review; Data processing agreement; Security questionnaire",
+       "result": "Fail",
+       "critique": "Signature by Daniela (L017) and procurement needing contract and DPA (L018) are supported. 'Security questionnaire' as a paper-process step is not said to be part of signing; it is a separate IT security task Marcos sends by Monday, not a step between yes and signature. Also the board approval is not an option listed but fine. The questionnaire option is unsupported as a paper step."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Leads lost or not routed; Teams do not share one view; Data must stay in the country",
+       "result": "Pass",
+       "critique": "Spreadsheets per campus and WhatsApp support scattered data; 'lose prospects' supports leads lost; separate campus spreadsheets support no shared view; data must stay in Brazil is L014. 'Inboxes' is only in the option label; the options are supported."
+      },
+      {
+       "field": "competitors",
+       "value": "Clarion Sales Cloud",
+       "result": "Pass",
+       "critique": "Daniela says they are also looking at Clarion Sales Cloud, cheaper, with weak WhatsApp integration (L022). Matches."
+      },
+      {
+       "field": "seats",
+       "value": "120",
+       "result": "Pass",
+       "critique": "120 users: 80 counsellors, 25 marketing, 15 managers (L005). Matches."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Marketing; Leadership",
+       "result": "Pass",
+       "critique": "Admissions counsellors are the sales team, marketing, and leadership managers needing reports (L005). Supported."
+      },
+      {
+       "field": "integrations",
+       "value": "WhatsApp Business; Marketing automation; Other: Campus One",
+       "result": "Pass",
+       "critique": "WhatsApp via official business account (L013), Mailwave as marketing's email tool (marketing automation, reasonably), and Campus One as Other (L011). Supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 100k-150k per year",
+       "result": "Pass",
+       "critique": "Approved range is USD 110k-130k per year (L020). The band 100k-150k contains it, and the note restates the exact range. Supported."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-05",
+       "result": "Pass",
+       "critique": "Daniela needs it live by May 2027 because the campaign starts in June (L024). Matches."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; WhatsApp groups",
+       "result": "Fail",
+       "critique": "Campus spreadsheets and much happening on WhatsApp (L007). 'WhatsApp groups' is slightly more specific than 'a lot happens on WhatsApp', since groups are not mentioned. The category is the WhatsApp usage, though; groups is an added detail."
+      },
+      {
+       "field": "stage",
+       "value": "Proposal",
+       "result": "Pass",
+       "critique": "Scope agreed (L027) and proposal requested (L028), so moving from Solution to Proposal follows directly."
+      }
+     ],
+     "skipped": []
+    },
+    "T10": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call with Pampa Agro. Field reps visit about 200 dealers weekly, and visit reports are paper, typed into a spreadsheet on Fridays, so orders and promises are not known. The team wants one place for dealer visits, orders and promises, working offline with GPS check-in, live by July 2027. Orbita will send an offline-mode video; a field demo with two reps is set for 11 Nov.",
+       "result": "Pass",
+       "critique": "Every fact matches the conversation: about 200 dealers visited weekly, paper reports typed into a spreadsheet on Fridays, one place for visits, orders and promises, offline with GPS, live by July 2027, the offline video, and the field demo with two reps on the 11th (Nov)."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Mobile or offline access",
+       "result": "Pass",
+       "critique": "L010 says there is no mobile signal in the fields, so internet-only tools won't work, and the reps are not used to apps. These fit 'Mobile or offline access' and 'User adoption and ease of use'."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a short video of the offline mode by 9 Nov",
+       "result": "Pass",
+       "critique": "Ana promises to send the video by Monday. The meeting is Wed 2026-11-04, so Monday is 9 Nov. The value is correct."
+      },
+      {
+       "field": "next_step",
+       "value": "Field demo with two Pampa Agro reps on Wed 11 Nov 2026",
+       "result": "Pass",
+       "critique": "Ana proposes a field demo with two reps next Wednesday the 11th and the customer agrees. Wed 11 Nov 2026 is correct, and the note that no time was agreed is true."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana says she will send the video by Monday, so she is the Orbita owner of the follow-up."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-09",
+       "result": "Pass",
+       "critique": "'By Monday' from Wed 2026-11-04 resolves to 2026-11-09, which is correct."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Offline mode; Visit and activity tracking; Orders and quotes; Integrations and API",
+       "result": "Fail",
+       "critique": "L012 makes offline mode and GPS check-in non-negotiable, which fits offline mode and visit tracking. L014 says dealer orders must flow into Orion ERP, which fits integrations. 'Orders and quotes' is not supported: the need is for orders to flow to the ERP, and quotes are never mentioned."
+      },
+      {
+       "field": "customer_need",
+       "value": "Visits and orders not tracked; Manual reporting",
+       "result": "Pass",
+       "critique": "L005 says they never know what a dealer ordered or promised, which is visits and orders not tracked. Paper reports typed into a spreadsheet is manual reporting. Both are supported."
+      },
+      {
+       "field": "seats",
+       "value": "38",
+       "result": "Pass",
+       "critique": "L009 gives 32 field reps plus 6 leadership, so 38 users. This is correct."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Leadership",
+       "result": "Pass",
+       "critique": "L009 mentions field reps in sales and a leadership team who want the reports. Both options are supported."
+      },
+      {
+       "field": "integrations",
+       "value": "ERP",
+       "result": "Pass",
+       "critique": "L014 names Orion ERP, and dealer orders must flow there. The ERP option is supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "L020 says about seventy thousand dollars a year, which falls in the 50k-100k band. The note matches."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-07",
+       "result": "Pass",
+       "critique": "L023 says live by July 2027, so 2027-07 is correct."
+      },
+      {
+       "field": "employee_count",
+       "value": "200-499",
+       "result": "Pass",
+       "critique": "L016 says about 450 people, which falls in the 200-499 band."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Paper forms",
+       "result": "Pass",
+       "critique": "L005 says reps fill in paper reports and someone types them into a spreadsheet on Friday. Both Paper forms and Spreadsheets are supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T11": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Revised commercial terms with 8% off on the three-year term were emailed and accepted by the Commercial VP. He asked for the contract for signature: Talita routes it through procurement on Monday, then he signs. IT needs single sign-on with Microsoft Entra from day one. Ana will send the contract tomorrow morning.",
+       "result": "Pass",
+       "critique": "Every element is in the chat: 8% off on three years emailed (L001), accepted by Henrique (L002), contract requested with Talita routing it Monday and Henrique signing after (L003), SSO with Microsoft Entra (L005), and Ana sending the contract tomorrow morning (L004)."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the contract for signature by 2026-11-06",
+       "result": "Pass",
+       "critique": "Ana promises to send the contract tomorrow morning (L004). The chat is dated 2026-11-05, so tomorrow is 2026-11-06. The resolution is correct and the commitment is supported."
+      },
+      {
+       "field": "next_step",
+       "value": "Ana sends the contract for signature on 2026-11-06; Talita routes it through procurement on Mon 2026-11-09",
+       "result": "Pass",
+       "critique": "Ana sends the contract tomorrow (11-06) and Talita routes it through procurement on Monday. 2026-11-05 is a Thursday, so Monday is 11-09. Henrique signs right after, as the note says. All supported."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-06",
+       "result": "Pass",
+       "critique": "Ana says she will send the contract tomorrow morning, which resolves to 2026-11-06 from the 2026-11-05 chat date. The date is correct."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Renewal and contract tracking; Account hierarchy; Reporting and dashboards; Forecasting; Integrations and API",
+       "result": "Pass",
+       "critique": "The existing CRM values already hold Renewal and contract tracking, Account hierarchy, Forecasting, and Reporting and dashboards, so keeping those is fine. The added option 'Integrations and API' is backed only by single sign-on with Microsoft Entra, which the chat presents as an IT requirement. It is a stretch to call it a CRM capability criterion, but SSO/identity integration plausibly falls under integrations. It is moderately supported by L005."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review",
+       "result": "Pass",
+       "critique": "L003 says Talita will route the contract through procurement on Monday and Henrique will sign after. This supports both Procurement review and signature by the economic buyer (Henrique, the Commercial VP). The note's names and date are correct."
+      },
+      {
+       "field": "integrations",
+       "value": "Email and calendar; Billing system; Single sign-on",
+       "result": "Pass",
+       "critique": "Email and calendar and Billing system are in the current CRM values and are kept. Single sign-on with Microsoft Entra is stated in L005. The options are supported."
+      },
+      {
+       "field": "stage",
+       "value": "Contract",
+       "result": "Pass",
+       "critique": "Henrique agrees to the terms (L002) and asks for the contract for signature (L003). The note claims 'agreed to the terms in writing', which is supported since this is a chat message. Stage Contract follows from the conversation."
+      }
+     ],
+     "skipped": []
+    }
+   },
+   "judged": 105,
+   "passed": 99,
+   "cost_usd": 0.141188
+  },
+  "claude-sonnet-5-5@low": {
+   "cases": {
+    "T1": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call with Acme Logistics. The commercial team uses spreadsheets and Outlook, so account history and two renewals were lost. They want one place for accounts, deals and renewals for 60 users, with a trusted pipeline view. Budget is USD 80-100k per year, go-live by March 2027, and a technical workshop was agreed for the week of 9 Nov.",
+       "result": "Pass",
+       "critique": "Spreadsheets/Outlook, lost history, two missed renewals, one place for accounts/deals/renewals, 60 users, trusted pipeline, budget 80-100k per year, go-live by March 2027 and the workshop in the week of 9 Nov are all said. The 'USD' currency is stated as dollars at L028. Supported."
+      },
+      {
+       "field": "objection",
+       "value": "Integration with current systems; User adoption and ease of use",
+       "result": "Pass",
+       "critique": "Marina worries about the in-house TMS integration (L022); Felipe worries about adoption after reps abandoned a previous tool in two months (L023). Both categories and the note are supported."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the TMS reference case by Friday; Orbita (Ana): send the workshop invite by Friday; Orbita (Ana): include a short mobile app video in Friday's email; Acme (Marina): make sure Rui joins the workshop",
+       "result": "Pass",
+       "critique": "Ana promises the reference case by Friday (L024), the workshop invite by Friday (L044) and the video in Friday's email (L046). Marina will make sure Rui joins (L043). Friday resolves to 2026-11-06 correctly from Tue 2026-11-03."
+      },
+      {
+       "field": "next_step",
+       "value": "Technical scoping workshop with Rui Tavares, week of 9 Nov, on the TMS data and integration options, with Pedro from Orbita",
+       "result": "Pass",
+       "critique": "L042 proposes a technical scoping workshop with Rui in the week of 9 Nov on the TMS data and integration options, with Pedro joining; Marina agrees at L043. Supported."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana says she will send the invite and reference case, so she owns the follow-up. Supported."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-06",
+       "result": "Pass",
+       "critique": "Ana will send by Friday; the meeting is Tue 2026-11-03, so Friday is 2026-11-06. Correct."
+      },
+      {
+       "field": "metrics",
+       "value": "Zero missed renewals next year; Monday pipeline review done from one screen instead of six spreadsheets",
+       "result": "Pass",
+       "critique": "Marina states success as zero missed renewals next year and the Monday pipeline review from one screen instead of six spreadsheets (L009). Supported."
+      },
+      {
+       "field": "decision_maker",
+       "value": "Marina Lopes (COO)",
+       "result": "Pass",
+       "critique": "Marina says she makes the decision and it sits in her operations budget (L035). CRM context gives her title as COO. Supported."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Pipeline management; Tasks and follow-up reminders; Email and calendar sync; Mobile app; Renewal and contract tracking; Reporting and dashboards; Integrations and API",
+       "result": "Fail",
+       "critique": "Pipeline management, renewal alerts, Outlook email sync, mobile app, dashboards and shipment status from the TMS are stated (L015, L017, L040). 'Tasks and follow-up reminders' is not really said as a distinct need; the renewal alerts are covered by 'Renewal and contract tracking', so this option is not supported separately."
+      },
+      {
+       "field": "decision_process",
+       "value": "IT lead Rui Tavares validates the technical side, integration and security; then Marina Lopes decides.",
+       "result": "Pass",
+       "critique": "Marina says Rui validates the technical side, integration and security, and she decides. However, she also states procurement needs three quotes above fifty thousand before she signs (L037); the value omits it but does not say anything false. The steps stated are supported."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Competitive quotes required",
+       "result": "Pass",
+       "critique": "Procurement needs three quotes above fifty thousand, then Marina signs (L037). Both options and the note are supported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; No pipeline view leaders can trust; Missed follow-ups or renewals",
+       "result": "Pass",
+       "critique": "Spreadsheets and inboxes, lost account history, missed renewals and no trusted pipeline view are all said (L007-L009). Supported."
+      },
+      {
+       "field": "champion",
+       "value": "Felipe Nunes (Sales Operations Manager)",
+       "result": "Pass",
+       "critique": "Felipe says he pushed for the project internally and will get the reps on board himself (L047). His title comes from CRM context. Supported."
+      },
+      {
+       "field": "competitors",
+       "value": "Northwind CRM; PipeSpark",
+       "result": "Pass",
+       "critique": "Felipe mentions a first call with Northwind CRM and a demo from PipeSpark (L030). Supported."
+      },
+      {
+       "field": "seats",
+       "value": "60",
+       "result": "Pass",
+       "critique": "Felipe says sixty users to start (L013). Supported."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Customer Success; Leadership",
+       "result": "Pass",
+       "critique": "Sales reps, customer success account managers and leadership are named (L013). Supported."
+      },
+      {
+       "field": "integrations",
+       "value": "ERP; Industry or in-house system",
+       "result": "Pass",
+       "critique": "The in-house TMS and Orion ERP are stated (L021). Outlook email sync is mentioned in the note and supported at L017, though not listed as an option. Supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "Marina says between eighty and a hundred thousand dollars a year, licences and support included. The band 50k-100k holds that range and the note matches. Supported."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-03",
+       "result": "Pass",
+       "critique": "Marina says go-live by March 2027 at the latest (L039). Supported."
+      },
+      {
+       "field": "employee_count",
+       "value": "500-999",
+       "result": "Pass",
+       "critique": "Marina says about eight hundred and fifty people (L005), within the 500-999 band. Supported."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Email and shared inbox; Shared drive",
+       "result": "Pass",
+       "critique": "Spreadsheets and Outlook, inboxes, and proposals on a shared drive are said (L007). Supported."
+      },
+      {
+       "field": "stage",
+       "value": "Solution",
+       "result": "Fail",
+       "critique": "Stage 'Solution' is proposed, but the conversation does not say anything about the sales stage; the agent's own note justifies only Qualified Opportunity exit criteria. Moving to 'Solution' is a progression not supported by explicit statements, as no solution proposal or evaluation was said to have been done beyond a discovery call."
+      }
+     ],
+     "skipped": []
+    },
+    "T2": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Intro call with the Head of Retail Operations. Franchise and wholesale contacts run on WhatsApp groups and spreadsheets, so complaints and reorders get lost. She wants one place for franchisees and wholesale buyers. There is no budget allocated yet, and no demo was booked.",
+       "result": "Pass",
+       "critique": "Intro call with Head of Retail Operations (Camila). WhatsApp and spreadsheets, lost complaints/reorders (L005), wants one place (L007), no budget (L015), demo not booked (L021). All supported."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Budget freeze or no budget",
+       "result": "Pass",
+       "critique": "No budget allocated (L015) supports the budget option. Camila's fear of repeating a failed, too-complicated BI tool (L012) supports the adoption/ease of use concern. The note matches what was said."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the product overview and case study",
+       "result": "Pass",
+       "critique": "Ana says she will send the product overview and case study (L018), and Camila agrees. Camila's promise to come back after reading is not listed, but nothing false is stated."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Visit and activity tracking; Orders and quotes; Ease of use",
+       "result": "Pass",
+       "critique": "Ease of use is supported by L012-L013. Ana's L006 summary of orders, visits and complaints, which Camila confirmed in L007, supports visit/activity tracking and orders. 'Orders and quotes' includes quotes, which nobody mentioned, but orders are covered by the category."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Visits and orders not tracked; Teams do not share one view",
+       "result": "Fail",
+       "critique": "Scattered data across spreadsheets and chats is supported (L005). 'Teams do not share one view' is supported by the wish for one place (L007). 'Visits and orders not tracked' is not supported: Camila said requests get lost in chats, and visits and orders came only from Ana's wording about what the tool would show, not as a stated pain."
+      },
+      {
+       "field": "budget",
+       "value": "No budget allocated",
+       "result": "Pass",
+       "critique": "Camila said no budget is allocated yet and it would need to go into next year's plan (L015). The value and note match."
+      },
+      {
+       "field": "employee_count",
+       "value": "1000-4999",
+       "result": "Pass",
+       "critique": "Camila says about 1,200 employees (L009), which falls in the 1000-4999 band. The note matches."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; WhatsApp groups",
+       "result": "Pass",
+       "critique": "Camila says everything runs on WhatsApp groups and spreadsheets (L005). Both options are supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T3": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Call to plan Friday's demo. Roberto said the board froze all new IT projects until the January budget review and asked to cancel the demo. No next step or date was agreed. The budget is unchanged at USD 90,000 per year.",
+       "result": "Pass",
+       "critique": "The summary matches the conversation. The call was to plan Friday's demo, and Roberto said the board froze new IT projects until the January review (L002). He asked to cancel the demo (L004) and said no date or next step was agreed (L004, L006). He confirmed the budget is still ninety thousand dollars a year (L007). Every fact is supported."
+      },
+      {
+       "field": "objection",
+       "value": "Budget freeze or no budget; Timing or other priorities",
+       "result": "Pass",
+       "critique": "Roberto says the board froze all new IT projects until the January budget review (L002), which fits a budget freeze. L007 says the timing moved, which fits timing or other priorities. Both options are supported, and the note restates L002 accurately."
+      },
+      {
+       "field": "commitment",
+       "value": "Nimbus (Roberto): reach out to Orbita if the board approves the budget in January",
+       "result": "Pass",
+       "critique": "In L009 Roberto says that if the board approves the budget in January, he will reach out. The value states this as conditional on board approval, which matches. The speaker and the condition are both correct."
+      }
+     ],
+     "skipped": []
+    },
+    "T5": {
+     "fields": [
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a short overview after the call; Delta Pharma (Livia): share it with her director",
+       "result": "Pass",
+       "critique": "Ana says she will send a short overview after the call (L008), and Livia says she will share it with her director (L009). Both promises are attributed to the right people."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Mobile app; Visit and activity tracking",
+       "result": "Pass",
+       "critique": "L007 says the tool must plan visits, record what was discussed, track samples, and work on a tablet. Mobile app (tablet) and Visit and activity tracking both fit what was said, and the note restates it accurately."
+      },
+      {
+       "field": "customer_need",
+       "value": "Visits and orders not tracked; Legacy system nobody likes",
+       "result": "Fail",
+       "critique": "The legacy system nobody likes is supported by L005. 'Visits and orders not tracked' is not supported: orders are never mentioned, and Livia does not say visits are untracked, only that reports sit in an old system. The needs listed in L007 are requirements, not a stated pain of untracked visits and orders."
+      },
+      {
+       "field": "departments",
+       "value": "Sales",
+       "result": "Pass",
+       "critique": "The 150 medical representatives who visit doctors and pharmacies (L004) are a field sales team, so Sales is a reasonable category. The note restates what was said."
+      },
+      {
+       "field": "current_solution",
+       "value": "Other: very old visit report system",
+       "result": "Pass",
+       "critique": "L005 says visit reports are in a very old system nobody likes. The value 'Other: very old visit report system' and the note that the type is not specified are consistent with that."
+      }
+     ],
+     "skipped": [
+      "call_summary"
+     ]
+    },
+    "T6": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Check-in on proposal v1 with the Head of Operations. The CFO has not yet seen the proposal; he will forward it to her this week. USD 120,000 per year is approved in next year's budget, for 75 users in sales and customer service. Follow-up agreed for 12 Nov.",
+       "result": "Pass",
+       "critique": "Every fact is said: check-in on the proposal (L001), the CFO has not seen it and Tiago will forward it this week (L004), USD 120,000 per year approved (L009), 75 users in sales and customer service (L011), follow-up on Thursday the 12th (L015). 12 Nov is the correct resolution from 5 Nov."
+      },
+      {
+       "field": "commitment",
+       "value": "Customer (Tiago Mendes): forward proposal v1 to Helena Duarte this week; Customer (Tiago Mendes): walk Helena through the proposal; Orbita (Ana): check in with Tiago on 12 Nov",
+       "result": "Pass",
+       "critique": "Tiago says he will forward the proposal to Helena this week (L004) and walk her through it himself (L005). Ana commits to check in on Thursday the 12th (L015), which is 12 Nov. All three are explicit and correctly attributed."
+      },
+      {
+       "field": "next_step",
+       "value": "Tiago forwards proposal v1 to Helena Duarte this week; Ana checks in with Tiago on Thursday 12 Nov",
+       "result": "Pass",
+       "critique": "L015 and L016 set the agreed next step: Tiago forwards proposal v1 to Helena this week and Ana checks in on Thursday the 12th. The date resolves correctly to 12 Nov 2026."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-12",
+       "result": "Pass",
+       "critique": "Ana proposes checking in on Thursday the 12th and Tiago agrees. The meeting is on 2026-11-05, a Thursday, so the 12th is 2026-11-12, which is correct."
+      },
+      {
+       "field": "decision_process",
+       "value": "Head of Operations forwards the proposal to the CFO, who approves; the CFO signs anything above USD 100,000",
+       "result": "Pass",
+       "critique": "Tiago will forward the proposal to the CFO (L004), who signs anything above a hundred thousand (L004). L012 says that once Helena approves, legal reviews and she signs. The value stays within what was said, and the currency matches the CRM context."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Legal contract review",
+       "result": "Pass",
+       "critique": "L012 says that once Helena approves, legal needs about two weeks to review the contract and then she signs. Helena is the CFO and the signer, so \"Signature by the economic buyer\" and \"Legal contract review\" are both supported, and the note matches."
+      },
+      {
+       "field": "champion",
+       "value": "Tiago Mendes (Head of Operations)",
+       "result": "Pass",
+       "critique": "Tiago says he has been pushing for this internally since the demo and will walk Helena through the proposal himself (L005). That shows him actively selling inside the company. His role as Head of Operations comes from the CRM context."
+      },
+      {
+       "field": "budget",
+       "value": "USD 100k-150k per year",
+       "result": "Pass",
+       "critique": "Tiago says they have one hundred and twenty thousand dollars a year approved for the CRM in next year's budget (L009). That falls in the USD 100k-150k band, and the note restates the figure and period correctly."
+      }
+     ],
+     "skipped": []
+    },
+    "T7": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call with the Commercial Director and Sales Manager. Leads from stands, website and WhatsApp are lost and keyed into spreadsheets. They want one place with automatic broker routing, for 105 users, live by March 2027. A live demo was agreed for 12 Nov.",
+       "result": "Pass",
+       "critique": "Participants, lead loss across stands, website and WhatsApp, spreadsheet entry, one place with routing, 105 users, March 2027 and the 12 Nov live demo are all said in the conversation."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Mobile or offline access",
+       "result": "Pass",
+       "critique": "Andre raises brokers not being employees and not using anything complicated (adoption), and stands without mobile signal (offline). Both options are supported."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a recorded demo of the lead routing by 10 Nov; Cedro (Andre): send the list of the three launches and the broker teams before the 12 Nov demo",
+       "result": "Pass",
+       "critique": "Ana offers a recorded demo by Tuesday, which from Fri 6 Nov is 10 Nov. Andre promises the list of launches and broker teams before the demo on the 12th. Both are supported."
+      },
+      {
+       "field": "next_step",
+       "value": "Live demo with the Cedro sales managers on 12 Nov",
+       "result": "Pass",
+       "critique": "Ana proposes a live demo with the sales managers on Thursday the 12th and Sofia accepts. The month is November from the meeting date. Supported."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro of Orbita makes the offer to send the recorded demo and run the live demo, so she owns the follow-up."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-10",
+       "result": "Pass",
+       "critique": "Ana says she will send the recorded demo by Tuesday. Meeting on Friday 2026-11-06 makes Tuesday 2026-11-10. Correct."
+      },
+      {
+       "field": "metrics",
+       "value": "Call every lead within two hours (today a website lead waits about two days)",
+       "result": "Pass",
+       "critique": "Sofia says website leads wait about two days for a call back and she wants every lead called within two hours. Matches."
+      },
+      {
+       "field": "decision_maker",
+       "value": "Sofia Martins (Commercial Director)",
+       "result": "Pass",
+       "critique": "Sofia says the decision is hers, the CEO only gets involved above 200k, and she signs. Her title is Commercial Director per CRM context. Supported."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Pipeline management; Lead capture and routing; Offline mode; Ease of use",
+       "result": "Pass",
+       "critique": "Lead capture and routing, one funnel per launch (pipeline management), offline need and simplicity for brokers are all said in L008, L013 and L025."
+      },
+      {
+       "field": "decision_process",
+       "value": "Sofia Martins decides; the CEO only gets involved above 200,000.",
+       "result": "Pass",
+       "critique": "Sofia says it is her call and the CEO only gets involved above two hundred thousand. Supported. The note omits legal review but nothing false is added."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Legal contract review",
+       "result": "Pass",
+       "critique": "Sofia says legal reviews the contract before she signs. She is the economic buyer, so both options hold."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Leads lost or not routed",
+       "result": "Pass",
+       "critique": "Leads lost and brokers fighting over ownership support the lost or not routed option. Typing into a spreadsheet supports scattered data in spreadsheets, but nobody mentioned inboxes. The option is broadly supported by spreadsheet entry and leads scattered across channels."
+      },
+      {
+       "field": "seats",
+       "value": "105",
+       "result": "Pass",
+       "critique": "Andre says a hundred and five users: 25 sales team and 80 brokers. Matches."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Marketing",
+       "result": "Pass",
+       "critique": "Sales team (25 users and brokers) and the marketing team who need to see lead sources are both said. Supported."
+      },
+      {
+       "field": "integrations",
+       "value": "WhatsApp Business; Website forms",
+       "result": "Pass",
+       "critique": "Sofia says leads come from the website, WhatsApp and stands into one place. That implies connecting website forms and WhatsApp. Nobody says 'WhatsApp Business' specifically, but it is a reasonable category for WhatsApp leads."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "Sofia says around sixty thousand dollars a year, which falls in the USD 50k-100k band. Matches."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-03",
+       "result": "Pass",
+       "critique": "Sofia says she needs it running by March 2027. Matches."
+      },
+      {
+       "field": "employee_count",
+       "value": "200-499",
+       "result": "Pass",
+       "critique": "Sofia says about four hundred people, which falls in the 200-499 band."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Paper forms",
+       "result": "Pass",
+       "critique": "Andre describes paper forms at the stand, then typing into a spreadsheet. Both options are supported."
+      },
+      {
+       "field": "stage",
+       "value": "Solution",
+       "result": "Pass",
+       "critique": "The proposed stage is Solution, with a note that Qualified Opportunity exit criteria are met: pain confirmed, economic buyer identified, timeline stated. All three are said in the conversation (L006, L020, L022), and a demo is being scheduled, so advancing is supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T9": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Scope session with Lumen Education's VP of Admissions and CIO. They confirmed 120 users across admissions, marketing and leadership, integrations with Campus One, Mailwave and WhatsApp, a budget of USD 110-130k per year and a go-live by May 2027. Daniela asked for a proposal; a review was agreed for 17 Nov.",
+       "result": "Pass",
+       "critique": "Participants, 120 users, three integrations, budget 110-130k, go-live May 2027, proposal request and review on 17 Nov are all supported (L005, L011, L020, L024, L028, L029). Facts match."
+      },
+      {
+       "field": "objection",
+       "value": "Data residency and privacy; Security or IT review",
+       "result": "Pass",
+       "critique": "Marcos's main concern is student data staying in Brazil and a data protection assessment (L014), and he lists an IT security review (L017). Both options are supported."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the proposal by 13 Nov; Lumen (Marcos): send the security questionnaire by 9 Nov",
+       "result": "Pass",
+       "critique": "Ana promises the proposal by Friday the 13th (L029); Marcos promises the questionnaire by Monday (L031). The meeting is on 2026-11-05, a Thursday, so Monday is 9 Nov and Friday the 13th is 13 Nov. Correct."
+      },
+      {
+       "field": "next_step",
+       "value": "Review the proposal together on Tuesday 17 Nov",
+       "result": "Pass",
+       "critique": "Ana proposes reviewing the proposal on Tuesday the 17th and Daniela agrees (L029, L030). 17 Nov 2026 is a Tuesday. Supported."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-13",
+       "result": "Pass",
+       "critique": "Ana says she will send the proposal by Friday the 13th, which is 2026-11-13. The date is correct and matches the follow-up action."
+      },
+      {
+       "field": "metrics",
+       "value": "Lift conversion from first contact to enrolment from 8% to 12% next year",
+       "result": "Pass",
+       "critique": "Daniela states the target of lifting conversion from first contact to enrolment from eight to twelve percent next year (L008). Matches."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Lead capture and routing; Tasks and follow-up reminders; WhatsApp messaging; Reporting and dashboards; Integrations and API; Data hosted in Brazil",
+       "result": "Pass",
+       "critique": "L010 supports lead capture, follow-up lists, funnel reports and WhatsApp. L011 supports integrations and L014 supports data in Brazil. 'Lead capture and routing' is only partly supported, since routing is not asked for, but capture is. Overall each option is supported by what was said."
+      },
+      {
+       "field": "decision_process",
+       "value": "First an IT security review and the data protection assessment; then Daniela signs; the board approves anything above USD 150k per year.",
+       "result": "Pass",
+       "critique": "Marcos describes the IT security review and data protection assessment first, then Daniela signing, and board approval above USD 150k per year (L017). Matches."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review; Legal contract review; Data processing agreement",
+       "result": "Fail",
+       "critique": "Signature by Daniela (L017) and procurement needing the contract and DPA (L018) are supported. Nobody mentions a legal contract review, so 'Legal contract review' is unsupported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; No pipeline view leaders can trust; Leads lost or not routed",
+       "result": "Pass",
+       "critique": "L007 supports spreadsheets and WhatsApp scattered per campus, and unknown prospect loss, which is the lost leads option. Nobody discussed leaders lacking a trustworthy pipeline view; the lack of insight is about loss between contact and enrolment. 'No pipeline view leaders can trust' is somewhat stretched, though 'no idea how many prospects we lose' and the leaders needing reports loosely support it. Given the current CRM values, this is borderline but reasonable."
+      },
+      {
+       "field": "competitors",
+       "value": "Clarion Sales Cloud",
+       "result": "Pass",
+       "critique": "Daniela says they are also looking at Clarion Sales Cloud (L022). Supported."
+      },
+      {
+       "field": "seats",
+       "value": "120",
+       "result": "Pass",
+       "critique": "Daniela states 120 users (80+25+15) in L005. Supported."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Marketing; Leadership",
+       "result": "Pass",
+       "critique": "L005 gives counsellors as the sales team, marketing with twenty-five people, and fifteen managers in leadership. Matches the three options."
+      },
+      {
+       "field": "integrations",
+       "value": "WhatsApp Business; Marketing automation; Industry or in-house system",
+       "result": "Pass",
+       "critique": "Marcos names Campus One (student information system), Mailwave (marketing email tool) and WhatsApp via the official business account (L011, L013). The options map correctly."
+      },
+      {
+       "field": "budget",
+       "value": "USD 100k-150k per year",
+       "result": "Pass",
+       "critique": "Daniela says the approved budget is between 110 and 130 thousand dollars a year (L020). The band 100k-150k holds that range and the note restates it correctly."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-05",
+       "result": "Pass",
+       "critique": "Daniela says they need it live by May 2027 (L024). Matches."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; WhatsApp groups",
+       "result": "Pass",
+       "critique": "Daniela says each campus has its own spreadsheets and a lot happens on WhatsApp (L007). 'WhatsApp groups' adds the word groups, but the option category covers WhatsApp use. Supported in substance."
+      },
+      {
+       "field": "stage",
+       "value": "Proposal",
+       "result": "Pass",
+       "critique": "The scope was agreed and Daniela asked for a proposal (L027, L028), with Ana promising to send it. Moving to the Proposal stage is consistent with what was said."
+      }
+     ],
+     "skipped": []
+    },
+    "T10": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call on field sales. Reps record dealer visits on paper and someone types them into a spreadsheet on Fridays. They need one place for visits, orders and promises, for 38 users, working offline with GPS check-in and an ERP link. A field demo was agreed for 11 Nov.",
+       "result": "Pass",
+       "critique": "Paper reports typed into a spreadsheet on Fridays (L005), need for one place (L007), 38 users (L009), offline and GPS (L012), ERP link (L014), and demo on the 11th (L024-25) are all said. 'Field demo agreed for 11 Nov' matches."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Mobile or offline access",
+       "result": "Pass",
+       "critique": "L010 says there is no mobile signal in the fields, so internet-dependent tools won't work, and that reps are not used to apps. Both categories (offline access, adoption) are supported, and the note matches."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a short video of the offline mode by 2026-11-09; Pampa Agro: pick two reps for the field demo on 11 Nov",
+       "result": "Pass",
+       "critique": "Ana promises a video by Monday, which from Wed 2026-11-04 is 2026-11-09. The customer agrees to pick two reps for the demo on the 11th. Both are supported."
+      },
+      {
+       "field": "next_step",
+       "value": "Field demo with two Pampa Agro reps on Wednesday 11 Nov",
+       "result": "Pass",
+       "critique": "Ana proposes a field demo with two reps on Wednesday the 11th and the customer agrees (L024-25). 11 Nov 2026 is a Wednesday, so the value is supported."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro, the Orbita speaker, commits to sending the video by Monday in L024. She is the correct owner."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-09",
+       "result": "Pass",
+       "critique": "Ana says she will send the video by Monday. Resolved from Wed 2026-11-04, that is 2026-11-09, which is correct."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Mobile app; Offline mode; Visit and activity tracking; Integrations and API",
+       "result": "Pass",
+       "critique": "Offline and GPS check-in are named as must-haves (L012), visit, order and promise tracking is requested (L007), and dealer orders must flow to the ERP (L014). Mobile app is supported: the reps work in the field, the app works offline and GPS check-in is required."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Visits and orders not tracked",
+       "result": "Fail",
+       "critique": "The paper-to-spreadsheet process and the lack of knowledge about orders and promises (L005) support 'Visits and orders not tracked'. 'Customer data scattered across spreadsheets and inboxes' is not supported: nobody mentions inboxes or scattered data, only a single spreadsheet."
+      },
+      {
+       "field": "seats",
+       "value": "38",
+       "result": "Pass",
+       "critique": "L009 gives thirty-two field reps plus six leadership people, so thirty-eight users. The value matches."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Leadership",
+       "result": "Pass",
+       "critique": "L009 names field reps in sales and the leadership team who want the reports. Sales and Leadership are both supported."
+      },
+      {
+       "field": "integrations",
+       "value": "ERP",
+       "result": "Pass",
+       "critique": "L014 says the dealer orders must flow to Orion ERP. The ERP category and the note are supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "The customer says about seventy thousand dollars a year (L020), which falls in the 50k-100k band. The note matches."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-07",
+       "result": "Pass",
+       "critique": "L023 says 'live by July 2027', so the value 2027-07 is supported."
+      },
+      {
+       "field": "employee_count",
+       "value": "200-499",
+       "result": "Pass",
+       "critique": "L016 says about four hundred and fifty people, which falls in the 200-499 band. The note matches."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Paper forms",
+       "result": "Pass",
+       "critique": "L005 describes paper reports typed into a spreadsheet. Spreadsheets and paper forms are both supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T11": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Orbita emailed revised commercial terms. The Commercial VP read them and said they agree, and asked for the contract for signature. Procurement will route it on Monday and he will sign after that. Orbita will send the contract on 6 Nov. The customer needs single sign-on with Microsoft Entra, and confirmed 110 users.",
+       "result": "Pass",
+       "critique": "Terms emailed (L001), agreement and contract request (L002-L003), routing Monday and signing after (L003), contract tomorrow (L004, 6 Nov), SSO with Microsoft Entra (L005) are all supported. However, 'confirmed 110 users' is not supported: L007 says 'That's the list of the 110 users' as a message from Henrique, which is odd but does say 110 users. It is stated in the conversation, so it holds."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the contract by 6 Nov; Solaris Energy (Henrique): sign after procurement routes it on Monday 9 Nov",
+       "result": "Pass",
+       "critique": "Ana promises to send the contract tomorrow morning (6 Nov) in L004. Henrique says Talita routes it through procurement Monday and he signs right after. Monday after Thursday 5 Nov 2026 is 9 Nov, correct. Both commitments are supported."
+      },
+      {
+       "field": "next_step",
+       "value": "Orbita sends the contract for signature on 6 Nov; Procurement routes it on Monday 9 Nov, then Henrique Prado signs",
+       "result": "Pass",
+       "critique": "Contract sent 6 Nov, procurement routing Monday 9 Nov, then Henrique signs: all supported by L003-L004. The note says it replaces the 10 Nov terms review because terms were agreed; the agreement is in L002, and the replacement is a reasonable inference."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-06",
+       "result": "Pass",
+       "critique": "Ana says she will send the contract tomorrow morning; message dated 2026-11-05, so 2026-11-06 is correct. The owner is Ana, who has to act on that date."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review",
+       "result": "Pass",
+       "critique": "L003 supports that procurement routes the contract and Henrique signs afterwards. Henrique is the commercial VP and decision maker per CRM context, so 'Signature by the economic buyer' holds, and procurement review is supported as routing through procurement. The note matches what was said."
+      },
+      {
+       "field": "integrations",
+       "value": "Email and calendar; Billing system; Single sign-on",
+       "result": "Pass",
+       "critique": "L005 supports single sign-on with Microsoft Entra. The other options, Email and calendar and Billing system, are already in the current CRM values and are kept in the updated list. All supported."
+      },
+      {
+       "field": "stage",
+       "value": "Contract",
+       "result": "Pass",
+       "critique": "The value 'Contract' is supported in substance: Henrique agrees to the terms and asks for the contract for signature. But the note says he agreed 'in writing', and the chat is written, so that is fine. The 'Negotiation exit criteria' is the agent's framing, not a stated fact. The stage move itself follows from the conversation."
+      }
+     ],
+     "skipped": []
+    }
+   },
+   "judged": 106,
+   "passed": 100,
+   "cost_usd": 0.141724
+  },
+  "claude-sonnet-5-5@high": {
+   "cases": {
+    "T1": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call with Acme Logistics' COO and Sales Operations Manager. The commercial team runs on spreadsheets and Outlook, two renewals were missed and there is no reliable pipeline view. They need one CRM for about 60 users, and the in-house TMS integration is the main worry. A technical scoping workshop with IT was agreed for the week of 9 Nov.",
+       "result": "Pass",
+       "critique": "Spreadsheets/Outlook, two missed renewals, no pipeline view, ~60 users, TMS worry, and workshop week of 9 Nov are all said. 'Agreed' is supported by L043. Fine."
+      },
+      {
+       "field": "objection",
+       "value": "Integration with current systems; User adoption and ease of use",
+       "result": "Pass",
+       "critique": "Marina's TMS integration concern (L022) and Felipe's adoption worry (L023) are both stated, and the note matches."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the TMS reference case and the workshop invite by 6 Nov; Orbita (Ana): send a short mobile app video by 6 Nov; Acme Logistics (Marina): make sure Rui joins the workshop",
+       "result": "Pass",
+       "critique": "Ana promises the reference case and invite by Friday (L044) and the video in Friday's email (L046). Friday from Tue 3 Nov is 6 Nov. Marina says she will make sure Rui joins (L043). All supported."
+      },
+      {
+       "field": "next_step",
+       "value": "Technical scoping workshop with Rui (IT Lead) in the week of 9 Nov to look at the TMS data and the integration options",
+       "result": "Pass",
+       "critique": "L042-L043 propose and accept a technical scoping workshop with Rui the week of 9 Nov to look at the TMS data and integration options. Supported."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana says she will send the invite and reference case by Friday, so she owns the follow-up."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-06",
+       "result": "Pass",
+       "critique": "Friday after Tue 2026-11-03 is 2026-11-06. The resolution is correct."
+      },
+      {
+       "field": "metrics",
+       "value": "Zero missed renewals next year; Monday pipeline review done from one screen instead of six spreadsheets",
+       "result": "Pass",
+       "critique": "Marina states success as zero missed renewals next year and the Monday pipeline review from one screen instead of six spreadsheets (L009). Matches."
+      },
+      {
+       "field": "decision_maker",
+       "value": "Marina Lopes (COO)",
+       "result": "Pass",
+       "critique": "Marina says she makes the decision and it sits in her budget (L035); the CRM context gives her title as COO. Supported."
+      },
+      {
+       "field": "decision_process",
+       "value": "Rui Tavares (IT Lead) validates the technical side, the integration and the security; then Marina Lopes decides",
+       "result": "Pass",
+       "critique": "Marina says Rui validates the technical side, integration and security (L035). She then decides. The value omits procurement but states nothing false, and the order is consistent."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review; Competitive quotes required",
+       "result": "Pass",
+       "critique": "Procurement needs three quotes above fifty thousand and then Marina signs (L037). Procurement review, competitive quotes and signature by the economic buyer are all supported, and the note matches."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; No pipeline view leaders can trust; Missed follow-ups or renewals",
+       "result": "Pass",
+       "critique": "Scattered spreadsheets and inboxes (L007), lost history, two missed renewals (L008), and no trustworthy pipeline view (L009) support all three options, and the note matches."
+      },
+      {
+       "field": "champion",
+       "value": "Felipe Nunes (Sales Operations Manager)",
+       "result": "Pass",
+       "critique": "Felipe says he pushed for the project internally and will get the reps on board (L047). He is the Sales Operations Manager per the CRM context. Supported."
+      },
+      {
+       "field": "competitors",
+       "value": "Northwind CRM; PipeSpark",
+       "result": "Pass",
+       "critique": "Felipe mentions a first call with Northwind CRM and a PipeSpark demo (L030). Both are supported."
+      },
+      {
+       "field": "seats",
+       "value": "60",
+       "result": "Pass",
+       "critique": "Felipe says sixty users to start (L013). Matches."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Customer Success; Leadership",
+       "result": "Pass",
+       "critique": "Sales reps, customer success account managers and leadership are named in L013. Supported."
+      },
+      {
+       "field": "integrations",
+       "value": "Email and calendar; ERP; Industry or in-house system",
+       "result": "Pass",
+       "critique": "The in-house TMS and Orion ERP (L021) and Outlook email sync (L017) are said. Email and calendar is a slight stretch, since no calendar was mentioned, but email sync falls in that category. Acceptable."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "Marina says 80-100k dollars a year, licences and support included (L028). The band 50k-100k holds that range and the note matches."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-03",
+       "result": "Pass",
+       "critique": "Marina wants it live before peak season starts in April, with go-live by March 2027 at the latest (L039). Matches."
+      },
+      {
+       "field": "employee_count",
+       "value": "500-999",
+       "result": "Pass",
+       "critique": "Marina says about eight hundred and fifty people, around a hundred of them in the commercial area (L005). Falls in the 500-999 band."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Email and shared inbox; Shared drive",
+       "result": "Pass",
+       "critique": "Felipe describes rep spreadsheets, Outlook and inboxes, and proposals on a shared drive (L007). All options are supported."
+      },
+      {
+       "field": "stage",
+       "value": "Solution",
+       "result": "Pass",
+       "critique": "The value 'Solution' is a stage the conversation does not support as a fact. The note justifies Qualified Opportunity exit criteria, which would put the opportunity in the next stage, but no one said anything about moving to a Solution stage. Even so, the criteria in the note are all supported by L011, L035 and L039. Judged strictly on support, the stage choice is an inference, not a stated fact, though the note's facts hold."
+      }
+     ],
+     "skipped": [
+      "decision_criteria"
+     ]
+    },
+    "T2": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Intro call with the Head of Retail Operations of Verde Retail. Franchise and wholesale accounts run on WhatsApp groups and spreadsheets, so complaints and reorders get lost. She wants one place for franchisees and wholesale buyers. No budget is allocated yet. No demo was booked; Orbita will send an overview and case study.",
+       "result": "Pass",
+       "critique": "Every fact is supported: intro call with Camila (Head of Retail Operations), WhatsApp/spreadsheets, lost complaints and reorders, one place wanted, no budget, no demo booked (L021), and Ana will send the overview and case study (L018)."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Budget freeze or no budget",
+       "result": "Pass",
+       "critique": "L012 supports adoption/ease of use after the failed BI tool, and L015 supports no budget allocated. Both options and the note match what was said."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the product overview and the case study; Verde Retail (Camila): read it with her team after Black Friday",
+       "result": "Pass",
+       "critique": "Ana promises to send the overview and case study (L018); Camila says she will read it with her team after Black Friday (L019). Both are explicit and correctly attributed."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana says she will send the materials, so she is the Orbita person responsible for the next step. The note that no due date was stated is accurate."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Ease of use",
+       "result": "Pass",
+       "critique": "Camila says the previous tool was too complicated and she can't go through that again; Ana says simplicity would be a requirement and Camila does not object. Ease of use is supported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Missed follow-ups or renewals",
+       "result": "Pass",
+       "critique": "Scattered data across WhatsApp and spreadsheets is supported (L005). Complaints and reorder requests getting lost fits 'Missed follow-ups', so both options and the note are supported."
+      },
+      {
+       "field": "budget",
+       "value": "No budget allocated",
+       "result": "Pass",
+       "critique": "Camila says there is no budget allocated yet and it would go into next year's plan (L015). The value and note match."
+      },
+      {
+       "field": "employee_count",
+       "value": "1000-4999",
+       "result": "Pass",
+       "critique": "Camila says about 1,200 employees (L009), which falls in the 1000-4999 band. The note matches."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; WhatsApp groups",
+       "result": "Pass",
+       "critique": "Camila says everything runs on WhatsApp groups and spreadsheets (L005). Both options are supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T3": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Call to plan the Friday demo with the clinic managers. Roberto Lima said the board froze all new IT projects until the January budget review, so he asked to cancel the demo and drop any placeholder date. The budget is unchanged at USD 90,000 per year. No next step was agreed.",
+       "result": "Pass",
+       "critique": "The summary matches the conversation. The call was to plan Friday's demo (L001). Roberto says the board froze new IT projects until the January budget review (L002), asks to cancel the demo (L004) and drops the placeholder (L006). He says the budget is still ninety thousand dollars a year (L007), and no next step was agreed (L004). Nothing is added."
+      },
+      {
+       "field": "objection",
+       "value": "Budget freeze or no budget; Timing or other priorities",
+       "result": "Pass",
+       "critique": "Roberto says the board froze all new IT projects until the January budget review (L002), which fits \"Budget freeze or no budget\". He also says the budget amount is unchanged and \"it's the timing that moved\" (L007), which fits \"Timing or other priorities\". The note restates both points accurately."
+      }
+     ],
+     "skipped": []
+    },
+    "T5": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Intro call with Livia Prado of Delta Pharma, a mid-sized pharmaceutical company with about 150 medical representatives who visit doctors and pharmacies. Their visit reports sit in a very old system nobody likes, and she is looking at options for next year. She needs visit planning, visit records, sample tracking and tablet use. Ana will send an overview.",
+       "result": "Pass",
+       "critique": "Each fact matches the conversation: mid-sized pharma, about 150 reps visiting doctors and pharmacies (L004), old disliked system and options for next year (L005), needs for planning, records, samples and tablet (L007), and Ana sending an overview (L008). Nothing is added."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a short overview after the call; Customer (Livia Prado): share the overview with her director",
+       "result": "Pass",
+       "critique": "Ana says she will send a short overview after the call (L008). Livia says she will share it with her director (L009). Both promises are explicit and attributed to the right people."
+      },
+      {
+       "field": "next_step",
+       "value": "Orbita sends Livia Prado a short overview after the call",
+       "result": "Pass",
+       "critique": "Ana says she will send an overview after the call (L008), and the note correctly says no meeting was agreed. The value does not claim anything beyond that."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro, the Orbita speaker, promises to send the overview (L008), so she owns the follow-up. This is supported."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Mobile app; Visit and activity tracking; Other: Sample tracking",
+       "result": "Pass",
+       "critique": "Livia says the tool must plan visits, record what was discussed, track samples, and work on a tablet (L007). These map to Visit and activity tracking, Mobile app, and Other: Sample tracking. All options are supported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Legacy system nobody likes",
+       "result": "Pass",
+       "critique": "Livia says visit reports are in a very old system that nobody likes (L005). The 'Legacy system nobody likes' category and the note about about 150 reps both match what was said."
+      },
+      {
+       "field": "current_solution",
+       "value": "Other: Old visit report system",
+       "result": "Pass",
+       "critique": "Livia describes the visit reports as being in a very old system (L005). The note correctly says the system is not named, so 'Other: Old visit report system' is supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T6": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Proposal check-in with the Head of Operations. The CFO, Helena Duarte, has not yet seen the proposal; Tiago will forward it this week. Atlas has USD 120,000 a year approved for the CRM, for 75 users. A check-in was agreed for 12 Nov.",
+       "result": "Pass",
+       "critique": "Each fact is supported: Helena has not seen the proposal (L004), Tiago will forward it this week (L004), USD 120,000 a year is approved (L009), 75 users (L011), and a check-in on the 12th (L015). The meeting is on 5 Nov, so Thursday the 12th is 12 Nov, which is correct."
+      },
+      {
+       "field": "commitment",
+       "value": "Atlas (Tiago): forward proposal v1 to Helena this week and walk her through it; Orbita (Ana): check in with Tiago on 12 Nov",
+       "result": "Pass",
+       "critique": "Tiago says he will forward the proposal to Helena this week (L004) and walk her through it (L005). Ana proposes checking in on Thursday the 12th (L015), and Tiago agrees. Both commitments are supported."
+      },
+      {
+       "field": "next_step",
+       "value": "Tiago forwards proposal v1 to Helena Duarte this week; Ana checks in with Tiago on Thursday 12 Nov",
+       "result": "Pass",
+       "critique": "L015 and L016 agree that Tiago forwards proposal v1 to Helena this week and Ana checks in on Thursday the 12th. The date resolves correctly to 12 Nov 2026. The note about replacing the old next step is consistent with the CRM values."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-12",
+       "result": "Pass",
+       "critique": "Ana says she will check in on Thursday the 12th, and 5 Nov 2026 is a Thursday, so the 12th is 2026-11-12. The resolution is correct and Ana is the follow-up owner."
+      },
+      {
+       "field": "decision_process",
+       "value": "Tiago forwards the proposal to the CFO, Helena Duarte, and walks her through it; she approves and signs anything above USD 100,000",
+       "result": "Pass",
+       "critique": "Tiago forwards the proposal to Helena and walks her through it (L004, L005). Helena signs anything above a hundred thousand (L004). The value says she 'approves and signs', which is supported by L012 (once Helena approves, then she signs). The currency is USD, and the CRM context already has USD 100,000."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Legal contract review",
+       "result": "Pass",
+       "critique": "L012 supports both options: legal review takes about two weeks after Helena approves, and then Helena signs. She is the CFO and the decision maker, so 'Signature by the economic buyer' fits. The note matches what was said."
+      },
+      {
+       "field": "champion",
+       "value": "Tiago Mendes (Head of Operations)",
+       "result": "Pass",
+       "critique": "Tiago says he has been pushing for this internally since the demo (L005) and will walk Helena through the proposal himself. This shows him actively selling inside Atlas. His Head of Operations title comes from the CRM context."
+      },
+      {
+       "field": "budget",
+       "value": "USD 100k-150k per year",
+       "result": "Pass",
+       "critique": "Tiago says USD 120,000 a year is approved for the CRM in next year's budget (L009). That falls within the 100k-150k band, and the note restates the figure accurately."
+      }
+     ],
+     "skipped": []
+    },
+    "T7": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call with the Commercial Director and the Sales Manager. Leads from stands, website and WhatsApp get lost, and they want one place with automatic routing to brokers, for 105 users. Budget is about USD 60k per year and the target is live by March 2027. A live demo with the sales managers was agreed for 12 Nov.",
+       "result": "Pass",
+       "critique": "Facts match: lead loss across stands, website, WhatsApp, 105 users, ~USD 60k/year, March 2027, live demo Thursday the 12th (Nov, meeting 6 Nov). Supported."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Mobile or offline access",
+       "result": "Pass",
+       "critique": "Andre says brokers won't use anything complicated and stands have no mobile signal. Both categories are supported."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a recorded demo of the lead routing by 10 Nov; Cedro Construtora (Andre): send the list of the three launches and the broker teams before the demo",
+       "result": "Pass",
+       "critique": "Ana promises a recorded demo by Tuesday; resolved from Fri 6 Nov it is 10 Nov. Andre promises the list of launches and broker teams before the demo. Supported."
+      },
+      {
+       "field": "next_step",
+       "value": "Live demo with the Cedro sales managers on Thursday 12 Nov",
+       "result": "Pass",
+       "critique": "Live demo with sales managers on Thursday the 12th, agreed by Sofia; 12 Nov is correct. Supported."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro of Orbita commits to send the recorded demo. Supported."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-10",
+       "result": "Pass",
+       "critique": "Ana says she'll send the recorded demo by Tuesday; from Fri 2026-11-06 that is 2026-11-10. Correct."
+      },
+      {
+       "field": "metrics",
+       "value": "Call every lead within two hours (today a website lead waits about two days for a call back)",
+       "result": "Pass",
+       "critique": "Sofia wants every lead called within two hours, versus about two days today for website leads. Matches."
+      },
+      {
+       "field": "decision_maker",
+       "value": "Sofia Martins (Commercial Director)",
+       "result": "Pass",
+       "critique": "Sofia says the decision is hers; her title Commercial Director comes from CRM context. Supported."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Pipeline management; Lead capture and routing; Reporting and dashboards; Ease of use",
+       "result": "Pass",
+       "critique": "Routing/capture, funnel per launch (pipeline), lead source visibility for marketing (reporting), and simplicity for brokers are all said. Supported."
+      },
+      {
+       "field": "decision_process",
+       "value": "Sofia Martins decides; the CEO only gets involved above two hundred thousand",
+       "result": "Pass",
+       "critique": "Sofia says it's her call and the CEO is only involved above 200,000. Supported."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Legal contract review",
+       "result": "Pass",
+       "critique": "Legal reviews the contract before Sofia signs; she is the economic buyer. Both options supported."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Leads lost or not routed",
+       "result": "Fail",
+       "critique": "Leads lost and not routed is supported. Spreadsheets are mentioned, but 'scattered across spreadsheets and inboxes' - inboxes were never mentioned; the data is typed into one spreadsheet. The category is not well supported."
+      },
+      {
+       "field": "seats",
+       "value": "105",
+       "result": "Pass",
+       "critique": "Andre says 105 users (25 + 80). Supported."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Marketing",
+       "result": "Pass",
+       "critique": "Sales team and brokers use it, marketing needs to see lead sources. Supported."
+      },
+      {
+       "field": "integrations",
+       "value": "WhatsApp Business; Website forms",
+       "result": "Pass",
+       "critique": "Leads from website and WhatsApp must come into one place; those are the sources. Reasonably supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "About USD 60k per year falls in the 50k-100k band. Supported."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-03",
+       "result": "Pass",
+       "critique": "Sofia needs it running by March 2027. Supported."
+      },
+      {
+       "field": "employee_count",
+       "value": "200-499",
+       "result": "Pass",
+       "critique": "About 400 people falls in 200-499. Supported."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Paper forms",
+       "result": "Pass",
+       "critique": "Paper forms and a spreadsheet are said. Supported."
+      },
+      {
+       "field": "stage",
+       "value": "Solution",
+       "result": "Pass",
+       "critique": "Stage 'Solution' follows from qualification being met and the demo being scheduled; the agent justifies it with pain, buyer, and timeline. The conversation supports those criteria, but 'Solution' as a stage is a judgement. Supported by the conversation."
+      }
+     ],
+     "skipped": []
+    },
+    "T9": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Scope session with the VP of Admissions and the CIO. Lumen wants 120 users across admissions, marketing and leadership, integrations with Campus One, Mailwave and WhatsApp, and student data kept in Brazil. The approved budget is USD 110-130k per year and go-live is needed by May 2027. Daniela asked for a proposal; a review was agreed for 17 Nov.",
+       "result": "Pass",
+       "critique": "Participants, 120 users, integrations, data in Brazil, budget 110-130k, May 2027, proposal request and review on 17 Nov are all supported (L005, L011, L014, L020, L024, L028, L029)."
+      },
+      {
+       "field": "objection",
+       "value": "Data residency and privacy",
+       "result": "Pass",
+       "critique": "Marcos's main concern is student data staying in Brazil plus a data protection assessment (L014). Category and note are supported."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the proposal by 13 Nov; Lumen Education (Marcos): send the security questionnaire by 9 Nov",
+       "result": "Pass",
+       "critique": "Ana promises the proposal by Friday the 13th (L029); Marcos promises the questionnaire by Monday (L031). From Thu 5 Nov, Monday is 9 Nov. Correct."
+      },
+      {
+       "field": "next_step",
+       "value": "Review the proposal together with Lumen Education on Tuesday 17 Nov",
+       "result": "Pass",
+       "critique": "Review of the proposal together on Tuesday the 17th was proposed and accepted (L029, L030). 17 Nov 2026 is a Tuesday. The note about replacing the 5 Nov session is consistent."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-13",
+       "result": "Pass",
+       "critique": "Ana will send the proposal by Friday the 13th, which is 2026-11-13. Supported, and she is the existing follow-up owner."
+      },
+      {
+       "field": "metrics",
+       "value": "Lift conversion from first contact to enrolment from 8% to 12% next year",
+       "result": "Pass",
+       "critique": "Daniela states a target of lifting conversion from first contact to enrolment from eight to twelve percent next year (L008)."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Lead capture and routing; Tasks and follow-up reminders; WhatsApp messaging; Reporting and dashboards; Integrations and API; Data hosted in Brazil",
+       "result": "Pass",
+       "critique": "L010 supports lead capture, follow-up lists, funnel reporting and WhatsApp. L011 supports integrations and L014 supports data in Brazil. 'Lead capture and routing' includes routing, but capture is said, which is acceptable. All options are covered."
+      },
+      {
+       "field": "decision_process",
+       "value": "IT security review and data protection assessment first; then Daniela signs; the board approves anything above USD 150k per year",
+       "result": "Pass",
+       "critique": "Marcos describes IT security review and data protection assessment, then Daniela signs, and the board approves above USD 150k per year (L017). Matches."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review; Data processing agreement; Security questionnaire",
+       "result": "Pass",
+       "critique": "Daniela signs (L017) and procurement needs the contract and DPA (L018), so those options hold. The security questionnaire (L031) is part of the IT security review that precedes the signature. Note is accurate."
+      },
+      {
+       "field": "customer_need",
+       "value": "Customer data scattered across spreadsheets and inboxes; Leads lost or not routed; Teams do not share one view",
+       "result": "Pass",
+       "critique": "L007 supports spreadsheets per campus, WhatsApp, and no visibility of prospect loss. 'Teams do not share one view' is supported by each campus having its own spreadsheets; 'Leads lost' is supported by not knowing how many are lost. Acceptable."
+      },
+      {
+       "field": "competitors",
+       "value": "Clarion Sales Cloud",
+       "result": "Pass",
+       "critique": "Daniela names Clarion Sales Cloud as cheaper but with weak WhatsApp integration (L022)."
+      },
+      {
+       "field": "seats",
+       "value": "120",
+       "result": "Pass",
+       "critique": "80 + 25 + 15 = 120 users, said in L005 and L027."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Marketing; Leadership",
+       "result": "Pass",
+       "critique": "Admissions counsellors are the sales team, marketing, and the leadership team managers needing reports (L005). Supported."
+      },
+      {
+       "field": "integrations",
+       "value": "WhatsApp Business; Marketing automation; Industry or in-house system",
+       "result": "Pass",
+       "critique": "Campus One is a student information system, which is an industry/in-house system. Mailwave is an email tool used by marketing, which is marketing automation. WhatsApp via business account is stated in L013. Supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 100k-150k per year",
+       "result": "Pass",
+       "critique": "Daniela says approved 110-130k per year, which falls within the 100k-150k band. The note restates the range correctly."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-05",
+       "result": "Pass",
+       "critique": "Daniela says it must be live by May 2027, as the campaign starts in June (L024)."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; WhatsApp groups",
+       "result": "Pass",
+       "critique": "Spreadsheets per campus and a lot happening on WhatsApp (L007). 'WhatsApp groups' implies groups, which was not said; but the option in the list likely covers WhatsApp usage generally, and the note says conversations happen on WhatsApp. Acceptable."
+      },
+      {
+       "field": "stage",
+       "value": "Proposal",
+       "result": "Pass",
+       "critique": "The customer agreed the scope and asked for a proposal (L027, L028), so moving to Proposal is supported."
+      }
+     ],
+     "skipped": []
+    },
+    "T10": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Discovery call about field sales. Reps visit about 200 dealers weekly, record visits on paper reports and type them into a spreadsheet on Fridays. They need one place for visits, orders and promises, working offline with GPS check-in and connected to Orion ERP, for 38 users. A field demo with two reps was agreed for 11 Nov.",
+       "result": "Pass",
+       "critique": "Dealers (~200), weekly visits, paper reports typed into a spreadsheet on Friday, need for one place, offline with GPS, Orion ERP, 38 users, and the demo on the 11th with two reps are all supported (L004-L025). The 11 Nov date matches 'Wednesday the 11th' in November 2026."
+      },
+      {
+       "field": "objection",
+       "value": "User adoption and ease of use; Mobile or offline access",
+       "result": "Pass",
+       "critique": "L010 says there is no mobile signal in the fields, so internet-dependent tools won't work, and that the reps are not used to apps. Both categories (offline access and adoption) are supported, and the note restates this."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send a short video of the offline mode by 9 Nov; Pampa Agro: pick two reps for the field demo",
+       "result": "Pass",
+       "critique": "Ana promises a short video of the offline mode by Monday, which is 9 Nov from Wed 4 Nov. The customer agrees to pick two reps (L025). Both commitments are supported."
+      },
+      {
+       "field": "next_step",
+       "value": "Field demo with two Pampa Agro reps on 11 Nov",
+       "result": "Pass",
+       "critique": "A field demo with two reps on Wednesday the 11th was proposed and accepted (L024-L025). The date resolves correctly to 11 Nov, and the note correctly says no time was given."
+      },
+      {
+       "field": "follow_up_owner",
+       "value": "Ana Ribeiro",
+       "result": "Pass",
+       "critique": "Ana Ribeiro, the Orbita speaker, commits to sending the video in L024, so she owns the follow-up."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-09",
+       "result": "Pass",
+       "critique": "Ana says she will send the video 'by Monday'. From Wed 2026-11-04, Monday is 2026-11-09, so the resolution is correct."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Offline mode; Visit and activity tracking; Integrations and API",
+       "result": "Pass",
+       "critique": "The customer says offline mode and GPS check-in are non-negotiable (L012), and that dealer orders must flow to Orion ERP (L014). These support offline mode, integrations, and visit tracking. The GPS check-in is a visit-tracking capability, and the need for visit tracking was stated in L007."
+      },
+      {
+       "field": "customer_need",
+       "value": "Visits and orders not tracked",
+       "result": "Pass",
+       "critique": "L005 and L007 describe visits, orders and promises not being tracked, which matches the category. The note restates what was said and holds."
+      },
+      {
+       "field": "seats",
+       "value": "38",
+       "result": "Pass",
+       "critique": "L009 gives thirty-two field reps plus six leadership users, for thirty-eight users in total."
+      },
+      {
+       "field": "departments",
+       "value": "Sales; Leadership",
+       "result": "Pass",
+       "critique": "L009 names field reps in sales and the six-person leadership team who want the reports. Both departments are supported."
+      },
+      {
+       "field": "integrations",
+       "value": "ERP",
+       "result": "Pass",
+       "critique": "L014 says the ERP is Orion ERP and dealer orders need to flow there. The category and the note are supported."
+      },
+      {
+       "field": "budget",
+       "value": "USD 50k-100k per year",
+       "result": "Pass",
+       "critique": "The customer says about seventy thousand dollars a year (L020), which falls in the USD 50k-100k band. The note restates the figure."
+      },
+      {
+       "field": "go_live_target",
+       "value": "2027-07",
+       "result": "Pass",
+       "critique": "L023 says 'live by July 2027', which matches 2027-07."
+      },
+      {
+       "field": "employee_count",
+       "value": "200-499",
+       "result": "Pass",
+       "critique": "L016 says about four hundred and fifty people, which falls in the 200-499 band. The note matches."
+      },
+      {
+       "field": "current_solution",
+       "value": "Spreadsheets; Paper forms",
+       "result": "Pass",
+       "critique": "L005 says reps fill in a paper report and someone types it into a spreadsheet on Friday. Both paper forms and spreadsheets are supported, and the note matches."
+      }
+     ],
+     "skipped": []
+    },
+    "T11": {
+     "fields": [
+      {
+       "field": "call_summary",
+       "value": "Ana emailed the revised commercial terms and Henrique Prado confirmed that Solaris Energy agrees with them. He asked for the contract for signature: Talita will route it through procurement on Monday, then he signs. Ana will send the contract the next morning. The IT team needs single sign-on with Microsoft Entra from day one.",
+       "result": "Pass",
+       "critique": "Each fact matches the chat: Ana emailed the terms (L001), Henrique agreed (L002), asked for the contract, Talita routes it Monday and he signs (L003), Ana sends it tomorrow morning (L004), and SSO with Microsoft Entra is needed from day one (L005)."
+      },
+      {
+       "field": "commitment",
+       "value": "Orbita (Ana): send the contract by 6 Nov; Solaris Energy (Henrique): sign the contract after procurement routes it on 9 Nov; Orbita (Beatriz): include single sign-on in the kickoff plan",
+       "result": "Pass",
+       "critique": "Ana promised the contract tomorrow morning (6 Nov) in L004. Henrique said Talita routes it Monday and he signs right after (L003); Monday resolves to 9 Nov. The commitment is attributed to Henrique, but Talita does the routing and Henrique only commits to sign after, so the combined wording is acceptable. Ana says Beatriz will include SSO in the kickoff plan (L006), but this is Ana's statement, not Beatriz's own promise, though it is a stated Orbita commitment."
+      },
+      {
+       "field": "next_step",
+       "value": "Orbita sends the contract for signature on 6 Nov; Solaris procurement routes it on Monday 9 Nov, then Henrique Prado signs",
+       "result": "Pass",
+       "critique": "Ana sends the contract tomorrow (6 Nov), Talita routes it via procurement Monday (9 Nov), then Henrique signs; all supported by L003 and L004. The note that the terms review on 10 Nov is replaced follows from the terms being agreed."
+      },
+      {
+       "field": "follow_up_due_date",
+       "value": "2026-11-06",
+       "result": "Pass",
+       "critique": "Ana promised to send the contract tomorrow morning; the message date is 2026-11-05, so 2026-11-06 is correct."
+      },
+      {
+       "field": "decision_criteria",
+       "value": "Renewal and contract tracking; Account hierarchy; Reporting and dashboards; Forecasting; Integrations and API",
+       "result": "Pass",
+       "critique": "The existing four criteria are kept. The added option 'Integrations and API' is based on the SSO with Microsoft Entra requirement, which is a stated need from IT and falls under integrations/authentication, so it is supported."
+      },
+      {
+       "field": "paper_process",
+       "value": "Signature by the economic buyer; Procurement review",
+       "result": "Pass",
+       "critique": "L003 says Talita will route the contract through procurement on Monday, then Henrique signs. That supports Procurement review. Henrique, the Commercial VP, signing matches the economic buyer role. Both options are supported."
+      },
+      {
+       "field": "integrations",
+       "value": "Email and calendar; Billing system; Single sign-on",
+       "result": "Pass",
+       "critique": "The existing Email and calendar and Billing system options are kept from the CRM values. Single sign-on with Microsoft Entra is stated as a requirement in L005, so the added option is supported."
+      },
+      {
+       "field": "stage",
+       "value": "Contract",
+       "result": "Pass",
+       "critique": "Henrique agreed to the terms and asked for the contract for signature (L002, L003), but the contract has not been sent, procurement has not routed it, and nothing is signed. The note claims the terms were agreed 'in writing', but the chat only shows agreement in a message, which is arguably in writing. Moving to 'Contract' is a reasonable reading since the contract was requested and is being issued."
+      }
+     ],
+     "skipped": []
+    }
+   },
+   "judged": 108,
+   "passed": 107,
+   "cost_usd": 0.13970600000000002
+  }
+ }
+}

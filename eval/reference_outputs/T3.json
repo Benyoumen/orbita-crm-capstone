@@ -23,14 +23,14 @@
     {
       "field": "objection",
       "status": "proposed",
-      "value": "The board froze all new IT projects until the January budget review",
+      "value": "Budget freeze or no budget",
       "evidence": [
         {
           "quote": "The board froze all new IT projects until our budget review in January.",
           "line": 2
         }
       ],
-      "note": null
+      "note": "The board froze all new IT projects until the January budget review."
     },
     {
       "field": "next_step",
@@ -59,14 +59,14 @@
     {
       "field": "budget",
       "status": "proposed",
-      "value": "USD 90,000 per year",
+      "value": "USD 50k-100k per year",
       "evidence": [
         {
           "quote": "the budget itself hasn't changed: it's still ninety thousand dollars a year.",
           "line": 7
         }
       ],
-      "note": null
+      "note": "The budget itself is unchanged: USD 90,000 per year."
     },
     {
       "field": "stage",

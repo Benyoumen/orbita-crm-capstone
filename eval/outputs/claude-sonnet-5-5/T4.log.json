@@ -1,8 +1,8 @@
 [
   {
-    "run_id": "RUN-1793222714781",
+    "run_id": "RUN-1793473908216",
     "seq": 1,
-    "timestamp": "2026-10-28T21:25:14.782Z",
+    "timestamp": "2026-10-31T19:11:48.217Z",
     "actor": "system",
     "action": "run_created",
     "object_id": "MTG-2004",
@@ -10,9 +10,9 @@
     "detail": "user=U01"
   },
   {
-    "run_id": "RUN-1793222714781",
+    "run_id": "RUN-1793473908216",
     "seq": 2,
-    "timestamp": "2026-10-28T21:25:14.782Z",
+    "timestamp": "2026-10-31T19:11:48.217Z",
     "actor": "system",
     "action": "access_checked",
     "object_id": "OPP-0141",
@@ -20,9 +20,9 @@
     "detail": "user=U01"
   },
   {
-    "run_id": "RUN-1793222714781",
+    "run_id": "RUN-1793473908216",
     "seq": 3,
-    "timestamp": "2026-10-28T21:25:14.782Z",
+    "timestamp": "2026-10-31T19:11:48.217Z",
     "actor": "system",
     "action": "opportunity_read",
     "object_id": "OPP-0141",
@@ -30,9 +30,9 @@
     "detail": "stage=New Lead"
   },
   {
-    "run_id": "RUN-1793222714781",
+    "run_id": "RUN-1793473908216",
     "seq": 4,
-    "timestamp": "2026-10-28T21:25:14.782Z",
+    "timestamp": "2026-10-31T19:11:48.217Z",
     "actor": "system",
     "action": "transcript_checked",
     "object_id": "MTG-2004",
@@ -40,9 +40,9 @@
     "detail": "status=complete; coverage=9% of 45 min; ends_mid_sentence=true"
   },
   {
-    "run_id": "RUN-1793222714781",
+    "run_id": "RUN-1793473908216",
     "seq": 5,
-    "timestamp": "2026-10-28T21:25:14.782Z",
+    "timestamp": "2026-10-31T19:11:48.217Z",
     "actor": "system",
     "action": "run_blocked",
     "object_id": "MTG-2004",

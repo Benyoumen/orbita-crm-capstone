@@ -23,14 +23,14 @@
     {
       "field": "objection",
       "status": "proposed",
-      "value": "Brokers are external and won't use anything complicated; sales stands often have no mobile signal",
+      "value": "User adoption and ease of use; Mobile or offline access",
       "evidence": [
         {
           "quote": "They are not employees, and they won't use anything complicated. And the stands often have no mobile signal at all.",
           "line": 13
         }
       ],
-      "note": null
+      "note": "External brokers won't use anything complicated; sales stands often have no mobile signal."
     },
     {
       "field": "commitment",
@@ -91,26 +91,26 @@
     {
       "field": "customer_need",
       "status": "proposed",
-      "value": "Capture every lead from the website, WhatsApp and sales stands in one place, routed automatically to a broker, with one funnel per launch",
+      "value": "Leads lost or not routed",
       "evidence": [
         {
           "quote": "Every lead from the website, WhatsApp and the sales stands in one place, routed automatically to a broker, with one sales funnel per launch.",
           "line": 8
         }
       ],
-      "note": null
+      "note": "Every lead from the website, WhatsApp and sales stands in one place, routed to a broker, one funnel per launch."
     },
     {
       "field": "budget",
       "status": "proposed",
-      "value": "USD 60,000 per year",
+      "value": "USD 50k-100k per year",
       "evidence": [
         {
           "quote": "We have around sixty thousand dollars a year for it.",
           "line": 18
         }
       ],
-      "note": null
+      "note": "USD 60,000 per year."
     },
     {
       "field": "decision_maker",
@@ -167,7 +167,7 @@
     {
       "field": "decision_criteria",
       "status": "proposed",
-      "value": "Lead capture from website, WhatsApp and stands; automatic routing to brokers; one funnel per launch with visits, proposals and contracts",
+      "value": "Lead capture and routing; WhatsApp messaging; Pipeline management",
       "evidence": [
         {
           "quote": "routed automatically to a broker, with one sales funnel per launch.",
@@ -178,12 +178,12 @@
           "line": 25
         }
       ],
-      "note": null
+      "note": "Leads from the website, WhatsApp and stands routed to brokers; one funnel per launch."
     },
     {
       "field": "integrations",
       "status": "proposed",
-      "value": "Website forms; WhatsApp",
+      "value": "Website forms; WhatsApp Business",
       "evidence": [
         {
           "quote": "Paper forms at the stand, the website form, and WhatsApp.",
@@ -195,26 +195,26 @@
     {
       "field": "employee_count",
       "status": "proposed",
-      "value": "400",
+      "value": "200-499",
       "evidence": [
         {
           "quote": "About four hundred people, most of them on construction sites.",
           "line": 16
         }
       ],
-      "note": null
+      "note": "About 400 employees."
     },
     {
       "field": "current_solution",
       "status": "proposed",
-      "value": "Paper forms, the website form and WhatsApp, typed into a spreadsheet",
+      "value": "Paper forms; WhatsApp groups; Spreadsheets",
       "evidence": [
         {
           "quote": "Then someone types everything into a spreadsheet on Monday, if they remember.",
           "line": 5
         }
       ],
-      "note": null
+      "note": "Paper forms, the website form and WhatsApp, typed into a spreadsheet."
     },
     {
       "field": "stage",
@@ -263,14 +263,14 @@
     {
       "field": "paper_process",
       "status": "proposed",
-      "value": "Legal reviews the contract; then Sofia signs",
+      "value": "Legal contract review; Signature by the economic buyer",
       "evidence": [
         {
           "quote": "Legal reviews the contract before I sign.",
           "line": 20
         }
       ],
-      "note": null
+      "note": "Legal reviews the contract; then Sofia signs."
     }
   ],
   "ignored_out_of_scope": []

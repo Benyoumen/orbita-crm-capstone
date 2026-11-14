@@ -5,7 +5,7 @@ import { norm, groupsOk, sameValue, lineTag } from "../agent/core.mjs";
 /**
  * Scores one validated output against one case of eval/expected_results.json.
  * Fields absent from the case are expected as no_evidence. `status_any` accepts several statuses;
- * `value` (or `value_any`) is compared by type (digits, set of departments, normalised text); `must_include` is a list of
+ * `value` (or `value_any`) is compared by type (digits, a set of options for a multiselect, normalised text); `must_include` is a list of
  * groups (every group must match, any keyword of a group is enough); `must_not_include` lists keywords
  * that must not appear; `note_must_include` checks the field's note (the stage's missing criteria).
  */

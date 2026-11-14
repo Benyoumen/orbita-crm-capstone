@@ -1,0 +1,467 @@
+{
+  "meeting_id": "MTG-2009",
+  "opportunity_id": "OPP-0147",
+  "client_id": "CLI-007",
+  "target": null,
+  "source_status": "Ready",
+  "run_status": "Awaiting review",
+  "block_reason": null,
+  "warnings": [],
+  "fields": [
+    {
+      "field": "call_summary",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Scope session with Lumen Education's VP of Admissions and CIO. They confirmed 120 users across admissions, marketing and leadership, integrations with Campus One, Mailwave and WhatsApp, a budget of USD 110-130k per year and a go-live by May 2027. Daniela asked for a proposal; a review was agreed for 17 Nov.",
+      "evidence": [
+        {
+          "line": 27,
+          "timestamp": "00:46:25",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "one hundred and twenty users across admissions, marketing and management, the Campus One and Mailwave integrations, and WhatsApp."
+        },
+        {
+          "line": 28,
+          "timestamp": "00:46:43",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "Please send us a proposal on that scope."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Data residency and privacy; Security or IT review",
+      "evidence": [
+        {
+          "line": 14,
+          "timestamp": "00:09:25",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "My main concern is student data. It must stay in Brazil, and we need a data protection assessment before anything goes live."
+        }
+      ],
+      "note": "Student data must stay in Brazil; data protection assessment needed before go-live; IT security review in the decision process."
+    },
+    {
+      "field": "commitment",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Orbita (Ana): send the proposal by 13 Nov; Lumen (Marcos): send the security questionnaire by 9 Nov",
+      "evidence": [
+        {
+          "line": 29,
+          "timestamp": "00:46:52",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send the proposal by Friday the 13th"
+        },
+        {
+          "line": 31,
+          "timestamp": "00:47:10",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "I will send you our security questionnaire by Monday."
+        }
+      ],
+      "note": "'Monday' resolved from Thursday 2026-11-05."
+    },
+    {
+      "field": "next_step",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": "Scope session with admissions and IT on 5 Nov",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Review the proposal together on Tuesday 17 Nov",
+      "evidence": [
+        {
+          "line": 29,
+          "timestamp": "00:46:52",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "we can review it together on Tuesday the 17th."
+        },
+        {
+          "line": 30,
+          "timestamp": "00:47:03",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "Tuesday the 17th works."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": "Ana Ribeiro",
+      "current_approved": true,
+      "status": "unchanged",
+      "proposed_value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "line": 29,
+          "timestamp": "00:46:52",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send the proposal by Friday the 13th"
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": "2026-11-05",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "2026-11-13",
+      "evidence": [
+        {
+          "line": 29,
+          "timestamp": "00:46:52",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send the proposal by Friday the 13th"
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "metrics",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Lift conversion from first contact to enrolment from 8% to 12% next year",
+      "evidence": [
+        {
+          "line": 8,
+          "timestamp": "00:01:45",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "lift the conversion from first contact to enrolment from eight to twelve percent."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "decision_maker",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Daniela Freitas (VP of Admissions)",
+      "current_approved": true,
+      "status": "unchanged",
+      "proposed_value": "Daniela Freitas (VP of Admissions)",
+      "evidence": [
+        {
+          "line": 17,
+          "timestamp": "00:12:20",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "Then Daniela signs, and the board approves anything above one hundred and fifty thousand dollars a year."
+        }
+      ],
+      "note": "Board approval is needed only above USD 150k per year."
+    },
+    {
+      "field": "decision_criteria",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Lead capture and routing; Tasks and follow-up reminders; WhatsApp messaging; Reporting and dashboards; Integrations and API; Data hosted in Brazil",
+      "evidence": [
+        {
+          "line": 10,
+          "timestamp": "00:03:09",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "Capture the leads from our campaigns, give each counsellor a follow-up list, show the enrolment funnel per campus, and keep the WhatsApp conversations with the prospect's record."
+        },
+        {
+          "line": 11,
+          "timestamp": "00:05:35",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "it has to connect to Campus One, our student information system"
+        },
+        {
+          "line": 14,
+          "timestamp": "00:09:25",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "It must stay in Brazil"
+        }
+      ],
+      "note": "Enrolment funnel per campus; Campus One, Mailwave and WhatsApp integrations; data stays in Brazil."
+    },
+    {
+      "field": "decision_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "First an IT security review and the data protection assessment; then Daniela signs; the board approves anything above USD 150k per year.",
+      "evidence": [
+        {
+          "line": 17,
+          "timestamp": "00:12:20",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "First an IT security review and the data protection assessment. Then Daniela signs, and the board approves anything above one hundred and fifty thousand dollars a year."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "paper_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Signature by the economic buyer; Procurement review; Legal contract review; Data processing agreement",
+      "evidence": [
+        {
+          "line": 18,
+          "timestamp": "00:12:45",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "procurement will need your standard contract and the data processing agreement two weeks before the signature."
+        },
+        {
+          "line": 17,
+          "timestamp": "00:12:20",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "Then Daniela signs"
+        }
+      ],
+      "note": "Procurement needs the standard contract and DPA two weeks before signature."
+    },
+    {
+      "field": "customer_need",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Leads lost or not routed; Teams do not share one view",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Customer data scattered across spreadsheets and inboxes; No pipeline view leaders can trust; Leads lost or not routed",
+      "evidence": [
+        {
+          "line": 7,
+          "timestamp": "00:01:20",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "Each campus has its own spreadsheets, and a lot happens on WhatsApp. We have no idea how many prospects we lose between the first contact and the enrolment."
+        }
+      ],
+      "note": "Per-campus spreadsheets and WhatsApp; unknown prospect loss between first contact and enrolment."
+    },
+    {
+      "field": "champion",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "competitors",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Clarion Sales Cloud",
+      "evidence": [
+        {
+          "line": 22,
+          "timestamp": "00:15:04",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "We're also looking at Clarion Sales Cloud."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "120",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:35",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "So one hundred and twenty users."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "departments",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Sales; Marketing; Leadership",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:35",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "Our admissions counsellors are our sales team, eighty of them across the six campuses. Marketing has twenty-five people running the campaigns."
+        }
+      ],
+      "note": "Fifteen managers in the leadership team need the reports."
+    },
+    {
+      "field": "integrations",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "WhatsApp Business; Marketing automation; Industry or in-house system",
+      "evidence": [
+        {
+          "line": 11,
+          "timestamp": "00:05:35",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "it has to connect to Campus One, our student information system"
+        },
+        {
+          "line": 11,
+          "timestamp": "00:05:35",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "And to Mailwave, the email tool marketing uses."
+        },
+        {
+          "line": 13,
+          "timestamp": "00:06:05",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "Yes, WhatsApp too, through the official business account."
+        }
+      ],
+      "note": "Campus One (student information system); Mailwave (marketing email tool); WhatsApp via official business account."
+    },
+    {
+      "field": "budget",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "USD 100k-150k per year",
+      "evidence": [
+        {
+          "line": 20,
+          "timestamp": "00:13:39",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "We've approved between one hundred and ten and one hundred and thirty thousand dollars a year."
+        }
+      ],
+      "note": "USD 110k-130k per year."
+    },
+    {
+      "field": "go_live_target",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "2027-05",
+      "evidence": [
+        {
+          "line": 24,
+          "timestamp": "00:17:29",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "we need it live by May 2027."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "employee_count",
+      "group": "company",
+      "record": "client",
+      "current_value": "1000-4999",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "current_solution",
+      "group": "company",
+      "record": "client",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Spreadsheets; WhatsApp groups",
+      "evidence": [
+        {
+          "line": 7,
+          "timestamp": "00:01:20",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "Each campus has its own spreadsheets, and a lot happens on WhatsApp."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "group": "stage",
+      "record": "opportunity",
+      "current_value": "Solution",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Proposal",
+      "evidence": [
+        {
+          "line": 27,
+          "timestamp": "00:46:25",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "one hundred and twenty users across admissions, marketing and management, the Campus One and Mailwave integrations, and WhatsApp."
+        },
+        {
+          "line": 28,
+          "timestamp": "00:46:43",
+          "speaker": "Daniela Freitas (Lumen Education)",
+          "quote": "Please send us a proposal on that scope."
+        }
+      ],
+      "note": "Solution exit criteria met: scope agreed and proposal requested."
+    }
+  ],
+  "ignored_out_of_scope": [
+    {
+      "line": 25,
+      "timestamp": "00:24:05",
+      "speaker": "Marcos Antunes (Lumen Education)",
+      "quote": "Off topic, but did anyone watch the match last night? I still can't believe that penalty.",
+      "reason": "Small talk, off-topic personal content."
+    }
+  ],
+  "validation_notes": [],
+  "usage": {
+    "input_tokens": 2329,
+    "output_tokens": 2581,
+    "cache_read_input_tokens": 13543,
+    "cache_creation_input_tokens": 0,
+    "model": "claude-sonnet-5-5",
+    "served_by": "claude-sonnet-5-5",
+    "cost_usd": 0.033177
+  }
+}

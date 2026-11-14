@@ -14,16 +14,23 @@
 //
 //   GET  /                        the newest generated mockup
 //   GET  /api/health              { ok, mode, model, models, effort, key, granola }
-//   POST /api/runs                { meetingId, userId, crm, meeting?, transcript?, permissions?, model?, effort? } -> { runId, mode, model, output, log }
+//   POST /api/runs                { meetingId, userId, crm, meeting?, transcript?, permissions?, model?, effort? } -> { runId, mode, model, output, log, traceId, spanId }
 //   POST /api/runs/:id/submit     { output, decisions, crm, reviewerId, only?, now? } -> { record, crm, output, log, run_status }
 //   GET  /api/runs/:id            { output, decisions, record, log }
-//   POST /api/explore             { question, userId, crm, runs?, model? } -> { mode, model, answer, usage }
+//   POST /api/explore             { question, userId, crm, runs?, model? } -> { mode, model, answer, usage, traceId, spanId }
 //   GET  /api/granola/status      { mode, key, folder, last_sync, notes }
 //   POST /api/granola/sync        fixtures: the kit's synthetic notes; live: new or updated notes of the folder
+//   POST /api/feedback            { feedback } a seller's thumbs up or down on an update or an Explore answer -> { ok, id }
+//   GET  /api/feedback            { count, down, items } the latest rating of each, newest first, for the agent owner
+//   GET  /api/evals               { annotations, reviewed, labels, judge_labels, modes } the trace review (Evals tab) as saved on disk
+//   POST /api/evals               { annotations, reviewed, labels, judge_labels, modes } saves it into eval/error_discovery/error_discovery_data/
+//                                 (annotations.json and patterns.json, the files the standalone review app also reads)
 //
 // Hard rules kept: nothing writes to the CRM except applyApprovedFields (agent/core.mjs); saved results never enter a
 // prompt; the validator runs on every output; Explore sees only the opportunities the user can read; transcripts are
-// referenced in the log, never copied into it. Real Granola notes stay in capstone/.granola-cache/.
+// referenced in the log, never copied into it. Real Granola notes stay in capstone/.granola-cache/. Ratings go to
+// capstone/.feedback/feedback.jsonl (ORBITA_FEEDBACK_FILE elsewhere), never committed. Trace labels and failure modes go to
+// eval/error_discovery/error_discovery_data/ (ORBITA_EVALS_DIR elsewhere).
 import http from "node:http";
 import crypto from "node:crypto";
 import fs from "node:fs";
@@ -43,6 +50,9 @@ const P = await import(pathToFileURL(path.join(KIT, "agent", "pipeline.mjs")).hr
 const core = await import(pathToFileURL(path.join(KIT, "agent", "core.mjs")).href);
 const EX = await import(pathToFileURL(path.join(KIT, "agent", "explore.mjs")).href);
 const G = await import(pathToFileURL(path.join(KIT, "agent", "granola.mjs")).href);
+// Arize tracing (agent/tracing.mjs): a no-op unless ARIZE_SPACE_ID and ARIZE_API_KEY are set; then every run and Explore
+// answer has a trace, and its ids travel with the seller's rating so the rating lands on that trace as an annotation
+const T = await import(pathToFileURL(path.join(KIT, "agent", "tracing.mjs")).href);
 const KEY = !!process.env.ANTHROPIC_API_KEY;
 const MODE = args.includes("--mock") || !KEY ? "saved" : "live";
 const MODELS = Object.keys(core.PRICES);
@@ -76,7 +86,8 @@ async function runOne({ meetingId, userId, crm, meeting, transcript, permissions
   const m = pickModel(model);
   const r = await P.runAgent({ meetingId, userId, crm, meeting: meeting || null, transcript: transcript ?? null, permissions: permissions || null,
     model: m, effort: pickEffort(effort), mock: MODE !== "live" });
-  const run = { runId: r.runId, mode: MODE, model: MODE === "live" ? m : null, output: r.output, log: r.log, decisions: null, record: null };
+  const run = { runId: r.runId, mode: MODE, model: MODE === "live" ? m : null, output: r.output, log: r.log, decisions: null, record: null,
+    traceId: r.traceId || null, spanId: r.spanId || null };
   runs.set(run.runId, run);
   return run;
 }
@@ -115,6 +126,64 @@ async function exploreLive({ question, ctx, model }) {
     open: r.raw.open || null, sources: sources.length ? sources : [`Orbita CRM · ${ctx.opps.length} open opportunities`],
     actions: ids.slice(0, 1).map((id) => ({ label: "Open opportunity", opp: id })), opportunity_ids: ids };
   return { answer, usage: { ...r.usage, model, cost_usd: core.costOf(r.usage, model) } };
+}
+
+// ------------------------------------------------------------------ seller feedback (thumbs up / down)
+// Append-only JSON lines; the latest line of a rating wins. Only the keys below are kept, each one capped, so a page
+// cannot push a transcript or CRM values into the file.
+const FEEDBACK = process.env.ORBITA_FEEDBACK_FILE || path.join(KIT, ".feedback", "feedback.jsonl");
+const REASONS = ["wrong_opportunity", "wrong_values", "missed_stage", "wrong", "incomplete", "off_topic", "other"];
+const cap = (v, n) => (v == null ? null : String(v).slice(0, n));
+function cleanFeedback(f) {
+  if (!f || !/^[a-z0-9]{6,16}$/.test(f.uid || "") || !["update", "explore"].includes(f.surface) || !["up", "down"].includes(f.rating)) return null;
+  const d = f.decisions && typeof f.decisions === "object" ? f.decisions : null;
+  return { uid: f.uid, id: cap(f.id, 12), surface: f.surface, rating: f.rating, reason: REASONS.includes(f.reason) ? f.reason : null, note: cap(f.note, 280) || "",
+    sent: f.sent === true, user: cap(f.user, 12), at: cap(f.at, 32), ref: cap(f.ref, 40), model: cap(f.model, 40), label: cap(f.label, 200),
+    run_id: cap(f.run_id, 40), meeting_id: cap(f.meeting_id, 40), opportunity_id: cap(f.opportunity_id, 40), submitted: f.submitted === true,
+    decisions: d && Object.fromEntries(["approved", "edited", "rejected", "undone"].map((k) => [k, Number.isFinite(d[k]) ? d[k] : 0])),
+    question: cap(f.question, 600), answer: cap(f.answer, 600), answer_kind: cap(f.answer_kind, 20),
+    // the Arize ids of the run or answer rated (eval/arize/push_feedback.mjs writes the rating onto that trace)
+    span_id: /^[0-9a-f]{16}$/.test(f.span_id || "") ? f.span_id : null, trace_id: /^[0-9a-f]{32}$/.test(f.trace_id || "") ? f.trace_id : null,
+    received_at: new Date().toISOString() };
+}
+function readFeedback() {
+  if (!fs.existsSync(FEEDBACK)) return [];
+  const latest = new Map();
+  for (const line of fs.readFileSync(FEEDBACK, "utf8").split("\n")) {
+    if (!line.trim()) continue;
+    try { const f = JSON.parse(line); latest.delete(f.uid); latest.set(f.uid, f); } catch { /* a torn last line is skipped */ }
+  }
+  return [...latest.values()].reverse();
+}
+
+// ------------------------------------------------------------------ trace review (Evals tab)
+// The same two files as eval/error_discovery/server.py: annotations.json { annotations, reviewed, labels } and patterns.json
+// { modes, updated_at }. Notes and modes are text the reviewer wrote; each is capped, and only these keys are kept.
+const EVALS = process.env.ORBITA_EVALS_DIR || path.join(KIT, "eval", "error_discovery", "error_discovery_data");
+const VERDICTS = ["pass", "fail", "defer"];
+const readEvalFile = (name, dflt) => { try { return JSON.parse(fs.readFileSync(path.join(EVALS, name), "utf8")); } catch { return dflt; } };
+function writeEvalFile(name, obj) {
+  fs.mkdirSync(EVALS, { recursive: true });
+  const p = path.join(EVALS, name);
+  fs.writeFileSync(p + ".tmp", JSON.stringify(obj, null, 1));
+  fs.renameSync(p + ".tmp", p);
+}
+const idOk = (v) => typeof v === "string" && /^[A-Za-z0-9_.:@-]{1,80}$/.test(v);
+function cleanEvals(b) {
+  if (!b || !Array.isArray(b.annotations) || !Array.isArray(b.modes)) return null;
+  const annotations = b.annotations.filter((a) => a && idOk(a.id) && idOk(a.record_id)).slice(0, 2000).map((a) => ({
+    id: a.id, record_id: a.record_id, block: cap(a.block, 80) || "trace", start: Number.isFinite(a.start) ? a.start : null, end: Number.isFinite(a.end) ? a.end : null,
+    text: cap(a.text, 600) || "", note: cap(a.note, 1000) || "", field: cap(a.field, 60), mode: cap(a.mode, 80), created_at: cap(a.created_at, 32), by: cap(a.by, 12) }));
+  const pick = (o, fn) => Object.fromEntries(Object.entries(o && typeof o === "object" ? o : {}).filter(([k]) => idOk(k)).slice(0, 2000).map(([k, v]) => [k, fn(v)]));
+  const reviewed = pick(b.reviewed, (v) => cap(v, 32));
+  const labels = pick(b.labels, (v) => ({ verdict: VERDICTS.includes(v && v.verdict) ? v.verdict : null, at: cap(v && v.at, 32), by: cap(v && v.by, 12) }));
+  const ids = new Set(annotations.map((a) => a.id));
+  const modes = b.modes.filter((m) => m && cap(m.name, 80)).slice(0, 60).map((m) => {
+    const ann = (Array.isArray(m.annotation_ids) ? m.annotation_ids : []).filter((x) => ids.has(x));
+    return { id: idOk(m.id) ? m.id : null, name: cap(m.name, 80), description: cap(m.description, 400) || "", fix: cap(m.fix, 40), count: ann.length, suggested: 0, annotation_ids: ann };
+  });
+  const judge_labels = Object.fromEntries(Object.entries(pick(b.judge_labels, (v) => (["agree", "disagree"].includes(v) ? v : null))).filter(([, v]) => v));
+  return { annotations, reviewed, labels, modes, judge_labels };
 }
 
 function granolaMeetings() {
@@ -159,7 +228,7 @@ const server = http.createServer(async (req, res) => {
       if (overBudget()) return send(res, 429, { error: BUDGET_MSG() });
       const run = await runOne(body);
       if (run.output && run.output.usage) addSpend(run.output.usage.cost_usd);
-      return send(res, 200, { runId: run.runId, mode: run.mode, model: run.model, output: run.output, log: run.log });
+      return send(res, 200, { runId: run.runId, mode: run.mode, model: run.model, output: run.output, log: run.log, traceId: run.traceId, spanId: run.spanId });
     }
     if (req.method === "POST" && url.pathname === "/api/explore") {
       const body = await readJson(req);
@@ -171,9 +240,35 @@ const server = http.createServer(async (req, res) => {
       if (MODE !== "live") return send(res, 200, { mode: MODE, model: null, answer: EX.answerQuestion(body.question, ctx), usage: null });
       if (overBudget()) return send(res, 429, { error: BUDGET_MSG() });
       const model = pickModel(body.model);
-      const { answer, usage } = await exploreLive({ question: body.question, ctx, model });
+      const { answer, usage, traceId, spanId } = await T.inSpan("orbita.explore", { kind: "CHAIN", input: String(body.question).slice(0, 600), userId: body.userId }, async (h) => {
+        const out = await exploreLive({ question: body.question, ctx, model });
+        h.setOutput(out.answer);
+        return { ...out, ...h.ids() };
+      });
       addSpend(usage && usage.cost_usd);
-      return send(res, 200, { mode: MODE, model, answer, usage });
+      return send(res, 200, { mode: MODE, model, answer, usage, traceId: traceId || null, spanId: spanId || null });
+    }
+    if (req.method === "POST" && url.pathname === "/api/feedback") {
+      const f = cleanFeedback((await readJson(req)).feedback);
+      if (!f) return send(res, 400, { error: "feedback { uid, surface: update | explore, rating: up | down } is required" });
+      fs.mkdirSync(path.dirname(FEEDBACK), { recursive: true });
+      fs.appendFileSync(FEEDBACK, JSON.stringify(f) + "\n");
+      return send(res, 200, { ok: true, id: f.id });
+    }
+    if (req.method === "GET" && url.pathname === "/api/feedback") {
+      const items = readFeedback();
+      return send(res, 200, { count: items.length, down: items.filter((f) => f.rating === "down").length, items });
+    }
+    if (req.method === "GET" && url.pathname === "/api/evals") {
+      const a = readEvalFile("annotations.json", {});
+      return send(res, 200, { annotations: a.annotations || [], reviewed: a.reviewed || {}, labels: a.labels || {}, judge_labels: a.judge_labels || {}, modes: readEvalFile("patterns.json", {}).modes || [] });
+    }
+    if (req.method === "POST" && url.pathname === "/api/evals") {
+      const ev = cleanEvals(await readJson(req));
+      if (!ev) return send(res, 400, { error: "{ annotations: [], reviewed: {}, labels: {}, modes: [] } is required" });
+      writeEvalFile("annotations.json", { annotations: ev.annotations, reviewed: ev.reviewed, labels: ev.labels, judge_labels: ev.judge_labels });
+      writeEvalFile("patterns.json", { modes: ev.modes, updated_at: new Date().toISOString() });
+      return send(res, 200, { ok: true, annotations: ev.annotations.length, labels: Object.keys(ev.labels).length, modes: ev.modes.length });
     }
     let m = url.pathname.match(/^\/api\/runs\/([^/]+)\/submit$/);
     if (req.method === "POST" && m) {

@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-28T22:27:39.515Z",
+  "run_at": "2026-10-31T19:31:34.481Z",
   "cases": [
     {
       "case_id": "T1",
@@ -140,17 +140,17 @@
       ]
     },
     "claude-haiku-5-5": {
-      "passed": 10,
+      "passed": 9,
       "total": 11,
       "usage": {
         "calls": 9,
-        "input_tokens": 16492,
-        "cache_read_input_tokens": 106326,
-        "cache_creation_input_tokens": 0,
-        "output_tokens": 48745,
-        "cost_usd": 0.027084
+        "input_tokens": 16417,
+        "cache_read_input_tokens": 108344,
+        "cache_creation_input_tokens": 13543,
+        "output_tokens": 54335,
+        "cost_usd": 0.031584
       },
-      "cost_per_call_usd": 0.003009,
+      "cost_per_call_usd": 0.003509,
       "rows": [
         {
           "case_id": "T1",
@@ -174,8 +174,10 @@
         },
         {
           "case_id": "T5",
-          "verdict": "PASS",
-          "fails": []
+          "verdict": "FAIL",
+          "fails": [
+            "decision_criteria: missing key facts [[\"Visit and activity tracking\"],[\"sample\"]]"
+          ]
         },
         {
           "case_id": "T6",
@@ -196,7 +198,8 @@
           "case_id": "T9",
           "verdict": "FAIL",
           "fails": [
-            "decision_criteria: missing key facts [[\"lead\",\"campaign\"],[\"funnel\",\"enrol\"],[\"WhatsApp\"]]"
+            "decision_criteria: missing key facts [[\"Lead capture and routing\"],[\"Pipeline management\"],[\"WhatsApp messaging\"]]",
+            "integrations: missing key facts [[\"Industry or in-house system\"],[\"Marketing automation\"],[\"WhatsApp Business\"]]"
           ]
         },
         {
@@ -216,13 +219,13 @@
       "total": 11,
       "usage": {
         "calls": 9,
-        "input_tokens": 16492,
-        "cache_read_input_tokens": 94512,
-        "cache_creation_input_tokens": 11814,
-        "output_tokens": 24492,
-        "cost_usd": 0.633782
+        "input_tokens": 16417,
+        "cache_read_input_tokens": 108344,
+        "cache_creation_input_tokens": 13543,
+        "output_tokens": 28610,
+        "cost_usd": 0.727255
       },
-      "cost_per_call_usd": 0.07042,
+      "cost_per_call_usd": 0.080806,
       "rows": [
         {
           "case_id": "T1",
@@ -282,17 +285,93 @@
       ]
     },
     "claude-sonnet-5-5": {
-      "passed": 11,
+      "passed": 8,
       "total": 11,
       "usage": {
         "calls": 9,
-        "input_tokens": 16492,
-        "cache_read_input_tokens": 94512,
-        "cache_creation_input_tokens": 11814,
-        "output_tokens": 20591,
-        "cost_usd": 0.287333
+        "input_tokens": 16417,
+        "cache_read_input_tokens": 108344,
+        "cache_creation_input_tokens": 13543,
+        "output_tokens": 21426,
+        "cost_usd": 0.302624
       },
-      "cost_per_call_usd": 0.031926,
+      "cost_per_call_usd": 0.033625,
+      "rows": [
+        {
+          "case_id": "T1",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T2",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T3",
+          "verdict": "FAIL",
+          "fails": [
+            "objection: status no_evidence, expected proposed"
+          ]
+        },
+        {
+          "case_id": "T4",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T5",
+          "verdict": "FAIL",
+          "fails": [
+            "decision_criteria: missing key facts [[\"Visit and activity tracking\"],[\"sample\"]]"
+          ]
+        },
+        {
+          "case_id": "T6",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T7",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T8",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T9",
+          "verdict": "FAIL",
+          "fails": [
+            "decision_criteria: missing key facts [[\"Lead capture and routing\"],[\"Pipeline management\"],[\"WhatsApp messaging\"]]"
+          ]
+        },
+        {
+          "case_id": "T10",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T11",
+          "verdict": "PASS",
+          "fails": []
+        }
+      ]
+    },
+    "claude-sonnet-5-5@high": {
+      "passed": 10,
+      "total": 11,
+      "usage": {
+        "calls": 9,
+        "input_tokens": 16417,
+        "cache_read_input_tokens": 121887,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 34410,
+        "cost_usd": 0.401315
+      },
+      "cost_per_call_usd": 0.044591,
       "rows": [
         {
           "case_id": "T1",
@@ -336,8 +415,84 @@
         },
         {
           "case_id": "T9",
+          "verdict": "FAIL",
+          "fails": [
+            "decision_criteria: missing key facts [[\"Lead capture and routing\"],[\"Pipeline management\"],[\"WhatsApp messaging\"]]"
+          ]
+        },
+        {
+          "case_id": "T10",
           "verdict": "PASS",
           "fails": []
+        },
+        {
+          "case_id": "T11",
+          "verdict": "PASS",
+          "fails": []
+        }
+      ]
+    },
+    "claude-sonnet-5-5@low": {
+      "passed": 9,
+      "total": 11,
+      "usage": {
+        "calls": 9,
+        "input_tokens": 16417,
+        "cache_read_input_tokens": 108344,
+        "cache_creation_input_tokens": 13543,
+        "output_tokens": 17832,
+        "cost_usd": 0.266684
+      },
+      "cost_per_call_usd": 0.029632,
+      "rows": [
+        {
+          "case_id": "T1",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T2",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T3",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T4",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T5",
+          "verdict": "FAIL",
+          "fails": [
+            "decision_criteria: missing key facts [[\"Visit and activity tracking\"],[\"sample\"]]"
+          ]
+        },
+        {
+          "case_id": "T6",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T7",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T8",
+          "verdict": "PASS",
+          "fails": []
+        },
+        {
+          "case_id": "T9",
+          "verdict": "FAIL",
+          "fails": [
+            "decision_criteria: missing key facts [[\"Lead capture and routing\"],[\"Pipeline management\"],[\"WhatsApp messaging\"]]"
+          ]
         },
         {
           "case_id": "T10",

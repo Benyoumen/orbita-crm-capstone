@@ -1,4 +1,10 @@
 {
  "annotations": [],
- "reviewed": {}
+ "reviewed": {
+  "T1-claude-opus-5-5": "2026-10-31T20:01:03.371Z",
+  "T2-claude-sonnet-5-5": "2026-10-31T20:01:18.034Z",
+  "T2-claude-opus-5-5": "2026-10-31T20:01:20.756Z"
+ },
+ "labels": {},
+ "judge_labels": {}
 }

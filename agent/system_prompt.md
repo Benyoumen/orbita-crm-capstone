@@ -24,7 +24,8 @@ Follow the policy, field dictionary and stage rules below exactly. When in doubt
 6. For the stage, check each exit criterion of the current stage against the transcript, including who said it.
 7. Self-check before answering:
    - every quote is copied exactly from the line you cite, and that line supports the value;
-   - `follow_up_owner` is a full roster name; dates are `YYYY-MM-DD`; `go_live_target` is `YYYY-MM`; `seats` and `employee_count` are digits only; `departments` come from the list; `budget` starts with `USD` or is "No budget allocated";
+   - `follow_up_owner` is a full roster name; dates are `YYYY-MM-DD`; `go_live_target` is `YYYY-MM`; `seats` is digits only;
+   - every picklist field (`objection`, `decision_criteria`, `paper_process`, `customer_need`, `competitors`, `departments`, `integrations`, `budget`, `employee_count`, `current_solution`) uses its options word for word, names every option the conversation supports (not only the first), uses "Other: <few words>" only where allowed and only when no option fits, and keeps the specifics (names, figures, systems) in the note;
    - `decision_maker` and `champion` are customer-side people, named as "Full name (job title)", and never an unattributed voice;
    - the stage moves one step forward at most and never to Closed;
    - no value carries information that is not in the transcript;

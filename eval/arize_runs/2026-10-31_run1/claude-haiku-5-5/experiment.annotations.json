@@ -1,0 +1,112 @@
+[
+ {
+  "record_id": "01a19348-41e6-79e5-b81b-4526c934da4e",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19348-41e6-79f5-9375-9e841335d72a",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19348-41e6-79fe-bd5d-a4ad216f2510",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19348-41e6-7a0e-b5ee-6eb1a3553543",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19348-41e6-7a1d-a70c-463facc1e55f",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19348-41e6-7a27-84eb-bb8c0cccccfb",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19348-41e6-7a31-8300-3c908d8f4e05",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19348-41e6-7a3a-9452-a8b2d30a4525",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19348-41e6-7a47-adc1-1f62d311e1fe",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "decision_criteria: missing key facts [[\"lead\",\"campaign\"],[\"funnel\",\"enrol\"],[\"WhatsApp\"]]"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19348-41e6-7a51-b43f-ce09c3e666dc",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "objection: missing key facts [[\"signal\",\"offline\"]]"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19348-41e6-7a59-9ce6-1d0f1a2cd09f",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ }
+]

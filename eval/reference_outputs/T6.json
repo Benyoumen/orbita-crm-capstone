@@ -79,14 +79,14 @@
     {
       "field": "budget",
       "status": "proposed",
-      "value": "USD 120,000 per year",
+      "value": "USD 100k-150k per year",
       "evidence": [
         {
           "quote": "we have one hundred and twenty thousand dollars a year approved for the CRM in next year's budget.",
           "line": 9
         }
       ],
-      "note": null
+      "note": "USD 120,000 per year."
     },
     {
       "field": "seats",
@@ -134,14 +134,14 @@
     {
       "field": "paper_process",
       "status": "proposed",
-      "value": "Helena Duarte (CFO) approves; Legal reviews the contract in about two weeks; then Helena signs",
+      "value": "Legal contract review; Signature by the economic buyer",
       "evidence": [
         {
           "quote": "Once Helena approves, our legal team needs about two weeks to review the contract, and then she signs.",
           "line": 12
         }
       ],
-      "note": null
+      "note": "Helena Duarte (CFO) approves; Legal reviews the contract in about two weeks; then Helena signs."
     }
   ],
   "ignored_out_of_scope": [

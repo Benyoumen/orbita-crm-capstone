@@ -1,0 +1,112 @@
+[
+ {
+  "record_id": "01a19359-0ac4-72f8-8ada-c05c70e22c54",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19359-0ac4-7307-ab36-be88ff01c943",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19359-0ac4-7312-8fb6-cd378be6d6a7",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19359-0ac4-731b-8da5-a5faeef97536",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19359-0ac4-7323-bf8d-2e452ebe359c",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19359-0ac4-732b-893d-e3a02f35d7f9",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19359-0ac4-7334-bc4e-63415a64d1a5",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19359-0ac4-733d-94ad-660c3487a242",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19359-0ac4-734e-8352-dd4f7e6f5012",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19359-0ac4-7357-91fd-6dff7f803e61",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19359-0ac4-735f-9d5b-45b10528965a",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "paper_process: status no_evidence, expected proposed"
+   }
+  ]
+ }
+]

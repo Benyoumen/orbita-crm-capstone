@@ -15,8 +15,14 @@
       "current_value": "Pricing review with the Commercial VP and Procurement. Procurement asked for a 12% discount on a 3-year term; the VP accepted the scope.",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "Ana emailed revised terms with 8% off the three-year term. Henrique agreed to the terms and asked for the contract for signature, which Ana will send tomorrow morning. He also requested Microsoft Entra single sign-on from day one and sent the list of 110 users.",
+      "proposed_value": "Revised commercial terms with 8% off on the three-year term were emailed and accepted by the Commercial VP. He asked for the contract for signature: Talita routes it through procurement on Monday, then he signs. IT needs single sign-on with Microsoft Entra from day one. Ana will send the contract tomorrow morning.",
       "evidence": [
+        {
+          "line": 1,
+          "timestamp": "2026-11-05 18:02",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I've just emailed you the revised commercial terms: 8% off for the three-year term"
+        },
         {
           "line": 2,
           "timestamp": "2026-11-05 18:40",
@@ -36,7 +42,7 @@
       "field": "objection",
       "group": "conversation",
       "record": "opportunity",
-      "current_value": "Procurement wants a 12% discount for a 3-year term",
+      "current_value": "Price or discount",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -50,7 +56,7 @@
       "current_value": "Orbita (Ana): send the revised commercial terms by 6 Nov",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "Orbita (Ana): send the contract by 6 Nov",
+      "proposed_value": "Orbita (Ana): send the contract for signature by 2026-11-06",
       "evidence": [
         {
           "line": 4,
@@ -59,7 +65,7 @@
           "quote": "I'll send you the contract tomorrow morning."
         }
       ],
-      "note": "'Tomorrow' resolved from the message date, 2026-11-05."
+      "note": "'Tomorrow morning' resolved from the message date, Thu 2026-11-05."
     },
     {
       "field": "next_step",
@@ -68,7 +74,7 @@
       "current_value": "Commercial terms review with Procurement on 10 Nov",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "Ana sends the contract on 6 Nov; Procurement routes it on Monday 9 Nov; the Commercial VP signs right after",
+      "proposed_value": "Ana sends the contract for signature on 2026-11-06; Talita routes it through procurement on Mon 2026-11-09",
       "evidence": [
         {
           "line": 4,
@@ -83,7 +89,7 @@
           "quote": "Talita will route it through procurement on Monday and I'll sign right after that."
         }
       ],
-      "note": null
+      "note": "Henrique Prado signs right after procurement routing."
     },
     {
       "field": "follow_up_owner",
@@ -119,7 +125,7 @@
           "quote": "I'll send you the contract tomorrow morning."
         }
       ],
-      "note": "'Tomorrow' resolved from the message date, Thu 2026-11-05."
+      "note": "'Tomorrow morning' resolved from the message date, Thu 2026-11-05."
     },
     {
       "field": "metrics",
@@ -138,26 +144,19 @@
       "record": "opportunity",
       "current_value": "Henrique Prado (Commercial VP)",
       "current_approved": true,
-      "status": "unchanged",
-      "proposed_value": "Henrique Prado (Commercial VP)",
-      "evidence": [
-        {
-          "line": 3,
-          "timestamp": "2026-11-05 18:41",
-          "speaker": "Henrique Prado (Solaris Energy)",
-          "quote": "Talita will route it through procurement on Monday and I'll sign right after that."
-        }
-      ],
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
       "note": null
     },
     {
       "field": "decision_criteria",
       "group": "qualification",
       "record": "opportunity",
-      "current_value": "Contract renewals pipeline; account hierarchy; forecast dashboards",
+      "current_value": "Renewal and contract tracking; Account hierarchy; Forecasting; Reporting and dashboards",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "Contract renewals pipeline; account hierarchy; forecast dashboards; single sign-on with Microsoft Entra from day one",
+      "proposed_value": "Renewal and contract tracking; Account hierarchy; Reporting and dashboards; Forecasting; Integrations and API",
       "evidence": [
         {
           "line": 5,
@@ -166,7 +165,7 @@
           "quote": "our IT team needs single sign-on with Microsoft Entra from day one."
         }
       ],
-      "note": null
+      "note": "Single sign-on with Microsoft Entra from day one."
     },
     {
       "field": "decision_process",
@@ -186,7 +185,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Procurement routes the contract on Monday 9 Nov; the Commercial VP signs right after",
+      "proposed_value": "Signature by the economic buyer; Procurement review",
       "evidence": [
         {
           "line": 3,
@@ -195,13 +194,13 @@
           "quote": "Talita will route it through procurement on Monday and I'll sign right after that."
         }
       ],
-      "note": null
+      "note": "Talita Moura (Procurement Lead) routes the contract through procurement on Mon 2026-11-09; Henrique Prado (Commercial VP) signs right after."
     },
     {
       "field": "customer_need",
       "group": "qualification",
       "record": "opportunity",
-      "current_value": "Replace the 2014 on-premise CRM with one shared view of B2B energy contracts and renewals",
+      "current_value": "Legacy system nobody likes; Teams do not share one view",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -263,10 +262,10 @@
       "field": "integrations",
       "group": "scope",
       "record": "opportunity",
-      "current_value": "Billing system; email and calendar",
+      "current_value": "Billing system; Email and calendar",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "Billing system; email and calendar; Microsoft Entra",
+      "proposed_value": "Email and calendar; Billing system; Single sign-on",
       "evidence": [
         {
           "line": 5,
@@ -275,13 +274,13 @@
           "quote": "our IT team needs single sign-on with Microsoft Entra from day one."
         }
       ],
-      "note": null
+      "note": "Single sign-on with Microsoft Entra from day one. Existing: billing system; email and calendar."
     },
     {
       "field": "budget",
       "group": "scope",
       "record": "opportunity",
-      "current_value": "USD 150,000 per year",
+      "current_value": "USD 150k-250k per year",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -303,7 +302,7 @@
       "field": "employee_count",
       "group": "company",
       "record": "client",
-      "current_value": "1800",
+      "current_value": "1000-4999",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -314,7 +313,7 @@
       "field": "current_solution",
       "group": "company",
       "record": "client",
-      "current_value": "Legacy on-premise CRM from 2014",
+      "current_value": "Legacy on-premise CRM",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -343,18 +342,18 @@
           "quote": "Please send me the contract for signature."
         }
       ],
-      "note": "Negotiation exit criteria met: the economic buyer agreed to the terms and the contract was requested for signature."
+      "note": "Contract exit criteria met: the economic buyer agreed to the terms in writing and the contract was requested for signature."
     }
   ],
   "ignored_out_of_scope": [],
   "validation_notes": [],
   "usage": {
-    "input_tokens": 1408,
-    "output_tokens": 4613,
-    "cache_read_input_tokens": 11814,
+    "input_tokens": 1389,
+    "output_tokens": 4456,
+    "cache_read_input_tokens": 13543,
     "cache_creation_input_tokens": 0,
     "model": "claude-haiku-5-5",
     "served_by": "claude-haiku-5-5",
-    "cost_usd": 0.002565
+    "cost_usd": 0.002502
   }
 }

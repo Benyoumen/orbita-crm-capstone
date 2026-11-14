@@ -7,6 +7,7 @@ o contrato da pele. Stdlib pura.
     python sonda_capstone.py                       # roda tudo; sai 0 so com tudo OK
     python sonda_capstone.py --foto review-t1      # tira um print de uma cena (ver CENAS)
     python sonda_capstone.py --foto clients --largura 1280
+    python sonda_capstone.py --foto review-t1 --altura 2400   # a pagina inteira, sem rolar
 
 Como funciona: copia o HTML gerado para um caminho ASCII (acento quebra o Edge),
 isola a pagina de qualquer servidor local (CAPSTONE_API aponta para uma porta
@@ -43,6 +44,22 @@ As verificacoes:
   S1  Settings: as abas; Agent (conexao, modelos, esforco); Sources; o Activity log
       saiu da lateral; as rotas antigas redirecionam.
   S2  Quality checks: as conversas de teste passam e nao tocam no CRM.
+  N1  Navegacao (31/10): o Explore e um app de chat (Explore = chat novo; o chat da
+      lateral reabre na ultima mensagem, a caixa presa embaixo); o nome de cada
+      registro abre a gaveta (oportunidade, cliente, reuniao), e a linha inteira
+      tambem; a reuniao abre com o que veio dela, quem falou e a transcricao com
+      busca; a busca de Meetings le o que foi dito; a revisao tem um cartao por
+      grupo, a barra de decisao presa e nada sublinhado.
+  E1  Evals: o painel (a configuracao em producao, seis numeros, uma linha por
+      experimento, o acerto por campo e o juiz LLM com a concordancia); o ciclo em
+      cinco passos; o veredito do juiz no trace com Agree/Disagree; Pass/Fail/Defer e nota
+      por trace, com teclado (setas, 1, 2, D, U, Ctrl+Enter); filtros; a amostra e
+      os 29; modos de falha que agrupam e contam as notas; um "not right" da
+      vendedora vira trace; nada toca no CRM; o reset do CRM guarda os rotulos.
+  Q1  Avaliacao da vendedora: polegar para cima ou para baixo em cada resposta do
+      Explore e em cada atualizacao; motivo so no polegar para baixo (pode pular);
+      nada do CRM nem da transcricao na avaliacao; o painel do dono do agente em
+      Evals > Seller feedback, por usuario (a gestora ve o time).
   F1-F3 funil (com MEDDPICC), gavetas, Clients em cartoes separados.
   C0-C6 titulo abaixo da barra, nada de jargao de prototipo na tela, reset, os
       formatos de capstone/samples, a gaveta da transcricao, o contrato e o contraste.
@@ -134,7 +151,7 @@ ROTEIRO = r"""
     await until(() => !q('#rev-submit'), 'submitted ' + label);
   }
   async function ask(question) {
-    location.hash = '#/explore'; await until(() => !view('explore').hidden, 'explore');
+    location.hash = '#/explore'; await wait(30); await until(() => !view('explore').hidden, 'explore');
     const n = qq('#ex-thread .msg.nex').length;
     q('#ex-in').value = question; q('#ex-cmp').dispatchEvent(new Event('submit', {cancelable: true}));
     await until(() => qq('#ex-thread .msg.nex').length === n + 1 && !q('#ex-thread .msg.wait'), 'answer to ' + question);
@@ -172,8 +189,8 @@ ROTEIRO = r"""
     const r4 = await ask("What's the status of Acme Logistics?");
     check('A0 Explore never answers about an opportunity the user cannot read', r4.a.kind === 'none' && !txt(r4.el).includes('OPP-0142') && !txt(r4.el).includes('Sales CRM rollout'));
     CRM.switchUser('U01');
-    q('#nav-newchat').click(); await until(() => !q('.ex').classList.contains('ex-on'), 'new chat');
-    check('A0 New chat goes back to the greeting and the suggestions', /Ana/.test(txt(q('#ex-t'))) && shown(q('#ex-sg-box')));
+    q('.nav-i[data-view="explore"]').click(); await until(() => !q('.ex').classList.contains('ex-on'), 'new chat');
+    check('A0 Explore goes back to the greeting and the suggestions', /Ana/.test(txt(q('#ex-t'))) && shown(q('#ex-sg-box')));
     check('A0 Explore never writes to the CRM', crm() === seed());
   }
   async function A1() {
@@ -207,7 +224,7 @@ ROTEIRO = r"""
     await approveAll(); await submit('A1');
     const opp = oppOf('OPP-0142'), cli = cliOf('CLI-001');
     check('A1 after Submit the stage is Solution, approved', fv(opp, 'stage').value === 'Solution' && fv(opp, 'stage').approved);
-    check('A1 client fields went to the client record', fv(cli, 'employee_count').value === '850' && !(opp.fields || {}).employee_count);
+    check('A1 client fields went to the client record', fv(cli, 'employee_count').value === '500-999' && !(opp.fields || {}).employee_count);
     check('A1 the champion and the paper process are in the CRM', /Felipe/.test(fv(opp, 'champion').value || '') && /quote/.test(fv(opp, 'paper_process').value || ''));
     await goto('#/opportunities', '#opps-groups .fg');
     check('A1 the opportunity moved to Solution in the funnel', !!q('.fg[data-stage="Solution"] [data-opp="OPP-0142"]'));
@@ -277,7 +294,7 @@ ROTEIRO = r"""
     await prepare('T6');
     expectStatuses('T6', 'A6');
     check('A6 the stage does not move and the note names the CFO', row('stage').dataset.status === 'no_evidence' && /CFO|Helena/.test(txt(q('.notes .pn:first-child'))));
-    check('A6 the one-million request is ignored, the stated budget proposed', /one million/.test(txt(q('.notes .pn:nth-child(2)'))) && /120,000/.test(txt(q('.prop .val', row('budget')))));
+    check('A6 the one-million request is ignored, the stated budget proposed', /one million/.test(txt(q('.notes .pn:nth-child(2)'))) && txt(q('.prop .val', row('budget'))) === 'USD 100k-150k per year' && /120,000/.test(txt(q('.prop .lab', row('budget')))));
     check('A6 the champion is not the economic buyer', /Tiago/.test(txt(q('.prop .val', row('champion')))));
     check('A6 no Closed stage proposed', !/Closed Won|Closed Lost/.test(qq('#tb-rev .prop .val').map(txt).join(' ')));
   }
@@ -291,8 +308,9 @@ ROTEIRO = r"""
     const id = await prepare('T7');
     expectStatuses('T7', 'A7');
     const edited = expected('T7').review_script.edit.customer_need;
-    q('[data-open="edit"]', row('customer_need')).click(); await until(() => q('#dec-text'), 'editor');
-    q('#dec-text').value = edited; q('[data-save="edit"]', row('customer_need')).click();
+    // schema v4: the pain is a picklist, so the seller's edit is a different set of options
+    q('[data-open="edit"]', row('customer_need')).click(); await until(() => q('#dec-multi'), 'editor');
+    qq('#dec-multi input').forEach(i => { i.checked = edited.split('; ').includes(i.value); }); q('[data-save="edit"]', row('customer_need')).click();
     await until(() => /Edited/.test(txt(q('.dec', row('customer_need')))), 'edited');
     await approveAll(); await submit('A7');
     const opp = oppOf('OPP-0146');
@@ -335,6 +353,16 @@ ROTEIRO = r"""
     qq('#dec-multi input').forEach(i => { i.checked = ['IT', 'Sales'].includes(i.value); });
     q('[data-save="edit"]', row('departments')).click(); await wait(20);
     check('A9 departments edit with chips, stored in list order', runOf(id).decisions.departments && runOf(id).decisions.departments.value === 'Sales; IT');
+    // schema v4: a single picklist is a select of its options; a multi picklist with Other takes a free item too
+    q('[data-open="edit"]', row('budget')).click(); await until(() => q('#dec-text'), 'budget editor');
+    const bdef = FOTO.schema.fields.find(f => f.key === 'budget');
+    check('A9 budget edit is the list of its bands', q('#dec-text').tagName === 'SELECT' && q('#dec-text').options.length === bdef.options.length && !q('#dec-other'));
+    q('[data-cancel]', row('budget')).click(); await wait(10);
+    q('[data-open="edit"]', row('integrations')).click(); await until(() => q('#dec-multi'), 'integrations editor');
+    qq('#dec-multi input').forEach(i => { i.checked = ['ERP', 'Single sign-on'].includes(i.value); }); q('#dec-other').value = 'Campus One';
+    q('[data-save="edit"]', row('integrations')).click(); await wait(20);
+    check('A9 a picklist edit keeps the options in list order and the Other item last', runOf(id).decisions.integrations && runOf(id).decisions.integrations.value === 'ERP; Single sign-on; Other: Campus One', runOf(id).decisions.integrations && runOf(id).decisions.integrations.value);
+    check('A9 picklist values read as chips', qq('.opt', row('integrations')).length === 3 && txt(q('.prop .val', row('integrations'))) === 'ERP; Single sign-on; Other: Campus One');
     q('[data-open="edit"]', row('stage')).click(); await until(() => q('#dec-text'), 'stage editor');
     check('A9 stage edit is the list of stages', q('#dec-text').tagName === 'SELECT' && q('#dec-text').options.length === FOTO.schema.stages.length);
     q('[data-cancel]', row('stage')).click(); await wait(10);
@@ -357,7 +385,7 @@ ROTEIRO = r"""
     const id = await prepare('T11');
     expectStatuses('T11', 'A11');
     check('A11 the written yes moves Negotiation to Contract', txt(q('.prop .val', row('stage'))) === 'Contract');
-    check('A11 tomorrow is resolved from the message date', txt(q('.prop .val', row('follow_up_due_date'))) === '2026-11-06');
+    check('A11 tomorrow is resolved from the message date', q('.prop .val', row('follow_up_due_date')).dataset.v === '2026-11-06' && /Fri 6 Nov 2026/.test(txt(q('.prop .val', row('follow_up_due_date')))));
     check('A11 the evidence shows the message day and time', /Thu 5 Nov 18:4\d/.test(txt(q('.evm time', row('stage')))), txt(q('.evm time', row('stage'))));
     await approveAll(); await submit('A11');
     check('A11 the stage is Contract in the CRM', fv(oppOf('OPP-0149'), 'stage').value === 'Contract');
@@ -414,7 +442,7 @@ ROTEIRO = r"""
   async function S1() {
     await reset();
     const tabs = qq('#set-tabs [data-tab]').map(b => b.dataset.tab);
-    check('S1 Settings has its tabs', tabs.join('|') === 'permissions|agent|sources|team|activity|quality|data', tabs.join('|'));
+    check('S1 Settings has its tabs', tabs.join('|') === 'permissions|agent|sources|team|activity|data', tabs.join('|'));
     for (const t of tabs) {
       await goto('#/settings/' + t, '#set-body .pn');
       check('S1 the ' + t + ' tab renders', q('#set-tabs [data-tab="' + t + '"]').getAttribute('aria-selected') === 'true' && txt(q('#set-body')).length > 40);
@@ -448,9 +476,9 @@ ROTEIRO = r"""
     const groups = qq('#opps-groups .fg');
     const open = FOTO.schema.stages.filter(s => !FOTO.schema.closed_stages.includes(s));
     check('F1 one section per open stage, in funnel order', groups.map(g => g.dataset.stage).join('|') === open.join('|'));
-    check('F1 the manager sees every open opportunity', qq('#opps-groups .fr').length === FOTO.opportunities.length, qq('#opps-groups .fr').length);
+    check('F1 the manager sees every open opportunity', qq('#opps-groups .fr[data-opp]').length === FOTO.opportunities.length, qq('#opps-groups .fr[data-opp]').length);
     check('F1 each section count equals its rows', groups.every(g => txt(q('[data-n]', g)) === String(qq('.fr', g).length)));
-    check('F1 every row shows its MEDDPICC coverage', qq('#opps-groups .fr').every(r => qq('.mdp-c', r).length === 8));
+    check('F1 every row shows its MEDDPICC coverage', qq('#opps-groups .fr[data-opp]').every(r => qq('.mdp-c', r).length === 8));
     q('#opps-chips [data-stage="Proposal"]').click(); await wait(20);
     const vis = qq('#opps-groups .fg').filter(shown).map(g => g.dataset.stage);
     check('F1 a stage chip shows only its section', vis.length === 1 && vis[0] === 'Proposal', vis.join(','));
@@ -460,7 +488,7 @@ ROTEIRO = r"""
     const known = r => CRM.core.meddpiccOf(FOTO.schema, FOTO.opportunities.find(o => o.opportunity_id === r.dataset.opp)).known;
     check('F1 sort by thinnest qualification', !sec || known(qq('.fr', sec)[0]) <= known(qq('.fr', sec)[1]));
     CRM.switchUser('U01'); await goto('#/opportunities', '#opps-groups .fg');
-    check('F1 Ana sees only her opportunities', qq('#opps-groups .fr').length === FOTO.opportunities.filter(o => o.owner_id === 'U01').length && !shown(q('#opps-owner-w')));
+    check('F1 Ana sees only her opportunities', qq('#opps-groups .fr[data-opp]').length === FOTO.opportunities.filter(o => o.owner_id === 'U01').length && !shown(q('#opps-owner-w')));
   }
   async function F2() {
     await reset();
@@ -498,6 +526,189 @@ ROTEIRO = r"""
     CRM.switchUser('U01'); await goto('#/clients', '#cl-list .cl-card');
     const anaClients = FOTO.clients.filter(c => FOTO.opportunities.some(o => o.client_id === c.client_id && o.owner_id === 'U01'));
     check('F3 Ana sees only the clients where she owns an opportunity', qq('#cl-list .cl-card').length === anaClients.length);
+  }
+  async function Q1() {
+    await reset();
+    await ask("What's the status of Acme Logistics?");
+    const box = () => q('.fb', qq('#ex-thread .msg.nex').pop());
+    const fb = () => CRM.state().feedback;
+    const b0 = box();
+    check('Q1 every Explore answer has a thumbs up and a thumbs down, named and not pressed', !!b0 && qq('[data-rate]', b0).length === 2 && qq('[data-rate]', b0).every(x => x.getAttribute('aria-label') && x.getAttribute('aria-pressed') === 'false'));
+    q('[data-rate="up"]', box()).click(); await wait(10);
+    check('Q1 a thumbs up is recorded at once, with the question and how it was answered', fb().length === 1 && fb()[0].surface === 'explore' && fb()[0].rating === 'up' && fb()[0].sent && fb()[0].question === "What's the status of Acme Logistics?" && fb()[0].model === 'rules', JSON.stringify(fb()[0]));
+    check('Q1 the pressed thumb says so', q('[data-rate="up"]', box()).getAttribute('aria-pressed') === 'true' && /agent owner/.test(txt(box())));
+    q('[data-rate="down"]', box()).click(); await wait(10);
+    check('Q1 switching to thumbs down replaces the rating and asks the reason', fb().length === 1 && fb()[0].rating === 'down' && !fb()[0].sent && qq('input[type="radio"]', box()).length === 4 && !!q('.fb-note', box()));
+    check('Q1 the reason takes the focus', !!document.activeElement && document.activeElement.matches('.fb input[type="radio"]'));
+    q('input[value="incomplete"]', box()).click(); q('.fb-note', box()).value = 'It left out the next step';
+    q('[data-fb-send]', box()).click(); await wait(10);
+    check('Q1 Send keeps the reason and the note, and closes the form', fb()[0].sent && fb()[0].reason === 'incomplete' && fb()[0].note === 'It left out the next step' && !q('.fb-f', box()) && /Missing something/.test(txt(box())), JSON.stringify(fb()[0]));
+    check('Q1 rating never touches the CRM', crm() === seed());
+    const id = await addRun(T.T1);
+    const rb = () => q('#rev-body .rev-fb .fb');
+    check('Q1 every CRM update has the same pair under the table', !!rb() && qq('[data-rate]', rb()).length === 2);
+    await approveAll(); await submit('Q1');
+    q('[data-rate="down"]', rb()).click(); await wait(10);
+    q('[data-fb-skip]', rb()).click(); await wait(10);
+    const u = fb().find(f => f.surface === 'update');
+    check('Q1 an update rating keeps the run, the model and what the seller decided', !!u && u.ref === id && u.run_id === id && u.opportunity_id === 'OPP-0142' && u.submitted && u.model === 'saved' && u.decisions.approved > 0 && u.sent && u.reason === null, JSON.stringify(u));
+    const all = JSON.stringify(fb()), pain = fv(oppOf('OPP-0142'), 'customer_need').value;
+    const lines = CRM.core.transcriptLines(CRM.state().transcripts[runOf(id).meetingId]);
+    check('Q1 a rating never copies the transcript or a field value', !!pain && !all.includes(pain) && !lines.some(l => l.text.length > 30 && all.includes(l.text)));
+    await goto('#/evals/feedback', '#tb-fb');
+    check('Q1 Evals > Seller feedback lists every rating for the agent owner', qq('#tb-fb tr[data-fb-row]').length === fb().length && qq('#tb-fb tr[data-rating="down"]').length === 2 && /2 not right/.test(txt(q('#fb-panel .pn-n'))), txt(q('#fb-panel .pn-n')));
+    check('Q1 the panel names who reads it and counts the corrections', /agent owner/.test(txt(q('#fb-panel'))) && /edited/.test(txt(q('#fb-panel .fb-sum'))));
+    CRM.switchUser('U02'); await goto('#/evals/feedback', '#fb-panel');
+    check('Q1 another seller does not see these ratings', !qq('#tb-fb tr[data-fb-row]').length);
+    CRM.switchUser('U04'); await goto('#/evals/feedback', '#fb-panel');
+    check('Q1 the manager sees the team ratings', qq('#tb-fb tr[data-fb-row]').length === fb().length);
+    await contrato('Q1 quality with ratings'); contraste('Q1 quality with ratings');
+    CRM.switchUser('U01');
+  }
+  async function N1() {
+    await reset();
+    // Explore works like a chat app: Explore is always a new chat; a chat in the sidebar reopens at its last message
+    await goto('#/explore', '#ex-cmp');
+    for (const qx of ["What's the status of Acme Logistics?", 'Which follow-ups are overdue?', "What's missing to qualify Atlas Manufacturing?", 'What is waiting for my review?']) await CRM.askExplore(qx);
+    const ch = CRM.state().chats[0];
+    check('N1 a chat is addressed by its own route', location.hash === '#/explore/' + ch.id && ch.messages.length === 8, location.hash + ' ' + ch.messages.length);
+    check('N1 in a chat the question is not repeated as a title', q('#ex-t').classList.contains('sr') && qq('#ex-thread .msg.eu').length === 4);
+    q('.nav-i[data-view="explore"]').click(); await until(() => !q('.ex').classList.contains('ex-on'), 'explore = new chat');
+    check('N1 Explore in the navigation always opens a new chat', CRM.state().chatCurrent === null && /^Good (morning|afternoon|evening)/.test(txt(q('#ex-t'))) && shown(q('#ex-sg-box')) && CRM.state().chats.length === 1);
+    await goto('#/meetings', '#mt-add');
+    q('#nav-chats [data-chat="' + ch.id + '"]').click(); await until(() => q('.ex').classList.contains('ex-on') && location.hash === '#/explore/' + ch.id, 'reopen chat');
+    await wait(80);
+    const de = document.documentElement;
+    check('N1 a chat reopens at its last message', CRM.state().chatCurrent === ch.id && de.scrollTop > 0 && de.scrollTop + window.innerHeight >= de.scrollHeight - 4, de.scrollTop + '+' + window.innerHeight + ' of ' + de.scrollHeight);
+    check('N1 the composer stays in view under the chat', getComputedStyle(q('#ex-cmp')).position === 'sticky' && q('#ex-cmp').getBoundingClientRect().bottom <= window.innerHeight);
+    check('N1 the open chat is the lit line, not Explore', q('#nav-chats [data-chat="' + ch.id + '"]').classList.contains('on') && !q('.nav-i[data-view="explore"]').classList.contains('on'));
+    q('#nav-newchat').click(); await until(() => !q('.ex').classList.contains('ex-on'), 'new chat button');
+    check('N1 New chat stays in the sidebar and opens a new chat too', CRM.state().chatCurrent === null && location.hash === '#/explore' && /^Good (morning|afternoon|evening)/.test(txt(q('#ex-t'))));
+    // every record opens from its name, and from anywhere on its row
+    CRM.switchUser('U04');
+    await goto('#/opportunities', '#opps-groups .fr[data-opp]');
+    const fr = q('#opps-groups .fr[data-opp]');
+    q('.rec', fr).click(); await until(() => q('#opp-drw').open, 'opp by name');
+    check('N1 the opportunity name opens its record', txt(q('#opp-drw-t')).indexOf(txt(q('.rec', fr))) === 0, txt(q('#opp-drw-t')));
+    q('#opp-drw-x').click(); await until(() => !q('#opp-drw').open, 'closed');
+    q('.fr-c:nth-child(3)', fr).click(); await until(() => q('#opp-drw').open, 'opp by row');
+    ok('N1 a click anywhere on the row opens the record');
+    q('#opp-drw-x').click(); await until(() => !q('#opp-drw').open, 'closed');
+    check('N1 the list has column names', /Client · opportunity/.test(txt(q('#opps-groups .fr-h'))) && /Qualification/.test(txt(q('#opps-groups .fr-h'))));
+    await goto('#/clients', '#cl-list .cl-card');
+    const card = q('#cl-list .cl-card');
+    q('.cl-h .rec', card).click(); await until(() => q('#cli-drw').open, 'client by name');
+    check('N1 the client name opens the client record', txt(q('#cli-drw-t')) === txt(q('.cl-h .rec', card)));
+    q('#cli-drw-x').click(); await until(() => !q('#cli-drw').open, 'closed');
+    q('.cl-op .rec', card).click(); await until(() => q('#opp-drw').open, 'opp from card');
+    ok('N1 the opportunity name in a client card opens its record');
+    q('#opp-drw-x').click(); await until(() => !q('#opp-drw').open, 'closed');
+    CRM.switchUser('U01');
+    // meetings: the title opens the meeting (who spoke, what came of it, the transcript); search reads what was said
+    const id = await addRun(T.T1);
+    await goto('#/meetings', '#tb-meetings tr[data-mtg]');
+    const mt = q('#tb-meetings tr[data-mtg]'), mid = mt.dataset.mtg;
+    q('.rec-b', mt).click(); await until(() => q('#drw').open, 'meeting by title');
+    const lines = CRM.core.transcriptLines(CRM.state().transcripts[mid]);
+    check('N1 the meeting title opens the meeting: what came of it, the people, the transcript', qq('#drw .tl').length === lines.length && /CRM update/.test(txt(q('.mtg-sum'))) && qq('.mtg-sum .pp').length >= 2 && !!q('.mtg-sum a[href="#/review/' + id + '"]'));
+    const word = lines.map(l => (l.text.match(/[A-Za-z]{9,}/g) || [])).flat().find(w => !txt(mt).toLowerCase().includes(w.toLowerCase()));
+    const fq = q('#tl-q'); fq.value = word; fq.dispatchEvent(new Event('input')); await wait(10);
+    const hits = lines.filter(l => (l.text + ' ' + l.speaker).toLowerCase().includes(word.toLowerCase())).length;
+    check('N1 find in the transcript marks the matching lines', qq('#drw .tl.hit').length === hits && hits > 0 && !!q('#drw .tl.hit mark') && /match/.test(txt(q('#tl-n'))), word + ' ' + hits);
+    q('#drw-x').click(); await until(() => !q('#drw').open, 'closed');
+    q('#tb-meetings tr[data-mtg] .ttl .rec').click(); await until(() => q('#opp-drw').open, 'opp from meetings');
+    ok('N1 the opportunity of a meeting opens from its name');
+    q('#opp-drw-x').click(); await until(() => !q('#opp-drw').open, 'closed');
+    const sq = q('#mt-q'); sq.value = word; sq.dispatchEvent(new Event('input')); await wait(10);
+    check('N1 search finds a meeting by what was said, with the line', qq('#tb-meetings tr[data-mtg]').length === 1 && !!q('#tb-meetings .snip mark') && /1 of 1 meeting/.test(txt(q('#mt-n'))), txt(q('#mt-n')));
+    q('#tb-meetings .snip').click(); await until(() => q('#drw').open, 'meeting from the search');
+    check('N1 the search line opens the transcript on the word', q('#tl-q').value === word && qq('#drw .tl.hit').length === hits);
+    q('#drw-x').click(); await until(() => !q('#drw').open, 'closed');
+    sq.value = 'zqxjw'; sq.dispatchEvent(new Event('input')); await wait(10);
+    check('N1 a search with no match says what it read', !q('#tb-meetings tr[data-mtg]') && /reads titles, people, clients and every line/.test(txt(q('#tb-meetings'))));
+    sq.value = ''; sq.dispatchEvent(new Event('input')); await wait(10);
+    // the review: one card per kind of information, the decision bar in view, nothing underlined
+    location.hash = '#/review/' + id; await until(() => !view('review').hidden && q('#rev-body').dataset.run === id && q('#tb-rev'), 'review');
+    const groups = FOTO.schema.groups.filter(g => runOf(id).output.fields.some(f => f.group === g.id));
+    check('N1 the review has one separate card per group', qq('#tb-rev .rvg').length === groups.length && qq('#tb-rev .rvg').every(g => parseFloat(getComputedStyle(g).borderTopWidth) >= 1));
+    const cards = qq('#tb-rev .rvg'), gaps = cards.slice(1).map((c, i) => c.getBoundingClientRect().top - cards[i].getBoundingClientRect().bottom);
+    check('N1 a gap separates the groups', gaps.every(g => g >= 12), gaps.map(Math.round).join(','));
+    const hues = qq('#tb-rev .rvg-i').map(i => getComputedStyle(i).backgroundColor);
+    check('N1 each group has its own color', new Set(hues).size === hues.length, hues.join(' | '));
+    check('N1 the decision bar stays in view and holds Submit', getComputedStyle(q('#rev-bar')).position === 'sticky' && !!q('#rev-bar #rev-submit'));
+    const under = qq('#rev-body *, #rev-head *').filter(el => shown(el) && txt(el) && (getComputedStyle(el).textDecorationLine.includes('underline') || (parseFloat(getComputedStyle(el).borderBottomWidth) > 0 && el.matches('a, button') && !el.matches('.b, .ds, .evb, .fb-b'))));
+    check('N1 nothing in the review is underlined', !under.length, under.slice(0, 3).map(el => el.tagName + '.' + el.className).join(' '));
+    q('#rev-head .rec-h').click(); await until(() => q('#opp-drw').open, 'opp from the review title');
+    ok('N1 the client name in the review title opens the record');
+    q('#opp-drw-x').click(); await until(() => !q('#opp-drw').open, 'closed');
+    q('#rev-head .crumbs .rec').click(); await until(() => q('#drw').open, 'meeting from the crumbs');
+    ok('N1 the meeting in the path opens the transcript');
+    q('#drw-x').click(); await until(() => !q('#drw').open, 'closed');
+  }
+  async function E1() {
+    await reset();
+    CRM.state().evals = {ann: [], reviewed: {}, labels: {}, modes: [], jl: {}};
+    const nSample = FOTO.evals.sample.length, nAll = FOTO.evals.traces.length;
+    check('E1 Evals is in the navigation and Quality checks left Settings', !!q('.nav-foot .nav-i[data-view="evals"]') && !q('#set-tabs [data-tab="quality"]'));
+    await goto('#/evals/dashboard', '#ev-body .loop');
+    const X = FOTO.evals.experiments;
+    check('E1 the dashboard leads with the production configuration and its numbers', /In production/.test(txt(q('.ev-cfg'))) && qq('.ev-kpi .st').length === 6 && /test conversations pass/.test(txt(q('.ev-kpi'))) && /field accuracy/.test(txt(q('.ev-kpi'))));
+    check('E1 one experiment row per configuration run over the eval set', qq('#tb-exp tbody tr[data-exp]').length === X.rows.length && qq('#tb-exp tr.is-prod').length === 1);
+    check('E1 accuracy by field: one row per field, one column per experiment', qq('#ev-heat .hm-t tbody tr:not(.hm-g)').length === FOTO.schema.fields.length && qq('#ev-heat td.hm').length === FOTO.schema.fields.length * X.rows.length);
+    check('E1 the LLM judge shows its question, its model and its agreement with you', !X.judge || (/supported/.test(txt(q('#ev-judge'))) && /true positive rate/.test(txt(q('#ev-judge'))) && /Not validated yet/.test(txt(q('#ev-judge')))));
+    check('E1 the loop has five steps, from feedback to re-run', qq('#ev-body .lp').length === 5 && new RegExp('0 of ' + nSample + ' sampled traces').test(txt(q('#ev-body'))) && /Automate the check/.test(txt(q('#ev-body'))));
+    location.hash = '#/evals/overview'; await until(() => location.hash === '#/evals/dashboard', 'overview moved');
+    location.hash = '#/settings/quality'; await until(() => location.hash === '#/evals/evalset' && q('#eval-run'), 'quality moved');
+    ok('E1 the old Quality checks route lands on Evals > Eval set');
+    await goto('#/evals/traces', '#tv');
+    check('E1 trace review starts on the sample', qq('#tq-l [data-trace]').length === nSample && new RegExp('1 of ' + nSample).test(txt(q('.tv-pos'))));
+    const t0 = CRM.ui().ev.cur;
+    q('[data-verdict="pass"]').click(); await wait(10);
+    check('E1 Pass is saved at once', CRM.state().evals.labels[t0] && CRM.state().evals.labels[t0].verdict === 'pass' && q('[data-verdict="pass"]').getAttribute('aria-pressed') === 'true');
+    document.body.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowRight', bubbles: true})); await wait(10);
+    const t1 = CRM.ui().ev.cur;
+    document.body.dispatchEvent(new KeyboardEvent('keydown', {key: '2', bubbles: true})); await wait(10);
+    check('E1 the keyboard moves and labels: arrow, then 2 for Fail', t1 !== t0 && CRM.state().evals.labels[t1].verdict === 'fail');
+    q('#ev-note').value = 'The champion is the person who asked for the demo'; q('#ev-note').dispatchEvent(new Event('input'));
+    q('#ev-note').dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter', ctrlKey: true, bubbles: true})); await wait(10);
+    const n1 = CRM.state().evals.ann.find(a => a.record_id === t1);
+    check('E1 the note is the reviewer\'s own words, kept with the trace, and Ctrl+Enter moves on', !!n1 && n1.block === 'trace' && n1.note === 'The champion is the person who asked for the demo' && CRM.ui().ev.cur !== t1);
+    document.body.dispatchEvent(new KeyboardEvent('keydown', {key: 'd', bubbles: true})); await wait(10);
+    const t2 = CRM.ui().ev.cur;
+    check('E1 D defers', CRM.state().evals.labels[t2].verdict === 'defer');
+    document.body.dispatchEvent(new KeyboardEvent('keydown', {key: 'u', bubbles: true})); await wait(10);
+    check('E1 U takes the last label back', !CRM.state().evals.labels[t2]);
+    q('#ev-body [data-evf="todo"]').click(); await wait(10);
+    check('E1 the To review filter leaves out what is labelled', qq('#tq-l [data-trace]').length === nSample - 2);
+    q('#ev-all').click(); await wait(10);
+    check('E1 all eval traces, not only the sample', qq('#tq-l [data-trace]').length === nAll - 2);
+    await goto('#/evals/modes', '#md-new');
+    check('E1 the note waits to be grouped', qq('.nl-i').length === 1 && /1 not grouped/.test(txt(q('#ev-body'))));
+    q('#md-name').value = 'Champion confused with the requester'; q('#md-new').dispatchEvent(new Event('submit', {bubbles: true, cancelable: true})); await wait(10);
+    const sel = q('[data-assign]'); sel.value = sel.options[1].value; sel.dispatchEvent(new Event('change', {bubbles: true})); await wait(10);
+    const m = CRM.state().evals.modes[0];
+    check('E1 a failure mode groups the note and counts it', !!m && m.annotation_ids.length === 1 && /1 note/.test(txt(q('.ml-i'))));
+    // a seller's "not right" becomes a trace in the review
+    const id = await addRun(T.T1);
+    CRM.rate('update', id, 'down'); CRM.sendReason('update', id, true);
+    await goto('#/evals/feedback', '#tb-fb');
+    q('#tb-fb [data-evtrace]').click(); await until(() => /#\/evals\/traces/.test(location.hash) && q('#tv'), 'trace from feedback');
+    check('E1 a "not right" rating opens as a trace to review, with the seller\'s decisions', CRM.ui().ev.cur === 'PROD-' + id && /rated not right/.test(txt(q('#tv'))) && qq('#tv .tvf').length > 0);
+    check('E1 the review never touches the CRM', JSON.stringify(CRM.state().crm.opportunities.filter(o => o.opportunity_id !== 'OPP-0142')) === JSON.stringify(FOTO.opportunities.filter(o => o.opportunity_id !== 'OPP-0142')));
+    await contrato('E1 trace review'); contraste('E1 trace review');
+    await goto('#/evals/modes', '#md-new'); await contrato('E1 failure modes'); contraste('E1 failure modes');
+    // the judge's verdict on a field, and the reviewer's agreement with it
+    const jt = X.judge && FOTO.evals.traces.find(t => { const r = X.rows.find(x => x.label === t.model); return r && r.judge && r.judge.cases[t.case_id]; });
+    if (jt) {
+      CRM.ui().ev.all = true; CRM.ui().ev.filter = 'all'; CRM.ui().ev.cur = jt.id; await goto('#/evals/traces', '#tv .tvf-j');
+      const jb = q('#tv .tvf-j [data-v="agree"]'); const key = jb.dataset.jl; jb.click(); await wait(10);
+      check('E1 each judged value shows the verdict, the critique and Agree / Disagree', CRM.state().evals.jl[key] === 'agree' && CRM.judgeAgreement().n === 1 && q('#tv .tvf-j [data-v="agree"]').getAttribute('aria-pressed') === 'true');
+      q('#tv .tvf-j [data-v="agree"]').click(); await wait(10);
+      check('E1 a second click takes the agreement back', !CRM.state().evals.jl[key]);
+    } else ok('E1 no judge results in the snapshot');
+    await goto('#/evals/dashboard', '.loop'); await contrato('E1 dashboard'); contraste('E1 dashboard');
+    CRM.resetAll(); await wait(10);
+    check('E1 a CRM reset keeps the labels, notes and failure modes', CRM.state().evals.labels[t0] && CRM.state().evals.ann.length === 1 && CRM.state().evals.modes.length === 1);
   }
   async function C0() {
     const bar = () => q('.hd').getBoundingClientRect().bottom;
@@ -576,12 +787,12 @@ ROTEIRO = r"""
     await addRun(T.T3);
     await contrato('C5 review');
     check('C5 body font is Inter', /Inter/.test(getComputedStyle(document.body).fontFamily));
-    check('C5 contradictory row carries the warning rule', getComputedStyle(row('next_step').querySelector('td')).boxShadow !== 'none');
+    check('C5 the contradictory row is tinted and carries its chip', getComputedStyle(row('next_step').querySelector('td')).backgroundColor !== 'rgba(0, 0, 0, 0)' && /contradictory/.test(txt(row('next_step'))));
     await drop(T.T5); await contrato('C5 meetings with a draft');
     await goto('#/explore', '#ex-cmp'); await contrato('C5 explore');
     await ask("What's missing to qualify Atlas Manufacturing?"); await contrato('C5 explore answer');
     CRM.switchUser('U04');
-    for (const [h, sel] of [['#/opportunities', '#opps-groups .fr'], ['#/clients', '#cl-list .cl-card'], ['#/settings/permissions', '#tb-perm'], ['#/settings/activity', '#act-list'], ['#/settings/quality', '#tb-eval'], ['#/settings/agent', '[data-model]'], ['#/settings/sources', '.src-l']]) {
+    for (const [h, sel] of [['#/opportunities', '#opps-groups .fr'], ['#/clients', '#cl-list .cl-card'], ['#/settings/permissions', '#tb-perm'], ['#/settings/activity', '#act-list'], ['#/settings/quality', '#tb-eval'], ['#/evals/feedback', '#fb-panel'], ['#/settings/agent', '[data-model]'], ['#/settings/sources', '.src-l']]) {
       await goto(h, sel); await contrato('C5 ' + h.slice(2));
     }
     CRM.switchUser('U01');
@@ -632,7 +843,7 @@ ROTEIRO = r"""
     CRM.switchUser('U01');
   }
   async function main() {
-    const steps = [A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, P1, S1, S2, F1, F2, F3, C0, C1, C2, C3, C4, C5, C6];
+    const steps = [A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, P1, S1, S2, Q1, N1, E1, F1, F2, F3, C0, C1, C2, C3, C4, C5, C6];
     for (const s of steps) { try { await s(); } catch (err) { out.push('EXC ' + s.name + ' :: ' + err.message); flush(); } }
     out.push('ERRS ' + errs.length + (errs.length ? ' :: ' + errs.join(' | ') : ''));
     out.push('DONE'); flush();
@@ -643,7 +854,7 @@ ROTEIRO = r"""
 
 """
 
-STEPS_LINE = "const steps = [A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, P1, S1, S2, F1, F2, F3, C0, C1, C2, C3, C4, C5, C6];"
+STEPS_LINE = "const steps = [A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, P1, S1, S2, Q1, N1, E1, F1, F2, F3, C0, C1, C2, C3, C4, C5, C6];"
 
 CENAS = {
     "explore": "await goto('#/explore', '#ex-cmp');",
@@ -660,7 +871,18 @@ CENAS = {
     "agent": "await goto('#/settings/agent', '[data-model]');",
     "sources": "await goto('#/settings/sources', '.src-l');",
     "activity": "await addRun(T.T7); await approveAll(); q('#rev-submit').click(); await wait(40); await goto('#/settings/activity', '#act-list .fi');",
-    "quality": "await goto('#/settings/quality', '#eval-run'); q('#eval-run').click(); await wait(60);",
+    "quality": "await goto('#/evals/evalset', '#eval-run'); q('#eval-run').click(); await wait(60);",
+    "feedback-explore": "await ask(\"What's the status of Atlas Manufacturing?\"); q('#ex-thread .msg.nex .fb [data-rate=\"down\"]').click(); await wait(20); window.scrollTo(0, 9999);",
+    "meetings-list": "for (const n of [T.T1, T.T3, T.T11]) await addRun(n); await goto('#/meetings', '#tb-meetings tr[data-mtg]');",
+    "meetings-search": "for (const n of [T.T1, T.T3, T.T11]) await addRun(n); await goto('#/meetings', '#tb-meetings tr[data-mtg]'); const i = q('#mt-q'); i.value = 'renewals'; i.dispatchEvent(new Event('input'));",
+    "meeting-drawer": "await addRun(T.T1); await goto('#/meetings', '#tb-meetings tr[data-mtg]'); q('#tb-meetings .rec-b').click(); await until(() => q('#drw').open, 'drawer');",
+    "explore-chat": "await goto('#/explore', '#ex-cmp'); for (const x of [\"What's the status of Atlas Manufacturing?\", 'Which follow-ups are overdue?', \"What's missing to qualify Atlas Manufacturing?\"]) await CRM.askExplore(x); CRM.openChat(CRM.state().chats[0].id); await wait(80);",
+    "evals": "await goto('#/evals/dashboard', '.loop');",
+    "evals-judge": "const X = FOTO.evals.experiments; const t = FOTO.evals.traces.find(x => x.id === 'T11-claude-sonnet-5-5') || FOTO.evals.traces[0]; CRM.ui().ev.all = true; CRM.ui().ev.cur = t.id; await goto('#/evals/traces', '#tv');",
+    "evals-traces": "await goto('#/evals/traces', '#tv'); CRM.evSetLabel(CRM.ui().ev.cur, 'pass'); CRM.ui().ev.cur = FOTO.evals.sample[3]; CRM.renderEvals();",
+    "evals-modes": "const ids = FOTO.evals.sample; CRM.evSetLabel(ids[1], 'fail'); CRM.evSetNote(ids[1], 'Champion is the person who asked for the demo, not the one who pushed the project'); CRM.evSetLabel(ids[2], 'fail'); CRM.evSetNote(ids[2], 'Follow-up date taken from a weekday the buyer never confirmed'); CRM.evAddMode('Champion confused with the requester', 'The agent names whoever asked for the meeting as champion'); CRM.evAssign(CRM.state().evals.ann[0].id, CRM.state().evals.modes[0].id); await goto('#/evals/modes', '#md-new');",
+    "feedback-review": "await addRun(T.T1); q('#rev-body .rev-fb [data-rate=\"down\"]').click();",
+    "feedback-quality": "await CRM.askExplore(\"What's the status of Atlas Manufacturing?\"); const ch = CRM.state().chats[0]; CRM.rate('explore', ch.id + ':1', 'up'); await addRun(T.T1); CRM.rate('update', CRM.state().lastRun, 'down'); Object.assign(CRM.state().feedback[0], {reason: 'wrong_values', note: 'The pain should be the forecast, not the reporting', sent: true}); await goto('#/evals/feedback', '#fb-panel');",
 }
 
 
@@ -718,10 +940,12 @@ def main():
     if "--foto" in sys.argv:
         nome = sys.argv[sys.argv.index("--foto") + 1]
         largura = int(sys.argv[sys.argv.index("--largura") + 1]) if "--largura" in sys.argv else 1440
+        # janela alta em vez de rolar: o headless para de pintar a regiao rolada (LEIAME, 31/10)
+        altura = int(sys.argv[sys.argv.index("--altura") + 1]) if "--altura" in sys.argv else 900
         saida_png = sys.argv[sys.argv.index("--saida") + 1] if "--saida" in sys.argv else os.path.join(tempfile.gettempdir(), "cap_%s_%d.png" % (nome, largura))
         base, alvo = _copia_ascii(_cena(nome))
         try:
-            _edge(alvo, base, largura, 900, "#/meetings", foto=saida_png, budget=12000)
+            _edge(alvo, base, largura, altura, "#/meetings", foto=saida_png, budget=12000)
         finally:
             shutil.rmtree(base, ignore_errors=True)
         print("foto: %s" % saida_png)

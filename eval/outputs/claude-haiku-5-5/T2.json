@@ -15,7 +15,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Intro call with the Head of Retail Operations. Verde's franchise and wholesale growth runs on WhatsApp groups and spreadsheets, so requests get lost. No budget is allocated; it would go into next year's plan. Orbita will send the product overview and a case study; no demo was booked.",
+      "proposed_value": "Intro call with the Head of Retail Operations. Franchise and wholesale customers are managed in WhatsApp groups and spreadsheets, so requests get lost. She wants one place for franchisees and wholesale buyers. A previous BI tool failed, and no budget is allocated yet. Orbita will send the product overview and case study. No demo was booked.",
       "evidence": [
         {
           "line": 5,
@@ -27,13 +27,13 @@
           "line": 15,
           "timestamp": "00:08:09",
           "speaker": "Camila Rocha (Verde Retail)",
-          "quote": "There's no budget allocated for this yet"
+          "quote": "There's no budget allocated for this yet, it would have to go into next year's plan."
         },
         {
-          "line": 18,
-          "timestamp": "00:16:00",
-          "speaker": "Ana Ribeiro (Orbita)",
-          "quote": "I'll send you our product overview and that case study."
+          "line": 21,
+          "timestamp": "00:16:26",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "Let's not book anything yet."
         }
       ],
       "note": null
@@ -45,7 +45,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Previous BI tool was too complicated and failed; store teams stopped using it; no budget allocated yet",
+      "proposed_value": "User adoption and ease of use; Budget freeze or no budget",
       "evidence": [
         {
           "line": 12,
@@ -57,10 +57,10 @@
           "line": 15,
           "timestamp": "00:08:09",
           "speaker": "Camila Rocha (Verde Retail)",
-          "quote": "There's no budget allocated for this yet"
+          "quote": "There's no budget allocated for this yet, it would have to go into next year's plan."
         }
       ],
-      "note": null
+      "note": "A previous BI tool failed two years ago: too complicated, and store teams stopped using it after a month. No budget until next year's plan."
     },
     {
       "field": "commitment",
@@ -78,7 +78,7 @@
           "quote": "I'll send you our product overview and that case study."
         }
       ],
-      "note": null
+      "note": "No date given."
     },
     {
       "field": "next_step",
@@ -107,7 +107,7 @@
           "quote": "I'll send you our product overview and that case study."
         }
       ],
-      "note": null
+      "note": "No follow-up due date stated."
     },
     {
       "field": "follow_up_due_date",
@@ -148,10 +148,29 @@
       "record": "opportunity",
       "current_value": null,
       "current_approved": false,
-      "status": "no_evidence",
-      "proposed_value": null,
-      "evidence": [],
-      "note": "Simplicity was raised as a problem with a past tool, not stated as a requirement for this purchase."
+      "status": "proposed",
+      "proposed_value": "Visit and activity tracking; Orders and quotes; Ease of use",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:39",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "When a franchisee complains or a buyer asks for a reorder, it's lost in a chat somewhere."
+        },
+        {
+          "line": 7,
+          "timestamp": "00:01:16",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "Yes, that's exactly it."
+        },
+        {
+          "line": 12,
+          "timestamp": "00:06:25",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "It was too complicated and the store teams stopped using it after a month."
+        }
+      ],
+      "note": "One place for franchisees and wholesale buyers, with their orders, visits and complaints. The customer requires simplicity: the previous BI tool was too complicated."
     },
     {
       "field": "decision_process",
@@ -182,16 +201,16 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Franchisee complaints and wholesale buyer reorders run on WhatsApp groups and spreadsheets and get lost; needs one place for every franchisee and buyer",
+      "proposed_value": "Customer data scattered across spreadsheets and inboxes; Missed follow-ups or renewals",
       "evidence": [
         {
           "line": 5,
           "timestamp": "00:00:39",
           "speaker": "Camila Rocha (Verde Retail)",
-          "quote": "Today all of that runs on WhatsApp groups and spreadsheets. When a franchisee complains or a buyer asks for a reorder, it's lost in a chat somewhere."
+          "quote": "When a franchisee complains or a buyer asks for a reorder, it's lost in a chat somewhere."
         }
       ],
-      "note": null
+      "note": "Franchisee complaints and buyer reorder requests are lost across WhatsApp groups and spreadsheets."
     },
     {
       "field": "champion",
@@ -261,10 +280,10 @@
           "line": 15,
           "timestamp": "00:08:09",
           "speaker": "Camila Rocha (Verde Retail)",
-          "quote": "There's no budget allocated for this yet"
+          "quote": "There's no budget allocated for this yet, it would have to go into next year's plan."
         }
       ],
-      "note": null
+      "note": "No budget allocated yet; it would have to go into next year's plan."
     },
     {
       "field": "go_live_target",
@@ -284,7 +303,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "1200",
+      "proposed_value": "1000-4999",
       "evidence": [
         {
           "line": 9,
@@ -293,7 +312,7 @@
           "quote": "About one thousand two hundred employees, most of them in the stores."
         }
       ],
-      "note": null
+      "note": "About 1,200 employees."
     },
     {
       "field": "current_solution",
@@ -302,7 +321,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "WhatsApp groups and spreadsheets",
+      "proposed_value": "Spreadsheets; WhatsApp groups",
       "evidence": [
         {
           "line": 5,
@@ -322,18 +341,18 @@
       "status": "no_evidence",
       "proposed_value": null,
       "evidence": [],
-      "note": "Qualified Opportunity exit criteria not met: the customer declined to book a demo and agreed only to read the case study, not to a further conversation."
+      "note": "Qualified Opportunity exit criteria not met: pain confirmed, but no agreement to a further conversation. The demo was declined and the customer will return after reading the case study."
     }
   ],
   "ignored_out_of_scope": [],
   "validation_notes": [],
   "usage": {
     "input_tokens": 1653,
-    "output_tokens": 4336,
-    "cache_read_input_tokens": 11814,
+    "output_tokens": 5527,
+    "cache_read_input_tokens": 13543,
     "cache_creation_input_tokens": 0,
     "model": "claude-haiku-5-5",
     "served_by": "claude-haiku-5-5",
-    "cost_usd": 0.002451
+    "cost_usd": 0.003064
   }
 }

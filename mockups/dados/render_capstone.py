@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Gera o mockup Call-to-CRM (capstone Product Faculty) na pele do SalesOps v5.
+"""Gera o mockup Orbita CRM (capstone Product Faculty) na pele do SalesOps v5.
 
     python coleta.py              # 1. congela o kit em foto.json
     python render_capstone.py     # 2. monta ../mockup-call-to-crm_<data>.html (nome em saida.py)
@@ -9,7 +9,7 @@ mesmas do SalesOps v5, importadas de `fonte_v5.py`), a familia de icones
 (`icones_v5.py`), a foto do kit e o JavaScript. Nada de rede.
 
 O que a peca e (v4, 28/10/2026): o CRM da Orbita (empresa ficticia que vende CRM)
-com o Call-to-CRM Agent dentro. As reunioes chegam do Granola (notas sinteticas no
+com o agente dentro. As reunioes chegam do Granola (notas sinteticas no
 formato da API, ou a pasta real pelo servidor); cada uma vira uma proposta de
 atualizacao de 19 campos em seis grupos, com a citacao de cada um; a vendedora
 aprova, edita ou rejeita; so o aprovado e escrito, na oportunidade ou no cliente.
@@ -87,7 +87,7 @@ def ic(nome, cls="ni"):
 ICONES_JS = ["check", "x", "circle-x", "circle-minus", "circle-dashed", "circle-help", "circle-check", "history", "download",
              "id-card", "gauge", "file-text", "external-link", "chevron-right", "chevron-down", "square-pen", "rotate-ccw",
              "search", "list-checks", "building-2", "audio-lines", "users", "calendar-clock", "plus", "compass",
-             "message-circle", "arrow-up", "upload", "database", "mail", "briefcase", "sliders-horizontal"]
+             "message-circle", "arrow-up", "upload", "database", "mail", "briefcase", "sliders-horizontal", "thumbs-up", "thumbs-down"]
 
 PALETA = ("#4F46A5", "#0F6E78", "#7C4A1E", "#5B3F8C", "#2F5D8A", "#5E5E1C")
 PARADAS = {"GRUPO", "BANCO", "HOSPITAL", "CARTAO", "S/A", "SA", "LTDA", "LTDA.", "BRASIL"}

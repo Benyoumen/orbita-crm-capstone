@@ -84,7 +84,17 @@ const validate = (meetingId, raw) => { const { data, pre } = context(meetingId);
 }
 {
   const out = validate("MTG-2001", withField(ref("T1"), "budget", (f) => ({ ...f, value: "a hundred thousand" })));
-  check("a budget that is not 'USD <amount>' is refused", statusOf(out, "budget") === "no_evidence");
+  check("a budget that is not one of its bands is refused", statusOf(out, "budget") === "no_evidence");
+}
+{
+  const out = validate("MTG-2001", withField(ref("T1"), "budget", (f) => ({ ...f, value: "Other: about 90k" })));
+  check("a picklist without Other refuses an Other value", statusOf(out, "budget") === "no_evidence");
+}
+{
+  const out = validate("MTG-2001", withField(ref("T1"), "integrations", (f) => ({ ...f, value: "erp; Outlook; Email and calendar" })));
+  const f = out.fields.find((x) => x.field === "integrations");
+  check("a multiselect keeps its options in list order, and an item outside the list becomes Other with a note",
+    f.status === "proposed" && f.proposed_value === "Email and calendar; ERP; Other: Outlook" && out.validation_notes.some((n) => /Outlook/.test(n)));
 }
 {
   const out = validate("MTG-2001", withField(ref("T1"), "decision_maker", (f) => ({ ...f, value: "Ana Ribeiro (Account Executive)" })));

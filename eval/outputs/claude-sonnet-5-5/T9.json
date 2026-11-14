@@ -15,7 +15,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Scope session with Lumen Education's VP of Admissions and CIO. Scope agreed: 120 users across admissions, marketing and leadership, Campus One and Mailwave integrations, and WhatsApp. Budget is USD 110,000-130,000 per year, with go-live needed by May 2027. Daniela asked for a proposal; review set for 17 Nov.",
+      "proposed_value": "Scope session with the VP of Admissions and the CIO. Lumen needs 120 users across admissions, marketing and leadership, integrations with Campus One, Mailwave and WhatsApp, and data kept in Brazil. They asked for a proposal on that scope. Orbita will send it by 13 Nov and review it together on 17 Nov.",
       "evidence": [
         {
           "line": 27,
@@ -39,22 +39,16 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Student data must stay in Brazil and a data protection assessment is needed before go-live; Clarion Sales Cloud is cheaper",
+      "proposed_value": "Data residency and privacy",
       "evidence": [
         {
           "line": 14,
           "timestamp": "00:09:25",
           "speaker": "Marcos Antunes (Lumen Education)",
-          "quote": "It must stay in Brazil, and we need a data protection assessment before anything goes live."
-        },
-        {
-          "line": 22,
-          "timestamp": "00:15:04",
-          "speaker": "Daniela Freitas (Lumen Education)",
-          "quote": "they're cheaper, but their WhatsApp integration is weak."
+          "quote": "My main concern is student data. It must stay in Brazil, and we need a data protection assessment before anything goes live."
         }
       ],
-      "note": null
+      "note": "Student data must stay in Brazil; a data protection assessment is needed before go-live."
     },
     {
       "field": "commitment",
@@ -75,7 +69,7 @@
           "line": 31,
           "timestamp": "00:47:10",
           "speaker": "Marcos Antunes (Lumen Education)",
-          "quote": "I will send you our security questionnaire by Monday."
+          "quote": "And I will send you our security questionnaire by Monday."
         }
       ],
       "note": "'Monday' resolved from the meeting date, Thu 2026-11-05."
@@ -87,13 +81,13 @@
       "current_value": "Scope session with admissions and IT on 5 Nov",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "Review the proposal together on 17 Nov",
+      "proposed_value": "Review the proposal together on Tuesday 17 Nov",
       "evidence": [
         {
           "line": 29,
           "timestamp": "00:46:52",
           "speaker": "Ana Ribeiro (Orbita)",
-          "quote": "we can review it together on Tuesday the 17th."
+          "quote": "we can review it together on Tuesday the 17th"
         },
         {
           "line": 30,
@@ -102,7 +96,7 @@
           "quote": "Tuesday the 17th works."
         }
       ],
-      "note": "Replaces the approved scope session of 5 Nov, which took place."
+      "note": "Replaces the approved 5 Nov scope session, which took place."
     },
     {
       "field": "follow_up_owner",
@@ -174,7 +168,7 @@
           "quote": "Then Daniela signs, and the board approves anything above one hundred and fifty thousand dollars a year."
         }
       ],
-      "note": "Budget of USD 110,000-130,000 is below the board threshold."
+      "note": "Named by Marcos Antunes (CIO) as the one who signs."
     },
     {
       "field": "decision_criteria",
@@ -183,13 +177,13 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Lead capture from campaigns; follow-up list per counsellor; enrolment funnel per campus; WhatsApp in prospect record; connect to Campus One and Mailwave; student data in Brazil; data protection assessment",
+      "proposed_value": "Lead capture and routing; Tasks and follow-up reminders; WhatsApp messaging; Reporting and dashboards; Integrations and API; Data hosted in Brazil",
       "evidence": [
         {
           "line": 10,
           "timestamp": "00:03:09",
           "speaker": "Daniela Freitas (Lumen Education)",
-          "quote": "Capture the leads from our campaigns, give each counsellor a follow-up list, show the enrolment funnel per campus"
+          "quote": "Capture the leads from our campaigns, give each counsellor a follow-up list, show the enrolment funnel per campus, and keep the WhatsApp conversations with the prospect's record."
         },
         {
           "line": 11,
@@ -201,10 +195,10 @@
           "line": 14,
           "timestamp": "00:09:25",
           "speaker": "Marcos Antunes (Lumen Education)",
-          "quote": "It must stay in Brazil, and we need a data protection assessment before anything goes live."
+          "quote": "It must stay in Brazil"
         }
       ],
-      "note": null
+      "note": "Lead capture from campaigns, follow-up list per counsellor, enrolment funnel per campus, WhatsApp conversations on the prospect record, Campus One and Mailwave integrations, data in Brazil."
     },
     {
       "field": "decision_process",
@@ -213,13 +207,13 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "IT security review and data protection assessment first; then Daniela signs; the board approves anything above USD 150,000 per year",
+      "proposed_value": "IT security review and data protection assessment first; then Daniela signs; the board approves anything above USD 150k per year",
       "evidence": [
         {
           "line": 17,
           "timestamp": "00:12:20",
           "speaker": "Marcos Antunes (Lumen Education)",
-          "quote": "First an IT security review and the data protection assessment. Then Daniela signs"
+          "quote": "First an IT security review and the data protection assessment. Then Daniela signs, and the board approves anything above one hundred and fifty thousand dollars a year."
         }
       ],
       "note": null
@@ -231,34 +225,46 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Procurement needs Orbita's standard contract and the data processing agreement two weeks before the signature",
+      "proposed_value": "Signature by the economic buyer; Procurement review; Data processing agreement",
       "evidence": [
         {
           "line": 18,
           "timestamp": "00:12:45",
           "speaker": "Marcos Antunes (Lumen Education)",
           "quote": "procurement will need your standard contract and the data processing agreement two weeks before the signature."
+        },
+        {
+          "line": 17,
+          "timestamp": "00:12:20",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "Then Daniela signs"
         }
       ],
-      "note": null
+      "note": "Procurement needs Orbita's standard contract and the data processing agreement two weeks before signature. Board approval applies only above USD 150k per year."
     },
     {
       "field": "customer_need",
       "group": "qualification",
       "record": "opportunity",
-      "current_value": "Track prospective students from first contact to enrolment across 6 campuses",
+      "current_value": "Leads lost or not routed; Teams do not share one view",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "Each campus uses its own spreadsheets and WhatsApp; Lumen cannot see how many prospects are lost between first contact and enrolment across 6 campuses",
+      "proposed_value": "Customer data scattered across spreadsheets and inboxes; Leads lost or not routed; Teams do not share one view; Data must stay in the country",
       "evidence": [
         {
           "line": 7,
           "timestamp": "00:01:20",
           "speaker": "Daniela Freitas (Lumen Education)",
           "quote": "Each campus has its own spreadsheets, and a lot happens on WhatsApp. We have no idea how many prospects we lose between the first contact and the enrolment."
+        },
+        {
+          "line": 14,
+          "timestamp": "00:09:25",
+          "speaker": "Marcos Antunes (Lumen Education)",
+          "quote": "It must stay in Brazil"
         }
       ],
-      "note": null
+      "note": "Separate spreadsheets per campus, WhatsApp conversations, unknown prospect loss between first contact and enrolment, student data must stay in Brazil."
     },
     {
       "field": "champion",
@@ -287,7 +293,7 @@
           "quote": "We're also looking at Clarion Sales Cloud."
         }
       ],
-      "note": null
+      "note": "Customer says it is cheaper but its WhatsApp integration is weak."
     },
     {
       "field": "seats",
@@ -338,7 +344,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Campus One; Mailwave; WhatsApp",
+      "proposed_value": "WhatsApp Business; Marketing automation; Industry or in-house system",
       "evidence": [
         {
           "line": 11,
@@ -359,7 +365,7 @@
           "quote": "Yes, WhatsApp too, through the official business account."
         }
       ],
-      "note": null
+      "note": "Campus One (student information system), Mailwave (marketing email tool), WhatsApp via the official business account."
     },
     {
       "field": "budget",
@@ -368,7 +374,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "USD 110,000-130,000 per year",
+      "proposed_value": "USD 100k-150k per year",
       "evidence": [
         {
           "line": 20,
@@ -377,7 +383,7 @@
           "quote": "We've approved between one hundred and ten and one hundred and thirty thousand dollars a year."
         }
       ],
-      "note": null
+      "note": "USD 110,000 to 130,000 per year."
     },
     {
       "field": "go_live_target",
@@ -401,7 +407,7 @@
       "field": "employee_count",
       "group": "company",
       "record": "client",
-      "current_value": "3100",
+      "current_value": "1000-4999",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -415,7 +421,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Separate spreadsheets per campus and WhatsApp",
+      "proposed_value": "Spreadsheets; WhatsApp groups",
       "evidence": [
         {
           "line": 7,
@@ -424,7 +430,7 @@
           "quote": "Each campus has its own spreadsheets, and a lot happens on WhatsApp."
         }
       ],
-      "note": null
+      "note": "Separate spreadsheets per campus; much of the work happens on WhatsApp."
     },
     {
       "field": "stage",
@@ -454,12 +460,12 @@
   "ignored_out_of_scope": [],
   "validation_notes": [],
   "usage": {
-    "input_tokens": 2330,
-    "output_tokens": 3758,
-    "cache_read_input_tokens": 11814,
+    "input_tokens": 2329,
+    "output_tokens": 4238,
+    "cache_read_input_tokens": 13543,
     "cache_creation_input_tokens": 0,
     "model": "claude-sonnet-5-5",
     "served_by": "claude-sonnet-5-5",
-    "cost_usd": 0.044603
+    "cost_usd": 0.049747
   }
 }

@@ -38,6 +38,13 @@ In a chat export, each line is one message with its date and time. A written "ye
   - If the existing value is not seller-approved (or empty), never use `contradictory`. Propose normally.
   - Per-conversation fields (`call_summary`, `objection`, `commitment`) are never contradictory.
 
+## Picklists
+- A picklist field (one option, or several joined by `; `) takes its options exactly as the field dictionary writes them. Name every option the conversation supports, not only the first one.
+- `Other: <few words>` is for something real that no option covers, and only on fields that allow it. Never use Other for something an option already covers.
+- The category goes in the value; the specifics go in the field's `note` (the system's name, the exact figure, who signs and when), so nothing said is lost.
+- `budget` and `employee_count` are bands: a figure on a boundary goes to the higher band; a stated range goes to the band that holds most of it; the exact figure goes in the note.
+- `decision_process` is how the customer decides; merely forwarding material to someone ("I'll send it to my boss") is not a decision process. `paper_process` counts a stated contract routing, in a meeting or in a chat.
+
 ## Evidence rules
 - Every `proposed` or `contradictory` field has 1 to 3 evidence items: `line` (the number after `L` at the start of the transcript line) and `quote`.
 - `quote` is an exact, contiguous excerpt of that single line: no ellipsis, no paraphrase, 30 words at most.

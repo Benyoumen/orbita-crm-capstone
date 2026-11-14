@@ -15,25 +15,19 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Discovery call with the COO and Sales Operations Manager. Acme tracks accounts and deals in spreadsheets and Outlook, and missed two renewals last quarter. They want one place for accounts, deals and renewals for 60 users, with a mobile app. TMS integration and adoption are concerns. Technical workshop proposed for the week of 9 Nov.",
+      "proposed_value": "Discovery call with the COO and Sales Operations Manager. Acme tracks customers and deals in spreadsheets, Outlook and a shared drive, and missed two contract renewals last quarter. They want one place for accounts, deals and renewals, with a reliable pipeline view. About 60 users, mobile access and Outlook sync are needed, plus integration with the TMS and ERP. Budget is USD 80k-100k per year and go-live is needed by March 2027. A technical scoping workshop with Rui Tavares was agreed for the week of 9 Nov.",
       "evidence": [
+        {
+          "line": 7,
+          "timestamp": "00:00:59",
+          "speaker": "Felipe Nunes (Acme Logistics)",
+          "quote": "Each rep has their own spreadsheet of accounts, proposals live on a shared drive, and everything else is in people's inboxes."
+        },
         {
           "line": 8,
           "timestamp": "00:01:16",
           "speaker": "Felipe Nunes (Acme Logistics)",
           "quote": "Last quarter we missed two contract renewals because nobody remembered the dates."
-        },
-        {
-          "line": 11,
-          "timestamp": "00:02:14",
-          "speaker": "Marina Lopes (Acme Logistics)",
-          "quote": "Exactly. One place for every account and every deal, with renewal reminders, and a pipeline I can trust on Monday morning."
-        },
-        {
-          "line": 42,
-          "timestamp": "00:35:02",
-          "speaker": "Ana Ribeiro (Orbita)",
-          "quote": "Proposed next step: a technical scoping workshop with Rui, the week of 9 November, to look at the TMS data and the integration options."
         }
       ],
       "note": null
@@ -45,7 +39,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Integration with in-house TMS; adoption risk after reps rejected a past sales tool",
+      "proposed_value": "Integration with current systems; User adoption and ease of use",
       "evidence": [
         {
           "line": 22,
@@ -57,10 +51,10 @@
           "line": 23,
           "timestamp": "00:06:33",
           "speaker": "Felipe Nunes (Acme Logistics)",
-          "quote": "My worry is adoption."
+          "quote": "My worry is adoption. We tried a sales tool three years ago and the reps hated it."
         }
       ],
-      "note": null
+      "note": "In-house TMS integration (Marina Lopes); adoption after a sales tool failed three years ago, reps went back to spreadsheets in two months (Felipe Nunes)."
     },
     {
       "field": "commitment",
@@ -69,19 +63,19 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Orbita (Ana): send TMS reference case and workshop invite by 2026-11-06; Orbita (Ana): send mobile app video by 2026-11-06; Acme Logistics (Marina Lopes): make sure Rui Tavares joins the workshop",
+      "proposed_value": "Orbita (Ana): send the TMS reference case by 2026-11-06; Orbita (Ana): send the workshop invite by 2026-11-06; Orbita (Ana): send the mobile app video by 2026-11-06; Acme Logistics (Marina Lopes): make sure Rui Tavares joins the workshop",
       "evidence": [
+        {
+          "line": 24,
+          "timestamp": "00:06:54",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I will send you that reference case by Friday, so you can see how we handled it."
+        },
         {
           "line": 44,
           "timestamp": "00:35:25",
           "speaker": "Ana Ribeiro (Orbita)",
           "quote": "I will send the workshop invite together with the reference case by Friday."
-        },
-        {
-          "line": 46,
-          "timestamp": "00:41:50",
-          "speaker": "Ana Ribeiro (Orbita)",
-          "quote": "Sure, I'll include it in Friday's email."
         },
         {
           "line": 43,
@@ -90,7 +84,7 @@
           "quote": "I will make sure Rui joins."
         }
       ],
-      "note": "'Friday' resolved from the meeting date, Tue 2026-11-03."
+      "note": "The mobile app video is to be included in Friday's email (line 46)."
     },
     {
       "field": "next_step",
@@ -99,13 +93,13 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Technical scoping workshop with Rui Tavares (IT Lead) and Pedro Almeida (Solutions Engineer) in the week of 9 Nov 2026, covering TMS data and integration options",
+      "proposed_value": "Technical scoping workshop with Rui Tavares (IT Lead) in the week of 9 November, on TMS data and integration options; Pedro Almeida (Solutions Engineer) joins from Orbita",
       "evidence": [
         {
           "line": 42,
           "timestamp": "00:35:02",
           "speaker": "Ana Ribeiro (Orbita)",
-          "quote": "Proposed next step: a technical scoping workshop with Rui, the week of 9 November, to look at the TMS data and the integration options."
+          "quote": "a technical scoping workshop with Rui, the week of 9 November, to look at the TMS data and the integration options."
         },
         {
           "line": 43,
@@ -114,7 +108,7 @@
           "quote": "Yes, let's do that."
         }
       ],
-      "note": "Exact day and time not yet agreed."
+      "note": null
     },
     {
       "field": "follow_up_owner",
@@ -165,7 +159,7 @@
           "line": 9,
           "timestamp": "00:01:32",
           "speaker": "Marina Lopes (Acme Logistics)",
-          "quote": "success for me is simple: zero missed renewals next year, and the Monday pipeline review done from one screen instead of six spreadsheets."
+          "quote": "zero missed renewals next year, and the Monday pipeline review done from one screen instead of six spreadsheets."
         }
       ],
       "note": null
@@ -183,10 +177,10 @@
           "line": 35,
           "timestamp": "00:21:28",
           "speaker": "Marina Lopes (Acme Logistics)",
-          "quote": "I make the decision on this."
+          "quote": "I make the decision on this. It sits in my operations budget."
         }
       ],
-      "note": null
+      "note": "Owns the operations budget for this purchase."
     },
     {
       "field": "decision_criteria",
@@ -195,7 +189,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "One place for every account and deal, with renewal reminders; reliable Monday pipeline view; mobile app (a must); Outlook email sync",
+      "proposed_value": "Pipeline management; Tasks and follow-up reminders; Email and calendar sync; Mobile app; Reporting and dashboards",
       "evidence": [
         {
           "line": 15,
@@ -204,13 +198,13 @@
           "quote": "a mobile app is a must for them."
         },
         {
-          "line": 11,
-          "timestamp": "00:02:14",
-          "speaker": "Marina Lopes (Acme Logistics)",
-          "quote": "One place for every account and every deal, with renewal reminders"
+          "line": 17,
+          "timestamp": "00:04:12",
+          "speaker": "Felipe Nunes (Acme Logistics)",
+          "quote": "Pipeline management, renewal alerts, email sync with Outlook so we stop copying emails by hand, and management dashboards for Marina."
         }
       ],
-      "note": null
+      "note": "Renewal alerts (Felipe Nunes); Outlook email sync; management dashboards for Marina Lopes."
     },
     {
       "field": "decision_process",
@@ -219,7 +213,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Rui Tavares (IT Lead) validates the technical side, integration and security; then Marina Lopes decides",
+      "proposed_value": "IT lead Rui Tavares validates the technical side, integration and security; then Marina Lopes decides",
       "evidence": [
         {
           "line": 35,
@@ -237,7 +231,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Procurement needs three quotes for anything above USD 50,000; Marina Lopes signs",
+      "proposed_value": "Signature by the economic buyer; Procurement review; Competitive quotes required",
       "evidence": [
         {
           "line": 37,
@@ -246,31 +240,37 @@
           "quote": "Procurement needs three quotes for anything above fifty thousand. Then I sign."
         }
       ],
-      "note": null
+      "note": "Procurement needs three quotes for anything above USD 50,000; Marina Lopes signs."
     },
     {
       "field": "customer_need",
       "group": "qualification",
       "record": "opportunity",
-      "current_value": "Wants a CRM for the sales team (from the inbound web form)",
+      "current_value": "Other: wants a CRM for the sales team",
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Accounts, deals and renewals tracked in spreadsheets and inboxes; contract renewals missed when history is lost; no reliable pipeline view",
+      "proposed_value": "Customer data scattered across spreadsheets and inboxes; No pipeline view leaders can trust; Missed follow-ups or renewals",
       "evidence": [
         {
           "line": 7,
           "timestamp": "00:00:59",
           "speaker": "Felipe Nunes (Acme Logistics)",
-          "quote": "Honestly, spreadsheets and Outlook."
+          "quote": "everything else is in people's inboxes."
         },
         {
           "line": 8,
           "timestamp": "00:01:16",
           "speaker": "Felipe Nunes (Acme Logistics)",
           "quote": "Last quarter we missed two contract renewals because nobody remembered the dates."
+        },
+        {
+          "line": 9,
+          "timestamp": "00:01:32",
+          "speaker": "Marina Lopes (Acme Logistics)",
+          "quote": "I have no visibility."
         }
       ],
-      "note": null
+      "note": "Lost account history when staff leave; two missed contract renewals last quarter; no pipeline visibility on Mondays."
     },
     {
       "field": "champion",
@@ -324,7 +324,7 @@
           "quote": "So sixty users to start."
         }
       ],
-      "note": null
+      "note": "40 sales reps, 12 customer success account managers, about 8 leadership managers."
     },
     {
       "field": "departments",
@@ -339,7 +339,7 @@
           "line": 13,
           "timestamp": "00:03:07",
           "speaker": "Felipe Nunes (Acme Logistics)",
-          "quote": "The forty sales reps, our twelve account managers in customer success, and the leadership team, about eight managers, for the dashboards."
+          "quote": "The forty sales reps, our twelve account managers in customer success, and the leadership team"
         }
       ],
       "note": null
@@ -351,22 +351,22 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "In-house TMS (transport management system); Orion ERP; Outlook email sync",
+      "proposed_value": "Email and calendar; ERP; Industry or in-house system",
       "evidence": [
-        {
-          "line": 21,
-          "timestamp": "00:05:48",
-          "speaker": "Marina Lopes (Acme Logistics)",
-          "quote": "Our transport management system, the TMS."
-        },
         {
           "line": 17,
           "timestamp": "00:04:12",
           "speaker": "Felipe Nunes (Acme Logistics)",
           "quote": "email sync with Outlook so we stop copying emails by hand"
+        },
+        {
+          "line": 21,
+          "timestamp": "00:05:48",
+          "speaker": "Marina Lopes (Acme Logistics)",
+          "quote": "We also use Orion ERP for invoicing."
         }
       ],
-      "note": null
+      "note": "In-house transport management system (TMS), built about ten years ago, holds all shipment data; shipment status must be visible in the CRM (line 40). Orion ERP for invoicing. Outlook email sync."
     },
     {
       "field": "budget",
@@ -375,7 +375,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "USD 80,000-100,000 per year",
+      "proposed_value": "USD 50k-100k per year",
       "evidence": [
         {
           "line": 28,
@@ -384,7 +384,7 @@
           "quote": "We have between eighty and a hundred thousand dollars a year for the CRM, licences and support included."
         }
       ],
-      "note": null
+      "note": "Stated range USD 80k-100k per year, licences and support included."
     },
     {
       "field": "go_live_target",
@@ -411,7 +411,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "850",
+      "proposed_value": "500-999",
       "evidence": [
         {
           "line": 5,
@@ -420,7 +420,7 @@
           "quote": "we're about eight hundred and fifty people"
         }
       ],
-      "note": null
+      "note": "About 850 people."
     },
     {
       "field": "current_solution",
@@ -429,16 +429,16 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Spreadsheets and Outlook",
+      "proposed_value": "Spreadsheets; Email and shared inbox; Shared drive",
       "evidence": [
         {
           "line": 7,
           "timestamp": "00:00:59",
           "speaker": "Felipe Nunes (Acme Logistics)",
-          "quote": "Honestly, spreadsheets and Outlook."
+          "quote": "Each rep has their own spreadsheet of accounts, proposals live on a shared drive"
         }
       ],
-      "note": null
+      "note": "Individual rep spreadsheets; proposals on a shared drive; everything else in Outlook and inboxes."
     },
     {
       "field": "stage",
@@ -453,13 +453,13 @@
           "line": 11,
           "timestamp": "00:02:14",
           "speaker": "Marina Lopes (Acme Logistics)",
-          "quote": "Exactly. One place for every account and every deal, with renewal reminders, and a pipeline I can trust on Monday morning."
+          "quote": "Exactly. One place for every account and every deal, with renewal reminders"
         },
         {
           "line": 35,
           "timestamp": "00:21:28",
           "speaker": "Marina Lopes (Acme Logistics)",
-          "quote": "I make the decision on this."
+          "quote": "I make the decision on this. It sits in my operations budget."
         },
         {
           "line": 39,
@@ -471,23 +471,17 @@
       "note": "Qualified Opportunity exit criteria met: pain confirmed, economic buyer identified (Marina Lopes), timeline stated."
     }
   ],
-  "ignored_out_of_scope": [
-    {
-      "line": 32,
-      "timestamp": "00:14:22",
-      "speaker": "Felipe Nunes (Acme Logistics)",
-      "quote": "Ana, unrelated question: is your team going to the logistics trade fair in Joinville this year?",
-      "reason": "Off-topic question unrelated to the opportunity; not extracted."
-    }
+  "ignored_out_of_scope": [],
+  "validation_notes": [
+    "call_summary: 87 words, over the 80-word limit"
   ],
-  "validation_notes": [],
   "usage": {
-    "input_tokens": 3444,
-    "output_tokens": 7552,
-    "cache_read_input_tokens": 11814,
-    "cache_creation_input_tokens": 0,
+    "input_tokens": 3437,
+    "output_tokens": 8693,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13543,
     "model": "claude-haiku-5-5",
     "served_by": "claude-haiku-5-5",
-    "cost_usd": 0.004239
+    "cost_usd": 0.006383
   }
 }

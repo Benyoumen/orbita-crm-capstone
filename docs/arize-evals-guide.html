@@ -1,0 +1,1008 @@
+<title>Orbita Evals Playbook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a sticky step index on the left, one reading column on the right; one column on phones.
+   Tokens are the Orbita architecture page's (docs/orbita-agent-architecture.html), so both documents read as one set. */
+:root {
+  --bg: #F5F5F5; --surface: #FFFFFF; --ink: #0A0A0A;
+  --text: rgba(10,10,10,.86); --text-2: rgba(10,10,10,.70); --text-3: rgba(10,10,10,.58);
+  --line: rgba(10,10,10,.10); --line-strong: rgba(10,10,10,.24);
+  --claude: #D6005A; --claude-tint: rgba(255,0,102,.07);
+  --seller: #1E4B99; --seller-tint: rgba(30,75,153,.07);
+  --code-tint: rgba(10,10,10,.045);
+  --done: #2F6B3A; --done-bg: #E5F4EA;
+  --doing: #7A5B14; --doing-bg: #F8EED6;
+  --todo: #52525B; --todo-bg: #ECECEE;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0F0F11; --surface: #18181B; --ink: #F4F4F5;
+  --text: rgba(244,244,245,.88); --text-2: rgba(244,244,245,.72); --text-3: rgba(244,244,245,.58);
+  --line: rgba(244,244,245,.10); --line-strong: rgba(244,244,245,.26);
+  --claude: #FF4D8D; --claude-tint: rgba(255,77,141,.10);
+  --seller: #8FB0EB; --seller-tint: rgba(143,176,235,.10);
+  --code-tint: rgba(244,244,245,.06);
+  --done: #8ED39B; --done-bg: rgba(142,211,155,.12);
+  --doing: #E9C46A; --doing-bg: rgba(233,196,106,.12);
+  --todo: #B4B4BB; --todo-bg: rgba(180,180,187,.12);
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0F0F11; --surface: #18181B; --ink: #F4F4F5;
+  --text: rgba(244,244,245,.88); --text-2: rgba(244,244,245,.72); --text-3: rgba(244,244,245,.58);
+  --line: rgba(244,244,245,.10); --line-strong: rgba(244,244,245,.26);
+  --claude: #FF4D8D; --claude-tint: rgba(255,77,141,.10);
+  --seller: #8FB0EB; --seller-tint: rgba(143,176,235,.10);
+  --code-tint: rgba(244,244,245,.06);
+  --done: #8ED39B; --done-bg: rgba(142,211,155,.12);
+  --doing: #E9C46A; --doing-bg: rgba(233,196,106,.12);
+  --todo: #B4B4BB; --todo-bg: rgba(180,180,187,.12);
+  color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font: 15px/1.6 var(--font); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-block: 40px 80px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 48px; }
+@media (max-width: 860px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 24px 64px; } nav.toc { position: static; max-height: none; } }
+
+nav.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; max-height: calc(100vh - 48px); overflow: auto; font-size: 13px; }
+nav.toc .brand { font-weight: 700; color: var(--ink); letter-spacing: -.01em; font-size: 15px; margin-bottom: 4px; }
+nav.toc .sub { color: var(--text-3); margin-bottom: 18px; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+nav.toc .ph { margin: 14px 0 4px; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); font-weight: 600; }
+nav.toc a { display: flex; gap: 8px; align-items: baseline; color: var(--text-2); text-decoration: none; padding: 3px 6px; border-radius: 6px; }
+nav.toc a:hover, nav.toc a:focus-visible { background: var(--code-tint); color: var(--ink); outline: none; }
+nav.toc a .n { font-family: var(--mono); font-size: 11px; color: var(--text-3); min-width: 18px; }
+nav.toc a .tick { margin-left: auto; color: var(--done); font-size: 12px; }
+
+main { min-width: 0; }
+header.top { margin-bottom: 36px; }
+.eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .09em; color: var(--claude); font-weight: 600; }
+h1 { font-size: 34px; line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin: 6px 0 12px; font-weight: 700; text-wrap: balance; }
+h2 { font-size: 23px; line-height: 1.25; letter-spacing: -.015em; color: var(--ink); margin: 0 0 10px; font-weight: 700; text-wrap: balance; }
+h3 { font-size: 16px; color: var(--ink); margin: 18px 0 6px; font-weight: 600; }
+p { margin: 0 0 12px; max-width: 72ch; }
+.lead { font-size: 17px; color: var(--text-2); max-width: 70ch; }
+a { color: var(--seller); }
+code, .mono { font-family: var(--mono); font-size: 12.5px; }
+p code, li code, td code { background: var(--code-tint); padding: 1px 5px; border-radius: 4px; }
+strong { color: var(--ink); font-weight: 600; }
+section { margin-top: 56px; scroll-margin-top: 24px; }
+section.step { border-top: 1px solid var(--line); padding-top: 28px; margin-top: 36px; }
+.phase { margin-top: 64px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.phase .tag { font-size: 12px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; color: var(--claude); }
+.phase h2 { margin: 0; }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 24px 0 8px; }
+.fact { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.fact .k { font-size: 12px; color: var(--text-3); }
+.fact .v { font-size: 22px; font-weight: 700; color: var(--ink); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.fact .d { font-size: 12.5px; color: var(--text-2); }
+
+.flow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 20px 0; }
+@media (max-width: 700px) { .flow { grid-template-columns: minmax(0, 1fr); } }
+.loop { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.loop h3 { margin-top: 0; }
+.loop ol { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 4px; }
+.loop.off { box-shadow: inset 3px 0 0 var(--seller); }
+.loop.on { box-shadow: inset 3px 0 0 var(--claude); }
+.loop .when { font-size: 12.5px; color: var(--text-3); }
+
+.stephead { display: flex; gap: 14px; align-items: flex-start; }
+.stephead .num { font-family: var(--mono); font-size: 13px; color: var(--claude); border: 1px solid var(--line-strong); border-radius: 8px; min-width: 34px; height: 30px; display: grid; place-items: center; margin-top: 2px; }
+.stephead h2 { margin-bottom: 4px; }
+.why { color: var(--text-2); }
+.skills { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 14px; }
+.chip { font-family: var(--mono); font-size: 12px; padding: 2px 9px; border-radius: 99px; border: 1px solid var(--line-strong); color: var(--text); background: var(--surface); }
+.chip.ax { border-color: var(--seller); color: var(--seller); background: var(--seller-tint); }
+.chip.course { border-color: var(--claude); color: var(--claude); background: var(--claude-tint); }
+.status { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 99px; }
+.status.done { color: var(--done); background: var(--done-bg); }
+.status.doing { color: var(--doing); background: var(--doing-bg); }
+.status.todo { color: var(--todo); background: var(--todo-bg); }
+
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 12px 0; }
+@media (max-width: 760px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.box .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); font-weight: 600; margin-bottom: 6px; }
+.box ul, .box ol { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.box p:last-child { margin-bottom: 0; }
+.gate { border-left: 3px solid var(--done); padding: 8px 14px; background: var(--done-bg); border-radius: 0 8px 8px 0; margin: 12px 0; color: var(--text); max-width: 76ch; }
+.gate b { color: var(--done); }
+.warn { border-left: 3px solid var(--doing); padding: 8px 14px; background: var(--doing-bg); border-radius: 0 8px 8px 0; margin: 12px 0; max-width: 76ch; }
+
+.cmd { position: relative; margin: 10px 0; }
+.cmd pre { margin: 0; background: var(--code-tint); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow-x: auto; font: 12.5px/1.55 var(--mono); color: var(--text); white-space: pre; }
+.cmd button { position: absolute; top: 6px; right: 6px; font: 600 11px var(--font); padding: 3px 8px; border-radius: 6px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--text-2); cursor: pointer; }
+.cmd button:hover, .cmd button:focus-visible { color: var(--ink); border-color: var(--ink); outline: none; }
+
+.tbl { overflow-x: auto; margin: 12px 0; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); font-weight: 600; }
+tr:last-child td { border-bottom: none; }
+td.ok { color: var(--done); font-weight: 600; }
+td.mid { color: var(--doing); font-weight: 600; }
+
+.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; margin: 12px 0; }
+.links a { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; text-decoration: none; color: var(--ink); font-weight: 500; }
+.links a span { display: block; color: var(--text-3); font-weight: 400; font-size: 12.5px; }
+.links a:hover, .links a:focus-visible { border-color: var(--seller); outline: none; }
+
+.mark { display: flex; gap: 8px; align-items: center; margin-top: 14px; font-size: 13px; color: var(--text-2); }
+.mark input { width: 16px; height: 16px; accent-color: var(--done); }
+.checklist { list-style: none; padding: 0; margin: 12px 0; display: grid; gap: 8px; }
+.checklist li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.checklist input { margin-top: 4px; accent-color: var(--done); }
+.checklist .t { color: var(--ink); font-weight: 600; }
+.checklist .d { color: var(--text-2); font-size: 13.5px; }
+dl.gloss { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 8px 18px; margin: 12px 0; }
+@media (max-width: 600px) { dl.gloss { grid-template-columns: minmax(0, 1fr); } dl.gloss dd { margin-bottom: 8px; } }
+dl.gloss dt { font-weight: 600; color: var(--ink); }
+dl.gloss dd { margin: 0; color: var(--text-2); }
+/* Q&A */
+.qa { display: grid; gap: 10px; margin: 14px 0; }
+.qa details { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; }
+.qa summary { cursor: pointer; font-weight: 600; color: var(--ink); list-style-position: outside; }
+.qa details[open] summary { margin-bottom: 8px; }
+.qa .short { display: block; font-weight: 400; color: var(--text-2); font-size: 13.5px; margin-top: 2px; }
+.qa ul { padding-left: 18px; margin: 6px 0 0; display: grid; gap: 4px; }
+/* autonomy ladder */
+.ladder { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
+@media (max-width: 700px) { .ladder { grid-template-columns: minmax(0, 1fr); } }
+.rung { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.rung .lv { font-family: var(--mono); font-size: 11px; color: var(--text-3); }
+.rung .nm { font-weight: 700; color: var(--ink); }
+.rung.r0 { box-shadow: inset 3px 0 0 var(--todo); }
+.rung.r1 { box-shadow: inset 3px 0 0 var(--seller); }
+.rung.r2 { box-shadow: inset 3px 0 0 var(--done); }
+/* flash cards */
+.cardbar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 12px 0; }
+.cardbar button { font: 500 12.5px var(--font); padding: 4px 11px; border-radius: 99px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--text-2); cursor: pointer; }
+.cardbar button[aria-pressed="true"] { border-color: var(--claude); color: var(--claude); background: var(--claude-tint); }
+.cardbar .count { margin-left: auto; font-size: 12.5px; color: var(--text-3); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.fc { text-align: left; font: inherit; color: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; min-height: 132px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; }
+.fc:hover, .fc:focus-visible { border-color: var(--seller); outline: none; }
+.fc .cat { font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); font-weight: 600; }
+.fc .q { font-weight: 700; color: var(--ink); font-size: 15px; line-height: 1.35; }
+.fc .a { display: none; font-size: 13.5px; color: var(--text); line-height: 1.5; }
+.fc .hint { margin-top: auto; font-size: 11.5px; color: var(--text-3); }
+.fc[aria-expanded="true"] { border-color: var(--claude); background: var(--claude-tint); }
+.fc[aria-expanded="true"] .a { display: block; }
+.fc[aria-expanded="true"] .hint { display: none; }
+.fc[hidden] { display: none; }
+footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--text-3); font-size: 13px; }
+:focus-visible { outline: 2px solid var(--seller); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap">
+<nav class="toc" aria-label="Steps">
+  <div class="brand">Orbita Evals Playbook</div>
+  <div class="sub">Arize AX + the evals course, on the Orbita CRM agent</div>
+  <ol>
+    <li><a href="#map"><span class="n">·</span>The two loops</a></li>
+    <li><a href="#accuracy"><span class="n">·</span>What "100%" can mean</a></li>
+    <li><a href="#faq"><span class="n">?</span>Your questions, answered</a></li>
+    <li><a href="#cards"><span class="n">▣</span>Flash cards</a></li>
+    <li class="ph">Before evals: data</li>
+    <li><a href="#d1" data-step="d1"><span class="n">D1</span>Map sources and owners<span class="tick"></span></a></li>
+    <li><a href="#d2" data-step="d2"><span class="n">D2</span>Catalog and glossary<span class="tick"></span></a></li>
+    <li><a href="#d3" data-step="d3"><span class="n">D3</span>Data quality baseline<span class="tick"></span></a></li>
+    <li><a href="#d4" data-step="d4"><span class="n">D4</span>Data contracts<span class="tick"></span></a></li>
+    <li><a href="#d5" data-step="d5"><span class="n">D5</span>Data products<span class="tick"></span></a></li>
+    <li><a href="#d6" data-step="d6"><span class="n">D6</span>Privacy, access, lineage<span class="tick"></span></a></li>
+    <li><a href="#dskip"><span class="n">!</span>If you skip it</a></li>
+    <li class="ph">Before production</li>
+    <li><a href="#s1" data-step="s1"><span class="n">1</span>Trace every run<span class="tick"></span></a></li>
+    <li><a href="#s2" data-step="s2"><span class="n">2</span>Check the traces are healthy<span class="tick"></span></a></li>
+    <li><a href="#s3" data-step="s3"><span class="n">3</span>Read traces, name failures<span class="tick"></span></a></li>
+    <li><a href="#s4" data-step="s4"><span class="n">4</span>Code checks first<span class="tick"></span></a></li>
+    <li><a href="#s5" data-step="s5"><span class="n">5</span>Build the dataset<span class="tick"></span></a></li>
+    <li><a href="#s6" data-step="s6"><span class="n">6</span>Run experiments<span class="tick"></span></a></li>
+    <li><a href="#s7" data-step="s7"><span class="n">7</span>Add one LLM judge<span class="tick"></span></a></li>
+    <li><a href="#s8" data-step="s8"><span class="n">8</span>Version the prompt<span class="tick"></span></a></li>
+    <li><a href="#s9" data-step="s9"><span class="n">9</span>Optimize from failures<span class="tick"></span></a></li>
+    <li><a href="#s10" data-step="s10"><span class="n">10</span>Pass the gate, promote<span class="tick"></span></a></li>
+    <li class="ph">In production</li>
+    <li><a href="#s11" data-step="s11"><span class="n">11</span>Turn tracing on in the app<span class="tick"></span></a></li>
+    <li><a href="#s12" data-step="s12"><span class="n">12</span>Seller thumbs into Arize<span class="tick"></span></a></li>
+    <li><a href="#s13" data-step="s13"><span class="n">13</span>Judge every new run<span class="tick"></span></a></li>
+    <li><a href="#s14" data-step="s14"><span class="n">14</span>Dashboard and alerts<span class="tick"></span></a></li>
+    <li><a href="#s15" data-step="s15"><span class="n">15</span>The weekly review<span class="tick"></span></a></li>
+    <li><a href="#s16" data-step="s16"><span class="n">16</span>Compliance<span class="tick"></span></a></li>
+    <li><a href="#s17" data-step="s17"><span class="n">17</span>Promote a field's autonomy<span class="tick"></span></a></li>
+    <li class="ph">Reference</li>
+    <li><a href="#results"><span class="n">·</span>Results from 31 Oct</a></li>
+    <li><a href="#skills"><span class="n">·</span>Skills, start to end</a></li>
+    <li><a href="#cli"><span class="n">·</span>Manage the stack in the terminal</a></li>
+    <li><a href="#next"><span class="n">·</span>Your next steps</a></li>
+    <li><a href="#files"><span class="n">·</span>Files and commands</a></li>
+    <li><a href="#glossary"><span class="n">·</span>Glossary</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="top">
+  <div class="eyebrow">Orbita CRM agent · eval playbook · 31 Oct 2026 · v4</div>
+  <h1>How to measure, improve and ship the Orbita agent with Arize</h1>
+  <p class="lead">The steps are in the order you do them. Six data steps come first, because evals only measure well on clean, defined data. Ten steps then build the measuring stick before a prompt reaches sellers. The last seven keep it honest in production and decide when a field may write on its own.</p>
+  <div class="facts">
+    <div class="fact"><div class="k">Traces in Arize</div><div class="v">55</div><div class="d">project <code>orbita-crm-agent</code>, 5 live runs</div></div>
+    <div class="fact"><div class="k">Experiments</div><div class="v">12</div><div class="d">7 on the v3 dataset, 5 on <code>orbita-eval-cases-v4</code></div></div>
+    <div class="fact"><div class="k">Haiku 5.5, code checks</div><div class="v">16 → 21 of 22</div><div class="d">current prompt vs optimized candidate</div></div>
+    <div class="fact"><div class="k">Spent today</div><div class="v">US$ 1.12</div><div class="d">7 agent runs and the optimizer; the 18 judge calls (est. US$ 0.02 each) bill to your Anthropic key</div></div>
+  </div>
+  <p class="warn"><strong>Schema v4 landed the same evening, and the gate caught a drop.</strong> The fields became picklists and the three rules from step 9 moved into the policy. Re-scored on the new dataset, Sonnet 5.5 at medium effort, the production setting, fell from 11/11 to <strong>8/11</strong>. T9 <code>decision_criteria</code> fails on every model except Opus. See <a href="#v4">the v4 results</a>. This is the loop doing its job: a change that looked like a pure improvement is not ready until the gate passes again.</p>
+</header>
+
+<section id="map">
+  <h2>The two loops</h2>
+  <p>Evals are two loops that feed each other. The offline loop decides whether a change is allowed to ship. The online loop finds what the offline loop does not know yet. Every arrow below is a skill you can run.</p>
+  <div class="flow">
+    <div class="loop off">
+      <h3>Offline: may this change ship?</h3>
+      <div class="when">Runs before every prompt, model or schema change</div>
+      <ol>
+        <li>Dataset of cases with expected answers (<code>arize-dataset</code>)</li>
+        <li>Run the candidate on every case (<code>arize-experiment</code>)</li>
+        <li>Score with code checks, then the validated judge</li>
+        <li>Compare with the version in production</li>
+        <li>Promote only if it passes the gate (<code>arize-prompts</code>)</li>
+      </ol>
+    </div>
+    <div class="loop on">
+      <h3>Online: what are we getting wrong?</h3>
+      <div class="when">Runs all the time, reviewed weekly</div>
+      <ol>
+        <li>Every seller run is a trace (<code>arize-instrumentation</code>)</li>
+        <li>Thumbs and judges score the traces (<code>arize-annotation</code>, <code>arize-evaluator</code>)</li>
+        <li>You read the worst ones and name the failure (<code>error-discovery</code>)</li>
+        <li>Each new failure becomes a dataset case</li>
+        <li>That case now guards every future change</li>
+      </ol>
+    </div>
+  </div>
+  <p>Both loops follow one rule from the course by Hamel Husain and Shreya Shankar. <strong>Read real traces before you write any automated check.</strong> A judge built on guesses only measures the guesses.</p>
+</section>
+
+<section id="accuracy">
+  <h2>What "100% accuracy" can mean</h2>
+  <p>"100%" is a fair goal when you say which 100%. There are three kinds, and only the first can be guaranteed.</p>
+  <div class="grid2">
+    <div class="box"><div class="lbl">1 · By construction (guaranteed)</div><p>A rule enforced in code holds on every run, because a wrong answer cannot get past it. Every quote must sit on the line it cites. Another seller's deal is blocked before the model. The stage moves one step at most, and seller-only fields are dropped. Nothing is written without approval or an Always-allow permission. Today 50 guardrail checks prove that each rule fails without its guard.</p></div>
+    <div class="box"><div class="lbl">2 · On the eval set (a gate)</div><p>Sonnet 5.5 passed 11 of 11 in every run on schema v3. That is a gate the prompt must clear, not a property of the agent. The same prompt on Haiku 5.5 scored 10, 9 and 7 of 11 in three runs. One run proves little, so you need several.</p></div>
+    <div class="box"><div class="lbl">3 · In production (measured, with a margin)</div><p>With zero failures in <em>n</em> cases, the true failure rate can still be up to about 3/<em>n</em> (the "rule of three", 95% confidence). Orbita has 9 cases that reach the model, so 9 of 9 only shows accuracy above about 67%. To claim 95% you need about 60 clean cases; for 99%, about 300.</p></div>
+    <div class="box"><div class="lbl">4 · The backstop: the seller</div><p>Whatever the model gets wrong, the seller sees it before it is written, field by field, with the quote. So the honest promise is: <strong>every CRM write is either approved by a person or allowed by a rule they set</strong>. Evals shrink how often the seller has to correct; they do not replace the seller.</p></div>
+  </div>
+  <p>So the practical target has four parts. The code rules hold 100%. The eval set passes 100% across repeated runs. The production pass rate is measured on enough cases to mean something. The seller stays the last check.</p>
+</section>
+
+<section id="faq">
+  <h2>Your questions, answered</h2>
+  <p>Short answer first, then the detail. Open the ones you need.</p>
+  <div class="qa">
+    <details>
+      <summary>How is the Error discovery app linked to my Arize account?<span class="short">It is not linked automatically. Both look at the same 11 cases, but each keeps its own labels.</span></summary>
+      <ul>
+        <li><strong>Error discovery</strong> (<code>eval/error_discovery/</code> and the CRM's <strong>Evals › Trace review</strong>) runs on your machine. It reads the committed runs in <code>eval/outputs/</code> and saves your Pass, Fail and notes in <code>annotations.json</code>. Those runs were made without tracing, so they have no Arize trace id.</li>
+        <li><strong>Arize</strong> receives the runs made with tracing on (<code>eval/arize_runs/</code>). Its review queue keeps its own labels.</li>
+        <li>The common key today is <strong>case + model</strong> (for example T9 on Sonnet 5.5). Arize links each of those runs to its trace.</li>
+        <li>What to do: label in <strong>one</strong> place. Arize is the better home once the app traces in production, because thumbs, judges and labels then sit on the same trace. To connect the two, the records need the trace id that <code>pipeline.mjs</code> now saves, plus a small script that copies the labels to Arize as <code>trace_review</code> and <code>failure_mode</code>. That folder belongs to the CRM's Evals session, so the change is theirs to make.</li>
+      </ul>
+    </details>
+    <details>
+      <summary>Which skill do I use, from beginning to end?<span class="short">Follow the steps on this page. Each one names its skill, and the full order is under "Skills, start to end".</span></summary>
+      <ul>
+        <li>Unsure where you are? Run <code>/evals-start</code>, which routes you. To check an existing setup, run <code>/eval-audit</code>.</li>
+        <li>The short version is data (D1–D6), then trace, read and name failures, code checks, dataset, experiments, judge, prompt versions, optimization, gate, production, autonomy.</li>
+        <li><a href="#skills">See the table in order</a>.</li>
+      </ul>
+    </details>
+    <details>
+      <summary>How do I promote a tier of autonomy?<span class="short">One field at a time, from Needs approval to Always allow, on measured evidence. You demote it again if Undo starts climbing.</span></summary>
+      <ul>
+        <li>Orbita's tiers are per field: Never, Needs approval, Always allow (written at once, with Undo).</li>
+        <li>A field moves up when it passes the offline gate and sellers approve it unedited many times in a row. About 60 approvals in a row back a 95% claim, and about 300 back 99%.</li>
+        <li><a href="#s17">Step 17 has the full rule</a>.</li>
+      </ul>
+    </details>
+    <details>
+      <summary>When the LLM judge shows a green check, can I assume it is right?<span class="short">No, not until the judge is validated. A green check is the judge's opinion. Its value depends on how often it agrees with you.</span></summary>
+      <ul>
+        <li>Validate first. You label about 20 Pass and 20 Fail runs yourself and compare. The judge must catch real failures (TPR) and pass good runs (TNR), both near 0.9. Our judge has said "supported" 18 times out of 18 and never Fail, so nobody knows yet how well it catches failures.</li>
+        <li>A green check covers only what the judge checks. <code>evidence_supported</code> looks for invented or changed facts. It does not look for missing ones. Those are the code checks' job.</li>
+        <li>After validation, keep reading about 10 green runs a week. Validate again whenever the judge's prompt or model changes. The course's <code>validate-evaluator</code> also corrects the observed pass rate for the judge's known errors.</li>
+      </ul>
+    </details>
+    <details>
+      <summary>Is the code judge better, and should it always come first?<span class="short">It should come first for anything a rule can decide. It is not better at everything: it checks only what you wrote rules for.</span></summary>
+      <ul>
+        <li>Code is free, instant and gives the same answer every time. If code already fails a run, you do not need to pay a judge to read it.</li>
+        <li>Code misses what nobody wrote a rule for. Our scorer has 80 "must include" rules and only 2 "must not include", so it rarely sees an invented fact. That is the judge's job.</li>
+        <li>The order is code checks, then the validated judge, then you read a sample. Each layer catches what the one before it cannot.</li>
+      </ul>
+    </details>
+    <details>
+      <summary>Can I compare answers side by side, like in Braintrust?<span class="short">Yes. In the dataset, open Experiments, select two or more, and click Compare.</span></summary>
+      <ul>
+        <li>The table view puts each case on a row, with each experiment's output, labels, cost and latency in its own column.</li>
+        <li><strong>Diff Mode</strong> picks a baseline and highlights the labels that changed: the cases a change fixed or broke.</li>
+        <li><strong>Diff Output Mode</strong> highlights text added, removed or changed against the baseline. It is in Arize's docs, but check the live screen if you cannot find the control.</li>
+        <li>The experiments pushed so far store the output as one long line of JSON, which is hard to read in a diff. <code>push_experiment.mjs</code> now writes one field per line, so future experiments diff cleanly.</li>
+        <li>To compare prompt versions rather than runs, use the Prompt Playground. It runs two versions on the same input, side by side.</li>
+        <li>Ready-made links: <a href="#s6">the Haiku and Sonnet comparisons</a> and <a href="#v4">the five v4 setups</a>.</li>
+      </ul>
+    </details>
+    <details>
+      <summary>How do I manage the skills and Arize from the terminal?<span class="short">Two installers, one Arize profile, and a monthly check. The commands are in "Manage the stack in the terminal".</span></summary>
+      <ul>
+        <li>Arize skills update with <code>ax skills install --global --agent claude-code --yes --force</code>. The course skills update with <code>npx skills update -g</code>.</li>
+        <li><a href="#cli">Full cheat sheet</a>.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<section id="cards">
+  <h2>Flash cards</h2>
+  <p>One idea per card. Read the question, answer it in your head, then click to check. Filter by theme or shuffle to test yourself.</p>
+  <div class="cardbar" role="group" aria-label="Filter cards">
+    <button type="button" data-f="all" aria-pressed="true">All</button>
+    <button type="button" data-f="data" aria-pressed="false">Data</button>
+    <button type="button" data-f="evals" aria-pressed="false">Evals</button>
+    <button type="button" data-f="arize" aria-pressed="false">Arize</button>
+    <button type="button" data-f="ship" aria-pressed="false">Ship and autonomy</button>
+    <button type="button" id="shuffle">Shuffle</button>
+    <button type="button" id="flipall">Show all</button>
+    <span class="count" id="cardcount"></span>
+  </div>
+  <div class="cards" id="cardgrid">
+    <button type="button" class="fc" data-c="data" aria-expanded="false"><span class="cat">Data</span><span class="q">What is a data catalog?</span><span class="a">An inventory of every field: definition, allowed values, synonyms, owner and sensitivity. Orbita's catalog is <code>agent/field_schema.json</code>.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="data" aria-expanded="false"><span class="cat">Data</span><span class="q">What is a business glossary for?</span><span class="a">It maps the words people use to the values the system stores. The missing synonym "funnel" for Pipeline management caused the T9 failure.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="data" aria-expanded="false"><span class="cat">Data</span><span class="q">The five data quality checks?</span><span class="a">Complete, valid, unique, consistent and fresh. Measure them before you blame the model.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="data" aria-expanded="false"><span class="cat">Data</span><span class="q">What makes a dataset a data product?</span><span class="a">An owner, documentation, a version and a promise of quality, built for one use. The eval set is a data product too.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="data" aria-expanded="false"><span class="cat">Data</span><span class="q">What is a data contract?</span><span class="a">The agreed shape of the data between who produces it and who uses it. Changing it, as schema v4 did, means running the gate again.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="data" aria-expanded="false"><span class="cat">Data</span><span class="q">What is lineage?</span><span class="a">Where a value came from and where it went. Each Orbita write keeps its run id and the quote behind it, so it can be explained and undone.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="evals" aria-expanded="false"><span class="cat">Evals</span><span class="q">What comes before any automated check?</span><span class="a">Error analysis. Read 30 to 50 real traces, mark Pass or Fail, note the first thing that went wrong, then group the notes into failure modes.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="evals" aria-expanded="false"><span class="cat">Evals</span><span class="q">Code check or LLM judge?</span><span class="a">Code for anything a rule can decide, and it runs first. The judge handles only what needs interpretation.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="evals" aria-expanded="false"><span class="cat">Evals</span><span class="q">Why Pass or Fail instead of a 1 to 5 score?</span><span class="a">People and judges agree more on two labels, and a Fail tells you what to fix. A "3 of 5" does not.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="evals" aria-expanded="false"><span class="cat">Evals</span><span class="q">TPR and TNR?</span><span class="a">TPR is the share of real failures the judge catches. TNR is the share of good runs it passes. Both should be near 0.9 before you trust it.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="evals" aria-expanded="false"><span class="cat">Evals</span><span class="q">What is a green check worth?</span><span class="a">What its validation says. An unvalidated judge's green check is an opinion, and it covers only what that judge checks.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="evals" aria-expanded="false"><span class="cat">Evals</span><span class="q">What is a held-out case?</span><span class="a">A case never used to tune the prompt. It shows whether a fix generalizes or only learned the test.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="evals" aria-expanded="false"><span class="cat">Evals</span><span class="q">The rule of three?</span><span class="a">With zero failures in n cases, the true error can still be up to 3/n. 60 clean cases back 95%, and 300 back 99%.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="evals" aria-expanded="false"><span class="cat">Evals</span><span class="q">Noise or failure mode?</span><span class="a">A failure that moves between runs is noise. One that repeats on the same case, like T9, is a failure mode worth fixing.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="arize" aria-expanded="false"><span class="cat">Arize</span><span class="q">Trace and span?</span><span class="a">A trace is one agent run. A span is one step inside it: pre-checks, the model call, the validator.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="arize" aria-expanded="false"><span class="cat">Arize</span><span class="q">Dataset and experiment?</span><span class="a">The dataset is the fixed set of cases with expected answers. An experiment is one version of the agent run on all of them, each run scored.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="arize" aria-expanded="false"><span class="cat">Arize</span><span class="q">How do you compare two versions?</span><span class="a">Dataset › Experiments › select both › Compare. Diff Mode shows which cases flipped.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="arize" aria-expanded="false"><span class="cat">Arize</span><span class="q">Evaluator and task?</span><span class="a">The evaluator is the judge's definition. The task runs it on data, once (backfill) or on new runs (continuous).</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="arize" aria-expanded="false"><span class="cat">Arize</span><span class="q">Annotation?</span><span class="a">A label a person or a script puts on a span or a run: thumbs, Pass or Fail, a failure mode, a note.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="ship" aria-expanded="false"><span class="cat">Ship</span><span class="q">Prompt version and label?</span><span class="a">A version is a saved prompt that never changes. A label (production, staging) points at one version. To promote, you move the label. To roll back, you move it back.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="ship" aria-expanded="false"><span class="cat">Ship</span><span class="q">What is the gate?</span><span class="a">Six written criteria every change must pass before production: code checks across 3 runs, no regression, held-out cases, validated judge, cost, and your own reading.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="ship" aria-expanded="false"><span class="cat">Autonomy</span><span class="q">Orbita's three autonomy tiers?</span><span class="a">Never, Needs approval, and Always allow (written at once, with Undo). They are set per field, not for the whole agent.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="ship" aria-expanded="false"><span class="cat">Autonomy</span><span class="q">When does a field earn Always allow?</span><span class="a">When it passes the gate offline and sellers approve it unedited about 60 times in a row, which backs a 95% claim. It moves back down if Undo climbs above 5%.</span><span class="hint">Click to see</span></button>
+    <button type="button" class="fc" data-c="ship" aria-expanded="false"><span class="cat">Ship</span><span class="q">What does continuous evaluation sample?</span><span class="a">20 to 30% of new production runs at first, only after the judge is validated.</span><span class="hint">Click to see</span></button>
+  </div>
+</section>
+
+<div class="phase"><span class="tag">Phase 0</span><h2>Before evals: get the data ready</h2></div>
+<p class="lead" style="margin-top:10px">An agent reads data and writes data. If nobody has defined that data, checked it or decided who owns it, every eval measures the data's problems along with the agent's. These six steps come before you write the first prompt.</p>
+
+<section class="step" id="d1">
+  <div class="stephead"><div class="num">D1</div><div><h2>Map the sources and their owners</h2><span class="status done">Exists on Orbita</span></div></div>
+  <p class="why">List every source the agent reads and every place it writes. Name one owner for each. When a number looks wrong, the owner is the person who can say whether the data or the agent is at fault.</p>
+  <div class="grid2">
+    <div class="box"><div class="lbl">What to write down</div><ul>
+      <li>Source, format, who produces it, how often it changes.</li>
+      <li>What the agent reads from it and what it writes back.</li>
+      <li>The owner, and who may change the source's structure.</li>
+    </ul></div>
+    <div class="box"><div class="lbl">On Orbita</div><ul>
+      <li>Reads: CRM clients and opportunities (<code>data/</code>), meeting transcripts and chats from the notetaker, the policies in <code>policies/</code>.</li>
+      <li>Writes: 22 opportunity fields, only through <code>applyApprovedFields</code>.</li>
+      <li>Suggested owners: sales operations for the CRM, whoever runs the notetaker for transcripts, the agent owner for policies.</li>
+    </ul></div>
+  </div>
+  <label class="mark"><input type="checkbox" id="done-d1" data-step="d1"> I understand this step</label>
+</section>
+
+<section class="step" id="d2">
+  <div class="stephead"><div class="num">D2</div><div><h2>Build the catalog and the business glossary</h2><span class="status doing">Catalog exists, glossary has gaps</span></div></div>
+  <p class="why">The catalog says what each field means, which values it accepts and who owns it. The glossary maps the words customers and sellers really say to those values. A model can only pick the right option if the option says, in plain words, what it covers.</p>
+  <div class="grid2">
+    <div class="box"><div class="lbl">Each field needs</div><ul>
+      <li>A one-line definition and an example.</li>
+      <li>The allowed values, each with its own definition.</li>
+      <li>The everyday synonyms for each value.</li>
+      <li>An owner, and a sensitivity class (public, internal, personal).</li>
+    </ul></div>
+    <div class="box"><div class="lbl">On Orbita</div><ul>
+      <li><code>agent/field_schema.json</code> is the catalog: 22 fields, picklists since schema v4, permissions per field.</li>
+      <li>The gap: options have no synonyms. In T9 the customer asked for an "enrolment funnel per campus". Sonnet wrote that phrase in its own note but did not choose Pipeline management. That is a glossary gap, not a model gap.</li>
+    </ul></div>
+  </div>
+  <div class="gate"><b>Done when</b> every picklist option has a definition and the words customers use for it, and each field has an owner.</div>
+  <label class="mark"><input type="checkbox" id="done-d2" data-step="d2"> I understand this step</label>
+</section>
+
+<section class="step" id="d3">
+  <div class="stephead"><div class="num">D3</div><div><h2>Measure data quality and set a baseline</h2><span class="status doing">Pre-checks in code; no baseline report</span></div></div>
+  <p class="why">Before the agent runs, check that its input is complete, valid, unique, consistent and fresh. Write the numbers down. Without a baseline, every bad input looks like an agent failure.</p>
+  <div class="tbl"><table>
+    <tr><th>Check</th><th>Question</th><th>On Orbita</th></tr>
+    <tr><td>Complete</td><td>Is anything missing?</td><td>A recording much shorter than the meeting is marked Incomplete and stopped in code.</td></tr>
+    <tr><td>Valid</td><td>Is each value allowed?</td><td>Stage, picklists and amounts are checked against the schema by the validator.</td></tr>
+    <tr><td>Unique</td><td>Is anything duplicated?</td><td>Two clients with near-identical names would send a meeting to the wrong deal.</td></tr>
+    <tr><td>Consistent</td><td>Do sources agree?</td><td>The meeting's seller must own the opportunity, or the run is blocked.</td></tr>
+    <tr><td>Fresh</td><td>Is it current?</td><td>A value that contradicts one the seller already approved always waits for the seller.</td></tr>
+  </table></div>
+  <p>The pre-checks already enforce several of these per run. What is missing is the aggregate view: the share of meetings blocked as Incomplete, the duplicate rate and the staleness. The dashboard's "blocked runs by reason" panel (step 14) is the start of it.</p>
+  <label class="mark"><input type="checkbox" id="done-d3" data-step="d3"> I understand this step</label>
+</section>
+
+<section class="step" id="d4">
+  <div class="stephead"><div class="num">D4</div><div><h2>Agree data contracts and version them</h2><span class="status done">Schema is versioned</span></div></div>
+  <p class="why">A data contract fixes the shape of the data between who produces it and who uses it. Any change to the shape is a new version. A new version means the old eval results no longer apply, and the gate runs again.</p>
+  <p>Orbita showed this on 31 October. Schema v4 turned free text into picklists. Sonnet at the production setting dropped from 11/11 to 8/11 on the same cases. The contract change was the cause, and the gate caught it before it shipped. That is why every experiment is tied to one dataset version and one schema version.</p>
+  <label class="mark"><input type="checkbox" id="done-d4" data-step="d4"> I understand this step</label>
+</section>
+
+<section class="step" id="d5">
+  <div class="stephead"><div class="num">D5</div><div><h2>Treat key datasets as data products</h2><span class="status todo">Not formalized</span></div></div>
+  <p class="why">A data product is a dataset someone owns, documents, versions and keeps to a quality promise, built for one use. The agent's input and its eval set are both data products. When nobody owns them, they drift.</p>
+  <div class="grid2">
+    <div class="box"><div class="lbl">Input product: opportunity context</div><p>The client, the opportunity and its meetings, joined and ready for the agent. Owner: sales operations. Promise: no duplicates, ownership correct, refreshed before each run.</p></div>
+    <div class="box"><div class="lbl">Eval product: the eval set</div><p>The cases, their expected answers and a fixed held-out share. Owner: the agent owner, with sellers as the experts who settle disputes. Promise: every production failure becomes a case within a week.</p></div>
+  </div>
+  <label class="mark"><input type="checkbox" id="done-d5" data-step="d5"> I understand this step</label>
+</section>
+
+<section class="step" id="d6">
+  <div class="stephead"><div class="num">D6</div><div><h2>Classify personal data, set access, keep lineage</h2><span class="status doing">Partly built</span></div></div>
+  <p class="why">Mark which fields hold personal data. Decide who may see each source, how long it is kept and where it flows. Then make every write traceable back to its source.</p>
+  <ul>
+    <li><strong>Personal data:</strong> transcripts name customer-side people. Traces copy them to Arize unless <code>ORBITA_TRACE_HIDE_IO=1</code>.</li>
+    <li><strong>Access:</strong> a seller can only update their own deals. The check runs in code before the model.</li>
+    <li><strong>Lineage:</strong> each write is in the activity log with its run id and quote, and Always-allow writes can be undone.</li>
+    <li><strong>Retention:</strong> 90 days and deletion on request are written in the PRD but not built yet (see step 16).</li>
+  </ul>
+  <label class="mark"><input type="checkbox" id="done-d6" data-step="d6"> I understand this step</label>
+</section>
+
+<section id="dskip">
+  <h2>What happens when the data steps are skipped</h2>
+  <p>The symptoms show up in the evals, but the causes sit in the data. The team then tunes prompts to fix problems no prompt can fix.</p>
+  <div class="tbl"><table>
+    <tr><th>Skipped</th><th>What you see in evals</th><th>Orbita example</th></tr>
+    <tr><td>Glossary (D2)</td><td>The model picks the wrong option, and people disagree on what "correct" is.</td><td>T9: "funnel" not mapped to Pipeline management, on 4 of 5 setups.</td></tr>
+    <tr><td>Quality baseline (D3)</td><td>Failures blamed on the model that come from bad input.</td><td>A cut-off recording looks like the agent "missed" the decision.</td></tr>
+    <tr><td>Contracts (D4)</td><td>A silent regression after a schema change. Old scores no longer compare.</td><td>v4 dropped Sonnet from 11/11 to 8/11.</td></tr>
+    <tr><td>Data products (D5)</td><td>An eval set that does not look like production. High scores, worse results live.</td><td>11 cases, 9 reaching the model: too few to back a 95% claim.</td></tr>
+    <tr><td>Expected-answer owner (D5)</td><td>Endless debates about whether the oracle is wrong.</td><td>T9's expected answer had to be checked by hand.</td></tr>
+    <tr><td>Privacy and access (D6)</td><td>A compliance stop at go-live, or one seller seeing another's deal.</td><td>Traces holding customer names in a third-party tool.</td></tr>
+    <tr><td>Lineage (D6)</td><td>A wrong CRM value nobody can explain or reverse.</td><td>Avoided: every write carries its run id and quote.</td></tr>
+  </table></div>
+  <div class="warn"><strong>The ready test.</strong> Before you build an agent or start evals, five things should hold. Each field the agent writes has a definition, allowed values, synonyms and an owner. The input passes the five quality checks, and you know the numbers. The schema has a version. The eval set has an owner and a held-out share. Personal data is marked, and access is checked in code.</div>
+</section>
+
+<div class="phase"><span class="tag">Phase A</span><h2>Before production: build the measuring stick</h2></div>
+
+<section class="step" id="s1">
+  <div class="stephead"><div class="num">1</div><div><h2>Trace every run</h2><span class="status done">Done today</span></div></div>
+  <p class="why">Without traces you can only see the final answer. With them you see what the agent read, what the model answered, and what the validator corrected, for every run, kept for later.</p>
+  <div class="skills"><span class="chip ax">arize-instrumentation</span></div>
+  <div class="grid2">
+    <div class="box"><div class="lbl">What we did</div><ul>
+      <li>New file <code>agent/tracing.mjs</code>, following Arize's Anthropic guide for Node: OpenTelemetry 3 plus the OpenInference Anthropic instrumentor, sent to <code>otlp.arize.com</code> (US, matching your account).</li>
+      <li>One trace per run: <code>orbita.update</code> → <code>pre-checks</code> → <code>Anthropic Messages</code> → <code>validator</code>. The validator span keeps the model's raw answer apart from the corrected one.</li>
+      <li>Each trace carries the run id, case, model, effort, cost and <code>prompt_version</code> (a hash of the system prompt), so the dashboard can split any metric by prompt version.</li>
+      <li>Off unless <code>ARIZE_SPACE_ID</code> and <code>ARIZE_API_KEY</code> are set. Nothing changes for the kit or the tests without them.</li>
+    </ul></div>
+    <div class="box"><div class="lbl">Watch out</div><ul>
+      <li>Traces hold the transcript, which is personal data of customer-side people. Set <code>ORBITA_TRACE_HIDE_IO=1</code> when real customers are involved, and list Arize in the data processing agreement.</li>
+      <li>OpenTelemetry 3 takes <code>new BatchSpanProcessor({ exporter })</code>, not the exporter itself. The old form crashes at the first flush.</li>
+      <li>A CLI must flush before it exits, or the last spans are lost.</li>
+    </ul></div>
+  </div>
+  <div class="cmd"><pre>ARIZE_SPACE_ID=U3BhY2U6NTY4Njk6cVR6OA== ARIZE_API_KEY=… \
+node agent/pipeline.mjs --all --model claude-sonnet-5-5 --out eval/arize_runs/&lt;date&gt;/claude-sonnet-5-5</pre><button type="button">Copy</button></div>
+  <label class="mark"><input type="checkbox" id="done-s1" data-step="s1"> I understand this step</label>
+</section>
+
+<section class="step" id="s2">
+  <div class="stephead"><div class="num">2</div><div><h2>Check the traces are healthy</h2><span class="status done">Done today</span></div></div>
+  <p class="why">A broken trace looks like a broken agent. Before trusting any metric, check that spans connect, carry input and output, and count tokens.</p>
+  <div class="skills"><span class="chip ax">arize-instrumentation-health</span><span class="chip ax">arize-trace</span></div>
+  <div class="grid2">
+    <div class="box"><div class="lbl">Result</div><p><strong>Healthy.</strong> 22 traces, 80 spans: no orphan or duplicate spans, no blank input or output, every span OK, all 18 model calls with token counts and cost. The 4 two-span traces are T4 and T8 (two per model), which code blocks before the model, as designed.</p></div>
+    <div class="box"><div class="lbl">Two advisories, no action needed</div><ul>
+      <li>The session id is on the root span only, so a session export returns roots; pull each trace by its id.</li>
+      <li>Traces are one level deep. That is correct for one model call inside a deterministic pipeline.</li>
+    </ul></div>
+  </div>
+  <div class="cmd"><pre>ax spans export orbita-crm-agent --space "Digithall Evals" --trace-id &lt;trace_id&gt; --stdout</pre><button type="button">Copy</button></div>
+  <div class="links"><a href="https://app.arize.com/organizations/QWNjb3VudE9yZ2FuaXphdGlvbjo1MjMzMzpZQSto/spaces/U3BhY2U6NTY4Njk6cVR6OA==/projects/TW9kZWw6MTA4NDMwNzUwMjM6UVVJbg==?selectedTraceId=596ac34a1d2af4682662bac423163230&amp;queryFilterA=&amp;selectedTab=llmTracing&amp;timeZoneA=America%2FSao_Paulo&amp;startA=1793466000000&amp;endA=1793480400000&amp;envA=tracing&amp;modelType=generative_llm">One full trace<span>T1, Acme Logistics, Sonnet 5.5</span></a><a href="https://app.arize.com/organizations/QWNjb3VudE9yZ2FuaXphdGlvbjo1MjMzMzpZQSto/spaces/U3BhY2U6NTY4Njk6cVR6OA==/projects/TW9kZWw6MTA4NDMwNzUwMjM6UVVJbg==?selectedSessionId=claude-sonnet-5-5-202610311813&amp;queryFilterA=&amp;selectedTab=llmTracing&amp;timeZoneA=America%2FSao_Paulo&amp;startA=1793466000000&amp;endA=1793480400000&amp;envA=tracing&amp;modelType=generative_llm">One eval run as a session<span>11 cases, Sonnet 5.5, run 2</span></a></div>
+  <label class="mark"><input type="checkbox" id="done-s2" data-step="s2"> I understand this step</label>
+</section>
+
+<section class="step" id="s3">
+  <div class="stephead"><div class="num">3</div><div><h2>Read traces and name the failures</h2><span class="status todo">Waiting for you</span></div></div>
+  <p class="why">This is the step that makes every later number mean something, and only you can do it. You read a trace, decide Pass or Fail as a careful seller would, and write the first thing that went wrong in your own words. After 30 to 50 traces the notes group into a handful of named failure modes. The biggest one is the next thing to fix.</p>
+  <div class="skills"><span class="chip course">evals-start</span><span class="chip course">error-discovery</span><span class="chip course">build-review-interface</span><span class="chip ax">arize-annotation</span></div>
+  <div class="grid2">
+    <div class="box"><div class="lbl">Ready for you</div><ul>
+      <li>Arize queue <strong>Orbita trace review</strong>: the 18 traces where the model ran, assigned to you, with labels <code>trace_review</code> (pass / fail), <code>failure_mode</code> and <code>notes</code>.</li>
+      <li>The same work in the CRM: <strong>Evals › Trace review</strong> (Pass, Fail, Defer, keyboard shortcuts), plus the local app in <code>eval/error_discovery/</code>.</li>
+      <li>Today none of the 15 sampled traces has a label yet. The eval audit ranked this as the most serious gap.</li>
+    </ul></div>
+    <div class="box"><div class="lbl">How to review well</div><ul>
+      <li>Judge before you look at <code>code_checks</code>. Seeing the scorer's verdict first pulls you toward agreeing with it.</li>
+      <li>Write one sentence per Fail, in plain words. Name the categories later, not before.</li>
+      <li>Use one place for labels (the CRM tab or the Arize queue) and copy across only when needed.</li>
+    </ul></div>
+  </div>
+  <div class="gate"><b>Done when</b> at least 30 traces are labeled and the Fails are grouped into 4 to 6 named failure modes, each with a count.</div>
+  <div class="links"><a href="https://app.arize.com/organizations/QWNjb3VudE9yZ2FuaXphdGlvbjo1MjMzMzpZQSto/spaces/U3BhY2U6NTY4Njk6cVR6OA==/queues/QW5ub3RhdGlvblF1ZXVlOjQ2NDU6UW5hdQ==">Open the review queue<span>Orbita trace review · 18 traces</span></a><a href="https://app.arize.com/organizations/QWNjb3VudE9yZ2FuaXphdGlvbjo1MjMzMzpZQSto/spaces/U3BhY2U6NTY4Njk6cVR6OA==/annotation-configs">Label definitions<span>trace_review, failure_mode, code_checks, seller reasons</span></a></div>
+  <label class="mark"><input type="checkbox" id="done-s3" data-step="s3"> I labeled the queue</label>
+</section>
+
+<section class="step" id="s4">
+  <div class="stephead"><div class="num">4</div><div><h2>Put every objective check in code</h2><span class="status done">Done today</span></div></div>
+  <p class="why">Anything a rule can decide (status, format, a fact present, a quote on its line, a forbidden value) belongs in code: free, instant and never inconsistent. An LLM judge is only for what needs interpretation.</p>
+  <div class="skills"><span class="chip course">write-code-eval</span><span class="chip ax">arize-annotation</span><span class="chip ax">arize-trace</span></div>
+  <p>The kit already had the scorer (<code>eval/score.mjs</code>). The new script <code>eval/arize/push_code_checks.mjs</code> runs it on a traced run and writes each verdict to Arize as the <code>code_checks</code> label on that run's root span, with the failed checks as text. Sonnet passed 11 of 11; Haiku 7 of 11 on the same run.</p>
+  <div class="cmd"><pre>node eval/arize/push_code_checks.mjs eval/arize_runs/2026-10-31_run2/claude-haiku-5-5</pre><button type="button">Copy</button></div>
+  <div class="warn">The scorer checks that expected facts are present but rarely that extra facts are wrong (80 "must include" rules, 2 "must not include"). That gap is exactly what the judge in step 7 covers.</div>
+  <label class="mark"><input type="checkbox" id="done-s4" data-step="s4"> I understand this step</label>
+</section>
+
+<section class="step" id="s5">
+  <div class="stephead"><div class="num">5</div><div><h2>Build the dataset</h2><span class="status doing">Started: 11 cases, needs more</span></div></div>
+  <p class="why">A dataset is the fixed set of cases every change is tested on. Each example holds exactly what the agent reads and the expected answer. It grows every time production shows a new failure.</p>
+  <div class="skills"><span class="chip ax">arize-dataset</span><span class="chip course">generate-synthetic-data</span></div>
+  <p>Dataset <code>orbita-eval-cases</code>: the 11 test conversations, each with the exact message the agent reads for that case (CRM context plus numbered conversation), the expected outcome from <code>eval/expected_results.json</code>, and whether code blocks it before the model.</p>
+  <div class="grid2">
+    <div class="box"><div class="lbl">What is missing</div><ul>
+      <li><strong>Held-out cases</strong>: conversations never used to tune the prompt. Without them, a prompt can learn the test.</li>
+      <li><strong>Volume</strong>: 9 cases reach the model. For a 95% claim you need about 60 (see "What 100% can mean").</li>
+      <li><strong>Real failures</strong>: every Fail from step 3 and every thumbs-down from step 12 should become a case.</li>
+    </ul></div>
+    <div class="box"><div class="lbl">How to grow it</div><ul>
+      <li>Use <code>generate-synthetic-data</code> with dimensions taken from your failure modes (channel, MEDDPICC coverage, speaker naming, language, length).</li>
+      <li>Keep a fixed 30% of new cases as held-out, never shown to the optimizer.</li>
+      <li>Version the dataset; experiments are tied to one version.</li>
+    </ul></div>
+  </div>
+  <div class="cmd"><pre>node eval/arize/build_dataset.mjs &gt; eval/arize/orbita_eval_cases.json
+ax datasets create --name "orbita-eval-cases" --space "Digithall Evals" --file eval/arize/orbita_eval_cases.json</pre><button type="button">Copy</button></div>
+  <div class="links"><a href="https://app.arize.com/organizations/QWNjb3VudE9yZ2FuaXphdGlvbjo1MjMzMzpZQSto/spaces/U3BhY2U6NTY4Njk6cVR6OA==/datasets/RGF0YXNldDozNzI2MTY6QnVNeA==?selectedTab=examples">Open the dataset<span>orbita-eval-cases · 11 examples</span></a></div>
+  <label class="mark"><input type="checkbox" id="done-s5" data-step="s5"> I understand this step</label>
+</section>
+
+<section class="step" id="s6">
+  <div class="stephead"><div class="num">6</div><div><h2>Run experiments</h2><span class="status done">Done today: 7 experiments</span></div></div>
+  <p class="why">An experiment is one version of the agent run on every dataset case, with each run scored. Two experiments on the same dataset show exactly which cases a change fixed or broke.</p>
+  <div class="skills"><span class="chip ax">arize-experiment</span></div>
+  <p><code>eval/arize/push_experiment.mjs</code> uploads a run folder of real outputs as an experiment, then attaches the code verdict to each run. Arize forces the order: create the experiment, export it to learn each run's id, then annotate.</p>
+  <div class="cmd"><pre>node eval/arize/push_experiment.mjs eval/arize_runs/2026-10-31_run2/claude-haiku-5-5 "haiku-5.5 · run2"</pre><button type="button">Copy</button></div>
+  <p>The lesson of the day came from running the same thing twice: <strong>Haiku's failures moved between runs</strong> (T9 and T10, then T1, T5, T9 and T11). Only T9 failed every time. That separates a real failure mode (T9) from noise (the rest), and it is why a gate needs repeated runs.</p>
+  <div class="links"><a href="https://app.arize.com/organizations/QWNjb3VudE9yZ2FuaXphdGlvbjo1MjMzMzpZQSto/spaces/U3BhY2U6NTY4Njk6cVR6OA==/datasets/RGF0YXNldDozNzI2MTY6QnVNeA==/experiments/compare?experimentId=RXhwZXJpbWVudDoxODI2ODQ6MlV1Ng%3D%3D&amp;experimentId=RXhwZXJpbWVudDoxODI2ODI6dGozSw%3D%3D&amp;experimentId=RXhwZXJpbWVudDoxODI2ODU6ekp6WQ%3D%3D&amp;experimentId=RXhwZXJpbWVudDoxODI2ODY6QnZ5Yw%3D%3D">Compare the 4 Haiku experiments<span>current prompt ×2 vs candidate ×2</span></a><a href="https://app.arize.com/organizations/QWNjb3VudE9yZ2FuaXphdGlvbjo1MjMzMzpZQSto/spaces/U3BhY2U6NTY4Njk6cVR6OA==/datasets/RGF0YXNldDozNzI2MTY6QnVNeA==/experiments/compare?experimentId=RXhwZXJpbWVudDoxODI2ODE6dFJmaw%3D%3D&amp;experimentId=RXhwZXJpbWVudDoxODI2ODc6aFBSMA%3D%3D">Compare Sonnet: current vs candidate<span>regression check</span></a><a href="https://app.arize.com/organizations/QWNjb3VudE9yZ2FuaXphdGlvbjo1MjMzMzpZQSto/spaces/U3BhY2U6NTY4Njk6cVR6OA==/datasets/RGF0YXNldDozNzI2MTY6QnVNeA==?selectedTab=experiments">All experiments<span>7 on orbita-eval-cases</span></a></div>
+  <label class="mark"><input type="checkbox" id="done-s6" data-step="s6"> I understand this step</label>
+</section>
+
+<section class="step" id="s7">
+  <div class="stephead"><div class="num">7</div><div><h2>Add one LLM judge, then prove it</h2><span class="status doing">Created, not validated</span></div></div>
+  <p class="why">A judge is a second model that grades the agent on something code cannot check. Build it for one failure you have actually seen, with Pass or Fail only, and trust it only after it agrees with your own labels.</p>
+  <div class="skills"><span class="chip course">write-judge-prompt</span><span class="chip ax">arize-evaluator</span><span class="chip ax">arize-ai-provider-integration</span><span class="chip course">validate-evaluator</span></div>
+  <div class="grid2">
+    <div class="box"><div class="lbl">What we did</div><ul>
+      <li>Evaluator <strong>evidence_supported</strong> in Arize: "is every proposed value supported by what the speakers said?" Same definition as the local judge in <code>eval/judge.mjs</code>, so there is one judge, not two.</li>
+      <li>Judge model Sonnet 5.5 through the Anthropic integration already in your space (no key handled here), temperature 0, with explanations.</li>
+      <li>Backfill on the 18 model calls: 18 scored, 0 errors. <strong>All 18 "supported"</strong>, including Haiku's 4 code-check failures.</li>
+    </ul></div>
+    <div class="box"><div class="lbl">How to read that</div><ul>
+      <li>No contradiction: the code checks caught <em>missing</em> facts; this judge looks for <em>invented or changed</em> facts and treats an omission as fine. They cover different failures.</li>
+      <li>A judge that has never said Fail cannot be measured. Validation needs at least about 20 Pass and 20 Fail human labels, split train / dev / test, with <strong>TPR</strong> (real failures it catches) and <strong>TNR</strong> (good runs it passes) both near 0.9.</li>
+      <li>Until then its numbers stay off the PRD and off any gate.</li>
+    </ul></div>
+  </div>
+  <div class="cmd"><pre>ax tasks trigger-run &lt;task_id&gt; --data-start-time "2026-10-31T18:00:00" --data-end-time "2026-10-31T18:30:00" --max-spans 20 --wait</pre><button type="button">Copy</button></div>
+  <div class="warn">Arize's eval index lags behind new traces (documented as 1 to 2 hours). Today it scored traces that were 30 minutes old, but if a backfill reports 0 spans, wait and retry before changing anything.</div>
+  <div class="links"><a href="https://app.arize.com/organizations/QWNjb3VudE9yZ2FuaXphdGlvbjo1MjMzMzpZQSto/spaces/U3BhY2U6NTY4Njk6cVR6OA==/evaluators/RXZhbHVhdG9yOjE5NTEzOmpZVlk=">Open the evaluator<span>evidence_supported · v1</span></a></div>
+  <label class="mark"><input type="checkbox" id="done-s7" data-step="s7"> I understand this step</label>
+</section>
+
+<section class="step" id="s8">
+  <div class="stephead"><div class="num">8</div><div><h2>Version the prompt</h2><span class="status done">Done today</span></div></div>
+  <p class="why">Every prompt change gets an immutable version, and a movable label says which one is live. Promotion then means moving a label, and rolling back means moving it back.</p>
+  <div class="skills"><span class="chip ax">arize-prompts</span></div>
+  <div class="tbl"><table>
+    <tr><th>Hub version</th><th>prompt_version</th><th>Label</th><th>What it is</th></tr>
+    <tr><td>v1</td><td><code>4b553e7929</code></td><td class="ok">production</td><td>The prompt the agent runs today (built by <code>systemPrompt()</code> from your policy files).</td></tr>
+    <tr><td>v2</td><td><code>30674608a9</code></td><td>none</td><td>The optimized candidate from step 9. Superseded: its three rules now live in the v4 policy.</td></tr>
+    <tr><td>v3</td><td><code>1303387610</code></td><td class="mid">staging</td><td>Schema v4 (picklists) with those rules. Sonnet medium 8/11 on the v4 dataset: not ready for production.</td></tr>
+  </table></div>
+  <p>The <code>prompt_version</code> hash on every trace matches the Hub version's commit message, so any trace or dashboard line can be traced back to the exact prompt. Today the app reads its prompt from files, not from the Hub. So promotion means merging the change into <code>policies/</code> and <code>agent/field_schema.json</code>. The Hub mirrors it and keeps the history.</p>
+  <div class="cmd"><pre>ax prompts list-versions "orbita-crm-agent" --space "Digithall Evals"
+ax prompts set-version-labels &lt;version_id&gt; --label production</pre><button type="button">Copy</button></div>
+  <div class="warn">On Windows, set <code>PYTHONIOENCODING=utf-8</code> before <code>ax prompts</code>: the prompt contains "→" and the console's default encoding cannot print it.</div>
+  <label class="mark"><input type="checkbox" id="done-s8" data-step="s8"> I understand this step</label>
+</section>
+
+<section class="step" id="s9">
+  <div class="stephead"><div class="num">9</div><div><h2>Optimize the prompt from failures</h2><span class="status done">Done today: candidate in staging</span></div></div>
+  <p class="why">Feed the failures, what was expected and why each failed to a model with a strict meta-prompt, and ask for the smallest change that fixes the pattern without copying test data.</p>
+  <div class="skills"><span class="chip ax">arize-prompt-optimization</span></div>
+  <div class="grid2">
+    <div class="box"><div class="lbl">What it produced (US$ 0.18)</div><ul>
+      <li>Input: Haiku's 6 failing runs across two runs.</li>
+      <li>Output: 2 lines changed, 1,329 characters added. List-type fields must cover every item the conversation supports; forwarding material is not a decision process; a stated contract routing counts as paper process even in a chat.</li>
+      <li>No test data copied: none of the failing cases' names, systems or facts appear in the new text.</li>
+    </ul></div>
+    <div class="box"><div class="lbl">Result</div><ul>
+      <li>Haiku: <strong>21 of 22</strong> with the candidate vs 16 of 22 with the current prompt. T9 passed both times.</li>
+      <li>Sonnet: 11 of 11, no regression.</li>
+      <li><strong>Caveat:</strong> tuned on failures from these same 11 cases. The gain is directional until it holds on held-out cases.</li>
+    </ul></div>
+  </div>
+  <div class="cmd"><pre>node eval/arize/optimize_prompt.mjs eval/arize_runs/2026-10-31_run1/claude-haiku-5-5 eval/arize_runs/2026-10-31_run2/claude-haiku-5-5
+ORBITA_SYSTEM_PROMPT_FILE=eval/arize/prompt_candidate.txt node agent/pipeline.mjs --all --model claude-haiku-5-5 --out eval/arize_runs/&lt;date&gt;_cand/claude-haiku-5-5</pre><button type="button">Copy</button></div>
+  <label class="mark"><input type="checkbox" id="done-s9" data-step="s9"> I understand this step</label>
+</section>
+
+<section class="step" id="s10">
+  <div class="stephead"><div class="num">10</div><div><h2>Pass the gate, then promote</h2><span class="status todo">Your decision</span></div></div>
+  <p class="why">Promotion is a decision with written criteria, not a feeling after one good run. Agree the gate once, then apply it to every change: prompt, model, schema or effort.</p>
+  <ul class="checklist" id="gate">
+    <li><input type="checkbox" id="g1" aria-label="Gate 1"><div><div class="t">Code checks 100% on the full dataset, 3 runs per model</div><div class="d">Repeated runs, because one run hides flakiness. Today Sonnet meets this on the current prompt (2 runs) and the candidate (1 run).</div></div></li>
+    <li><input type="checkbox" id="g2" aria-label="Gate 2"><div><div class="t">No regression</div><div class="d">Every case that passes in production also passes with the candidate (the experiment compare view shows flips).</div></div></li>
+    <li><input type="checkbox" id="g3" aria-label="Gate 3"><div><div class="t">Held-out cases pass at least as well as before</div><div class="d">Cases never shown to the optimizer. Missing today: this is what keeps the v2 candidate in staging.</div></div></li>
+    <li><input type="checkbox" id="g4" aria-label="Gate 4"><div><div class="t">The judge is validated, then clean</div><div class="d">TPR and TNR near 0.9 on held-out human labels; then "supported" on every run.</div></div></li>
+    <li><input type="checkbox" id="g5" aria-label="Gate 5"><div><div class="t">Cost and speed inside budget</div><div class="d">Today Sonnet costs about US$ 0.028 per conversation, with a median of 14 s from the logs. Set the ceiling in the PRD and check it in the experiment.</div></div></li>
+    <li><input type="checkbox" id="g6" aria-label="Gate 6"><div><div class="t">You read 10 new outputs yourself</div><div class="d">Numbers miss what a careful seller notices. Ten minutes in the trace view.</div></div></li>
+  </ul>
+  <p>When all six hold: merge the prompt change into the files, run the tests, move the <code>production</code> label to the new Hub version, and note the new <code>prompt_version</code> in the PRD. To roll back, move the label and revert the merge.</p>
+  <label class="mark"><input type="checkbox" id="done-s10" data-step="s10"> I agree with this gate</label>
+</section>
+
+<div class="phase"><span class="tag">Phase B</span><h2>In production: keep it honest</h2></div>
+
+<section class="step" id="s11">
+  <div class="stephead"><div class="num">11</div><div><h2>Turn tracing on in the app</h2><span class="status doing">Code ready, switch off</span></div></div>
+  <p class="why">The CLI already traces. The CRM server uses the same pipeline, so it traces as soon as the two variables are set where it runs.</p>
+  <div class="skills"><span class="chip ax">arize-instrumentation</span></div>
+  <ul>
+    <li>Locally: add <code>ARIZE_SPACE_ID</code>, <code>ARIZE_API_KEY</code> and <code>ARIZE_PROJECT_NAME=orbita-crm-agent</code> to <code>capstone/.env</code> yourself (a scoped service key is better than your personal key).</li>
+    <li>On Render: add the same three as secrets, plus <code>ORBITA_TRACE_HIDE_IO=1</code> if anyone pastes a real conversation.</li>
+    <li>The server already returns each run's trace and span ids to the page, and Explore answers get their own <code>orbita.explore</code> trace.</li>
+  </ul>
+  <label class="mark"><input type="checkbox" id="done-s11" data-step="s11"> Tracing is on in the app</label>
+</section>
+
+<section class="step" id="s12">
+  <div class="stephead"><div class="num">12</div><div><h2>Send seller thumbs into Arize</h2><span class="status doing">Wired, waiting for real ratings</span></div></div>
+  <p class="why">A thumbs-down tells you <em>that</em> something failed, on real work, at no cost. Linked to its trace, it tells you exactly which run to read.</p>
+  <div class="skills"><span class="chip ax">arize-annotation</span></div>
+  <ul>
+    <li>Every new rating in <code>.feedback/feedback.jsonl</code> now carries the run's <code>span_id</code> and <code>trace_id</code>.</li>
+    <li><code>eval/arize/push_feedback.mjs</code> writes each one to its trace: <code>thumbs up/down</code>, the reason on a thumbs-down (<code>seller_feedback_reason</code>) and the seller's note.</li>
+    <li>The 3 ratings saved before today have no span id and are skipped.</li>
+    <li>On Render's free plan the file resets on restart. Run the push daily, or move ratings to the database.</li>
+  </ul>
+  <div class="cmd"><pre>node eval/arize/push_feedback.mjs            # add --dry-run to count first</pre><button type="button">Copy</button></div>
+  <label class="mark"><input type="checkbox" id="done-s12" data-step="s12"> Thumbs reach Arize</label>
+</section>
+
+<section class="step" id="s13">
+  <div class="stephead"><div class="num">13</div><div><h2>Judge every new run</h2><span class="status todo">After step 7 is validated</span></div></div>
+  <p class="why">Once the judge is validated, let it score new production runs automatically, so a drop shows up the same day instead of at the next review.</p>
+  <div class="skills"><span class="chip ax">arize-evaluator</span></div>
+  <div class="cmd"><pre>ax tasks create-evaluation --name "evidence_supported · continuous" --task-type TEMPLATE_EVALUATION \
+  --project orbita-crm-agent --space "Digithall Evals" \
+  --evaluators '[{"evaluator_id": "RXZhbHVhdG9yOjE5NTEzOmpZVlk=", "column_mappings": {"input": "attributes.llm.input_messages.1.message.content", "output": "attributes.output.value"}}]' \
+  --query-filter "attributes.openinference.span.kind = 'LLM'" --is-continuous --sampling-rate 0.3</pre><button type="button">Copy</button></div>
+  <p>Sample 20 to 30% of runs at first. At an estimated US$ 0.02 per judged run with Sonnet, 100 runs a day cost about US$ 0.60 at 30%. Check the real figure in your Anthropic console after the first week.</p>
+  <label class="mark"><input type="checkbox" id="done-s13" data-step="s13"> Continuous judging is on</label>
+</section>
+
+<section class="step" id="s14">
+  <div class="stephead"><div class="num">14</div><div><h2>Dashboard and alerts</h2><span class="status todo">Build in the Arize screen</span></div></div>
+  <p class="why">One screen that shows whether the agent is getting better or worse, split by prompt version and model.</p>
+  <p>Neither skill set builds the dashboard. In Arize you make it in the web screen (Dashboards and Monitors), because the <code>ax</code> tool has no dashboard command. The data it needs is already flowing. Build these panels, each filtered or grouped by <code>metadata.prompt_version</code> and <code>metadata.model</code>:</p>
+  <div class="tbl"><table>
+    <tr><th>Panel</th><th>Source</th><th>Alert when</th></tr>
+    <tr><td>Thumbs-up rate</td><td>annotation <code>thumbs up/down</code></td><td>below 80% over 7 days</td></tr>
+    <tr><td>Top thumbs-down reasons</td><td>annotation <code>seller_feedback_reason</code></td><td>one reason doubles week on week</td></tr>
+    <tr><td>Judge "supported" rate</td><td>eval <code>evidence_supported</code></td><td>below 95% (after validation)</td></tr>
+    <tr><td>Validator corrections per run</td><td>span attribute <code>validator.corrections</code></td><td>above 0.5 on average</td></tr>
+    <tr><td>Cost per run</td><td><code>llm.cost.total</code></td><td>above the PRD ceiling</td></tr>
+    <tr><td>Latency, median and p95</td><td>LLM span latency</td><td>p95 above 40 s</td></tr>
+    <tr><td>Blocked runs by reason</td><td>root metadata <code>source_status</code></td><td>Incomplete above 10% (a notetaker problem)</td></tr>
+  </table></div>
+  <p>The CRM also has its own view, <strong>Evals › Dashboard</strong> (<code>#/evals/dashboard</code>), built from the local files. Use the CRM view for the agent owner's weekly read, and Arize for the detail behind any number.</p>
+  <label class="mark"><input type="checkbox" id="done-s14" data-step="s14"> The dashboard exists</label>
+</section>
+
+<section class="step" id="s15">
+  <div class="stephead"><div class="num">15</div><div><h2>The weekly review</h2><span class="status todo">A 30-minute habit</span></div></div>
+  <p class="why">The loop only turns if someone turns it. Thirty minutes a week, same order every time:</p>
+  <ol>
+    <li>Read the dashboard: did any panel move?</li>
+    <li>Read every thumbs-down trace from the week, and 10 random traces.</li>
+    <li>Label them (step 3). New failure? Name it and count it.</li>
+    <li>Turn each new failure into a dataset case with the expected answer (step 5).</li>
+    <li>Pick the biggest failure mode: fix it in code if a rule can, otherwise in the prompt (step 9).</li>
+    <li>Run the gate (step 10) before anything ships.</li>
+  </ol>
+  <label class="mark"><input type="checkbox" id="done-s15" data-step="s15"> The review is on my calendar</label>
+</section>
+
+<section class="step" id="s16">
+  <div class="stephead"><div class="num">16</div><div><h2>Compliance</h2><span class="status doing">Audited today</span></div></div>
+  <p class="why">Tracing makes Arize a new place where customer conversations live. Check the rules before real data flows.</p>
+  <div class="skills"><span class="chip ax">arize-compliance-audit</span></div>
+  <div class="grid2">
+    <div class="box"><div class="lbl">Audit result (guidance, not legal advice)</div><ul>
+      <li><strong>EU AI Act: limited risk</strong>. Explore already tells sellers they are talking to an AI. Watch one line: using per-seller metrics to evaluate sellers would move it toward high risk.</li>
+      <li>Tracing closes the top gap, a lasting record of every model call.</li>
+      <li>Covered already: human approval of writes, evidence checks, access check before the model, keys kept out of the browser.</li>
+    </ul></div>
+    <div class="box"><div class="lbl">Still open (code or policy, not Arize)</div><ul>
+      <li>One login per seller, with the server holding the CRM and checking permissions on every route.</li>
+      <li>90-day retention, deletion on request and consent for chat imports: written in the PRD, not built.</li>
+      <li>Ratings keep Explore questions and answers, which can name contacts.</li>
+      <li>The daily budget counter resets on restart; there is no size cap on a pasted transcript.</li>
+    </ul></div>
+  </div>
+  <label class="mark"><input type="checkbox" id="done-s16" data-step="s16"> I read the compliance gaps</label>
+</section>
+
+<section class="step" id="s17">
+  <div class="stephead"><div class="num">17</div><div><h2>Promote a field's autonomy</h2><span class="status todo">Rule to agree</span></div></div>
+  <p class="why">Autonomy in Orbita is set per field, not for the whole agent. A field earns more autonomy with evidence, one field at a time. It loses autonomy as soon as sellers start undoing it.</p>
+  <div class="ladder">
+    <div class="rung r0"><div class="lv">Tier 0</div><div class="nm">Never</div><p>The agent leaves the field alone. For fields the business wants only people to set.</p></div>
+    <div class="rung r1"><div class="lv">Tier 1</div><div class="nm">Needs approval</div><p>The agent proposes, with the quote, and the seller approves, edits or rejects. This is where every field starts and where evidence is collected.</p></div>
+    <div class="rung r2"><div class="lv">Tier 2</div><div class="nm">Always allow</div><p>Written at once, with Undo. Today: Summary, Objections and Commitments.</p></div>
+  </div>
+  <h3>Move a field up from Needs approval to Always allow when all five hold</h3>
+  <ul class="checklist" id="tier">
+    <li><input type="checkbox" id="t1" aria-label="Tier rule 1"><div><div class="t">It passes the offline gate for that field</div><div class="d">The field's code checks pass on every case in 3 runs, held-out cases included, on the production model and effort.</div></div></li>
+    <li><input type="checkbox" id="t2" aria-label="Tier rule 2"><div><div class="t">Sellers approve it unedited, many times in a row</div><div class="d">About 60 approvals in a row without an edit back a 95% claim, and about 300 back 99% (rule of three). One edit restarts the count.</div></div></li>
+    <li><input type="checkbox" id="t3" aria-label="Tier rule 3"><div><div class="t">A mistake is cheap and reversible</div><div class="d">Start with text fields. Keep the fields that move forecast numbers (amount, close date, stage) on approval the longest.</div></div></li>
+    <li><input type="checkbox" id="t4" aria-label="Tier rule 4"><div><div class="t">Its validated judge is clean on that field</div><div class="d">For fields where code cannot check meaning, the judge must be validated (step 7) and say "supported" on recent runs.</div></div></li>
+    <li><input type="checkbox" id="t5" aria-label="Tier rule 5"><div><div class="t">The field's owner signs it off, in writing</div><div class="d">The owner from the catalog (D2) and the sales manager. Write the date and the evidence in the PRD.</div></div></li>
+  </ul>
+  <div class="grid2">
+    <div class="box"><div class="lbl">Move it back down when</div><ul>
+      <li>Undo on that field passes 5% over two weeks.</li>
+      <li>A new failure mode touching the field appears in the weekly review.</li>
+      <li>The prompt, model or schema changes. The field returns to Needs approval until the gate passes again.</li>
+    </ul></div>
+    <div class="box"><div class="lbl">Where the evidence comes from</div><ul>
+      <li>The activity log records each <code>field_decided</code> event (approve, edit, reject, or written by Always allow) and each Undo.</li>
+      <li>A small script could count approvals in a row and the Undo rate per field, and send them to Arize as annotations. It is not built yet.</li>
+    </ul></div>
+  </div>
+  <label class="mark"><input type="checkbox" id="done-s17" data-step="s17"> I agree with this rule</label>
+</section>
+
+<section id="results">
+  <h2>Results from 31 October</h2>
+  <p>Every row is a real run on the 11 eval cases, scored by the same code scorer. T4 and T8 stop in code before the model, so 9 cases test the model itself.</p>
+  <div class="tbl"><table>
+    <tr><th>Experiment</th><th>Prompt</th><th>Code checks</th><th>Failed cases</th><th>Cost</th></tr>
+    <tr><td>Sonnet 5.5 · run 1</td><td>v1</td><td class="ok">11 / 11</td><td>none</td><td>US$ 0.28</td></tr>
+    <tr><td>Sonnet 5.5 · run 2</td><td>v1</td><td class="ok">11 / 11</td><td>none</td><td>US$ 0.25</td></tr>
+    <tr><td>Sonnet 5.5 · candidate</td><td>v2</td><td class="ok">11 / 11</td><td>none</td><td>US$ 0.29</td></tr>
+    <tr><td>Haiku 5.5 · run 1</td><td>v1</td><td class="mid">9 / 11</td><td>T9 decision criteria, T10 objection</td><td>US$ 0.03</td></tr>
+    <tr><td>Haiku 5.5 · run 2</td><td>v1</td><td class="mid">7 / 11</td><td>T1 integrations, T5 decision process, T9 decision criteria, T11 paper process</td><td>US$ 0.03</td></tr>
+    <tr><td>Haiku 5.5 · candidate a</td><td>v2</td><td class="mid">10 / 11</td><td>T11 paper process</td><td>US$ 0.03</td></tr>
+    <tr><td>Haiku 5.5 · candidate b</td><td>v2</td><td class="ok">11 / 11</td><td>none</td><td>US$ 0.03</td></tr>
+  </table></div>
+  <p>The committed run from 28 October is Sonnet 11/11, Opus 11/11, Haiku 10/11. The runs above live in <code>eval/arize_runs/</code>.</p>
+  <h3 id="v4">After schema v4 (picklists), same evening</h3>
+  <p>Dataset <code>orbita-eval-cases-v4</code>, prompt v3 (<code>1303387610</code>). The outputs are the v4 re-run from the CRM's Evals session, uploaded unchanged and scored by the v4 scorer.</p>
+  <div class="tbl"><table>
+    <tr><th>Experiment</th><th>Code checks</th><th>Failed cases</th><th>Cost</th></tr>
+    <tr><td>Opus 5.5</td><td class="ok">11 / 11</td><td>none</td><td>US$ 0.73</td></tr>
+    <tr><td>Sonnet 5.5 · high effort</td><td class="mid">10 / 11</td><td>T9 decision criteria</td><td>US$ 0.40</td></tr>
+    <tr><td>Sonnet 5.5 · low effort</td><td class="mid">9 / 11</td><td>T5, T9 decision criteria</td><td>US$ 0.27</td></tr>
+    <tr><td>Haiku 5.5</td><td class="mid">9 / 11</td><td>T5 decision criteria; T9 decision criteria and integrations</td><td>US$ 0.03</td></tr>
+    <tr><td>Sonnet 5.5 · medium (production setting)</td><td class="mid">8 / 11</td><td>T3 objection; T5, T9 decision criteria</td><td>US$ 0.30</td></tr>
+  </table></div>
+  <p><strong>Reading it:</strong> T9 <code>decision_criteria</code> fails on four of five setups. When a case fails almost everywhere, suspect the case first, so it was checked. The expected answer is right. The customer asks for an "enrolment funnel per campus", which is pipeline management. Sonnet even writes that phrase in its own note, then leaves "Pipeline management" out of the value. Opus maps it.</p>
+  <p>So this is a <strong>real failure mode: a domain word not mapped to its option</strong>. It is also a glossary gap (step <a href="#d2">D2</a>). The fix belongs in the option definitions, not in a rule written for T9. Give each option the everyday words customers use for it (funnel, stages, deal board → Pipeline management), then run the gate again. Each setup ran once. The 8, 9 and 10 between Sonnet settings are therefore within the noise seen on Haiku.</p>
+  <div class="links"><a href="https://app.arize.com/organizations/QWNjb3VudE9yZ2FuaXphdGlvbjo1MjMzMzpZQSto/spaces/U3BhY2U6NTY4Njk6cVR6OA==/datasets/RGF0YXNldDozNzI2MTg6dUFhNg==/experiments/compare?experimentId=RXhwZXJpbWVudDoxODI2OTI6QnFnZg%3D%3D&amp;experimentId=RXhwZXJpbWVudDoxODI2OTM6WnRMYw%3D%3D&amp;experimentId=RXhwZXJpbWVudDoxODI2OTE6ZjhOOA%3D%3D&amp;experimentId=RXhwZXJpbWVudDoxODI2OTA6RDljZA%3D%3D&amp;experimentId=RXhwZXJpbWVudDoxODI2ODk6R1QvMw%3D%3D">Compare the 5 v4 experiments<span>orbita-eval-cases-v4</span></a></div>
+</section>
+
+<section id="skills">
+  <h2>Skills, start to end</h2>
+  <p>28 skills: 18 from Arize (version 1.3.0), 9 from the evals course, plus your own <code>/llm-judge</code> guide in Portuguese. They are listed here in the order you call them. Type the name with a slash in Claude Code, or describe the task in words and the matching skill loads.</p>
+  <div class="tbl"><table>
+    <tr><th>When</th><th>Skill</th><th>What it does for you</th><th>On Orbita</th></tr>
+    <tr><td>Start</td><td><code>evals-start</code></td><td>Asks where you are and routes you to the right skill.</td><td>Use when unsure.</td></tr>
+    <tr><td>Start</td><td><code>eval-audit</code></td><td>Checks an eval setup and ranks its gaps.</td><td>8 findings; top one: no traces labeled.</td></tr>
+    <tr><td>D6, 16</td><td><code>arize-compliance-audit</code></td><td>Risk class and privacy gaps before real data flows.</td><td>Limited risk, 5 open gaps.</td></tr>
+    <tr><td>Setup</td><td><code>arize-admin</code></td><td>Users, roles and service keys.</td><td>Next: a scoped key for Render.</td></tr>
+    <tr><td>Setup</td><td><code>arize-ai-provider-integration</code></td><td>Stores the model key Arize's judges use.</td><td>The Anthropic integration already exists.</td></tr>
+    <tr><td>1, 11</td><td><code>arize-instrumentation</code></td><td>Adds tracing to the code.</td><td><code>agent/tracing.mjs</code>.</td></tr>
+    <tr><td>2</td><td><code>arize-instrumentation-health</code></td><td>Checks the traces are complete.</td><td>Healthy.</td></tr>
+    <tr><td>2, any</td><td><code>arize-trace</code></td><td>Exports traces, spans and sessions to read or debug.</td><td>Used by trace and session.</td></tr>
+    <tr><td>3</td><td><code>error-discovery</code></td><td>Guides reading traces and naming failure modes.</td><td>The review app exists; labeling is yours.</td></tr>
+    <tr><td>3</td><td><code>build-review-interface</code></td><td>Builds a custom screen for labeling.</td><td>Done: the CRM's Trace review.</td></tr>
+    <tr><td>3, 4, 12</td><td><code>arize-annotation</code></td><td>Label definitions, review queues, labels on spans.</td><td>Queue of 18; code verdicts on 22 traces.</td></tr>
+    <tr><td>4</td><td><code>write-code-eval</code></td><td>Turns a failure mode into a code check.</td><td>The scorer exists; verdicts reach Arize.</td></tr>
+    <tr><td>5</td><td><code>arize-dataset</code></td><td>Creates and versions the eval set.</td><td>v3 and v4 datasets, 11 cases each.</td></tr>
+    <tr><td>5</td><td><code>generate-synthetic-data</code></td><td>Writes new varied cases from your failure modes.</td><td>Next: held-out cases.</td></tr>
+    <tr><td>6</td><td><code>arize-experiment</code></td><td>Runs or uploads a version on the dataset, then compares.</td><td>12 experiments.</td></tr>
+    <tr><td>7</td><td><code>write-judge-prompt</code> · <code>/llm-judge</code></td><td>Writes a Pass/Fail judge for one failure mode.</td><td>The evidence judge.</td></tr>
+    <tr><td>7, 13</td><td><code>arize-evaluator</code></td><td>Puts the judge in Arize and runs it, once or continuously.</td><td><code>evidence_supported</code>, 18 scored.</td></tr>
+    <tr><td>7</td><td><code>validate-evaluator</code></td><td>Measures the judge against your labels (TPR, TNR).</td><td>Needs your labels first.</td></tr>
+    <tr><td>8, 10</td><td><code>arize-prompts</code></td><td>Saves prompt versions and moves the production label.</td><td>v1 production, v3 staging.</td></tr>
+    <tr><td>9</td><td><code>arize-prompt-optimization</code></td><td>Proposes a smaller, better prompt from failures.</td><td>The v2 candidate.</td></tr>
+    <tr><td>Any</td><td><code>arize-link</code></td><td>Makes a clickable link to any Arize object.</td><td>Every link on this page.</td></tr>
+    <tr><td>Not needed</td><td><code>evaluate-rag</code></td><td>Evals for retrieval.</td><td>Orbita retrieves nothing. Use it if Explore starts searching documents.</td></tr>
+    <tr><td>Not needed</td><td><code>arize-span-routing</code></td><td>Sends traces to several spaces.</td><td>One agent, one space.</td></tr>
+    <tr><td>Not needed</td><td><code>arize-migrate-langsmith</code> · <code>-langfuse</code> · <code>-braintrust</code> · <code>arize-phoenix-migration</code></td><td>Imports history from other tools.</td><td>No history elsewhere.</td></tr>
+  </table></div>
+</section>
+
+<section id="cli">
+  <h2>Manage the stack in the terminal</h2>
+  <p>Two installers bring the skills in. One Arize profile holds your login. A monthly check keeps both current. Your reference page for all of this is <code>quasar/Comandos.html#evals</code>.</p>
+  <div class="grid2">
+    <div class="box"><div class="lbl">Keep the skills current</div><ul>
+      <li>Arize skills: <code>ax skills install --global --agent claude-code --yes --force</code>. Without <code>--global</code> they land in the current project only.</li>
+      <li>Course skills: <code>npx skills check</code>, then <code>npx skills update -g</code>. This updates every skill installed with <code>npx skills</code>, the marketing ones included.</li>
+      <li>Restart Claude Code after an update so the new versions load.</li>
+      <li>Both sets live in <code>~/.claude/skills</code>.</li>
+    </ul></div>
+    <div class="box"><div class="lbl">Keep the login safe</div><ul>
+      <li><code>ax profiles show</code> tells you which account and space you are on. The Orbita profile is <code>digithall</code>.</li>
+      <li>Keys stay in <code>~/.arize/profiles/</code> and in the server's secrets, never in chat or in the repo.</li>
+      <li>On Windows, set <code>PYTHONIOENCODING=utf-8</code> before <code>ax prompts</code>.</li>
+      <li><code>ax</code> prints a status line before its JSON. Scripts must read from the first bracket.</li>
+    </ul></div>
+  </div>
+  <div class="tbl"><table>
+    <tr><th>I want to…</th><th>Command</th></tr>
+    <tr><td>see which skills I have</td><td><code>ls ~/.claude/skills | grep -E "arize|eval|judge|error|synthetic|review"</code></td></tr>
+    <tr><td>see recent traces</td><td><code>ax spans export orbita-crm-agent --space "Digithall Evals" -l 20 --days 7 --stdout</code></td></tr>
+    <tr><td>list datasets and experiments</td><td><code>ax datasets list --space "Digithall Evals"</code> · <code>ax experiments list --dataset orbita-eval-cases-v4 --space "Digithall Evals"</code></td></tr>
+    <tr><td>see the live prompt</td><td><code>ax prompts get-version-by-label orbita-crm-agent --label production --space "Digithall Evals"</code></td></tr>
+    <tr><td>see judges and their runs</td><td><code>ax evaluators list --space "Digithall Evals"</code> · <code>ax tasks list --space "Digithall Evals"</code></td></tr>
+    <tr><td>check the judge's model key</td><td><code>ax ai-integrations list --space "Digithall Evals"</code></td></tr>
+    <tr><td>learn any command</td><td><code>ax &lt;command&gt; --help</code></td></tr>
+  </table></div>
+</section>
+
+<section id="next">
+  <h2>Your next steps</h2>
+  <ol class="checklist" id="todo">
+    <li><input type="checkbox" id="n1" aria-label="Next 1"><div><div class="t">Label the 18 traces in the review queue (about 45 minutes)</div><div class="d">Step 3. Everything after it depends on these labels.</div></div></li>
+    <li><input type="checkbox" id="n2" aria-label="Next 2"><div><div class="t">Group the Fails into named failure modes</div><div class="d">Step 3. Write them in the CRM's Failure modes tab.</div></div></li>
+    <li><input type="checkbox" id="n3" aria-label="Next 3"><div><div class="t">Fix the option-mapping failure on schema v4, then rerun the gate</div><div class="d">T9 is a confirmed mapping miss ("enrolment funnel" not mapped to Pipeline management). Add everyday synonyms to each picklist option's definition, read T5 in the trace view, then rerun all five setups into eval/arize_runs/.</div></div></li>
+    <li><input type="checkbox" id="n4" aria-label="Next 4"><div><div class="t">Write 20 or more new cases, 30% of them held out</div><div class="d">Step 5, with generate-synthetic-data, built from your failure modes.</div></div></li>
+    <li><input type="checkbox" id="n5" aria-label="Next 5"><div><div class="t">Validate the judge against your labels</div><div class="d">Step 7, with validate-evaluator.</div></div></li>
+    <li><input type="checkbox" id="n6" aria-label="Next 6"><div><div class="t">Decide on the v2 candidate with the gate</div><div class="d">Step 10.</div></div></li>
+    <li><input type="checkbox" id="n7" aria-label="Next 7"><div><div class="t">Turn tracing on in the server, then build the dashboard</div><div class="d">Steps 11 and 14.</div></div></li>
+    <li><input type="checkbox" id="n8" aria-label="Next 8"><div><div class="t">Close the data gaps: an owner per field, and a monthly quality report</div><div class="d">D2, D3 and D5. Start with the share of meetings blocked as Incomplete.</div></div></li>
+    <li><input type="checkbox" id="n9" aria-label="Next 9"><div><div class="t">Agree the autonomy rule, then count approvals per field</div><div class="d">Step 17. A script over the activity log can count unedited approvals in a row and the Undo rate.</div></div></li>
+    <li><input type="checkbox" id="n10" aria-label="Next 10"><div><div class="t">Pick one place to label traces</div><div class="d">The CRM's Trace review or the Arize queue, not both. See the first answer under "Your questions".</div></div></li>
+  </ol>
+</section>
+
+<section id="files">
+  <h2>Files and commands</h2>
+  <div class="tbl"><table>
+    <tr><th>File</th><th>What it does</th></tr>
+    <tr><td><code>agent/tracing.mjs</code></td><td>Starts tracing when the Arize variables are set; spans, flush, <code>prompt_version</code>.</td></tr>
+    <tr><td><code>agent/pipeline.mjs</code></td><td>One trace per run; returns trace and span ids; <code>ORBITA_SYSTEM_PROMPT_FILE</code> runs a candidate prompt.</td></tr>
+    <tr><td><code>eval/arize/push_code_checks.mjs</code></td><td>Code verdicts onto a run's traces.</td></tr>
+    <tr><td><code>eval/arize/build_dataset.mjs</code></td><td>The 11 cases as an Arize dataset file.</td></tr>
+    <tr><td><code>eval/arize/push_experiment.mjs</code></td><td>A run folder as an experiment, with verdicts.</td></tr>
+    <tr><td><code>eval/arize/optimize_prompt.mjs</code></td><td>The optimization meta-prompt; writes <code>prompt_candidate.txt</code> and its reasoning.</td></tr>
+    <tr><td><code>eval/arize/push_feedback.mjs</code></td><td>Seller thumbs onto their traces.</td></tr>
+    <tr><td><code>eval/arize_runs/</code></td><td>Today's real outputs, kept apart from <code>eval/outputs/</code>, which feeds the PRD.</td></tr>
+  </table></div>
+  <h3>One full cycle, in order</h3>
+  <div class="cmd"><pre># 1. run a version on the eval set, traced
+node agent/pipeline.mjs --all --model claude-sonnet-5-5 --out eval/arize_runs/&lt;date&gt;/claude-sonnet-5-5
+# 2. code verdicts onto the traces, and the run as an experiment
+node eval/arize/push_code_checks.mjs eval/arize_runs/&lt;date&gt;/claude-sonnet-5-5
+node eval/arize/push_experiment.mjs  eval/arize_runs/&lt;date&gt;/claude-sonnet-5-5 "sonnet-5.5 · &lt;date&gt;"
+# 3. judge the new model calls
+ax tasks trigger-run T25saW5lVGFzazo1NDYzNDpzeWc0 --data-start-time "&lt;start&gt;" --data-end-time "&lt;end&gt;" --wait
+# 4. seller thumbs from production
+node eval/arize/push_feedback.mjs</pre><button type="button">Copy</button></div>
+</section>
+
+<section id="glossary">
+  <h2>Glossary</h2>
+  <dl class="gloss">
+    <dt>Trace</dt><dd>Everything that happened in one agent run, as a tree of steps.</dd>
+    <dt>Span</dt><dd>One step in a trace: the pre-checks, the model call, the validator.</dd>
+    <dt>Session</dt><dd>Traces grouped by a shared id. Here, one eval run of one model.</dd>
+    <dt>Annotation</dt><dd>A label a person or a script puts on a span: thumbs, Pass or Fail, a note.</dd>
+    <dt>Evaluator</dt><dd>A judge definition in Arize: an LLM prompt with fixed labels, or Python code.</dd>
+    <dt>Task</dt><dd>What runs an evaluator on real data: once (backfill) or on every new span (continuous).</dd>
+    <dt>Dataset</dt><dd>The fixed cases every change is tested on, with expected answers.</dd>
+    <dt>Experiment</dt><dd>One version of the agent run on every dataset case, each run scored.</dd>
+    <dt>Prompt version, label</dt><dd>An immutable saved prompt, and a movable pointer (production, staging) to one of them.</dd>
+    <dt>Failure mode</dt><dd>A named, counted kind of mistake found by reading traces.</dd>
+    <dt>Held-out case</dt><dd>A case never used to tune the prompt, so it can show whether a fix generalizes.</dd>
+    <dt>TPR, TNR</dt><dd>Of the real failures, the share the judge catches. Of the good runs, the share it passes.</dd>
+    <dt>Data catalog</dt><dd>The list of fields with definition, allowed values, owner and sensitivity.</dd>
+    <dt>Business glossary</dt><dd>The everyday words mapped to the values the system stores.</dd>
+    <dt>Data contract</dt><dd>The agreed, versioned shape of data between its producer and its user.</dd>
+    <dt>Data product</dt><dd>A dataset with an owner, documentation, a version and a quality promise.</dd>
+    <dt>Lineage</dt><dd>The record of where a value came from and where it went.</dd>
+    <dt>Autonomy tier</dt><dd>A field's permission: Never, Needs approval or Always allow.</dd>
+  </dl>
+</section>
+
+<footer>Built on 31 Oct 2026, version 4: data foundations, answers to your questions, autonomy promotion, the skill order, terminal management and flash cards. Made from the work on Arize space "Digithall Evals", project <code>orbita-crm-agent</code>. Source: <code>docs/arize-evals-guide.html</code> in the capstone repo. Your ticks are saved in this browser only.</footer>
+</main>
+</div>
+
+<script>
+(function () {
+  // copy buttons
+  document.querySelectorAll(".cmd button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var pre = b.parentElement.querySelector("pre");
+      var text = pre.innerText;
+      var done = function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 1400); };
+      var fallback = function () { var r = document.createRange(); r.selectNodeContents(pre); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected"; };
+      try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+    });
+  });
+  // per-viewer progress: ticks are a convenience, kept in this browser only
+  var KEY = "orbita-evals-playbook-v1";
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { state = {}; }
+  var save = function () { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+  var paint = function () {
+    document.querySelectorAll("nav.toc a[data-step]").forEach(function (a) {
+      var t = a.querySelector(".tick"); if (t) t.textContent = state["done-" + a.dataset.step] ? "✓" : "";
+    });
+  };
+  document.querySelectorAll('main input[type="checkbox"]').forEach(function (c) {
+    c.checked = Boolean(state[c.id]);
+    c.addEventListener("change", function () { state[c.id] = c.checked; save(); paint(); });
+  });
+  paint();
+  // flash cards: click flips one card; filter by theme; shuffle; show or hide all
+  var grid = document.getElementById("cardgrid");
+  if (grid) {
+    var cards = Array.prototype.slice.call(grid.querySelectorAll(".fc"));
+    var countEl = document.getElementById("cardcount");
+    var count = function () { var n = cards.filter(function (c) { return !c.hidden; }).length; countEl.textContent = n + " cards"; };
+    cards.forEach(function (c) { c.addEventListener("click", function () { c.setAttribute("aria-expanded", c.getAttribute("aria-expanded") === "true" ? "false" : "true"); }); });
+    document.querySelectorAll(".cardbar button[data-f]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        document.querySelectorAll(".cardbar button[data-f]").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        cards.forEach(function (c) { c.hidden = !(b.dataset.f === "all" || c.dataset.c === b.dataset.f); });
+        count();
+      });
+    });
+    document.getElementById("shuffle").addEventListener("click", function () {
+      for (var i = cards.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = cards[i]; cards[i] = cards[j]; cards[j] = t; }
+      cards.forEach(function (c) { c.setAttribute("aria-expanded", "false"); grid.appendChild(c); });
+    });
+    var all = document.getElementById("flipall");
+    all.addEventListener("click", function () {
+      var open = all.textContent === "Show all";
+      cards.forEach(function (c) { c.setAttribute("aria-expanded", open ? "true" : "false"); });
+      all.textContent = open ? "Hide all" : "Show all";
+    });
+    count();
+  }
+})();
+</script>

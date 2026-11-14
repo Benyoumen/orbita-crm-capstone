@@ -23,7 +23,7 @@
     {
       "field": "objection",
       "status": "proposed",
-      "value": "Integration with the in-house TMS, especially near peak season; adoption risk after reps abandoned a previous sales tool",
+      "value": "Integration with current systems; User adoption and ease of use",
       "evidence": [
         {
           "quote": "I am concerned about integrating with our in-house TMS.",
@@ -34,7 +34,7 @@
           "line": 23
         }
       ],
-      "note": null
+      "note": "In-house TMS integration, especially near peak season; reps abandoned a previous sales tool."
     },
     {
       "field": "commitment",
@@ -99,14 +99,14 @@
     {
       "field": "budget",
       "status": "proposed",
-      "value": "USD 80,000-100,000 per year",
+      "value": "USD 50k-100k per year",
       "evidence": [
         {
           "quote": "We have between eighty and a hundred thousand dollars a year for the CRM, licences and support included.",
           "line": 28
         }
       ],
-      "note": null
+      "note": "USD 80,000-100,000 per year."
     },
     {
       "field": "decision_maker",
@@ -171,7 +171,7 @@
     {
       "field": "decision_criteria",
       "status": "proposed",
-      "value": "Pipeline management; renewal alerts; Outlook email sync; mobile app for field reps; management dashboards; customer shipment status from the TMS",
+      "value": "Pipeline management; Email and calendar sync; Mobile app; Renewal and contract tracking; Reporting and dashboards; Integrations and API",
       "evidence": [
         {
           "quote": "Pipeline management, renewal alerts, email sync with Outlook so we stop copying emails by hand, and management dashboards for Marina.",
@@ -186,12 +186,12 @@
           "line": 40
         }
       ],
-      "note": null
+      "note": "Renewal alerts; Outlook email sync; dashboards for Marina; shipment status from the TMS."
     },
     {
       "field": "integrations",
       "status": "proposed",
-      "value": "In-house TMS; Orion ERP; Outlook email",
+      "value": "Industry or in-house system; ERP; Email and calendar",
       "evidence": [
         {
           "quote": "Our transport management system, the TMS.",
@@ -206,24 +206,24 @@
           "line": 17
         }
       ],
-      "note": null
+      "note": "In-house TMS; Orion ERP; Outlook email."
     },
     {
       "field": "employee_count",
       "status": "proposed",
-      "value": "850",
+      "value": "500-999",
       "evidence": [
         {
           "quote": "we're about eight hundred and fifty people",
           "line": 5
         }
       ],
-      "note": null
+      "note": "About 850 employees."
     },
     {
       "field": "current_solution",
       "status": "proposed",
-      "value": "Spreadsheets, Outlook and a shared drive for proposals",
+      "value": "Spreadsheets; Email and shared inbox; Shared drive",
       "evidence": [
         {
           "quote": "Honestly, spreadsheets and Outlook.",
@@ -234,7 +234,7 @@
           "line": 7
         }
       ],
-      "note": null
+      "note": "Spreadsheets, Outlook and a shared drive for proposals."
     },
     {
       "field": "stage",
@@ -283,14 +283,14 @@
     {
       "field": "paper_process",
       "status": "proposed",
-      "value": "Procurement needs three quotes above USD 50,000; then Marina signs",
+      "value": "Procurement review; Competitive quotes required; Signature by the economic buyer",
       "evidence": [
         {
           "quote": "Procurement needs three quotes for anything above fifty thousand. Then I sign.",
           "line": 37
         }
       ],
-      "note": null
+      "note": "Three quotes for anything above USD 50,000; then Marina signs."
     },
     {
       "field": "champion",
@@ -307,7 +307,7 @@
     {
       "field": "customer_need",
       "status": "proposed",
-      "value": "Accounts and renewals scattered across spreadsheets and Outlook: two renewals missed last quarter and no pipeline view leadership can trust; they need one place for every account and deal",
+      "value": "Customer data scattered across spreadsheets and inboxes; Missed follow-ups or renewals; No pipeline view leaders can trust",
       "evidence": [
         {
           "quote": "Last quarter we missed two contract renewals because nobody remembered the dates.",
@@ -318,7 +318,7 @@
           "line": 11
         }
       ],
-      "note": null
+      "note": "Two renewals missed last quarter; they need one place for every account and deal."
     }
   ],
   "ignored_out_of_scope": []

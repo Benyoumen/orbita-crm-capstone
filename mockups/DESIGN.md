@@ -2,16 +2,16 @@
 name: Orbita CRM (capstone)
 description: O CRM da Orbita com o agente dentro (v5) - qualquer conversa (transcrição ou chat) até o CRM, na pele do SalesOps v5 ("folha sobre a mesa"), com o Explore, a revisão agrupada com MEDDPICC, as permissões por campo, o funil por etapa, os clientes em cartões e as gavetas de registro.
 colors:
-  mesa: "#F5F5F5"
-  folha: "#EFEFF0"
+  mesa: "#EDEDEE"
+  folha: "#FAFAFA"
   surface: "#FFFFFF"
-  surface-2: "#FAFAFA"
+  surface-2: "#F7F7F8"
   ink: "#0A0A0A"
-  text-primary: "rgba(10,10,10,.85)"
-  text-secondary: "rgba(10,10,10,.75)"
+  text-primary: "rgba(10,10,10,.90)"
+  text-secondary: "rgba(10,10,10,.72)"
   text-tertiary: "rgba(10,10,10,.60)"
   text-inactive: "rgba(10,10,10,.42)"
-  line-card: "rgba(10,10,10,.09)"
+  line-card: "rgba(10,10,10,.10)"
   line: "rgba(10,10,10,.08)"
   line-soft: "rgba(10,10,10,.06)"
   line-control: "rgba(10,10,10,.14)"
@@ -112,7 +112,7 @@ Esta peça herda o sistema de design do **SalesOps v5** (`../../quasar/premissas
 
 ## A arquitetura de informação
 
-Lateral: **Explore** no topo (como no SalesOps v5), o grupo **Sales** (Meetings · Opportunities · Clients), o grupo **Chat** (New chat e as quatro conversas mais recentes) e, no rodapé, **Settings**. Activity e Agent saíram da lateral e viraram abas de Settings: são ferramentas de quem configura, não telas do dia a dia. A Review abre a partir da reunião (Meetings fica aceso). O registro da oportunidade é uma **gaveta**, não um lugar.
+Lateral: **Explore** no topo (como no SalesOps v5), o grupo **Sales** (Meetings · Opportunities · Clients), o grupo **Chat** (New chat e as oito conversas mais recentes; o Explore também abre um chat novo) e, no rodapé, **Evals** e **Settings** (v6, 31/10). Activity e Agent saíram da lateral e viraram abas de Settings: são ferramentas de quem configura, não telas do dia a dia. A Review abre a partir da reunião (Meetings fica aceso). O registro da oportunidade é uma **gaveta**, não um lugar.
 
 A barra do topo tem só o estado do agente ("Agent · Claude Sonnet 5.5", ou "offline · sample transcripts only") e o avatar. O estado é um botão que abre Settings › Agent. Nenhum vocabulário de protótipo na tela (o portão procura "Call-to-CRM", "mock", "reference answers" e "demo notes").
 
@@ -138,7 +138,7 @@ Uma linha por campo, cinco colunas (Field · Current value · Proposed value · 
 
 Campos em **Always allow** já chegam escritos: fundo `--surface-2`, chips "Always allow" e "Written", e o link **Undo** no lugar dos botões. Numa oportunidade nova que precisa de aprovação, eles dizem "written with the new opportunity". O cartão **New client and opportunity** vem antes da tabela: cliente, nome, dono e etapa, contatos que vieram da conversa, e os dois botões **Approve creation · Reject**; o Submit espera essa decisão.
 
-As linhas quietas (no evidence, unchanged, off) recolhem numa frase por grupo; "Approve N in <grupo>" grava uma decisão por campo. A linha contradictory mantém o fio interno de 3px. Editor por tipo: textarea, número, mês, data, roster, etapas, chips de departamento; valor inválido não fecha o editor.
+As linhas quietas (no evidence, unchanged, off) recolhem numa frase por grupo; "Approve N in <grupo>" grava uma decisão por campo. A linha contradictory é tingida em âmbar e leva o chip (v6: o fio de 3px saiu). Editor por tipo: textarea, número, mês, data, roster, etapas, chips de departamento; valor inválido não fecha o editor.
 
 ## Opportunities: o funil por etapa (o padrão do Forecast d4)
 
@@ -154,7 +154,7 @@ O padrão da Carteira do SalesOps: **cartões separados** (12px entre eles, fio 
 
 ## Settings
 
-Sete abas (Permissions · Agent · Sources · Team · Activity log · Quality checks · Data), o mesmo segmento da v5.
+Seis abas (Permissions · Agent · Sources · Team · Activity log · Data), o mesmo segmento da v5. Quality checks virou o **Eval set** da aba Evals (31/10).
 
 **Permissions** segue o padrão das permissões de ferramenta da Anthropic: uma legenda de três colunas (**Always allow** com ponto verde, **Needs approval** com ponto neutro, **Never** com ponto vazado, cada um com a frase do efeito) e, por campo, um controle segmentado de três opções (o ativo em superfície branca com fio; "Always allow" ativo em tinta verde). A linha de grupo tem "Set all". Depois, **New opportunities** com o mesmo controle e a frase do efeito, e **Always true, whatever you choose** com as regras que nenhuma permissão muda.
 
@@ -168,3 +168,36 @@ Além dos pares da v5: `proposed` em informação, `contradictory` em atenção,
 
 1. **Inter embutida** em `data:` (InterVariable 4.1, de `fonte_v5.py`): o detector lê o `@font-face` como fonte repetida.
 2. **Tamanhos em tokens**: toda fonte sai de `--fs-*`; o detector só enxerga os literais do monograma e das letras do MEDDPICC e acusa hierarquia rasa. A hierarquia real está na escala do frontmatter.
+
+## v6 (31/10): leitura confortável, registros que abrem pelo nome, Evals
+
+O PM achou a peça cinza e cansativa: categorias da revisão sem separação, sublinhado mal desenhado, nomes que não abriam o registro, Meetings sem busca, o Explore que não se comportava como chat. O que mudou, mantendo a pele:
+
+- **Folha e tinta.** A folha ficou quase branca (`#FAFAFA`) sobre a mesa um tom abaixo (`#EDEDEE`); o texto que se lê (valores, células, transcrição) usa `--t1` a .90, o `--t2` fica para o metadado, e o `--t3` só para rótulo inativo.
+- **Nada sublinhado.** O nome de um registro (`.rec`) é um botão que parece texto e ganha fundo `--fill-2` no hover; abre a gaveta. A linha inteira (`.rowh` com `data-row-opp` ou `data-row-mtg`) também abre. Os "Details" viraram um chevron com nome acessível.
+- **Revisão.** Um cartão por grupo do esquema (ícone em quadrado cinza de 32px, nome em 17/500, a frase do que o grupo guarda, "N of M to decide" com o ponto âmbar enquanto falta decidir, "Approve N in <grupo>"), 16px entre cartões, um só cabeçalho de colunas (Field · What changes · Evidence from the conversation · Your decision). O valor proposto em 15/22; "Now / New" só quando o CRM já tem valor; a evidência é a citação com um fio neutro de 1px, a primeira à vista e as outras num "+ N more quotes". A decisão é um controle segmentado (Approve com o visto verde · Edit · Reject). Linha decidida em `--surface-2`; a contraditória tingida em âmbar (o fio de 3px saiu: o piso do impeccable recusa fio colorido acima de 1px). A **barra de decisão** (N de M, a barra fina de progresso, o Submit) fica presa sob a barra do agente.
+- **Meetings.** Add a meeting em duas colunas; Your meetings com a busca no cabeçalho do cartão, o ícone da fonte num quadrado cinza, o título em 15/500 e o trecho da transcrição com a palavra marcada (`mark` em `--warn-bg`).
+- **O leitor da reunião** (gaveta de 700px): Opportunity, CRM update (com a ação) e People (chips; a Orbita em azul de informação), a busca presa no topo da transcrição, e a transcrição em 15/24 com o falante só quando ele muda.
+- **Explore como app de chat.** Explore e New chat abrem sempre um chat novo; o grupo Chat lista oito conversas, cada um em `#/explore/<chat>`, e reabre na última mensagem; a pergunta é um balão à direita (`--fill-2`, canto de 18px), a resposta é prosa, a caixa fica presa embaixo com um degradê da folha.
+- **Evals.** Overview (os quatro passos numa lista: coletar, revisar, nomear, corrigir e conferir), Seller feedback, Trace review (a fila à esquerda, presa; o trace à direita com a barra Pass · Fail · Defer, a nota e os atalhos), Failure modes (as notas e os modos com a barra de contagem) e Eval set.
+
+## v6.1 (31/10): cor que ajuda a ler
+
+O PM achou a peça monocromática. A cor entra como **identidade**, nunca como enfeite: cada tipo de coisa tem um matiz, sempre o mesmo, num par pastel + tinta escura do mesmo matiz (contraste de 4,5:1 ou mais), declarado como `--hue-*` e `--hue-*-bg`.
+
+| O quê | Matiz |
+|---|---|
+| Etapas do funil (chip e marcador da seção) | New Lead ardósia · Qualified azul · Solution verde-azulado · Proposal índigo · Negotiation âmbar · Contract verde |
+| Grupos da revisão (quadrado do ícone) | Conversation azul · Next step âmbar · Qualification violeta · Scope verde-azulado · Company ardósia · Stage verde |
+| Canal da conversa (ícone em Meetings e na gaveta) | transcrição índigo · WhatsApp verde · texto colado ardósia |
+| Quem fala (chips e transcrição) | a Orbita em azul, o cliente em areia |
+| MEDDPICC | violeta (o matiz do grupo Qualification): letra cheia quando conhecida, contorno quando proposta |
+| Lateral | o ícone de cada seção no seu matiz (Explore azul, Meetings índigo, Opportunities violeta, Clients verde-azulado, Evals âmbar) |
+| Evals | a rampa sequencial azul (um matiz, claro para escuro) no mapa de erros por campo: a célula sem erro recua |
+
+O magenta continua só na marca e no contador da lateral; os estados (ok, atenção, perigo) continuam reservados aos chips de estado. O monograma do cliente passou a 20px nas listas.
+
+
+## v6.2 (31/10): campos em lista
+
+Um valor de lista (schema v4) aparece como chips de 22px em `--fill-2` (o "Other" com contorno tracejado), separados por um "; " escondido, de modo que o texto da célula continua o valor gravado. O valor atual ("Now") leva chips só com contorno, em `--t2`. O editor é um select (uma opção) ou caixas de seleção (várias), com o campo "Other" quando o campo permite.

@@ -15,7 +15,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Discovery call with the Commercial Director and Sales Manager. Leads from sales stands, the website and WhatsApp get lost and brokers dispute ownership; they want every lead in one place, routed automatically, for 105 users, live by March 2027. Budget is about USD 60,000 per year and Sofia decides. A live demo was agreed for 12 Nov.",
+      "proposed_value": "Discovery call with the Commercial Director and Sales Manager. Leads from sales stands, the website and WhatsApp end up in spreadsheets and get lost. Sofia wants every lead in one place, routed to brokers and called within two hours, for 105 users, with about USD 60k a year and go-live by March 2027. Sofia decides; Legal reviews the contract. A live demo was agreed for 12 Nov.",
       "evidence": [
         {
           "line": 6,
@@ -27,7 +27,7 @@
           "line": 20,
           "timestamp": "00:12:09",
           "speaker": "Sofia Martins (Cedro Construtora)",
-          "quote": "I do. Our CEO only gets involved above two hundred thousand, so this is my call."
+          "quote": "I do. Our CEO only gets involved above two hundred thousand, so this is my call. Legal reviews the contract before I sign."
         },
         {
           "line": 27,
@@ -45,7 +45,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Brokers are not employees and won't use anything complicated; sales stands often have no mobile signal",
+      "proposed_value": "User adoption and ease of use; Mobile or offline access",
       "evidence": [
         {
           "line": 13,
@@ -54,7 +54,7 @@
           "quote": "They are not employees, and they won't use anything complicated. And the stands often have no mobile signal at all."
         }
       ],
-      "note": null
+      "note": "Brokers are not employees and will not use anything complicated; sales stands often have no mobile signal."
     },
     {
       "field": "commitment",
@@ -78,7 +78,7 @@
           "quote": "I will send you the list of the three launches and the broker teams before the demo."
         }
       ],
-      "note": "'Tuesday' resolved from the meeting date, Fri 2026-11-06."
+      "note": null
     },
     {
       "field": "next_step",
@@ -87,13 +87,13 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Live demo with the Cedro Construtora sales managers on 12 Nov",
+      "proposed_value": "Live demo with the Cedro sales managers on 12 Nov",
       "evidence": [
         {
           "line": 26,
           "timestamp": "00:31:34",
           "speaker": "Ana Ribeiro (Orbita)",
-          "quote": "then we do a live demo with your sales managers on Thursday the 12th."
+          "quote": "and then we do a live demo with your sales managers on Thursday the 12th."
         },
         {
           "line": 27,
@@ -147,7 +147,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Call back every lead within two hours (today website leads wait about two days)",
+      "proposed_value": "Call back every lead within two hours (today about two days for website leads)",
       "evidence": [
         {
           "line": 9,
@@ -183,7 +183,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Every lead from website, WhatsApp and sales stands in one place; automatic routing to brokers; separate funnel per launch (leads, show-apartment visits, proposals, contracts)",
+      "proposed_value": "Pipeline management; Lead capture and routing; Ease of use",
       "evidence": [
         {
           "line": 8,
@@ -196,9 +196,15 @@
           "timestamp": "00:20:44",
           "speaker": "Andre Pires (Cedro Construtora)",
           "quote": "For the funnel, we need to see each launch separately: leads, visits to the show apartment, proposals and contracts."
+        },
+        {
+          "line": 13,
+          "timestamp": "00:05:14",
+          "speaker": "Andre Pires (Cedro Construtora)",
+          "quote": "They are not employees, and they won't use anything complicated."
         }
       ],
-      "note": null
+      "note": "Automatic routing to brokers; one funnel per launch (leads, show-apartment visits, proposals, contracts); simple enough for external brokers."
     },
     {
       "field": "decision_process",
@@ -207,7 +213,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Sofia Martins (Commercial Director) decides; the CEO is only involved above two hundred thousand",
+      "proposed_value": "Sofia Martins (Commercial Director) decides; the CEO is involved only above USD 200k",
       "evidence": [
         {
           "line": 20,
@@ -225,7 +231,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Legal reviews the contract; then Sofia Martins signs",
+      "proposed_value": "Signature by the economic buyer; Legal contract review",
       "evidence": [
         {
           "line": 20,
@@ -234,7 +240,7 @@
           "quote": "Legal reviews the contract before I sign."
         }
       ],
-      "note": null
+      "note": "Legal reviews the contract, then Sofia Martins signs."
     },
     {
       "field": "customer_need",
@@ -243,7 +249,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Leads from sales stands, the website and WhatsApp get lost and brokers fight over who saw a client first; they need every lead in one place, routed automatically to a broker, with one funnel per launch",
+      "proposed_value": "Customer data scattered across spreadsheets and inboxes; Leads lost or not routed",
       "evidence": [
         {
           "line": 6,
@@ -252,13 +258,13 @@
           "quote": "Leads get lost between the stand, the website and WhatsApp, and the brokers fight over who saw a client first."
         },
         {
-          "line": 8,
-          "timestamp": "00:01:41",
-          "speaker": "Sofia Martins (Cedro Construtora)",
-          "quote": "Every lead from the website, WhatsApp and the sales stands in one place, routed automatically to a broker, with one sales funnel per launch."
+          "line": 5,
+          "timestamp": "00:00:30",
+          "speaker": "Andre Pires (Cedro Construtora)",
+          "quote": "Then someone types everything into a spreadsheet on Monday, if they remember."
         }
       ],
-      "note": null
+      "note": "Leads from stands, website and WhatsApp get lost; brokers dispute who saw a client first; manual typing into a spreadsheet."
     },
     {
       "field": "champion",
@@ -298,7 +304,7 @@
           "quote": "We'd need a hundred and five users: twenty-five in our own sales team and eighty brokers."
         }
       ],
-      "note": null
+      "note": "25 internal sales staff and 80 brokers."
     },
     {
       "field": "departments",
@@ -331,7 +337,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Website form; WhatsApp",
+      "proposed_value": "WhatsApp Business; Website forms",
       "evidence": [
         {
           "line": 8,
@@ -340,7 +346,7 @@
           "quote": "Every lead from the website, WhatsApp and the sales stands in one place"
         }
       ],
-      "note": null
+      "note": "Leads from the website form and WhatsApp must flow into the CRM."
     },
     {
       "field": "budget",
@@ -349,7 +355,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "USD 60,000 per year",
+      "proposed_value": "USD 50k-100k per year",
       "evidence": [
         {
           "line": 18,
@@ -358,7 +364,7 @@
           "quote": "We have around sixty thousand dollars a year for it."
         }
       ],
-      "note": "The customer said 'around' sixty thousand dollars a year."
+      "note": "Around USD 60,000 per year."
     },
     {
       "field": "go_live_target",
@@ -376,7 +382,7 @@
           "quote": "I need this running by March 2027."
         }
       ],
-      "note": null
+      "note": "First of three launches in April 2027."
     },
     {
       "field": "employee_count",
@@ -385,7 +391,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "400",
+      "proposed_value": "200-499",
       "evidence": [
         {
           "line": 16,
@@ -394,7 +400,7 @@
           "quote": "About four hundred people, most of them on construction sites."
         }
       ],
-      "note": null
+      "note": "About 400 employees."
     },
     {
       "field": "current_solution",
@@ -403,7 +409,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Paper forms, website form and WhatsApp, typed into a spreadsheet",
+      "proposed_value": "Spreadsheets; WhatsApp groups; Paper forms",
       "evidence": [
         {
           "line": 5,
@@ -412,7 +418,7 @@
           "quote": "Paper forms at the stand, the website form, and WhatsApp. Then someone types everything into a spreadsheet on Monday, if they remember."
         }
       ],
-      "note": null
+      "note": "Paper forms at stands, website form and WhatsApp, typed into a spreadsheet."
     },
     {
       "field": "stage",
@@ -424,10 +430,10 @@
       "proposed_value": "Solution",
       "evidence": [
         {
-          "line": 8,
-          "timestamp": "00:01:41",
+          "line": 6,
+          "timestamp": "00:00:56",
           "speaker": "Sofia Martins (Cedro Construtora)",
-          "quote": "Yes. Every lead from the website, WhatsApp and the sales stands in one place, routed automatically to a broker, with one sales funnel per launch."
+          "quote": "Leads get lost between the stand, the website and WhatsApp, and the brokers fight over who saw a client first."
         },
         {
           "line": 20,
@@ -449,11 +455,11 @@
   "validation_notes": [],
   "usage": {
     "input_tokens": 1949,
-    "output_tokens": 3306,
-    "cache_read_input_tokens": 11814,
+    "output_tokens": 4121,
+    "cache_read_input_tokens": 13543,
     "cache_creation_input_tokens": 0,
     "model": "claude-opus-5-5",
     "served_by": "claude-opus-5-5",
-    "cost_usd": 0.076279
+    "cost_usd": 0.092925
   }
 }

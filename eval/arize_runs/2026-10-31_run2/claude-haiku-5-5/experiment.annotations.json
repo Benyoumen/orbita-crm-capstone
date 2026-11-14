@@ -1,0 +1,112 @@
+[
+ {
+  "record_id": "01a19347-4602-70a9-85d8-704e9dd5f4d9",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "integrations: missing key facts [[\"TMS\",\"transport management\"],[\"Orion\"]]"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19347-4602-70bb-a045-334997fbf389",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19347-4602-70c5-97e8-730b9fb56fe2",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19347-4602-70d5-8f29-361f80a7b15b",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19347-4602-70de-a0a2-f4627475c14a",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "decision_process: status proposed, expected no_evidence"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19347-4602-70e7-a9bc-63db08b7715a",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19347-4602-70f0-8e1b-f458a053a36d",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19347-4602-70f8-a8dd-2fd454f88986",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19347-4602-7100-9731-42a9ab645795",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "decision_criteria: missing key facts [[\"lead\",\"campaign\"],[\"funnel\",\"enrol\"],[\"WhatsApp\"]]"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19347-4602-7109-853f-1496a61ed8ad",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19347-4602-7112-985c-8168796943a1",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "paper_process: status no_evidence, expected proposed"
+   }
+  ]
+ }
+]

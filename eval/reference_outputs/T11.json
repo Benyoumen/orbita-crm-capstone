@@ -79,26 +79,26 @@
     {
       "field": "paper_process",
       "status": "proposed",
-      "value": "Talita Moura (Procurement) routes the contract on 9 Nov; Henrique Prado signs right after",
+      "value": "Procurement review; Signature by the economic buyer",
       "evidence": [
         {
           "quote": "Talita will route it through procurement on Monday and I'll sign right after that.",
           "line": 3
         }
       ],
-      "note": null
+      "note": "Talita Moura (Procurement) routes the contract on 9 Nov; Henrique Prado signs right after."
     },
     {
       "field": "integrations",
       "status": "proposed",
-      "value": "Billing system; email and calendar; Microsoft Entra single sign-on",
+      "value": "Billing system; Email and calendar; Single sign-on",
       "evidence": [
         {
           "quote": "our IT team needs single sign-on with Microsoft Entra from day one.",
           "line": 5
         }
       ],
-      "note": null
+      "note": "Adds Microsoft Entra single sign-on from day one to the existing list."
     },
     {
       "field": "seats",

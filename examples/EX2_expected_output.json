@@ -23,14 +23,14 @@
     {
       "field": "objection",
       "status": "proposed",
-      "value": "Clinic managers' team is being reorganised; no new date for the demo",
+      "value": "Timing or other priorities",
       "evidence": [
         {
           "quote": "We are reorganising the clinic managers' team and I cannot give you a new date yet.",
           "line": 3
         }
       ],
-      "note": null
+      "note": "The clinic managers' team is being reorganised; no new date for the demo."
     },
     {
       "field": "commitment",
@@ -71,14 +71,14 @@
     {
       "field": "budget",
       "status": "proposed",
-      "value": "USD 50,000 per year",
+      "value": "USD 50k-100k per year",
       "evidence": [
         {
           "quote": "The budget itself has not changed: it is still fifty thousand dollars a year.",
           "line": 5
         }
       ],
-      "note": null
+      "note": "USD 50,000 per year."
     },
     {
       "field": "decision_maker",

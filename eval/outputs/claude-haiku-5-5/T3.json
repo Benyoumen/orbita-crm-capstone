@@ -17,7 +17,7 @@
       "current_value": "Solution review with the CIO. Nimbus wants patient-relations and referral tracking for 14 clinics, with all patient data hosted in Brazil.",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "Roberto cancelled the Friday demo because the board froze new IT projects until the January budget review. No next step was agreed. The budget is unchanged at USD 90,000 per year.",
+      "proposed_value": "Roberto Lima (CIO) said the board froze all new IT projects until the January budget review and asked to cancel Friday's demo. No next step or date was agreed. The budget is unchanged at USD 90,000 per year.",
       "evidence": [
         {
           "line": 2,
@@ -38,10 +38,10 @@
       "field": "objection",
       "group": "conversation",
       "record": "opportunity",
-      "current_value": "Patient data must stay in Brazil",
+      "current_value": "Data residency and privacy",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "Board froze new IT projects until the January budget review",
+      "proposed_value": "Budget freeze or no budget; Timing or other priorities",
       "evidence": [
         {
           "line": 2,
@@ -50,7 +50,7 @@
           "quote": "The board froze all new IT projects until our budget review in January."
         }
       ],
-      "note": null
+      "note": "Board froze all new IT projects until the January budget review; the budget itself is unchanged."
     },
     {
       "field": "commitment",
@@ -76,10 +76,10 @@
           "line": 4,
           "timestamp": "00:00:33",
           "speaker": "Roberto Lima (Nimbus Health)",
-          "quote": "Please cancel the demo on Friday."
+          "quote": "There is no next step from our side for now, and nothing has been agreed beyond waiting for the budget review."
         }
       ],
-      "note": "The approved demo was cancelled and no new next step was agreed."
+      "note": "The approved Friday demo was cancelled; no new next step was agreed."
     },
     {
       "field": "follow_up_owner",
@@ -101,12 +101,6 @@
       "status": "contradictory",
       "proposed_value": null,
       "evidence": [
-        {
-          "line": 4,
-          "timestamp": "00:00:33",
-          "speaker": "Roberto Lima (Nimbus Health)",
-          "quote": "Please cancel the demo on Friday."
-        },
         {
           "line": 6,
           "timestamp": "00:01:02",
@@ -142,7 +136,7 @@
       "field": "decision_criteria",
       "group": "qualification",
       "record": "opportunity",
-      "current_value": "Referral tracking; patient-relations cases; clinic dashboards",
+      "current_value": "Reporting and dashboards; Other: referral tracking; Other: patient-relations cases",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -175,7 +169,7 @@
       "field": "customer_need",
       "group": "qualification",
       "record": "opportunity",
-      "current_value": "Track patient relations and doctor referrals for 14 clinics in one CRM, with data hosted in Brazil",
+      "current_value": "Teams do not share one view; Data must stay in the country",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -230,7 +224,7 @@
       "field": "integrations",
       "group": "scope",
       "record": "opportunity",
-      "current_value": "Clinic scheduling system",
+      "current_value": "Industry or in-house system",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -241,10 +235,10 @@
       "field": "budget",
       "group": "scope",
       "record": "opportunity",
-      "current_value": "USD 90,000 per year",
+      "current_value": "USD 50k-100k per year",
       "current_approved": true,
       "status": "unchanged",
-      "proposed_value": "USD 90,000 per year",
+      "proposed_value": "USD 50k-100k per year",
       "evidence": [
         {
           "line": 7,
@@ -253,7 +247,7 @@
           "quote": "the budget itself hasn't changed: it's still ninety thousand dollars a year."
         }
       ],
-      "note": "Same as the current approved value; reaffirmed by the customer."
+      "note": "USD 90,000 per year; unchanged."
     },
     {
       "field": "go_live_target",
@@ -270,7 +264,7 @@
       "field": "employee_count",
       "group": "company",
       "record": "client",
-      "current_value": "1200",
+      "current_value": "1000-4999",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -281,7 +275,7 @@
       "field": "current_solution",
       "group": "company",
       "record": "client",
-      "current_value": "Patient-relations module of the clinic ERP, plus spreadsheets",
+      "current_value": "ERP module; Spreadsheets",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -297,18 +291,18 @@
       "status": "no_evidence",
       "proposed_value": null,
       "evidence": [],
-      "note": "Solution exit criteria not met: no agreed scope and no request for a proposal. Stage stays at Solution."
+      "note": "Stays at Solution. Proposal exit criteria not met: no agreed solution scope and no request for a proposal."
     }
   ],
   "ignored_out_of_scope": [],
   "validation_notes": [],
   "usage": {
-    "input_tokens": 1491,
-    "output_tokens": 1921,
-    "cache_read_input_tokens": 11814,
+    "input_tokens": 1466,
+    "output_tokens": 2554,
+    "cache_read_input_tokens": 13543,
     "cache_creation_input_tokens": 0,
     "model": "claude-haiku-5-5",
     "served_by": "claude-haiku-5-5",
-    "cost_usd": 0.001228
+    "cost_usd": 0.001559
   }
 }

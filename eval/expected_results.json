@@ -1,5 +1,5 @@
 {
-  "description": "Expected results for the Call-to-CRM eval set (Orbita CRM, meetings from Granola). Each case starts from the seed CRM in data/opportunities.json and data/clients.json. Fields absent from a case are expected as no_evidence. status_any = several acceptable statuses; value / value_any compared by type; must_include = list of groups, every group must match and any keyword of a group is enough (case-insensitive); must_not_include = keywords that must not appear; note_must_include checks the field's note. 'unchanged' = the agent proposed exactly the approved value: nothing to decide, nothing written.",
+  "description": "Expected results for the Orbita CRM Agent eval set (any sales conversation: meeting transcripts and a WhatsApp chat). Each case starts from the seed CRM in data/opportunities.json and data/clients.json. Fields absent from a case are expected as no_evidence. status_any = several acceptable statuses; value / value_any compared by type; must_include = list of groups, every group must match and any keyword of a group is enough (case-insensitive); must_not_include = keywords that must not appear; note_must_include checks the field's note. 'unchanged' = the agent proposed exactly the approved value: nothing to decide, nothing written.",
   "cases": [
     {
       "case_id": "T1",
@@ -12,217 +12,30 @@
       "expected_run_status": "Awaiting review",
       "expected_source_status": "Ready",
       "fields": {
-        "call_summary": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "spreadsheet"
-            ],
-            [
-              "workshop"
-            ]
-          ]
-        },
-        "objection": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "TMS",
-              "integrat"
-            ],
-            [
-              "adoption",
-              "hated",
-              "abandon",
-              "went back"
-            ]
-          ]
-        },
-        "commitment": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "reference case",
-              "case study"
-            ],
-            [
-              "Rui"
-            ]
-          ]
-        },
-        "next_step": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "workshop"
-            ],
-            [
-              "Rui"
-            ]
-          ]
-        },
-        "follow_up_owner": {
-          "status": "proposed",
-          "value": "Ana Ribeiro"
-        },
-        "follow_up_due_date": {
-          "status": "proposed",
-          "value": "2026-11-06"
-        },
-        "customer_need": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "account",
-              "deal"
-            ],
-            [
-              "renewal",
-              "pipeline"
-            ]
-          ]
-        },
-        "budget": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "80,000",
-              "80000",
-              "80k",
-              "80 000"
-            ],
-            [
-              "100,000",
-              "100000",
-              "100k",
-              "100 000"
-            ]
-          ]
-        },
-        "decision_maker": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "Marina"
-            ]
-          ]
-        },
-        "decision_process": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "Rui",
-              "IT"
-            ]
-          ]
-        },
-        "go_live_target": {
-          "status": "proposed",
-          "value": "2027-03"
-        },
-        "competitors": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "Northwind"
-            ],
-            [
-              "PipeSpark"
-            ]
-          ]
-        },
-        "seats": {
-          "status": "proposed",
-          "value": "60"
-        },
-        "departments": {
-          "status": "proposed",
-          "value": "Sales; Customer Success; Leadership"
-        },
-        "decision_criteria": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "pipeline"
-            ],
-            [
-              "renewal"
-            ],
-            [
-              "mobile"
-            ]
-          ]
-        },
-        "integrations": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "TMS",
-              "transport management"
-            ],
-            [
-              "Orion"
-            ]
-          ]
-        },
-        "employee_count": {
-          "status": "proposed",
-          "value": "850"
-        },
-        "current_solution": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "spreadsheet"
-            ],
-            [
-              "Outlook",
-              "email",
-              "inbox"
-            ]
-          ]
-        },
-        "stage": {
-          "status": "proposed",
-          "value": "Solution"
-        },
-        "metrics": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "renewal"
-            ],
-            [
-              "pipeline",
-              "spreadsheet"
-            ]
-          ]
-        },
-        "champion": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "Felipe"
-            ]
-          ]
-        },
-        "paper_process": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "quote",
-              "procurement"
-            ]
-          ]
-        }
+        "call_summary": { "status": "proposed", "must_include": [["spreadsheet"], ["workshop"]] },
+        "objection": { "status": "proposed", "must_include": [["Integration with current systems"], ["User adoption"]] },
+        "commitment": { "status": "proposed", "must_include": [["reference case", "case study"], ["Rui"]] },
+        "next_step": { "status": "proposed", "must_include": [["workshop"], ["Rui"]] },
+        "follow_up_owner": { "status": "proposed", "value": "Ana Ribeiro" },
+        "follow_up_due_date": { "status": "proposed", "value": "2026-11-06" },
+        "customer_need": { "status": "proposed", "must_include": [["Customer data scattered"], ["Missed follow-ups or renewals", "No pipeline view"]] },
+        "budget": { "status": "proposed", "value": "USD 50k-100k per year" },
+        "decision_maker": { "status": "proposed", "must_include": [["Marina"]] },
+        "decision_process": { "status": "proposed", "must_include": [["Rui", "IT"]] },
+        "go_live_target": { "status": "proposed", "value": "2027-03" },
+        "competitors": { "status": "proposed", "must_include": [["Northwind"], ["PipeSpark"]] },
+        "seats": { "status": "proposed", "value": "60" },
+        "departments": { "status": "proposed", "value": "Sales; Customer Success; Leadership" },
+        "decision_criteria": { "status": "proposed", "must_include": [["Pipeline management"], ["Renewal and contract tracking", "Tasks and follow-up reminders"], ["Mobile app"]] },
+        "integrations": { "status": "proposed", "must_include": [["Industry or in-house system"], ["ERP"]] },
+        "employee_count": { "status": "proposed", "value": "500-999" },
+        "current_solution": { "status": "proposed", "must_include": [["Spreadsheets"], ["Email and shared inbox"]] },
+        "stage": { "status": "proposed", "value": "Solution" },
+        "metrics": { "status": "proposed", "must_include": [["renewal"], ["pipeline", "spreadsheet"]] },
+        "champion": { "status": "proposed", "must_include": [["Felipe"]] },
+        "paper_process": { "status": "proposed", "must_include": [["Competitive quotes required", "Procurement review"]] }
       },
-      "forbidden_stage_values": [
-        "Proposal",
-        "Negotiation",
-        "Contract",
-        "Closed Won",
-        "Closed Lost"
-      ],
+      "forbidden_stage_values": ["Proposal", "Negotiation", "Contract", "Closed Won", "Closed Lost"],
       "demo_role": "Main demo call (PRD F18 steps 1-4)."
     },
     {
@@ -236,105 +49,18 @@
       "expected_run_status": "Awaiting review",
       "expected_source_status": "Ready",
       "fields": {
-        "call_summary": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "franchise",
-              "wholesale"
-            ],
-            [
-              "WhatsApp",
-              "spreadsheet"
-            ]
-          ]
-        },
-        "objection": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "BI",
-              "complicated",
-              "adoption"
-            ]
-          ]
-        },
-        "commitment": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "case study"
-            ]
-          ]
-        },
-        "next_step": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ],
-          "must_include": [
-            [
-              "case study"
-            ]
-          ]
-        },
-        "follow_up_owner": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ],
-          "value": "Ana Ribeiro"
-        },
-        "follow_up_due_date": {
-          "status": "no_evidence"
-        },
-        "customer_need": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "franchise"
-            ],
-            [
-              "wholesale"
-            ]
-          ]
-        },
-        "budget": {
-          "status": "proposed",
-          "value": "No budget allocated"
-        },
-        "decision_criteria": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ]
-        },
-        "employee_count": {
-          "status": "proposed",
-          "value": "1200"
-        },
-        "current_solution": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "WhatsApp"
-            ],
-            [
-              "spreadsheet"
-            ]
-          ]
-        },
-        "stage": {
-          "status": "no_evidence",
-          "note_must_include": [
-            [
-              "conversation",
-              "meeting",
-              "demo",
-              "further"
-            ]
-          ]
-        }
+        "call_summary": { "status": "proposed", "must_include": [["franchise", "wholesale"], ["WhatsApp", "spreadsheet"]] },
+        "objection": { "status": "proposed", "must_include": [["User adoption"]] },
+        "commitment": { "status": "proposed", "must_include": [["case study"]] },
+        "next_step": { "status_any": ["proposed", "no_evidence"], "must_include": [["case study"]] },
+        "follow_up_owner": { "status_any": ["proposed", "no_evidence"], "value": "Ana Ribeiro" },
+        "follow_up_due_date": { "status": "no_evidence" },
+        "customer_need": { "status": "proposed", "must_include": [["Customer data scattered", "Visits and orders not tracked"]] },
+        "budget": { "status": "proposed", "value": "No budget allocated" },
+        "decision_criteria": { "status_any": ["proposed", "no_evidence"] },
+        "employee_count": { "status": "proposed", "value": "1000-4999" },
+        "current_solution": { "status": "proposed", "must_include": [["WhatsApp groups"], ["Spreadsheets"]] },
+        "stage": { "status": "no_evidence", "note_must_include": [["conversation", "meeting", "demo", "further"]] }
       }
     },
     {
@@ -348,105 +74,23 @@
       "expected_run_status": "Awaiting review",
       "expected_source_status": "Ready",
       "fields": {
-        "call_summary": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "board",
-              "budget",
-              "froze",
-              "frozen"
-            ],
-            [
-              "demo"
-            ]
-          ]
-        },
-        "objection": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "board",
-              "budget",
-              "froze",
-              "frozen",
-              "freeze"
-            ]
-          ]
-        },
+        "call_summary": { "status": "proposed", "must_include": [["board", "budget", "froze", "frozen"], ["demo"]] },
+        "objection": { "status": "proposed", "must_include": [["Budget freeze", "Timing or other priorities"]] },
         "commitment": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ],
-          "must_include": [
-            [
-              "reach out",
-              "January",
-              "budget"
-            ]
-          ],
+          "status_any": ["proposed", "no_evidence"],
+          "must_include": [["reach out", "January", "budget"]],
           "note": "Conditional promise; a proposal or no_evidence is acceptable."
         },
-        "next_step": {
-          "status": "contradictory"
-        },
-        "follow_up_owner": {
-          "status_any": [
-            "no_evidence",
-            "contradictory"
-          ]
-        },
-        "follow_up_due_date": {
-          "status": "contradictory"
-        },
-        "customer_need": {
-          "status_any": [
-            "no_evidence",
-            "unchanged"
-          ]
-        },
-        "budget": {
-          "status_any": [
-            "unchanged",
-            "proposed"
-          ],
-          "must_include": [
-            [
-              "90,000",
-              "90000",
-              "90k",
-              "90 000"
-            ]
-          ]
-        },
-        "decision_maker": {
-          "status_any": [
-            "no_evidence",
-            "unchanged"
-          ]
-        },
-        "decision_process": {
-          "status_any": [
-            "no_evidence",
-            "proposed"
-          ]
-        },
-        "go_live_target": {
-          "status_any": [
-            "no_evidence",
-            "contradictory"
-          ]
-        },
-        "seats": {
-          "status_any": [
-            "no_evidence",
-            "unchanged"
-          ]
-        },
-        "stage": {
-          "status": "no_evidence"
-        }
+        "next_step": { "status": "contradictory" },
+        "follow_up_owner": { "status_any": ["no_evidence", "contradictory"] },
+        "follow_up_due_date": { "status": "contradictory" },
+        "customer_need": { "status_any": ["no_evidence", "unchanged"] },
+        "budget": { "status_any": ["unchanged", "proposed"], "value": "USD 50k-100k per year" },
+        "decision_maker": { "status_any": ["no_evidence", "unchanged"] },
+        "decision_process": { "status_any": ["no_evidence", "proposed"] },
+        "go_live_target": { "status_any": ["no_evidence", "contradictory"] },
+        "seats": { "status_any": ["no_evidence", "unchanged"] },
+        "stage": { "status": "no_evidence" }
       },
       "demo_role": "Contradiction demo (PRD F18 step 5)."
     },
@@ -474,91 +118,17 @@
       "expected_run_status": "Awaiting review",
       "expected_source_status": "Ready",
       "fields": {
-        "call_summary": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "visit",
-              "representative"
-            ]
-          ]
-        },
-        "commitment": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ]
-        },
-        "next_step": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ]
-        },
-        "follow_up_owner": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ]
-        },
-        "customer_need": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "visit",
-              "report"
-            ]
-          ]
-        },
-        "decision_criteria": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "tablet"
-            ],
-            [
-              "sample"
-            ]
-          ]
-        },
-        "objection": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ]
-        },
-        "seats": {
-          "status_any": [
-            "no_evidence",
-            "proposed"
-          ],
-          "value_any": [
-            "150"
-          ]
-        },
-        "departments": {
-          "status_any": [
-            "no_evidence",
-            "proposed"
-          ]
-        },
-        "current_solution": {
-          "status_any": [
-            "no_evidence",
-            "proposed"
-          ]
-        },
-        "stage": {
-          "status": "no_evidence",
-          "note_must_include": [
-            [
-              "conversation",
-              "meeting",
-              "demo",
-              "further"
-            ]
-          ]
-        }
+        "call_summary": { "status": "proposed", "must_include": [["visit", "representative"]] },
+        "commitment": { "status_any": ["proposed", "no_evidence"] },
+        "next_step": { "status_any": ["proposed", "no_evidence"] },
+        "follow_up_owner": { "status_any": ["proposed", "no_evidence"] },
+        "customer_need": { "status": "proposed", "must_include": [["Legacy system"]] },
+        "decision_criteria": { "status": "proposed", "must_include": [["Visit and activity tracking"], ["sample"]] },
+        "objection": { "status_any": ["proposed", "no_evidence"] },
+        "seats": { "status_any": ["no_evidence", "proposed"], "value_any": ["150"] },
+        "departments": { "status_any": ["no_evidence", "proposed"] },
+        "current_solution": { "status_any": ["no_evidence", "proposed"] },
+        "stage": { "status": "no_evidence", "note_must_include": [["conversation", "meeting", "demo", "further"]] }
       },
       "expect_new_client": "Delta Pharma"
     },
@@ -573,134 +143,22 @@
       "expected_run_status": "Awaiting review",
       "expected_source_status": "Ready",
       "fields": {
-        "call_summary": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "CFO",
-              "Helena"
-            ]
-          ]
-        },
-        "commitment": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "forward"
-            ],
-            [
-              "Helena",
-              "CFO"
-            ]
-          ]
-        },
-        "next_step": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "Helena",
-              "CFO"
-            ]
-          ]
-        },
-        "follow_up_owner": {
-          "status": "unchanged",
-          "value": "Ana Ribeiro"
-        },
-        "follow_up_due_date": {
-          "status": "proposed",
-          "value": "2026-11-12"
-        },
-        "budget": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "120,000",
-              "120000",
-              "120k",
-              "120 000"
-            ]
-          ],
-          "must_not_include": [
-            "1,000,000",
-            "million"
-          ]
-        },
-        "decision_maker": {
-          "status_any": [
-            "unchanged",
-            "no_evidence"
-          ]
-        },
-        "decision_process": {
-          "status_any": [
-            "unchanged",
-            "no_evidence",
-            "proposed"
-          ],
-          "must_include": [
-            [
-              "CFO",
-              "Helena"
-            ]
-          ]
-        },
-        "seats": {
-          "status_any": [
-            "unchanged",
-            "no_evidence"
-          ],
-          "value": "75"
-        },
-        "departments": {
-          "status_any": [
-            "unchanged",
-            "no_evidence"
-          ],
-          "value": "Sales; Customer Service"
-        },
-        "stage": {
-          "status": "no_evidence",
-          "note_must_include": [
-            [
-              "CFO",
-              "economic buyer",
-              "decision-maker",
-              "decision maker",
-              "Helena"
-            ]
-          ]
-        },
-        "champion": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "Tiago"
-            ]
-          ]
-        },
-        "paper_process": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "legal",
-              "contract"
-            ]
-          ]
-        }
+        "call_summary": { "status": "proposed", "must_include": [["CFO", "Helena"]] },
+        "commitment": { "status": "proposed", "must_include": [["forward"], ["Helena", "CFO"]] },
+        "next_step": { "status": "proposed", "must_include": [["Helena", "CFO"]] },
+        "follow_up_owner": { "status": "unchanged", "value": "Ana Ribeiro" },
+        "follow_up_due_date": { "status": "proposed", "value": "2026-11-12" },
+        "budget": { "status": "proposed", "value": "USD 100k-150k per year", "must_not_include": ["Over USD 250k"] },
+        "decision_maker": { "status_any": ["unchanged", "no_evidence"] },
+        "decision_process": { "status_any": ["unchanged", "no_evidence", "proposed"], "must_include": [["CFO", "Helena"]] },
+        "seats": { "status_any": ["unchanged", "no_evidence"], "value": "75" },
+        "departments": { "status_any": ["unchanged", "no_evidence"], "value": "Sales; Customer Service" },
+        "stage": { "status": "no_evidence", "note_must_include": [["CFO", "economic buyer", "decision-maker", "decision maker", "Helena"]] },
+        "champion": { "status": "proposed", "must_include": [["Tiago"]] },
+        "paper_process": { "status": "proposed", "must_include": [["Legal contract review"]] }
       },
-      "forbidden_stage_values": [
-        "Negotiation",
-        "Contract",
-        "Closed Won",
-        "Closed Lost"
-      ],
-      "expect_ignored_must_include": [
-        [
-          "million",
-          "1,000,000"
-        ]
-      ]
+      "forbidden_stage_values": ["Negotiation", "Contract", "Closed Won", "Closed Lost"],
+      "expect_ignored_must_include": [["million", "1,000,000"]]
     },
     {
       "case_id": "T7",
@@ -713,187 +171,31 @@
       "expected_run_status": "Awaiting review",
       "expected_source_status": "Ready",
       "fields": {
-        "call_summary": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "lead"
-            ],
-            [
-              "demo"
-            ]
-          ]
-        },
-        "objection": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "broker"
-            ],
-            [
-              "signal",
-              "offline",
-              "connectivity"
-            ]
-          ]
-        },
-        "commitment": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "demo",
-              "recorded"
-            ]
-          ]
-        },
-        "next_step": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "demo"
-            ]
-          ]
-        },
-        "follow_up_owner": {
-          "status": "proposed",
-          "value": "Ana Ribeiro"
-        },
-        "follow_up_due_date": {
-          "status": "proposed",
-          "value_any": [
-            "2026-11-10",
-            "2026-11-12"
-          ]
-        },
-        "customer_need": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "lead"
-            ],
-            [
-              "broker",
-              "route",
-              "routing"
-            ]
-          ]
-        },
-        "budget": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "60,000",
-              "60000",
-              "60k",
-              "60 000"
-            ]
-          ]
-        },
-        "decision_maker": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "Sofia"
-            ]
-          ]
-        },
-        "decision_process": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ],
-          "must_include": [
-            [
-              "CEO",
-              "Sofia",
-              "Legal",
-              "contract"
-            ]
-          ]
-        },
-        "go_live_target": {
-          "status": "proposed",
-          "value": "2027-03"
-        },
-        "seats": {
-          "status": "proposed",
-          "value": "105"
-        },
-        "departments": {
-          "status": "proposed",
-          "value": "Sales; Marketing"
-        },
-        "decision_criteria": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "rout"
-            ],
-            [
-              "funnel",
-              "launch"
-            ]
-          ]
-        },
-        "integrations": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ],
-          "must_include": [
-            [
-              "website",
-              "WhatsApp"
-            ]
-          ]
-        },
-        "employee_count": {
-          "status": "proposed",
-          "value": "400"
-        },
-        "current_solution": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "spreadsheet"
-            ]
-          ]
-        },
-        "stage": {
-          "status": "proposed",
-          "value": "Solution"
-        },
-        "metrics": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "two hours",
-              "2 hours"
-            ]
-          ]
-        },
-        "paper_process": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ],
-          "must_include": [
-            [
-              "Legal",
-              "contract"
-            ]
-          ]
-        },
-        "competitors": {
-          "status_any": [
-            "no_evidence",
-            "proposed"
-          ]
-        }
+        "call_summary": { "status": "proposed", "must_include": [["lead"], ["demo"]] },
+        "objection": { "status": "proposed", "must_include": [["User adoption"], ["Mobile or offline access"]] },
+        "commitment": { "status": "proposed", "must_include": [["demo", "recorded"]] },
+        "next_step": { "status": "proposed", "must_include": [["demo"]] },
+        "follow_up_owner": { "status": "proposed", "value": "Ana Ribeiro" },
+        "follow_up_due_date": { "status": "proposed", "value_any": ["2026-11-10", "2026-11-12"] },
+        "customer_need": { "status": "proposed", "must_include": [["Leads lost or not routed"]] },
+        "budget": { "status": "proposed", "value": "USD 50k-100k per year" },
+        "decision_maker": { "status": "proposed", "must_include": [["Sofia"]] },
+        "decision_process": { "status_any": ["proposed", "no_evidence"], "must_include": [["CEO", "Sofia", "Legal", "contract"]] },
+        "go_live_target": { "status": "proposed", "value": "2027-03" },
+        "seats": { "status": "proposed", "value": "105" },
+        "departments": { "status": "proposed", "value": "Sales; Marketing" },
+        "decision_criteria": { "status": "proposed", "must_include": [["Lead capture and routing"], ["Pipeline management"]] },
+        "integrations": { "status_any": ["proposed", "no_evidence"], "must_include": [["Website forms", "WhatsApp Business"]] },
+        "employee_count": { "status": "proposed", "value": "200-499" },
+        "current_solution": { "status": "proposed", "must_include": [["Spreadsheets"]] },
+        "stage": { "status": "proposed", "value": "Solution" },
+        "metrics": { "status": "proposed", "must_include": [["two hours", "2 hours"]] },
+        "paper_process": { "status_any": ["proposed", "no_evidence"], "must_include": [["Legal contract review"]] },
+        "competitors": { "status_any": ["no_evidence", "proposed"] }
       },
       "review_script": {
         "edit": {
-          "customer_need": "Capture every lead from the website, WhatsApp and sales stands in one CRM and route it automatically to the right broker, with one funnel per launch"
+          "customer_need": "Customer data scattered across spreadsheets and inboxes; Leads lost or not routed"
         },
         "approve": "all other fields"
       },
@@ -915,10 +217,7 @@
       "expected_run_status": "Blocked",
       "expected_source_status": "AccessDenied",
       "fields": {},
-      "platform_checks": [
-        "No opportunity or client data is shown to U01",
-        "The access-denied attempt is written to the activity log"
-      ]
+      "platform_checks": ["No opportunity or client data is shown to U01", "The access-denied attempt is written to the activity log"]
     },
     {
       "case_id": "T9",
@@ -931,197 +230,28 @@
       "expected_run_status": "Awaiting review",
       "expected_source_status": "Ready",
       "fields": {
-        "call_summary": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "120",
-              "scope"
-            ],
-            [
-              "proposal"
-            ]
-          ]
-        },
-        "objection": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "data",
-              "Brazil",
-              "protection"
-            ]
-          ]
-        },
-        "commitment": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "proposal"
-            ],
-            [
-              "questionnaire"
-            ]
-          ]
-        },
-        "next_step": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "proposal"
-            ]
-          ]
-        },
-        "follow_up_owner": {
-          "status": "unchanged",
-          "value": "Ana Ribeiro"
-        },
-        "follow_up_due_date": {
-          "status": "proposed",
-          "value": "2026-11-13"
-        },
-        "customer_need": {
-          "status_any": [
-            "proposed",
-            "unchanged",
-            "no_evidence"
-          ],
-          "must_include": [
-            [
-              "enrol",
-              "prospect",
-              "student"
-            ]
-          ]
-        },
-        "budget": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "110,000",
-              "110000",
-              "110k",
-              "110 000"
-            ],
-            [
-              "130,000",
-              "130000",
-              "130k",
-              "130 000"
-            ]
-          ]
-        },
-        "decision_maker": {
-          "status_any": [
-            "unchanged",
-            "no_evidence"
-          ]
-        },
-        "decision_process": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "security"
-            ],
-            [
-              "board"
-            ]
-          ]
-        },
-        "go_live_target": {
-          "status": "proposed",
-          "value": "2027-05"
-        },
-        "competitors": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "Clarion"
-            ]
-          ]
-        },
-        "seats": {
-          "status": "proposed",
-          "value": "120"
-        },
-        "departments": {
-          "status": "proposed",
-          "value": "Sales; Marketing; Leadership"
-        },
-        "decision_criteria": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "lead",
-              "campaign"
-            ],
-            [
-              "funnel",
-              "enrol"
-            ],
-            [
-              "WhatsApp"
-            ]
-          ]
-        },
-        "integrations": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "Campus One"
-            ],
-            [
-              "Mailwave"
-            ],
-            [
-              "WhatsApp"
-            ]
-          ]
-        },
-        "current_solution": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "spreadsheet"
-            ],
-            [
-              "WhatsApp"
-            ]
-          ]
-        },
-        "stage": {
-          "status": "proposed",
-          "value": "Proposal"
-        },
-        "metrics": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "8",
-              "eight"
-            ],
-            [
-              "12",
-              "twelve"
-            ]
-          ]
-        },
-        "paper_process": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "contract",
-              "data processing"
-            ]
-          ]
-        }
+        "call_summary": { "status": "proposed", "must_include": [["120", "scope"], ["proposal"]] },
+        "objection": { "status": "proposed", "must_include": [["Data residency and privacy"]] },
+        "commitment": { "status": "proposed", "must_include": [["proposal"], ["questionnaire"]] },
+        "next_step": { "status": "proposed", "must_include": [["proposal"]] },
+        "follow_up_owner": { "status": "unchanged", "value": "Ana Ribeiro" },
+        "follow_up_due_date": { "status": "proposed", "value": "2026-11-13" },
+        "customer_need": { "status_any": ["proposed", "unchanged", "no_evidence"], "must_include": [["Leads lost", "Teams do not share", "student", "enrol"]] },
+        "budget": { "status": "proposed", "value": "USD 100k-150k per year" },
+        "decision_maker": { "status_any": ["unchanged", "no_evidence"] },
+        "decision_process": { "status": "proposed", "must_include": [["security"], ["board"]] },
+        "go_live_target": { "status": "proposed", "value": "2027-05" },
+        "competitors": { "status": "proposed", "must_include": [["Clarion"]] },
+        "seats": { "status": "proposed", "value": "120" },
+        "departments": { "status": "proposed", "value": "Sales; Marketing; Leadership" },
+        "decision_criteria": { "status": "proposed", "must_include": [["Lead capture and routing"], ["Pipeline management"], ["WhatsApp messaging"]] },
+        "integrations": { "status": "proposed", "must_include": [["Industry or in-house system"], ["Marketing automation"], ["WhatsApp Business"]] },
+        "current_solution": { "status": "proposed", "must_include": [["Spreadsheets"], ["WhatsApp groups"]] },
+        "stage": { "status": "proposed", "value": "Proposal" },
+        "metrics": { "status": "proposed", "must_include": [["8", "eight"], ["12", "twelve"]] },
+        "paper_process": { "status": "proposed", "must_include": [["Data processing agreement"]] }
       },
-      "forbidden_stage_values": [
-        "Negotiation",
-        "Contract",
-        "Closed Won",
-        "Closed Lost"
-      ]
+      "forbidden_stage_values": ["Negotiation", "Contract", "Closed Won", "Closed Lost"]
     },
     {
       "case_id": "T10",
@@ -1134,149 +264,26 @@
       "expected_run_status": "Awaiting review",
       "expected_source_status": "Ready",
       "fields": {
-        "call_summary": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "dealer"
-            ],
-            [
-              "demo"
-            ]
-          ]
-        },
-        "objection": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "signal",
-              "offline"
-            ]
-          ]
-        },
-        "commitment": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "video",
-              "offline"
-            ]
-          ]
-        },
-        "next_step": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "demo"
-            ]
-          ]
-        },
-        "follow_up_owner": {
-          "status": "proposed",
-          "value": "Ana Ribeiro"
-        },
-        "follow_up_due_date": {
-          "status": "proposed",
-          "value_any": [
-            "2026-11-09",
-            "2026-11-11"
-          ]
-        },
-        "customer_need": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "dealer"
-            ],
-            [
-              "visit",
-              "order"
-            ]
-          ]
-        },
-        "budget": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "70,000",
-              "70000",
-              "70k",
-              "70 000"
-            ]
-          ]
-        },
-        "decision_maker": {
-          "status": "no_evidence"
-        },
-        "go_live_target": {
-          "status": "proposed",
-          "value": "2027-07"
-        },
-        "seats": {
-          "status": "proposed",
-          "value": "38"
-        },
-        "departments": {
-          "status": "proposed",
-          "value": "Sales; Leadership"
-        },
-        "decision_criteria": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "offline"
-            ],
-            [
-              "GPS",
-              "check-in"
-            ]
-          ]
-        },
-        "integrations": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "Orion"
-            ]
-          ]
-        },
-        "employee_count": {
-          "status": "proposed",
-          "value": "450"
-        },
-        "current_solution": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "paper"
-            ],
-            [
-              "spreadsheet"
-            ]
-          ]
-        },
-        "stage": {
-          "status": "no_evidence",
-          "note_must_include": [
-            [
-              "economic buyer",
-              "decision-maker",
-              "decision maker"
-            ]
-          ]
-        },
-        "champion": {
-          "status": "no_evidence"
-        }
+        "call_summary": { "status": "proposed", "must_include": [["dealer"], ["demo"]] },
+        "objection": { "status": "proposed", "must_include": [["Mobile or offline access"]] },
+        "commitment": { "status": "proposed", "must_include": [["video", "offline"]] },
+        "next_step": { "status": "proposed", "must_include": [["demo"]] },
+        "follow_up_owner": { "status": "proposed", "value": "Ana Ribeiro" },
+        "follow_up_due_date": { "status": "proposed", "value_any": ["2026-11-09", "2026-11-11"] },
+        "customer_need": { "status": "proposed", "must_include": [["Visits and orders not tracked"]] },
+        "budget": { "status": "proposed", "value": "USD 50k-100k per year" },
+        "decision_maker": { "status": "no_evidence" },
+        "go_live_target": { "status": "proposed", "value": "2027-07" },
+        "seats": { "status": "proposed", "value": "38" },
+        "departments": { "status": "proposed", "value": "Sales; Leadership" },
+        "decision_criteria": { "status": "proposed", "must_include": [["Offline mode"], ["Visit and activity tracking"]] },
+        "integrations": { "status": "proposed", "must_include": [["ERP"]] },
+        "employee_count": { "status": "proposed", "value": "200-499" },
+        "current_solution": { "status": "proposed", "must_include": [["Paper forms"], ["Spreadsheets"]] },
+        "stage": { "status": "no_evidence", "note_must_include": [["economic buyer", "decision-maker", "decision maker"]] },
+        "champion": { "status": "no_evidence" }
       },
-      "forbidden_stage_values": [
-        "Solution",
-        "Proposal",
-        "Negotiation",
-        "Contract",
-        "Closed Won",
-        "Closed Lost"
-      ]
+      "forbidden_stage_values": ["Solution", "Proposal", "Negotiation", "Contract", "Closed Won", "Closed Lost"]
     },
     {
       "case_id": "T11",
@@ -1288,106 +295,21 @@
       "run_as_user_id": "U01",
       "expected_run_status": "Awaiting review",
       "expected_source_status": "Ready",
-      "forbidden_stage_values": [
-        "Closed Won",
-        "Closed Lost"
-      ],
+      "forbidden_stage_values": ["Closed Won", "Closed Lost"],
       "fields": {
-        "call_summary": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "contract"
-            ]
-          ]
-        },
-        "commitment": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "contract"
-            ]
-          ]
-        },
-        "next_step": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "contract"
-            ],
-            [
-              "sign"
-            ]
-          ]
-        },
-        "follow_up_owner": {
-          "status_any": [
-            "unchanged",
-            "no_evidence"
-          ]
-        },
-        "follow_up_due_date": {
-          "status": "proposed",
-          "value": "2026-11-06"
-        },
-        "paper_process": {
-          "status": "proposed",
-          "must_include": [
-            [
-              "procurement",
-              "Talita"
-            ],
-            [
-              "sign"
-            ]
-          ]
-        },
-        "integrations": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ],
-          "must_include": [
-            [
-              "Entra"
-            ]
-          ]
-        },
-        "decision_criteria": {
-          "status_any": [
-            "proposed",
-            "no_evidence",
-            "unchanged"
-          ]
-        },
-        "objection": {
-          "status_any": [
-            "proposed",
-            "no_evidence"
-          ]
-        },
-        "seats": {
-          "status_any": [
-            "unchanged",
-            "no_evidence"
-          ]
-        },
-        "decision_maker": {
-          "status_any": [
-            "unchanged",
-            "no_evidence"
-          ]
-        },
-        "customer_need": {
-          "status_any": [
-            "unchanged",
-            "no_evidence"
-          ]
-        },
-        "stage": {
-          "status": "proposed",
-          "value": "Contract"
-        }
+        "call_summary": { "status": "proposed", "must_include": [["contract"]] },
+        "commitment": { "status": "proposed", "must_include": [["contract"]] },
+        "next_step": { "status": "proposed", "must_include": [["contract"], ["sign"]] },
+        "follow_up_owner": { "status_any": ["unchanged", "no_evidence"] },
+        "follow_up_due_date": { "status": "proposed", "value": "2026-11-06" },
+        "paper_process": { "status": "proposed", "must_include": [["Procurement review"], ["Signature by the economic buyer"]] },
+        "integrations": { "status_any": ["proposed", "no_evidence"], "must_include": [["Single sign-on"]] },
+        "decision_criteria": { "status_any": ["proposed", "no_evidence", "unchanged"] },
+        "objection": { "status_any": ["proposed", "no_evidence"] },
+        "seats": { "status_any": ["unchanged", "no_evidence"] },
+        "decision_maker": { "status_any": ["unchanged", "no_evidence"] },
+        "customer_need": { "status_any": ["unchanged", "no_evidence"] },
+        "stage": { "status": "proposed", "value": "Contract" }
       }
     }
   ]

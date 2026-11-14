@@ -1,0 +1,360 @@
+{
+  "meeting_id": "MTG-2002",
+  "opportunity_id": "OPP-0141",
+  "client_id": "CLI-002",
+  "target": null,
+  "source_status": "Ready",
+  "run_status": "Awaiting review",
+  "block_reason": null,
+  "warnings": [],
+  "fields": [
+    {
+      "field": "call_summary",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Intro call with the Head of Retail Operations. Franchisee and wholesale buyer requests run on WhatsApp groups and spreadsheets and get lost. She wants one place for every franchisee and buyer, and simplicity after a failed BI tool. No budget is allocated; Orbita will send a product overview and case study.",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:39",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "Today all of that runs on WhatsApp groups and spreadsheets."
+        },
+        {
+          "line": 15,
+          "timestamp": "00:08:09",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "There's no budget allocated for this yet, it would have to go into next year's plan."
+        },
+        {
+          "line": 18,
+          "timestamp": "00:16:00",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you our product overview and that case study."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Previous BI tool failed: too complicated, store teams stopped using it; cannot go through that again; no budget allocated yet, would need next year's plan",
+      "evidence": [
+        {
+          "line": 12,
+          "timestamp": "00:06:25",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "Two years ago we bought a BI tool and it failed. It was too complicated and the store teams stopped using it after a month."
+        },
+        {
+          "line": 15,
+          "timestamp": "00:08:09",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "There's no budget allocated for this yet, it would have to go into next year's plan."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Orbita (Ana): send the product overview and case study",
+      "evidence": [
+        {
+          "line": 18,
+          "timestamp": "00:16:00",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you our product overview and that case study."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "next_step",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "follow_up_owner",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "metrics",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_maker",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_criteria",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "One place for every franchisee and wholesale buyer, with orders, visits and complaints; simple enough that store teams keep using it",
+      "evidence": [
+        {
+          "line": 7,
+          "timestamp": "00:01:16",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "Yes, that's exactly it. One place for the franchisees and the wholesale buyers, instead of fifty WhatsApp groups."
+        },
+        {
+          "line": 12,
+          "timestamp": "00:06:25",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "It was too complicated and the store teams stopped using it after a month. I can't go through that again."
+        }
+      ],
+      "note": "Simplicity was proposed by the seller and is supported by the customer's statement about the failed BI tool."
+    },
+    {
+      "field": "decision_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "paper_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "customer_need",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Franchisee and wholesale buyer requests, complaints and reorders run on WhatsApp groups and spreadsheets and get lost; needs one place for every franchisee and wholesale buyer",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:39",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "When a franchisee complains or a buyer asks for a reorder, it's lost in a chat somewhere."
+        },
+        {
+          "line": 7,
+          "timestamp": "00:01:16",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "One place for the franchisees and the wholesale buyers, instead of fifty WhatsApp groups."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "champion",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "competitors",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "departments",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "integrations",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "budget",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "No budget allocated",
+      "evidence": [
+        {
+          "line": 15,
+          "timestamp": "00:08:09",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "There's no budget allocated for this yet, it would have to go into next year's plan."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "go_live_target",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "employee_count",
+      "group": "company",
+      "record": "client",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "1200",
+      "evidence": [
+        {
+          "line": 9,
+          "timestamp": "00:02:39",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "About one thousand two hundred employees, most of them in the stores."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "current_solution",
+      "group": "company",
+      "record": "client",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "WhatsApp groups and spreadsheets",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "00:00:39",
+          "speaker": "Camila Rocha (Verde Retail)",
+          "quote": "Today all of that runs on WhatsApp groups and spreadsheets."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "group": "stage",
+      "record": "opportunity",
+      "current_value": "New Lead",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": "New Lead exit criteria not met: pain confirmed, but the customer declined to book a further conversation ('Let's not book anything yet')."
+    }
+  ],
+  "ignored_out_of_scope": [
+    {
+      "line": 16,
+      "timestamp": "00:11:25",
+      "speaker": "Camila Rocha (Verde Retail)",
+      "quote": "By the way, my daughter started at the same school as your colleague's son, small world.",
+      "reason": "Personal small talk, not CRM-relevant."
+    }
+  ],
+  "validation_notes": [],
+  "usage": {
+    "input_tokens": 1653,
+    "output_tokens": 1274,
+    "cache_read_input_tokens": 12195,
+    "cache_creation_input_tokens": 0,
+    "model": "claude-sonnet-5-5",
+    "served_by": "claude-sonnet-5-5",
+    "cost_usd": 0.018485
+  },
+  "trace_id": "a3fdb4c60c566e3d55b7bff4f532ff59"
+}

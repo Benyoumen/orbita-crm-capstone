@@ -68,7 +68,7 @@ node agent/pipeline.mjs --all --model claude-sonnet-5-5
 node agent/pipeline.mjs --all --model claude-haiku-5-5
 node agent/pipeline.mjs --all --model claude-opus-5-5
 node eval/run_eval.mjs                # eval/results.md + eval/results.json (placar por modelo)
-cd mockups; python dados/coleta.py; python dados/render_capstone.py   # leva o placar para Quality checks
+cd mockups; python dados/coleta.py; python dados/render_capstone.py   # leva o placar e os traces para Evals
 ```
 
 ---
@@ -77,13 +77,22 @@ cd mockups; python dados/coleta.py; python dados/render_capstone.py   # leva o p
 
 | Lateral | O que mostra |
 |---|---|
-| **Explore** | Saudação, pergunta, sugestões do pipeline; a conversa com veredito, achados, fontes e "Not settled yet". |
-| **Meetings** | A faixa (reuniões suas, atualizações esperando revisão), **Add a meeting** (Select your opportunity, arquivo ou texto, rascunho com a atribuição) e a tabela das suas reuniões. |
-| **Review** | Aberta a partir da reunião: cabeçalho com MEDDPICC, o cartão da oportunidade nova quando houver, a tabela por grupo (Always allow já escrito, com Undo), as notas e o Submit. Bloqueada: o motivo e a saída. |
-| **Opportunities** | Funil por etapa com a faixa MEDDPICC em cada linha; gaveta do registro. |
-| **Clients** | Um cartão por cliente com as suas oportunidades; gaveta do cliente. |
-| **Chat** | New chat e as conversas recentes do Explore. |
-| **Settings** | Permissions, Agent, Sources, Team, Activity log, Quality checks, Data. |
+| **Explore** | Como um app de chat: clicar em Explore abre sempre um chat novo (saudação, pergunta, sugestões do pipeline); a conversa tem veredito, achados, fontes e "Not settled yet", com a caixa de pergunta presa embaixo. |
+| **Meetings** | A faixa (reuniões suas, atualizações esperando revisão), **Add a meeting** em duas colunas (Select your opportunity; arquivo ou texto; rascunho com a atribuição) e **Your meetings** com busca (título, pessoas, cliente e cada linha da transcrição, com o trecho marcado). O nome da reunião abre o leitor: a oportunidade, a atualização de CRM, quem falou e a transcrição com "Find in this transcript". |
+| **Review** | Aberta a partir da reunião: o caminho (Meetings › reunião), o cabeçalho com MEDDPICC, a **barra de decisão presa no topo** (N de M decididas e o Submit), o cartão da oportunidade nova quando houver, **um cartão por grupo** (ícone, nome, o que o grupo guarda, quanto falta decidir, aprovar o grupo), cada campo com o que muda (Now e New só quando já há valor), uma citação e as demais num clique, e a decisão num controle segmentado. Bloqueada: o motivo e a saída. |
+| **Opportunities** | Funil por etapa com cabeçalho de colunas e a faixa MEDDPICC em cada linha; o nome, ou a linha inteira, abre a gaveta do registro (a coluna do dono só aparece para a gestora). |
+| **Clients** | Um cartão por cliente com as suas oportunidades; o nome do cliente abre a gaveta do cliente, o da oportunidade a do registro. |
+| **Chat** | **New chat** (como o Explore, abre um chat novo) e as oito conversas mais recentes; cada uma reabre na última mensagem (`#/explore/<chat>`). |
+| **Evals** | O ciclo de melhoria do agente, para o dono: **Dashboard** (a configuração em produção e seis números; Experiments, uma linha por modelo, esforço e prompt; Accuracy by field, o mapa de erros; o juiz LLM com a concordância; o ciclo em cinco passos), **Seller feedback**, **Trace review** (Pass/Fail/Defer e nota por trace, com teclado; o veredito do juiz em cada valor, com Agree/Disagree), **Failure modes** e **Eval set** (o antigo Quality checks). |
+| **Settings** | Permissions, Agent, Sources, Team, Activity log, Data. |
+
+**Avaliação da vendedora (31/10).** Toda resposta do Explore e toda atualização de CRM (embaixo da tabela da revisão) têm polegar para cima e para baixo. O para baixo pede o motivo (lista fixa e nota opcional) e pode ser pulado. A avaliação guarda a rodada, o modelo e as decisões, nunca a transcrição nem valor de campo. Fica no navegador (`S.feedback`) e, com o servidor no ar, vai para `POST /api/feedback` (arquivo `capstone/.feedback/feedback.jsonl`, fora do git). O painel **Seller feedback** (em Evals) lista as avaliações (a vendedora vê as dela, a gestora vê as do time) e as correções feitas nas atualizações escritas; cada "not right" abre como trace na revisão.
+
+**Leitura e Evals (31/10, à tarde).** Pedido do PM: a revisão sem categorias separadas e com sublinhado feio, nomes que não abriam o registro, Meetings cinza e sem busca, o Explore que não se comportava como chat, e uma aba de Evals para o feedback e as anotações. Crítica do impeccable em dois agentes isolados (24/40 nas heurísticas de Nielsen; o detector achou o `.lnk` com sublinhado e borda ao mesmo tempo) e então: folha quase branca (`--folha #FAFAFA` sobre `--mesa #EDEDEE`), tinta do texto lido em .90 e o cinza só no rótulo; nada sublinhado (o nome de um registro é um botão com fundo no hover); a revisão em cartões por grupo com a barra de decisão presa; a linha contraditória tingida em âmbar em vez do fio de 3px; o leitor da reunião; o Explore como app de chat; e a aba **Evals**, que embute a análise de erros do repositório evals-skills (Hamel Husain e Shreya Shankar): os 29 traces de `eval/error_discovery` entram enxutos na foto (`foto.evals`), os rótulos e as notas vão, pelo servidor, para os mesmos `annotations.json` e `patterns.json` que o app de revisão lê (`POST /api/evals`, `ORBITA_EVALS_DIR` no portão). O Evals da página lê arquivos em disco e não depende de serviço de traces.
+
+**Campos em lista (31/10, noite; schema v4).** Pedido do PM: os campos viram listas de opções, como num CRM de vendas tipo Pipedrive, com "Other" quando útil; texto só onde o detalhe é o valor (resumo, compromissos, próximo passo, métricas, processo de decisão). Dez campos viraram listas: objeções, critérios de decisão, processo de papel, dor, concorrentes, departamentos, integrações, orçamento (faixas), tamanho da empresa (faixas) e solução atual. O específico da conversa (o nome do sistema, o número exato, quem assina) vai na nota do campo. Na revisão, o valor de lista aparece em chips (o "Other" com contorno tracejado); o editor é um select ou caixas de seleção com o campo "Other" quando o campo permite; economic buyer e champion sugerem os contatos do cliente. A migração (`scripts/migrate_schema_v4.py`) mapeou cada valor antigo à mão; o oráculo, as respostas salvas e os exemplos do prompt foram refeitos, e o eval ao vivo rodou de novo.
+
+**Painel, juiz e cor (31/10, fim da tarde).** Pedido do PM: manter o New chat, mostrar onde ficam o juiz LLM e a acurácia, comparar prompt, modelo e esforço, e dar mais cor ao CRM. O **Dashboard** do Evals lê `foto.evals.experiments`, que a coleta monta de `eval/outputs/<modelo>[@<esforço>[@<prompt>]]`, de `eval/results.json` e de `eval/judge_results.json`: testes que passam, acerto por campo contra o oráculo (status esperado e nenhuma falha do scorer no campo), correções do validador, custo, latência pelos logs e o veredito do juiz. O **juiz** (`eval/judge.mjs`, Sonnet 5.5, binário por valor proposto, crítica antes do veredito, exemplos escritos sobre uma conversa fora do conjunto) ainda não está validado: o Agree/Disagree no trace vira TPR e TNR no painel. Rodei Sonnet com esforço baixo e alto (USD 0,23 e 0,38) e o juiz nas cinco configurações (cerca de USD 0,13 cada). A **cor** entra em pares pastel + tinta do mesmo matiz, um matiz por tipo de coisa (etapa do funil, grupo de campos, canal da conversa, lado de quem fala, MEDDPICC em violeta, ícone de cada seção na lateral); o magenta segue só na marca e no contador.
 
 ---
 
@@ -106,7 +115,7 @@ cd mockups; python dados/coleta.py; python dados/render_capstone.py   # leva o p
 
 1. **Coleta e regeração**: `coleta.py` congela o kit em `dados/foto.json` e roda `pipeline.mjs --all --mock` + `run_eval.mjs`; `render_capstone.py` monta o HTML com o núcleo embutido.
 2. **Sonda** (`sonda_capstone.py`, Edge headless, 1440 e 1280): os aceites pelo caminho da vendedora (cada arquivo de `capstone/samples/` solto no campo de arquivo ou colado), com `eval/expected_results.json`, a semente e o esquema como oráculo, mais o contrato da pele e o contraste real de todo texto visível.
-3. **Servidor**: sobe `server.mjs --mock` numa porta livre e faz o laço pela porta HTTP (atualização pelo pipeline do kit, oportunidade nova, acesso negado decidido na página, `/api/explore` com o controle de acesso no servidor, conversa nova recusada sem chave).
+3. **Servidor**: sobe `server.mjs --mock` numa porta livre e faz o laço pela porta HTTP (atualização pelo pipeline do kit, oportunidade nova, acesso negado decidido na página, `/api/explore` com o controle de acesso no servidor, a avaliação que chega ao arquivo do servidor e a malformada recusada, o rótulo, a nota e o modo de falha que chegam aos arquivos da revisão de traces e o pacote malformado recusado, conversa nova recusada sem chave). As avaliações e os rótulos do teste vão para uma pasta temporária.
 4. **Detector** de antipadrões do impeccable, com dois achados conhecidos (motivo no `DESIGN.md`).
 5. **Documentação**: este LEIAME cita o arquivo gerado e os comandos.
 
@@ -119,11 +128,14 @@ cd mockups; python dados/coleta.py; python dados/render_capstone.py   # leva o p
 | A6–A11 | Atlas (.srt), Cedro colado (edição e activity log), Horizonte (acesso), Lumen (editores), Pampa (vozes sem nome), WhatsApp (Negotiation → Contract) |
 | A12 | a escolha da vendedora vence a detecção; New opportunity pede o nome; offline, conversa nova vira aviso |
 | P1 | Permissões: três níveis, um controle por campo, padrões do esquema, Never, Always allow com Undo, grupo inteiro, restaurar, criação Never e Always allow |
-| S1–S2 | Settings e as rotas antigas; Quality checks |
+| S1–S2 | Settings e as rotas antigas (settings/quality vai para Evals › Eval set); o eval set reproduzido na página |
+| Q1 | Avaliação: o par de polegares no Explore e na revisão, para cima registrado na hora, para baixo com motivo (e foco nele), nada do CRM nem da transcrição na avaliação, o painel por usuário (a gestora vê o time) |
+| N1 | Explore e New chat abrem um chat novo; o chat da lateral reabre na última mensagem, com a caixa presa; todo nome abre o seu registro (oportunidade, cliente, reunião) e a linha inteira também; o leitor da reunião com a busca na transcrição; a busca de Meetings acha pelo que foi dito e abre a transcrição na palavra; a revisão com um cartão por grupo, o vão medido, a barra presa com o Submit e nada sublinhado |
+| E1 | Evals: o painel (configuração em produção, seis números, uma linha por experimento, o mapa por campo, o juiz com a concordância); o ciclo em cinco passos; Agree/Disagree no veredito do juiz; a rota antiga cai no Eval set; Pass na hora, setas e 2 para Fail, nota com Ctrl+Enter, D e U; filtros, a amostra e os 29; o modo de falha agrupa e conta a nota; o "not right" vira trace com as decisões da vendedora; nada toca no CRM; o reset do CRM guarda os rótulos |
 | F1–F3 | Funil com MEDDPICC, gavetas, Clients em cartões separados (o vão entre cartões é medido) |
 | C0–C6 | título abaixo da barra, nenhum jargão de protótipo, reset que mantém os ajustes, os formatos de samples/, a transcrição, a pele, o contraste |
 
-Para tirar um print de uma cena: `python dados/sonda_capstone.py --foto clients` (cenas em `CENAS`, dentro do script; `--largura 1280`, `--saida <png>`).
+Para tirar um print de uma cena: `python dados/sonda_capstone.py --foto clients` (cenas em `CENAS`, dentro do script; `--largura 1280`, `--altura 2400`, `--saida <png>`). Cena que rola a página sai em branco (o headless para de pintar): para ver o pé de uma página longa, aumente a altura da janela em vez de rolar.
 
 ---
 
