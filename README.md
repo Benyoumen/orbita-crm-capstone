@@ -131,10 +131,12 @@ With the server on, labels, notes and modes are saved with `POST /api/evals` int
 ## Live link (Render, free)
 `render.yaml` describes one free web service that runs `node mockups/server.mjs` (the page and the live agent).
 1. render.com: sign up with GitHub, then New > Blueprint > this repository.
-2. Render asks for two secrets: `ANTHROPIC_API_KEY` and `ORBITA_ACCESS_CODE` (the code you give reviewers; the browser asks for any user name and this code as the password).
-3. The link is `https://orbita-crm.onrender.com` (or the name Render gives it). A free instance sleeps after 15 minutes without visits; the first visit then waits about a minute.
+2. Render asks for two secrets: `ANTHROPIC_API_KEY` and `ORBITA_ACCESS_CODE` (letters and digits, no spaces).
+3. Share `https://orbita-crm.onrender.com/?code=<ORBITA_ACCESS_CODE>` (or the name Render gives the service). Whoever opens it is in with one click: the server swaps the code for a cookie and drops it from the address bar. A free instance sleeps after 15 minutes without visits; the first visit then waits about a minute, so open it yourself a minute before a demo.
 
-Guards on a public deploy: every page and route asks for the access code (only `/api/health` stays open for Render's probe); model spend stops for the day at `ORBITA_DAILY_BUDGET_USD` (3 by default; 0 stops it at once); the key never reaches the browser. Each visitor's CRM lives in their own browser until the Supabase store is in. Locally the server listens on 127.0.0.1 only and asks for no code.
+Guards on a public deploy: every page and route asks for the access code (only `/api/health` stays open for Render's probe). A browser without the code sees a form; scripts may sign in with Basic auth (any user name, the code as the password). The cookie holds an HMAC of the code, so changing `ORBITA_ACCESS_CODE` signs everyone out. Model spend stops for the day at `ORBITA_DAILY_BUDGET_USD` (3 by default; 0 stops it at once); the key never reaches the browser. Each visitor's CRM lives in their own browser until the Supabase store is in. Locally the server listens on 127.0.0.1 only and asks for no code. `node mockups/access_test.mjs` proves the guard (the gate runs it).
+
+From this computer, without Render: `powershell -ExecutionPolicy Bypass -File scripts/start_tunnel.ps1` opens the server and a Cloudflare quick tunnel in their own windows and prints the link with the code. It lives only while this computer is awake and both windows stay open; every start gives a new address.
 
 The architecture explained for reviewers: `docs/orbita-agent-architecture.html`.
 

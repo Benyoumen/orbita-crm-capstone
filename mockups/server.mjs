@@ -9,8 +9,11 @@
 //
 // Env for a public deploy (render.yaml sets them; all off on this computer):
 //   HOST=0.0.0.0, PORT                where to listen (default 127.0.0.1:8787, this computer only)
-//   ORBITA_ACCESS_CODE                every page and route asks for it (browser sign-in: any user name, the code as password)
+//   ORBITA_ACCESS_CODE                every page and route asks for it. Share the link with the code in it
+//                                     (https://<host>/?code=<code>): the server swaps it for an HttpOnly cookie and opens the
+//                                     CRM; a browser without the code gets a form; scripts may still sign in with Basic auth
 //   ORBITA_DAILY_BUDGET_USD           model spend allowed per UTC day; 0 stops every model call at once
+//   (mockups/access_test.mjs proves the guard end to end; the gate runs it)
 //
 //   GET  /                        the newest generated mockup
 //   GET  /api/health              { ok, mode, model, models, effort, key, granola }
@@ -66,14 +69,38 @@ const spentToday = () => { const d = new Date().toISOString().slice(0, 10); if (
 const addSpend = (usd) => { spentToday(); spend.usd += usd || 0; };
 const overBudget = () => MODE === "live" && BUDGET != null && spentToday() >= BUDGET;
 const BUDGET_MSG = () => `Today's AI budget for this demo (USD ${BUDGET}) is used up. It resets at midnight UTC; the sample conversations still work with their saved results.`;
+// The cookie holds an HMAC of the code, never the code: changing ORBITA_ACCESS_CODE signs everyone out.
+const ACCESS_TOKEN = ACCESS_CODE ? crypto.createHmac("sha256", ACCESS_CODE).update("orbita-access-v1").digest("hex") : "";
+const COOKIE = "orbita_access";
+const same = (a, b) => { const x = Buffer.from(String(a)), y = Buffer.from(String(b)); return x.length === y.length && crypto.timingSafeEqual(x, y); };
+const cookieOf = (req, name) => {
+  for (const part of String(req.headers.cookie || "").split(";")) {
+    const i = part.indexOf("=");
+    if (i > 0 && part.slice(0, i).trim() === name) return part.slice(i + 1).trim();
+  }
+  return null;
+};
 function authorized(req) {
   if (!ACCESS_CODE) return true;
+  const c = cookieOf(req, COOKIE);
+  if (c && same(c, ACCESS_TOKEN)) return true;
   const m = /^Basic\s+(.+)$/i.exec(req.headers.authorization || "");
   if (!m) return false;
-  const given = Buffer.from(Buffer.from(m[1], "base64").toString("utf8").split(":").slice(1).join(":"));
-  const code = Buffer.from(ACCESS_CODE);
-  return given.length === code.length && crypto.timingSafeEqual(given, code);
+  return same(Buffer.from(m[1], "base64").toString("utf8").split(":").slice(1).join(":"), ACCESS_CODE);
 }
+const wantsHtml = (req) => req.method === "GET" && /text\/html/.test(req.headers.accept || "");
+// what a browser without the code sees: a plain form that sends the code the same way the shared link does
+const accessPage = (wrong) => `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orbita CRM</title><style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#EDEDEE;font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:#1a1a1a}
+form{background:#FAFAFA;padding:32px;border-radius:12px;width:min(360px,calc(100vw - 32px));box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+h1{margin:0 0 4px;font-size:20px}p{margin:0 0 20px;color:#555}label{display:block;font-size:14px;margin-bottom:6px}
+input{width:100%;box-sizing:border-box;padding:10px 12px;font:inherit;border:1px solid #bbb;border-radius:8px}
+button{margin-top:16px;width:100%;padding:10px;font:inherit;font-weight:600;border:0;border-radius:8px;background:#1a1a1a;color:#fff;cursor:pointer}
+.err{color:#b3261e;font-size:14px;margin:8px 0 0}</style></head><body>
+<form method="get" action="/"><h1>Orbita CRM</h1><p>This demo is private. Enter the access code you were given.</p>
+<label for="code">Access code</label><input id="code" name="code" autocomplete="off" autocapitalize="off" spellcheck="false" required autofocus>
+${wrong ? '<p class="err" role="alert">That code did not work. Check it and try again.</p>' : ""}<button type="submit">Open the CRM</button></form></body></html>`;
 
 const newestHtml = () => {
   const f = fs.readdirSync(HERE).filter((x) => /^mockup-call-to-crm_\d{4}-\d{2}-\d{2}\.html$/.test(x)).sort().pop();
@@ -205,10 +232,19 @@ const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, "http://localhost");
     if (req.method === "OPTIONS") return send(res, 204, "", "text/plain");
+    // a shared link with the code: swap it for the cookie and reload the same address without it
+    if (ACCESS_CODE && req.method === "GET" && url.searchParams.has("code") && same(url.searchParams.get("code").trim(), ACCESS_CODE)) {
+      url.searchParams.delete("code");
+      const https = /^https/i.test(String(req.headers["x-forwarded-proto"] || ""));
+      res.writeHead(302, { location: url.pathname + url.search, "cache-control": "no-store",
+        "set-cookie": `${COOKIE}=${ACCESS_TOKEN}; Path=/; HttpOnly; SameSite=Lax; Max-Age=2592000${https ? "; Secure" : ""}` });
+      return res.end();
+    }
     // the health check stays open so the host can probe it; it shows no data
     if (!(req.method === "GET" && url.pathname === "/api/health") && !authorized(req)) {
+      if (wantsHtml(req)) return send(res, 401, accessPage(url.searchParams.has("code")), "text/html");
       res.writeHead(401, { "www-authenticate": 'Basic realm="Orbita CRM", charset="UTF-8"', "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" });
-      return res.end("Access code required: use any user name and the access code as the password.");
+      return res.end("Access code required: open the shared link, or sign in with any user name and the access code as the password.");
     }
     if (req.method === "GET" && (url.pathname === "/" || url.pathname === "/index.html")) {
       const html = newestHtml();

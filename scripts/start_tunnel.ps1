@@ -28,5 +28,6 @@ for ($i = 0; $i -lt 60 -and -not $url; $i++) {
   if (Test-Path $log) { $m = Select-String -Path $log -Pattern 'https://[a-z0-9-]+\.trycloudflare\.com' | Select-Object -First 1; if ($m) { $url = $m.Matches[0].Value } }
 }
 if (-not $url) { throw "No link after 60 s: look at the 'Orbita public link' window." }
-"Link:        $url"
-"Access code: $AccessCode   (sign in with any user name, the code as the password)"
+"Share this link (opens the CRM in one click): $url/?code=$AccessCode"
+"Access code, if someone opens the bare address: $AccessCode"
+"It lives while this computer is awake and both windows stay open."

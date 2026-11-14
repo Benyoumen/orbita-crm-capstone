@@ -14,7 +14,9 @@
   3. SERVIDOR          sobe server.mjs --mock numa porta de teste e faz o laco pela
                        porta HTTP: a atualizacao vem do pipeline.mjs do KIT (resultados
                        salvos, sem chave), o Explore responde pela rota /api/explore com
-                       o mesmo controle de acesso, e conversa nova sem chave e recusada
+                       o mesmo controle de acesso, e conversa nova sem chave e recusada;
+                       e o acesso do link publico (access_test.mjs): codigo no link vira
+                       cookie, sem codigo o navegador ve o formulario
   4. DETECTOR          antipadroes visuais (impeccable detect.mjs), com a allowlist
                        do que ja foi decidido na v5 (a Inter embutida)
   5. DOCUMENTACAO      o LEIAME cita o arquivo gerado e os comandos deste portao
@@ -232,6 +234,15 @@ def main():
         print("      " + l)
     if maus or "DONE" not in linhas:
         falhas.append("servidor")
+    # o link publico: o codigo no link vira cookie, sem o codigo o navegador ve o formulario (access_test.mjs)
+    cod, texto = roda(["node", "access_test.mjs"], cwd=MOCKUP)
+    ultima = [l for l in texto.strip().splitlines() if l.strip()]
+    print("      " + (ultima[-1].strip() if ultima else "acesso: sem saida"))
+    for l in ultima:
+        if l.startswith("FAIL"):
+            print("      " + l)
+    if cod != 0:
+        falhas.append("acesso")
 
     passo(4, "Detector de antipadroes (impeccable)")
     if DETECT and os.path.isfile(DETECT):
@@ -259,7 +270,7 @@ def main():
     try:
         with open(LEIAME, encoding="utf-8") as fp:
             leiame = fp.read()
-        faltas = [t for t in (os.path.basename(HTML), "qa_capstone.py", "render_capstone.py", "coleta.py", "server.mjs", "sonda_capstone.py") if t not in leiame]
+        faltas = [t for t in (os.path.basename(HTML), "qa_capstone.py", "render_capstone.py", "coleta.py", "server.mjs", "sonda_capstone.py", "access_test.mjs") if t not in leiame]
         print("      " + ("ok" if not faltas else "faltam: " + ", ".join(faltas)))
         if faltas:
             falhas.append("documentacao")
