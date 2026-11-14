@@ -75,12 +75,14 @@ No multi-agent setup: one conversation produces one structured answer. Splitting
 ## The 22 fields
 | Group | Fields |
 |---|---|
-| Conversation (per-conversation) | call_summary, objection, commitment |
-| Next step | next_step, follow_up_owner (roster), follow_up_due_date (YYYY-MM-DD) |
-| Qualification (MEDDPICC) | metrics (M), decision_maker = economic buyer (E), decision_criteria (D), decision_process (D), paper_process (P), customer_need = pain (I), champion (C), competitors = competition (C) |
-| Scope and budget | seats (integer), departments (from a list), integrations, budget (USD, customer-stated), go_live_target (YYYY-MM) |
-| Company profile (client record) | employee_count (integer), current_solution |
+| Conversation (per-conversation) | call_summary (text), objection (picklist, several), commitment (text) |
+| Next step | next_step (text), follow_up_owner (roster), follow_up_due_date (YYYY-MM-DD) |
+| Qualification (MEDDPICC) | metrics (M, text), decision_maker = economic buyer (E, a contact), decision_criteria (D, picklist), decision_process (D, text), paper_process (P, picklist), customer_need = pain (I, picklist), champion (C, a contact), competitors = competition (C, picklist) |
+| Scope and budget | seats (integer), departments (picklist), integrations (picklist), budget (one band, customer-stated), go_live_target (YYYY-MM) |
+| Company profile (client record) | employee_count = company size (one band), current_solution (picklist) |
 | Stage | stage (one step forward at most, never Closed) |
+
+**Schema v4 (31/10): picklists.** Like the custom fields of a sales CRM such as Pipedrive, ten fields take fixed options from `agent/field_schema.json` (`options`; several joined by `; `), with `Other: <few words>` where `allow_other` is true. The category goes in the value and the specifics the conversation gave (the system's name, the exact figure, who signs) in the field's note. Budget and company size are bands (a boundary figure goes to the higher band). The validator keeps only listed options, turns an unlisted item into `Other: ...` with a note where Other is allowed, and drops it where it is not. `scripts/migrate_schema_v4.py` mapped every old value by hand.
 
 Seller-only, never proposed: deal amount, close date, probability, discount, price, contract term, owner, contacts. **Budget is not the deal amount.** Economic buyer and champion must be identified customer-side people, never an unattributed voice.
 
@@ -106,16 +108,35 @@ Stages: `New Lead → Qualified Opportunity → Solution → Proposal → Negoti
 ## How the guardrails work
 1. **Before the model** (code): the conversation is read and attributed (one open opportunity, a new one, or the seller chooses); the seller can read the opportunity; the transcript is usable (with a booked length: under 60% **and** cut mid-sentence; without one: cut mid-sentence; chats are never cut); creating an opportunity is allowed by the permissions.
 2. **Model**: proposes per field with line-cited quotes, following `policies/`.
-3. **After the model** (code): each quote must sit on the line it cites; contradictory only on seller-approved state fields; owner in the roster; dates, months, integers, departments and budget in format; economic buyer and champion on the customer side and never unattributed; the stage one step forward and never Closed; seller-only and turned-off fields dropped; a value equal to the approved one marked unchanged. Every correction is listed in `validation_notes`.
+3. **After the model** (code): each quote must sit on the line it cites; contradictory only on seller-approved state fields; owner in the roster; dates, months and integers in format; picklist values among their options (Other only where allowed); economic buyer and champion on the customer side and never unattributed; the stage one step forward and never Closed; seller-only and turned-off fields dropped; a value equal to the approved one marked unchanged. Every correction is listed in `validation_notes`.
 4. **Write**: only `applyApprovedFields`, for the fields the seller decided or that are under Always allow (never a contradiction); it re-checks the seller's own values, creates the client and opportunity only after that decision, and writes each field to the opportunity or the client record. `revertWrite` undoes an automatic write.
+
+## Seller feedback
+Every CRM update and every Explore answer has a thumbs up and a thumbs down. A thumbs down asks what was wrong (a fixed list plus an optional note) and can be skipped. A rating keeps the run, the model and the seller's decision counts, never the transcript or a field value. The agent owner reads them in **Evals › Seller feedback** (sellers see their own, the manager sees the team) or with `GET /api/feedback`; the server appends each one to `.feedback/feedback.jsonl` (`ORBITA_FEEDBACK_FILE` elsewhere; never committed). On a free Render instance that file resets on every restart, so download the JSON before the weekly review.
+
+## Evals tab
+The improvement loop lives in the CRM, in **Evals** (bottom of the sidebar), for the agent owner:
+0. **Dashboard**: the configuration in production (model, effort, prompt version) and its numbers (tests passed, field accuracy, values supported by the LLM judge, fixes by the checks, cost and median time per conversation); **Experiments**, one row per configuration run over the eval set; **Accuracy by field**, a heatmap of misses per field and experiment; the **LLM judge** with its agreement with you; and the loop below.
+1. **Seller feedback**: the ratings above. Every "not right" becomes a trace to review.
+2. **Trace review**: the 29 eval traces of `eval/error_discovery` (a sample of 15 first) and the production traces sellers rated "not right". Judge each one Pass, Fail or Defer and write what went wrong in your own words (keys: arrows, 1, 2, D, U, Ctrl+Enter). This is error analysis as Hamel Husain and Shreya Shankar teach it: judge real traces before writing any automated check.
+3. **Failure modes**: group the notes into named modes and count them; the biggest is the next fix.
+4. **Eval set**: replay the 11 test conversations in the page and read the scoreboard by model (formerly Settings › Quality checks).
+
+**Experiments.** A configuration is a folder in `eval/outputs/`: `<model>` (medium effort, the current prompt), `<model>@<effort>` or `<model>@<effort>@<prompt>`. For example `ORBITA_EFFORT=low node agent/pipeline.mjs --all --model claude-sonnet-5-5 --out eval/outputs/claude-sonnet-5-5@low`, then `node eval/run_eval.mjs`, `node eval/judge.mjs` and `python mockups/dados/coleta.py`: it becomes a row of the dashboard.
+
+**LLM judge** (`eval/judge.mjs`): one failure mode, binary. For every value the agent proposes it asks whether the value is supported by what the speakers said (no added or changed fact, right person, right date), with a critique before the Pass or Fail. The code checks already prove each quote sits on its line; the judge reads whether the value says more than the quotes. Default judge Sonnet 5.5 (about USD 0.13 per experiment); its few-shot examples are written on a conversation outside the eval set. It is **not validated yet**: in Trace review each verdict has Agree / Disagree, and the dashboard turns them into true positive and true negative rates. Trust it once both pass 90% on about 20 Pass and 20 Fail checks.
+
+With the server on, labels, notes and modes are saved with `POST /api/evals` into `eval/error_discovery/error_discovery_data/annotations.json` and `patterns.json`, the same files the standalone review app (`python eval/error_discovery/server.py`, then http://127.0.0.1:8790) reads; without it they stay in the browser. The tab reads files on disk and needs no tracing service.
 
 ## Live link (Render, free)
 `render.yaml` describes one free web service that runs `node mockups/server.mjs` (the page and the live agent).
 1. render.com: sign up with GitHub, then New > Blueprint > this repository.
-2. Render asks for two secrets: `ANTHROPIC_API_KEY` and `ORBITA_ACCESS_CODE` (the code you give reviewers; the browser asks for any user name and this code as the password).
-3. The link is `https://orbita-crm.onrender.com` (or the name Render gives it). A free instance sleeps after 15 minutes without visits; the first visit then waits about a minute.
+2. Render asks for two secrets: `ANTHROPIC_API_KEY` and `ORBITA_ACCESS_CODE` (letters and digits, no spaces).
+3. Share `https://orbita-crm.onrender.com/?code=<ORBITA_ACCESS_CODE>` (or the name Render gives the service). Whoever opens it is in with one click: the server swaps the code for a cookie and drops it from the address bar. A free instance sleeps after 15 minutes without visits; the first visit then waits about a minute, so open it yourself a minute before a demo.
 
-Guards on a public deploy: every page and route asks for the access code (only `/api/health` stays open for Render's probe); model spend stops for the day at `ORBITA_DAILY_BUDGET_USD` (3 by default; 0 stops it at once); the key never reaches the browser. Each visitor's CRM lives in their own browser until the Supabase store is in. Locally the server listens on 127.0.0.1 only and asks for no code.
+Guards on a public deploy: every page and route asks for the access code (only `/api/health` stays open for Render's probe). A browser without the code sees a form; scripts may sign in with Basic auth (any user name, the code as the password). The cookie holds an HMAC of the code, so changing `ORBITA_ACCESS_CODE` signs everyone out. Model spend stops for the day at `ORBITA_DAILY_BUDGET_USD` (3 by default; 0 stops it at once); the key never reaches the browser. Each visitor's CRM lives in their own browser until the Supabase store is in. Locally the server listens on 127.0.0.1 only and asks for no code. `node mockups/access_test.mjs` proves the guard (the gate runs it).
+
+From this computer, without Render: `powershell -ExecutionPolicy Bypass -File scripts/start_tunnel.ps1` opens the server and a Cloudflare quick tunnel in their own windows and prints the link with the code. It lives only while this computer is awake and both windows stay open; every start gives a new address.
 
 The architecture explained for reviewers: `docs/orbita-agent-architecture.html`.
 

@@ -1,0 +1,11 @@
+{
+  "meeting_id": "MTG-2004",
+  "opportunity_id": "OPP-0141",
+  "source_status": "Incomplete",
+  "run_status": "Blocked",
+  "block_reason": "The transcript looks incomplete: the recording covers 9% of the scheduled 45 min and stops mid-sentence. No update will be proposed. If the meeting really ended there, confirm it and prepare the update again.",
+  "warnings": [],
+  "fields": [],
+  "ignored_out_of_scope": [],
+  "validation_notes": []
+}

@@ -23,7 +23,7 @@
     {
       "field": "objection",
       "status": "proposed",
-      "value": "No mobile signal in the fields; reps are not used to apps",
+      "value": "Mobile or offline access; User adoption and ease of use",
       "evidence": [
         {
           "quote": "The problem is there's no mobile signal in the fields.",
@@ -34,7 +34,7 @@
           "line": 10
         }
       ],
-      "note": null
+      "note": "No mobile signal in the fields; reps are not used to apps."
     },
     {
       "field": "commitment",
@@ -95,26 +95,26 @@
     {
       "field": "customer_need",
       "status": "proposed",
-      "value": "One place for every dealer visit, order and promise",
+      "value": "Visits and orders not tracked",
       "evidence": [
         {
           "quote": "We need to know which dealer was visited, what they ordered and what was promised, in one place.",
           "line": 7
         }
       ],
-      "note": null
+      "note": "One place for every dealer visit, order and promise."
     },
     {
       "field": "budget",
       "status": "proposed",
-      "value": "USD 70,000 per year",
+      "value": "USD 50k-100k per year",
       "evidence": [
         {
           "quote": "About seventy thousand dollars a year.",
           "line": 20
         }
       ],
-      "note": null
+      "note": "USD 70,000 per year."
     },
     {
       "field": "decision_maker",
@@ -162,50 +162,50 @@
     {
       "field": "decision_criteria",
       "status": "proposed",
-      "value": "Works offline; GPS visit check-in; dealer visit and order records",
+      "value": "Offline mode; Visit and activity tracking; Orders and quotes",
       "evidence": [
         {
           "quote": "Then it must work offline and have the GPS check-in, those two are non-negotiable.",
           "line": 12
         }
       ],
-      "note": null
+      "note": "Works offline; GPS check-in at each visit; dealer visit and order records."
     },
     {
       "field": "integrations",
       "status": "proposed",
-      "value": "Orion ERP",
+      "value": "ERP",
       "evidence": [
         {
           "quote": "Our ERP is Orion ERP. The dealer orders need to flow there.",
           "line": 14
         }
       ],
-      "note": null
+      "note": "Orion ERP."
     },
     {
       "field": "employee_count",
       "status": "proposed",
-      "value": "450",
+      "value": "200-499",
       "evidence": [
         {
           "quote": "We're about four hundred and fifty people.",
           "line": 16
         }
       ],
-      "note": null
+      "note": "About 450 employees."
     },
     {
       "field": "current_solution",
       "status": "proposed",
-      "value": "Paper visit reports typed into a spreadsheet",
+      "value": "Paper forms; Spreadsheets",
       "evidence": [
         {
           "quote": "After each visit the rep fills in a paper report, and on Friday someone types it into a spreadsheet.",
           "line": 5
         }
       ],
-      "note": null
+      "note": "Paper visit reports typed into a spreadsheet."
     },
     {
       "field": "stage",

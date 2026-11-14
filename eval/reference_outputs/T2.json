@@ -23,14 +23,14 @@
     {
       "field": "objection",
       "status": "proposed",
-      "value": "A previous BI tool failed because it was too complicated and the store teams stopped using it",
+      "value": "User adoption and ease of use",
       "evidence": [
         {
           "quote": "It was too complicated and the store teams stopped using it after a month.",
           "line": 12
         }
       ],
-      "note": null
+      "note": "A previous BI tool failed because it was too complicated and the store teams stopped using it."
     },
     {
       "field": "commitment",
@@ -71,14 +71,14 @@
     {
       "field": "customer_need",
       "status": "proposed",
-      "value": "One place to manage franchisees and wholesale buyers, with their orders, visits and complaints, instead of WhatsApp groups",
+      "value": "Customer data scattered across spreadsheets and inboxes; Visits and orders not tracked",
       "evidence": [
         {
           "quote": "One place for the franchisees and the wholesale buyers, instead of fifty WhatsApp groups.",
           "line": 7
         }
       ],
-      "note": null
+      "note": "Franchisees and wholesale buyers managed in WhatsApp groups: orders, visits and complaints."
     },
     {
       "field": "budget",
@@ -95,19 +95,19 @@
     {
       "field": "employee_count",
       "status": "proposed",
-      "value": "1200",
+      "value": "1000-4999",
       "evidence": [
         {
           "quote": "About one thousand two hundred employees, most of them in the stores.",
           "line": 9
         }
       ],
-      "note": null
+      "note": "About 1,200 employees."
     },
     {
       "field": "current_solution",
       "status": "proposed",
-      "value": "WhatsApp groups and spreadsheets",
+      "value": "WhatsApp groups; Spreadsheets",
       "evidence": [
         {
           "quote": "Today all of that runs on WhatsApp groups and spreadsheets.",

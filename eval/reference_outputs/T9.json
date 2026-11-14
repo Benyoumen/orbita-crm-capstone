@@ -23,14 +23,14 @@
     {
       "field": "objection",
       "status": "proposed",
-      "value": "Student data must stay in Brazil; a data protection assessment is required before go-live",
+      "value": "Data residency and privacy; Security or IT review",
       "evidence": [
         {
           "quote": "It must stay in Brazil, and we need a data protection assessment before anything goes live.",
           "line": 14
         }
       ],
-      "note": null
+      "note": "Student data must stay in Brazil; a data protection assessment comes before go-live."
     },
     {
       "field": "commitment",
@@ -91,14 +91,14 @@
     {
       "field": "budget",
       "status": "proposed",
-      "value": "USD 110,000-130,000 per year",
+      "value": "USD 100k-150k per year",
       "evidence": [
         {
           "quote": "We've approved between one hundred and ten and one hundred and thirty thousand dollars a year.",
           "line": 20
         }
       ],
-      "note": null
+      "note": "USD 110,000-130,000 per year."
     },
     {
       "field": "decision_maker",
@@ -183,19 +183,19 @@
     {
       "field": "decision_criteria",
       "status": "proposed",
-      "value": "Lead capture from campaigns; counsellor follow-up lists; enrolment funnel per campus; WhatsApp conversations on the prospect record",
+      "value": "Lead capture and routing; Tasks and follow-up reminders; Pipeline management; WhatsApp messaging",
       "evidence": [
         {
           "quote": "Capture the leads from our campaigns, give each counsellor a follow-up list, show the enrolment funnel per campus, and keep the WhatsApp conversations with the prospect's record.",
           "line": 10
         }
       ],
-      "note": null
+      "note": "Leads from campaigns; counsellor follow-up lists; enrolment funnel per campus; WhatsApp on the prospect record."
     },
     {
       "field": "integrations",
       "status": "proposed",
-      "value": "Campus One student information system; Mailwave; WhatsApp business account",
+      "value": "Industry or in-house system; Marketing automation; WhatsApp Business",
       "evidence": [
         {
           "quote": "it has to connect to Campus One, our student information system",
@@ -210,19 +210,19 @@
           "line": 13
         }
       ],
-      "note": null
+      "note": "Campus One student information system; Mailwave; WhatsApp business account."
     },
     {
       "field": "current_solution",
       "status": "proposed",
-      "value": "Spreadsheets per campus and WhatsApp",
+      "value": "Spreadsheets; WhatsApp groups",
       "evidence": [
         {
           "quote": "Each campus has its own spreadsheets, and a lot happens on WhatsApp.",
           "line": 7
         }
       ],
-      "note": null
+      "note": "Spreadsheets per campus and WhatsApp."
     },
     {
       "field": "stage",
@@ -255,14 +255,14 @@
     {
       "field": "paper_process",
       "status": "proposed",
-      "value": "Procurement needs the standard contract and the data processing agreement two weeks before signature",
+      "value": "Procurement review; Data processing agreement",
       "evidence": [
         {
           "quote": "procurement will need your standard contract and the data processing agreement two weeks before the signature.",
           "line": 18
         }
       ],
-      "note": null
+      "note": "Procurement needs the standard contract and the data processing agreement two weeks before signature."
     }
   ],
   "ignored_out_of_scope": []

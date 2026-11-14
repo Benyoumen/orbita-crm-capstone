@@ -21,3 +21,12 @@ desktop.ini
 
 # atomic-write temp files
 *.tmp
+
+# seller ratings collected by the local server (thumbs up / down): pilot data, never committed
+.feedback/
+
+# impeccable critique snapshots (local archive)
+.impeccable/
+
+# Python bytecode
+__pycache__/

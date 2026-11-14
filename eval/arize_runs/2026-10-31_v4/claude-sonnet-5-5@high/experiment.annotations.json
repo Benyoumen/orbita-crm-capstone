@@ -1,0 +1,112 @@
+[
+ {
+  "record_id": "01a19376-81e7-7cd0-9fa6-b4c6de0791f2",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-81e7-7ce1-a993-f8fb7ade03cc",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-81e7-7ceb-803c-1017f5e82aab",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-81e7-7cf4-8290-1d1d78b8b632",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-81e7-7cfc-bd30-880f765c2301",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-81e7-7d04-8e88-dcb2bb1d5249",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-81e7-7d0d-af52-d9fdbae17689",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-81e7-7d15-aee1-c78fffdfcf28",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-81e7-7d23-9ab5-a0bc724a61b0",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "decision_criteria: missing key facts [[\"Lead capture and routing\"],[\"Pipeline management\"],[\"WhatsApp messaging\"]]"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-81e7-7d31-bb87-cb501cfeffb3",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-81e7-7d3a-9cff-aeb0799df124",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ }
+]

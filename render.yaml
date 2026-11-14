@@ -20,6 +20,6 @@ services:
         value: "3"
       - key: ANTHROPIC_API_KEY
         sync: false
-      # the code you give your reviewers (browser sign-in: any user name, this code as the password)
+      # the code in the link you share: https://<service>.onrender.com/?code=<this code> (letters and digits)
       - key: ORBITA_ACCESS_CODE
         sync: false

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Call-to-CRM agent output (sparse, line-cited). Generated from agent/field_schema.json by scripts/build_data.mjs.",
+  "title": "Orbita CRM Agent output (sparse, line-cited). Generated from agent/field_schema.json by scripts/build_data.mjs.",
   "type": "object",
   "additionalProperties": false,
   "required": [

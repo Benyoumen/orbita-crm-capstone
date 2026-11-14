@@ -19,14 +19,14 @@
     {
       "field": "objection",
       "status": "proposed",
-      "value": "Small, busy team; cannot take on a heavy implementation",
+      "value": "Implementation effort",
       "evidence": [
         {
           "quote": "my team is small and busy. We cannot take on a heavy implementation.",
           "line": 6
         }
       ],
-      "note": null
+      "note": "Small, busy team; cannot take on a heavy implementation."
     },
     {
       "field": "commitment",
@@ -79,14 +79,14 @@
     {
       "field": "customer_need",
       "status": "proposed",
-      "value": "One place for every group request and corporate account, with follow-up reminders",
+      "value": "Customer data scattered across spreadsheets and inboxes; Missed follow-ups or renewals",
       "evidence": [
         {
           "quote": "What I want is one place where my team sees every group request and every corporate account, with reminders to follow up.",
           "line": 3
         }
       ],
-      "note": null
+      "note": "One place for every group request and corporate account, with follow-up reminders."
     },
     {
       "field": "seats",
@@ -115,31 +115,31 @@
     {
       "field": "decision_criteria",
       "status": "proposed",
-      "value": "Shared view of group requests and corporate accounts; follow-up reminders",
+      "value": "Pipeline management; Tasks and follow-up reminders",
       "evidence": [
         {
           "quote": "one place where my team sees every group request and every corporate account, with reminders to follow up.",
           "line": 3
         }
       ],
-      "note": null
+      "note": "Shared view of group requests and corporate accounts; follow-up reminders."
     },
     {
       "field": "employee_count",
       "status": "proposed",
-      "value": "600",
+      "value": "500-999",
       "evidence": [
         {
           "quote": "The whole company is about six hundred people across our nine hotels.",
           "line": 5
         }
       ],
-      "note": null
+      "note": "About 600 employees."
     },
     {
       "field": "current_solution",
       "status": "proposed",
-      "value": "Email and spreadsheets",
+      "value": "Email and shared inbox; Spreadsheets",
       "evidence": [
         {
           "quote": "Corporate and event requests arrive by email, we track them in spreadsheets",

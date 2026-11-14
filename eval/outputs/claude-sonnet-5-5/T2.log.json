@@ -1,8 +1,8 @@
 [
   {
-    "run_id": "RUN-1793222702496",
+    "run_id": "RUN-1793473895718",
     "seq": 1,
-    "timestamp": "2026-10-28T21:25:02.498Z",
+    "timestamp": "2026-10-31T19:11:35.720Z",
     "actor": "system",
     "action": "run_created",
     "object_id": "MTG-2002",
@@ -10,9 +10,9 @@
     "detail": "user=U01"
   },
   {
-    "run_id": "RUN-1793222702496",
+    "run_id": "RUN-1793473895718",
     "seq": 2,
-    "timestamp": "2026-10-28T21:25:02.498Z",
+    "timestamp": "2026-10-31T19:11:35.720Z",
     "actor": "system",
     "action": "access_checked",
     "object_id": "OPP-0141",
@@ -20,9 +20,9 @@
     "detail": "user=U01"
   },
   {
-    "run_id": "RUN-1793222702496",
+    "run_id": "RUN-1793473895718",
     "seq": 3,
-    "timestamp": "2026-10-28T21:25:02.498Z",
+    "timestamp": "2026-10-31T19:11:35.720Z",
     "actor": "system",
     "action": "opportunity_read",
     "object_id": "OPP-0141",
@@ -30,9 +30,9 @@
     "detail": "stage=New Lead"
   },
   {
-    "run_id": "RUN-1793222702496",
+    "run_id": "RUN-1793473895718",
     "seq": 4,
-    "timestamp": "2026-10-28T21:25:02.499Z",
+    "timestamp": "2026-10-31T19:11:35.721Z",
     "actor": "system",
     "action": "transcript_checked",
     "object_id": "MTG-2002",
@@ -40,9 +40,9 @@
     "detail": "status=complete; coverage=93% of 30 min; ends_mid_sentence=false"
   },
   {
-    "run_id": "RUN-1793222702496",
+    "run_id": "RUN-1793473895718",
     "seq": 5,
-    "timestamp": "2026-10-28T21:25:02.499Z",
+    "timestamp": "2026-10-31T19:11:35.721Z",
     "actor": "system",
     "action": "agent_called",
     "object_id": "MTG-2002",
@@ -50,19 +50,19 @@
     "detail": "claude-sonnet-5-5 · effort medium"
   },
   {
-    "run_id": "RUN-1793222702496",
+    "run_id": "RUN-1793473895718",
     "seq": 6,
-    "timestamp": "2026-10-28T21:25:09.918Z",
+    "timestamp": "2026-10-31T19:11:43.832Z",
     "actor": "system",
     "action": "agent_answered",
     "object_id": "MTG-2002",
     "outcome": "ok",
-    "detail": "in=1653 cache_read=11814 cache_write=0 out=1137 cost=$0.0170"
+    "detail": "in=1653 cache_read=13543 cache_write=0 out=1473 cost=$0.0207"
   },
   {
-    "run_id": "RUN-1793222702496",
+    "run_id": "RUN-1793473895718",
     "seq": 7,
-    "timestamp": "2026-10-28T21:25:09.919Z",
+    "timestamp": "2026-10-31T19:11:43.833Z",
     "actor": "system",
     "action": "output_validated",
     "object_id": "MTG-2002",
@@ -70,13 +70,13 @@
     "detail": "0 correction(s)"
   },
   {
-    "run_id": "RUN-1793222702496",
+    "run_id": "RUN-1793473895718",
     "seq": 8,
-    "timestamp": "2026-10-28T21:25:09.919Z",
+    "timestamp": "2026-10-31T19:11:43.833Z",
     "actor": "agent",
     "action": "proposals_generated",
     "object_id": "OPP-0141",
     "outcome": "ok",
-    "detail": "call_summary=proposed, objection=proposed, commitment=proposed, next_step=no_evidence, follow_up_owner=no_evidence, follow_up_due_date=no_evidence, metrics=no_evidence, decision_maker=no_evidence, decision_criteria=no_evidence, decision_process=no_evidence, paper_process=no_evidence, customer_need=proposed, champion=no_evidence, competitors=no_evidence, seats=no_evidence, departments=no_evidence, integrations=no_evidence, budget=proposed, go_live_target=no_evidence, employee_count=proposed, current_solution=proposed, stage=no_evidence"
+    "detail": "call_summary=proposed, objection=proposed, commitment=proposed, next_step=no_evidence, follow_up_owner=proposed, follow_up_due_date=no_evidence, metrics=no_evidence, decision_maker=no_evidence, decision_criteria=proposed, decision_process=no_evidence, paper_process=no_evidence, customer_need=proposed, champion=no_evidence, competitors=no_evidence, seats=no_evidence, departments=no_evidence, integrations=no_evidence, budget=proposed, go_live_target=no_evidence, employee_count=proposed, current_solution=proposed, stage=no_evidence"
   }
 ]

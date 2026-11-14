@@ -1,0 +1,359 @@
+{
+  "meeting_id": "MTG-2011",
+  "opportunity_id": "OPP-0149",
+  "client_id": "CLI-009",
+  "target": null,
+  "source_status": "Ready",
+  "run_status": "Awaiting review",
+  "block_reason": null,
+  "warnings": [],
+  "fields": [
+    {
+      "field": "call_summary",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": "Pricing review with the Commercial VP and Procurement. Procurement asked for a 12% discount on a 3-year term; the VP accepted the scope.",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Revised commercial terms with 8% off on the three-year term were emailed and accepted by the Commercial VP. He asked for the contract for signature: Talita routes it through procurement on Monday, then he signs. IT needs single sign-on with Microsoft Entra from day one. Ana will send the contract tomorrow morning.",
+      "evidence": [
+        {
+          "line": 1,
+          "timestamp": "2026-11-05 18:02",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I've just emailed you the revised commercial terms: 8% off for the three-year term"
+        },
+        {
+          "line": 2,
+          "timestamp": "2026-11-05 18:40",
+          "speaker": "Henrique Prado (Solaris Energy)",
+          "quote": "We agree with the terms."
+        },
+        {
+          "line": 3,
+          "timestamp": "2026-11-05 18:41",
+          "speaker": "Henrique Prado (Solaris Energy)",
+          "quote": "Please send me the contract for signature."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "objection",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": "Price or discount",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "commitment",
+      "group": "conversation",
+      "record": "opportunity",
+      "current_value": "Orbita (Ana): send the revised commercial terms by 6 Nov",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Orbita (Ana): send the contract for signature by 2026-11-06",
+      "evidence": [
+        {
+          "line": 4,
+          "timestamp": "2026-11-05 18:45",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you the contract tomorrow morning."
+        }
+      ],
+      "note": "'Tomorrow morning' resolved from the message date, Thu 2026-11-05."
+    },
+    {
+      "field": "next_step",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": "Commercial terms review with Procurement on 10 Nov",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Ana sends the contract for signature on 2026-11-06; Talita routes it through procurement on Mon 2026-11-09",
+      "evidence": [
+        {
+          "line": 4,
+          "timestamp": "2026-11-05 18:45",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you the contract tomorrow morning."
+        },
+        {
+          "line": 3,
+          "timestamp": "2026-11-05 18:41",
+          "speaker": "Henrique Prado (Solaris Energy)",
+          "quote": "Talita will route it through procurement on Monday and I'll sign right after that."
+        }
+      ],
+      "note": "Henrique Prado signs right after procurement routing."
+    },
+    {
+      "field": "follow_up_owner",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": "Ana Ribeiro",
+      "current_approved": true,
+      "status": "unchanged",
+      "proposed_value": "Ana Ribeiro",
+      "evidence": [
+        {
+          "line": 4,
+          "timestamp": "2026-11-05 18:45",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you the contract tomorrow morning."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "follow_up_due_date",
+      "group": "next_step",
+      "record": "opportunity",
+      "current_value": "2026-11-10",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "2026-11-06",
+      "evidence": [
+        {
+          "line": 4,
+          "timestamp": "2026-11-05 18:45",
+          "speaker": "Ana Ribeiro (Orbita)",
+          "quote": "I'll send you the contract tomorrow morning."
+        }
+      ],
+      "note": "'Tomorrow morning' resolved from the message date, Thu 2026-11-05."
+    },
+    {
+      "field": "metrics",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_maker",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Henrique Prado (Commercial VP)",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "decision_criteria",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Renewal and contract tracking; Account hierarchy; Forecasting; Reporting and dashboards",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Renewal and contract tracking; Account hierarchy; Reporting and dashboards; Forecasting; Integrations and API",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "2026-11-05 18:46",
+          "speaker": "Henrique Prado (Solaris Energy)",
+          "quote": "our IT team needs single sign-on with Microsoft Entra from day one."
+        }
+      ],
+      "note": "Single sign-on with Microsoft Entra from day one."
+    },
+    {
+      "field": "decision_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Procurement negotiates the terms; the Commercial VP signs; Legal reviews the contract",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "paper_process",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "proposed",
+      "proposed_value": "Signature by the economic buyer; Procurement review",
+      "evidence": [
+        {
+          "line": 3,
+          "timestamp": "2026-11-05 18:41",
+          "speaker": "Henrique Prado (Solaris Energy)",
+          "quote": "Talita will route it through procurement on Monday and I'll sign right after that."
+        }
+      ],
+      "note": "Talita Moura (Procurement Lead) routes the contract through procurement on Mon 2026-11-09; Henrique Prado (Commercial VP) signs right after."
+    },
+    {
+      "field": "customer_need",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Legacy system nobody likes; Teams do not share one view",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "champion",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": null,
+      "current_approved": false,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "competitors",
+      "group": "qualification",
+      "record": "opportunity",
+      "current_value": "Northwind CRM",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "seats",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "110",
+      "current_approved": true,
+      "status": "unchanged",
+      "proposed_value": "110",
+      "evidence": [
+        {
+          "line": 7,
+          "timestamp": "2026-11-05 18:50",
+          "speaker": "Henrique Prado (Solaris Energy)",
+          "quote": "That's the list of the 110 users for the accounts, by the way."
+        }
+      ],
+      "note": null
+    },
+    {
+      "field": "departments",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "Sales; Customer Success; Leadership",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "integrations",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "Billing system; Email and calendar",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Email and calendar; Billing system; Single sign-on",
+      "evidence": [
+        {
+          "line": 5,
+          "timestamp": "2026-11-05 18:46",
+          "speaker": "Henrique Prado (Solaris Energy)",
+          "quote": "our IT team needs single sign-on with Microsoft Entra from day one."
+        }
+      ],
+      "note": "Single sign-on with Microsoft Entra from day one. Existing: billing system; email and calendar."
+    },
+    {
+      "field": "budget",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "USD 150k-250k per year",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "go_live_target",
+      "group": "scope",
+      "record": "opportunity",
+      "current_value": "2027-02",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "employee_count",
+      "group": "company",
+      "record": "client",
+      "current_value": "1000-4999",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "current_solution",
+      "group": "company",
+      "record": "client",
+      "current_value": "Legacy on-premise CRM",
+      "current_approved": true,
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
+    },
+    {
+      "field": "stage",
+      "group": "stage",
+      "record": "opportunity",
+      "current_value": "Negotiation",
+      "current_approved": true,
+      "status": "proposed",
+      "proposed_value": "Contract",
+      "evidence": [
+        {
+          "line": 2,
+          "timestamp": "2026-11-05 18:40",
+          "speaker": "Henrique Prado (Solaris Energy)",
+          "quote": "We agree with the terms."
+        },
+        {
+          "line": 3,
+          "timestamp": "2026-11-05 18:41",
+          "speaker": "Henrique Prado (Solaris Energy)",
+          "quote": "Please send me the contract for signature."
+        }
+      ],
+      "note": "Contract exit criteria met: the economic buyer agreed to the terms in writing and the contract was requested for signature."
+    }
+  ],
+  "ignored_out_of_scope": [],
+  "validation_notes": [],
+  "usage": {
+    "input_tokens": 1389,
+    "output_tokens": 4456,
+    "cache_read_input_tokens": 13543,
+    "cache_creation_input_tokens": 0,
+    "model": "claude-haiku-5-5",
+    "served_by": "claude-haiku-5-5",
+    "cost_usd": 0.002502
+  }
+}

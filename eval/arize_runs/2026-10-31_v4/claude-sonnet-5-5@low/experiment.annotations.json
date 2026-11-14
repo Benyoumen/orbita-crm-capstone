@@ -1,0 +1,112 @@
+[
+ {
+  "record_id": "01a19376-026c-72ae-9483-cf13cd78c2da",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-026c-72c0-bcac-9df3bbfdd598",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-026c-72cb-be73-71f38e57761c",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-026c-72d4-85ad-9354a06ccdd1",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-026c-72dd-8b82-47b40afe1b96",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "decision_criteria: missing key facts [[\"Visit and activity tracking\"],[\"sample\"]]"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-026c-72e5-a072-f6c24393e005",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-026c-72ee-9be0-beddaa43afef",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-026c-72f7-9d7e-7cef19c34543",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-026c-7300-ac04-c207c68c8662",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "decision_criteria: missing key facts [[\"Lead capture and routing\"],[\"Pipeline management\"],[\"WhatsApp messaging\"]]"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-026c-7309-80c3-f2fc6d4166f6",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19376-026c-7311-9303-867a22a37c44",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ }
+]

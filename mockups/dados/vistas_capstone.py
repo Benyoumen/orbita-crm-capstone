@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """As superficies ESTATICAS do mockup Orbita CRM: a casca (lateral com Explore, as
-vistas de vendas, o grupo Chat e Settings; a barra com o estado do agente e o menu
+vistas de vendas, os chats recentes, Evals e Settings; a barra com o estado do agente e o menu
 da conta), o esqueleto de cada vista (o JavaScript preenche as caixas), as gavetas
 (transcricao, oportunidade, cliente) e os dialogos. Stdlib pura.
 
@@ -25,7 +25,7 @@ def lateral(ic):
     <div class="ws"><span class="ws-mk" aria-hidden="true"><i></i></span><span class="ws-t"><b>Orbita CRM</b><span id="who">Ana Ribeiro</span></span></div>
   </div>
   <nav class="nav" aria-label="sections">
-    <button class="nav-i" type="button" data-view="explore" title="ask anything about your clients and opportunities">{ic("compass")}<span class="lb">Explore</span></button>
+    <button class="nav-i" type="button" data-view="explore" title="a new chat about your clients and opportunities">{ic("compass")}<span class="lb">Explore</span></button>
     <div class="nav-g">Sales</div>
     <button class="nav-i" type="button" data-view="meetings" title="add a meeting transcript or a chat; the agent prepares the CRM update">{ic("audio-lines")}<span class="lb">Meetings</span><span class="nav-n" id="nav-meetings-n"></span></button>
     <button class="nav-i" type="button" data-view="opportunities" title="the opportunities you can read, by stage of the funnel">{ic("briefcase")}<span class="lb">Opportunities</span><span class="nav-n" id="nav-opps-n"></span></button>
@@ -34,7 +34,8 @@ def lateral(ic):
     <button class="nav-i nav-novo" type="button" id="nav-newchat" title="start a new conversation in Explore">{ic("plus")}<span class="lb">New chat</span></button>
     <div class="nav-cs" id="nav-chats"></div>
     <div class="nav-foot">
-      <button class="nav-i" type="button" data-view="settings" title="permissions, agent, sources, team, activity log, quality checks and data">{ic("sliders-horizontal")}<span class="lb">Settings</span></button>
+      <button class="nav-i" type="button" data-view="evals" title="how good the agent is and how it gets better: seller feedback, trace review, failure modes, eval set">{ic("gauge")}<span class="lb">Evals</span><span class="nav-n" id="nav-evals-n"></span></button>
+      <button class="nav-i" type="button" data-view="settings" title="permissions, agent, sources, team, activity log and data">{ic("sliders-horizontal")}<span class="lb">Settings</span></button>
     </div>
   </nav>
 </aside>"""
@@ -58,6 +59,7 @@ def barra(ic):
         <button class="pi" type="button" role="radio" aria-checked="false" data-user="U02">Lucas Moreira<span class="sub">Account executive · own opportunities</span></button>
         <button class="pi" type="button" role="radio" aria-checked="false" data-user="U04">Juliana Costa<span class="sub">Sales manager · reads all opportunities</span></button>
         <div class="pop-lab">Orbita CRM</div>
+        <button class="pi" type="button" data-go="#/evals/dashboard">Evals<span class="sub">dashboard, feedback, trace review, failure modes, eval set</span></button>
         <button class="pi" type="button" data-go="#/settings/permissions">Settings<span class="sub">permissions, agent, sources, activity log</span></button>
       </div></div>
   </div>
@@ -85,16 +87,17 @@ def vistas(foto, ic):
   <section class="ex-sg" id="ex-sg-box" aria-labelledby="ex-sg-t"><h2 id="ex-sg-t">From your pipeline</h2><ul class="sg-l" id="ex-sg"></ul></section>
 </div>"""
     meetings = f"""
-<div class="ph"><div class="ph-t"><h1>Meetings</h1></div></div>
+<div class="ph"><div class="ph-t"><h1>Meetings</h1><div class="ph-c">every conversation with a client, from any channel: the agent turns each one into a CRM update you approve</div></div></div>
 <div class="strip" id="mt-strip"></div>
 <div class="pn mt-add" id="mt-add">
-  <div class="pn-h"><h2>Add a meeting</h2><span class="pn-d">a meeting transcript or a chat export · the agent prepares the CRM update · nothing is written without your permission</span></div>
+  <div class="pn-h"><span class="rvg-i hue-indigo">{ic("plus", "ico-b")}</span><h2>Add a meeting</h2><span class="pn-d">a transcript or a chat export · nothing is written without your permission</span></div>
   <div class="add-b">
     <div class="add-opp">
       <label class="fld-l" for="mt-opp">Select your opportunity</label>
       <select id="mt-opp" class="inp"></select>
-      <span class="mini" id="mt-opp-h">Leave it on detect: the agent finds the opportunity from the speakers and the company named in the conversation.</span>
+      <span class="mini" id="mt-opp-h">The agent finds the opportunity from the speakers and the company named in the conversation.</span>
     </div>
+    <div class="add-src">
     <div class="src-tabs" role="tablist" aria-label="how to add the transcript">
       <button class="seg" type="button" role="tab" id="tab-file" data-src="file" aria-selected="true" aria-controls="drop">{ic("upload", "ico-s")}Upload a file</button>
       <button class="seg" type="button" role="tab" id="tab-paste" data-src="paste" aria-selected="false" aria-controls="paste">{ic("file-text", "ico-s")}Paste text</button>
@@ -106,21 +109,23 @@ def vistas(foto, ic):
       <textarea id="paste-in" class="inp" rows="9" placeholder="Paste the conversation, one speaker per line:&#10;Ana Ribeiro: Good morning, Sofia. Thanks for the time.&#10;Sofia Martins: Good morning, Ana.&#10;(times like [00:01:02] or a WhatsApp export also work)"></textarea>
       <div class="acts"><span class="mini" id="paste-n"></span><span class="grow"></span><button class="b b-sm b-p" type="button" id="paste-go">Read the text</button></div>
     </div>
+    </div>
     <div class="draft" id="mt-draft" hidden></div>
   </div>
 </div>
-<div class="pn"><div class="pn-h"><h2>Your meetings</h2><span class="pn-n" id="mt-n"></span><span class="pn-d">most recent first</span></div>
-  <div class="tbw"><table class="tb" id="tb-meetings"><thead><tr><th>Meeting</th><th>Client · opportunity</th><th>CRM update</th><th></th></tr></thead><tbody></tbody></table></div>
+<div class="pn mt-list"><div class="pn-h"><h2>Your meetings</h2><span class="pn-n" id="mt-n"></span><span class="grow"></span>
+    <label class="srch srch-w">{ic("search", "ico-s")}<input id="mt-q" type="search" placeholder="Search meetings and transcripts" aria-label="search meetings, people, clients and what was said"></label></div>
+  <div class="tbw"><table class="tb tb-mt" id="tb-meetings"><thead><tr><th>Meeting</th><th>Client · opportunity</th><th>CRM update</th><th><span class="sr">Action</span></th></tr></thead><tbody></tbody></table></div>
 </div>"""
     review = """
-<div class="ph"><div class="ph-t" id="rev-head"><h1>Review</h1></div></div>
+<div class="ph ph-rev"><div class="ph-t" id="rev-head"><h1>Review</h1></div></div>
 <div id="rev-body"></div>"""
     opps = f"""
 <div class="ph"><div class="ph-t"><h1>Opportunities</h1><div class="ph-c" id="opps-ctx"></div></div><div class="acts"><button class="b b-s" type="button" id="opps-export" title="download the CRM as a CSV, ready to import into a spreadsheet">{ic("download", "ico-b")}Export CRM (CSV)</button></div></div>
 <div class="strip" id="opps-strip"></div>
 <div class="pn fc" id="opps-card">
   <div class="fc-bar"><span class="fgroup" id="opps-chips" role="group" aria-label="stage of the funnel"></span><span class="grow"></span>
-    <label class="srch">{ic("search", "ico-s")}<input id="opps-q" type="search" placeholder="Search client or opportunity" aria-label="search client or opportunity"></label>
+    <label class="srch srch-w">{ic("search", "ico-s")}<input id="opps-q" type="search" placeholder="Search client or opportunity" aria-label="search client or opportunity"></label>
     <label class="fsel" id="opps-owner-w"><span class="sr">Owner</span><select id="opps-owner" aria-label="owner"></select></label>
     <label class="fsel"><span class="sr">Sort by</span><select id="opps-sort" aria-label="sort by"><option value="due">Next follow-up</option><option value="amount">Highest amount</option><option value="updated">Recently updated</option><option value="qual">Thinnest qualification</option></select></label></div>
   <div id="opps-groups"></div>
@@ -128,9 +133,19 @@ def vistas(foto, ic):
 </div>"""
     clients = f"""
 <div class="ph"><div class="ph-t"><h1>Clients</h1><div class="ph-c" id="cl-ctx"></div></div></div>
-<div class="cl-bar"><label class="srch">{ic("search", "ico-s")}<input id="cl-q" type="search" placeholder="Search client, contact or industry" aria-label="search client, contact or industry"></label>
+<div class="cl-bar"><label class="srch srch-w">{ic("search", "ico-s")}<input id="cl-q" type="search" placeholder="Search client, contact or industry" aria-label="search client, contact or industry"></label>
   <span class="grow"></span><label class="fsel"><span class="sr">Sort by</span><select id="cl-sort" aria-label="sort clients by"><option value="name">Name</option><option value="pipeline">Open pipeline</option><option value="recent">Last meeting</option></select></label></div>
 <div class="cl-list" id="cl-list"></div>"""
+    evals = """
+<div class="ph"><div class="ph-t"><h1>Evals</h1><div class="ph-c">how good the agent is, and how it gets better: seller feedback, trace review, failure modes and the eval set</div></div></div>
+<div class="subnav" role="tablist" aria-label="evals" id="ev-tabs">
+  <button class="seg" type="button" role="tab" data-evtab="dashboard" aria-selected="true">Dashboard</button>
+  <button class="seg" type="button" role="tab" data-evtab="feedback" aria-selected="false">Seller feedback</button>
+  <button class="seg" type="button" role="tab" data-evtab="traces" aria-selected="false">Trace review</button>
+  <button class="seg" type="button" role="tab" data-evtab="modes" aria-selected="false">Failure modes</button>
+  <button class="seg" type="button" role="tab" data-evtab="evalset" aria-selected="false">Eval set</button>
+</div>
+<div id="ev-body"></div>"""
     settings = """
 <div class="ph"><div class="ph-t"><h1>Settings</h1><div class="ph-c" id="set-ctx">how the agent may change your CRM, where conversations come from, and who is using it</div></div></div>
 <div class="subnav" role="tablist" aria-label="settings" id="set-tabs">
@@ -139,7 +154,6 @@ def vistas(foto, ic):
   <button class="seg" type="button" role="tab" data-tab="sources" aria-selected="false">Sources</button>
   <button class="seg" type="button" role="tab" data-tab="team" aria-selected="false">Team</button>
   <button class="seg" type="button" role="tab" data-tab="activity" aria-selected="false">Activity log</button>
-  <button class="seg" type="button" role="tab" data-tab="quality" aria-selected="false">Quality checks</button>
   <button class="seg" type="button" role="tab" data-tab="data" aria-selected="false">Data</button>
 </div>
 <div id="set-body"></div>"""
@@ -149,13 +163,14 @@ def vistas(foto, ic):
         _vista("review", "Review", review),
         _vista("opportunities", "Opportunities", opps),
         _vista("clients", "Clients", clients),
+        _vista("evals", "Evals", evals),
         _vista("settings", "Settings", settings),
     ])
 
 
 def gavetas(ic):
     return f"""
-<dialog class="drw" id="drw" aria-labelledby="drw-t">
+<dialog class="drw drw-mtg" id="drw" aria-labelledby="drw-t">
   <div class="drw-in">
     <div class="drw-h"><div><h2 id="drw-t">Transcript</h2><div class="mini" id="drw-m"></div></div><button class="dlg-x" id="drw-x" type="button" aria-label="close">{ic("x", "ico-b")}</button></div>
     <div class="drw-b" id="drw-b"></div>

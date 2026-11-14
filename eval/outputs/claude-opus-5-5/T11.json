@@ -15,7 +15,7 @@
       "current_value": "Pricing review with the Commercial VP and Procurement. Procurement asked for a 12% discount on a 3-year term; the VP accepted the scope.",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "WhatsApp chat with the Commercial VP. Ana emailed revised commercial terms with 8% off for the three-year term; Henrique agreed to the terms and asked for the contract for signature. Talita will route it through procurement on Monday and Henrique will sign right after. Henrique added that IT needs single sign-on with Microsoft Entra from day one.",
+      "proposed_value": "Ana sent the revised commercial terms: 8% off for the three-year term. Henrique Prado (Commercial VP) agreed to the terms and asked for the contract for signature; Talita will route it through procurement on Monday and he will sign right after. IT needs single sign-on with Microsoft Entra from day one, for 110 users.",
       "evidence": [
         {
           "line": 2,
@@ -42,7 +42,7 @@
       "field": "objection",
       "group": "conversation",
       "record": "opportunity",
-      "current_value": "Procurement wants a 12% discount for a 3-year term",
+      "current_value": "Price or discount",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -56,7 +56,7 @@
       "current_value": "Orbita (Ana): send the revised commercial terms by 6 Nov",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "Orbita (Ana): send the contract by 6 Nov; Solaris Energy (Henrique): sign the contract right after procurement routing; Orbita (Beatriz): include Microsoft Entra SSO in the kickoff plan",
+      "proposed_value": "Orbita (Ana): send the contract by 6 Nov; Orbita (Beatriz): include Microsoft Entra single sign-on in the kickoff plan; Solaris Energy (Talita): route the contract through procurement on 9 Nov; Solaris Energy (Henrique): sign the contract right after procurement",
       "evidence": [
         {
           "line": 4,
@@ -65,19 +65,19 @@
           "quote": "I'll send you the contract tomorrow morning."
         },
         {
-          "line": 3,
-          "timestamp": "2026-11-05 18:41",
-          "speaker": "Henrique Prado (Solaris Energy)",
-          "quote": "Talita will route it through procurement on Monday and I'll sign right after that."
-        },
-        {
           "line": 6,
           "timestamp": "2026-11-05 18:47",
           "speaker": "Ana Ribeiro (Orbita)",
           "quote": "Beatriz, our implementation lead, will include it in the kickoff plan."
+        },
+        {
+          "line": 3,
+          "timestamp": "2026-11-05 18:41",
+          "speaker": "Henrique Prado (Solaris Energy)",
+          "quote": "Talita will route it through procurement on Monday and I'll sign right after that."
         }
       ],
-      "note": "'Tomorrow' resolved from the message date, Thu 2026-11-05."
+      "note": "'Tomorrow' resolved from the 2026-11-05 message; 'Monday' resolved to 2026-11-09. Talita's routing was stated by Henrique."
     },
     {
       "field": "next_step",
@@ -86,7 +86,7 @@
       "current_value": "Commercial terms review with Procurement on 10 Nov",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "Ana sends the contract for signature on 6 Nov; Talita routes it through procurement on Mon 9 Nov; Henrique signs right after",
+      "proposed_value": "Ana sends the contract on 6 Nov; Talita routes it through procurement on 9 Nov; Henrique signs right after",
       "evidence": [
         {
           "line": 3,
@@ -101,7 +101,7 @@
           "quote": "I'll send you the contract tomorrow morning."
         }
       ],
-      "note": "Replaces the approved commercial terms review on 10 Nov: terms were agreed in this chat."
+      "note": "Replaces the approved commercial terms review on 10 Nov: the terms were agreed in this chat."
     },
     {
       "field": "follow_up_owner",
@@ -164,27 +164,26 @@
           "timestamp": "2026-11-05 18:41",
           "speaker": "Henrique Prado (Solaris Energy)",
           "quote": "Talita will route it through procurement on Monday and I'll sign right after that."
+        },
+        {
+          "line": 2,
+          "timestamp": "2026-11-05 18:40",
+          "speaker": "Henrique Prado (Solaris Energy)",
+          "quote": "We agree with the terms."
         }
       ],
-      "note": null
+      "note": "Unchanged: Henrique agrees the terms and signs."
     },
     {
       "field": "decision_criteria",
       "group": "qualification",
       "record": "opportunity",
-      "current_value": "Contract renewals pipeline; account hierarchy; forecast dashboards",
+      "current_value": "Renewal and contract tracking; Account hierarchy; Forecasting; Reporting and dashboards",
       "current_approved": true,
-      "status": "proposed",
-      "proposed_value": "Contract renewals pipeline; account hierarchy; forecast dashboards; single sign-on with Microsoft Entra from day one",
-      "evidence": [
-        {
-          "line": 5,
-          "timestamp": "2026-11-05 18:46",
-          "speaker": "Henrique Prado (Solaris Energy)",
-          "quote": "our IT team needs single sign-on with Microsoft Entra from day one."
-        }
-      ],
-      "note": "Full updated list: SSO requirement added."
+      "status": "no_evidence",
+      "proposed_value": null,
+      "evidence": [],
+      "note": null
     },
     {
       "field": "decision_process",
@@ -204,7 +203,7 @@
       "current_value": null,
       "current_approved": false,
       "status": "proposed",
-      "proposed_value": "Talita routes the contract through procurement on Monday; then Henrique Prado (Commercial VP) signs",
+      "proposed_value": "Signature by the economic buyer; Procurement review",
       "evidence": [
         {
           "line": 3,
@@ -213,13 +212,13 @@
           "quote": "Talita will route it through procurement on Monday and I'll sign right after that."
         }
       ],
-      "note": null
+      "note": "Talita Moura routes the contract through procurement on Mon 2026-11-09; Henrique Prado signs right after."
     },
     {
       "field": "customer_need",
       "group": "qualification",
       "record": "opportunity",
-      "current_value": "Replace the 2014 on-premise CRM with one shared view of B2B energy contracts and renewals",
+      "current_value": "Legacy system nobody likes; Teams do not share one view",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -281,10 +280,10 @@
       "field": "integrations",
       "group": "scope",
       "record": "opportunity",
-      "current_value": "Billing system; email and calendar",
+      "current_value": "Billing system; Email and calendar",
       "current_approved": true,
       "status": "proposed",
-      "proposed_value": "Billing system; email and calendar; Microsoft Entra (single sign-on)",
+      "proposed_value": "Email and calendar; Billing system; Single sign-on",
       "evidence": [
         {
           "line": 5,
@@ -293,13 +292,13 @@
           "quote": "our IT team needs single sign-on with Microsoft Entra from day one."
         }
       ],
-      "note": "Full updated list: Microsoft Entra SSO added."
+      "note": "Single sign-on with Microsoft Entra, required from day one; existing integrations kept."
     },
     {
       "field": "budget",
       "group": "scope",
       "record": "opportunity",
-      "current_value": "USD 150,000 per year",
+      "current_value": "USD 150k-250k per year",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -321,7 +320,7 @@
       "field": "employee_count",
       "group": "company",
       "record": "client",
-      "current_value": "1800",
+      "current_value": "1000-4999",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -332,7 +331,7 @@
       "field": "current_solution",
       "group": "company",
       "record": "client",
-      "current_value": "Legacy on-premise CRM from 2014",
+      "current_value": "Legacy on-premise CRM",
       "current_approved": true,
       "status": "no_evidence",
       "proposed_value": null,
@@ -361,26 +360,26 @@
           "quote": "Please send me the contract for signature."
         }
       ],
-      "note": "Negotiation exit criteria met: the economic buyer (Henrique Prado) agreed to the terms in writing and requested the contract for signature."
+      "note": "Negotiation exit criteria met: the economic buyer (Henrique Prado, Commercial VP) agreed to the terms in writing and requested the contract for signature."
     }
   ],
   "ignored_out_of_scope": [
     {
-      "line": 2,
-      "timestamp": "2026-11-05 18:40",
-      "speaker": "Henrique Prado (Solaris Energy)",
-      "quote": "Eight percent on three years works for us.",
-      "reason": "Discount and contract term are seller-only fields; not proposed."
+      "line": 1,
+      "timestamp": "2026-11-05 18:02",
+      "speaker": "Ana Ribeiro (Orbita)",
+      "quote": "I've just emailed you the revised commercial terms: 8% off for the three-year term, as we discussed with Talita.",
+      "reason": "Discount and contract term are seller-only fields."
     }
   ],
   "validation_notes": [],
   "usage": {
-    "input_tokens": 1408,
-    "output_tokens": 3118,
-    "cache_read_input_tokens": 11814,
+    "input_tokens": 1389,
+    "output_tokens": 2864,
+    "cache_read_input_tokens": 13543,
     "cache_creation_input_tokens": 0,
     "model": "claude-opus-5-5",
     "served_by": "claude-opus-5-5",
-    "cost_usd": 0.070355
+    "cost_usd": 0.065545
   }
 }

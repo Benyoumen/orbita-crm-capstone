@@ -14,7 +14,9 @@
   3. SERVIDOR          sobe server.mjs --mock numa porta de teste e faz o laco pela
                        porta HTTP: a atualizacao vem do pipeline.mjs do KIT (resultados
                        salvos, sem chave), o Explore responde pela rota /api/explore com
-                       o mesmo controle de acesso, e conversa nova sem chave e recusada
+                       o mesmo controle de acesso, e conversa nova sem chave e recusada;
+                       e o acesso do link publico (access_test.mjs): codigo no link vira
+                       cookie, sem codigo o navegador ve o formulario
   4. DETECTOR          antipadroes visuais (impeccable detect.mjs), com a allowlist
                        do que ja foi decidido na v5 (a Inter embutida)
   5. DOCUMENTACAO      o LEIAME cita o arquivo gerado e os comandos deste portao
@@ -87,7 +89,24 @@ SERVIDOR_ROTEIRO = r"""
     check('S every field of the schema', qq('#tb-rev tr[data-field]').length === FIELDS.length);
     check('S Always allow wrote on the page after the server answered', FIELDS.filter(k => DEF[k].permission === 'auto').every(k => fv(oppOf('OPP-0142'), k).value));
     await approveAll(); await submit('S');
-    check('S Submit wrote the opportunity and the client record', fv(oppOf('OPP-0142'), 'stage').value === 'Solution' && fv(cliOf('CLI-001'), 'employee_count').value === '850');
+    check('S Submit wrote the opportunity and the client record', fv(oppOf('OPP-0142'), 'stage').value === 'Solution' && fv(cliOf('CLI-001'), 'employee_count').value === '500-999');
+    q('#rev-body .rev-fb [data-rate="down"]').click(); await wait(10);
+    q('#rev-body .rev-fb input[value="wrong_values"]').click(); q('#rev-body .rev-fb [data-fb-send]').click();
+    await until(() => CRM.state().feedback[0] && CRM.state().feedback[0].sent && CRM.state().feedback[0].synced, 'feedback synced');
+    const fbs = await fetch(window.CAPSTONE_API + '/api/feedback').then(x => x.json());
+    check('S a thumbs down reaches the feedback file on the server, latest version only', fbs.count === 1 && fbs.items[0].reason === 'wrong_values' && fbs.items[0].run_id === id && fbs.items[0].sent === true, JSON.stringify(fbs).slice(0, 160));
+    const junk = await fetch(window.CAPSTONE_API + '/api/feedback', {method: 'POST', headers: {'content-type': 'application/json'}, body: JSON.stringify({feedback: {uid: 'x', rating: 'meh', transcript: 'secret'}})});
+    check('S the server refuses a malformed rating', junk.status === 400);
+    // Evals: a label and a note reach the review app's files (annotations.json, patterns.json) through the server
+    const tr = FOTO.evals.sample[0];
+    CRM.evSetLabel(tr, 'fail'); CRM.evSetNote(tr, 'The follow-up date came from a weekday nobody confirmed');
+    CRM.evAddMode('Unconfirmed follow-up date', ''); CRM.evAssign(CRM.state().evals.ann.find(a => a.record_id === tr).id, CRM.state().evals.modes[0].id);
+    CRM.state().evals.jl = {[tr + ':call_summary']: 'disagree'}; CRM.evSetNote(tr, 'The follow-up date came from a weekday nobody confirmed (checked)');
+    await until(() => CRM.ui().ev.saved === 'disk', 'evals saved on disk');
+    const ev = await fetch(window.CAPSTONE_API + '/api/evals').then(x => x.json());
+    check('S trace labels, notes and failure modes are saved where the review app reads them', ev.labels[tr] && ev.labels[tr].verdict === 'fail' && ev.annotations.some(a => a.record_id === tr && a.block === 'trace' && /weekday/.test(a.note)) && ev.modes.length === 1 && ev.modes[0].annotation_ids.length === 1 && ev.judge_labels[tr + ':call_summary'] === 'disagree', JSON.stringify(ev).slice(0, 200));
+    const junk2 = await fetch(window.CAPSTONE_API + '/api/evals', {method: 'POST', headers: {'content-type': 'application/json'}, body: JSON.stringify({labels: {x: 1}})});
+    check('S the server refuses a malformed evals save', junk2.status === 400);
     const id5 = await addRun(T.T5);
     check('S a new client through the server: the request comes back with the answer', !!runOf(id5).output.target && runOf(id5).output.target.client_name === 'Delta Pharma' && !!q('#rev-new [data-create]'));
     const id8 = await addRun(T.T8);
@@ -121,7 +140,11 @@ def porta_livre():
 def servidor():
     """Sobe server.mjs --mock, exercita pela porta HTTP e derruba. Devolve as linhas da sonda."""
     porta = porta_livre()
-    proc = subprocess.Popen(["node", "server.mjs", "--mock", "--port", str(porta)], cwd=MOCKUP,
+    # as avaliacoes do teste vao para um arquivo temporario, nunca para capstone/.feedback
+    fb_dir = tempfile.mkdtemp(prefix="qa_cap_fb_")
+    # e os rotulos da revisao de traces tambem: nunca em eval/error_discovery/error_discovery_data
+    env = dict(os.environ, ORBITA_FEEDBACK_FILE=os.path.join(fb_dir, "feedback.jsonl"), ORBITA_EVALS_DIR=os.path.join(fb_dir, "evals"))
+    proc = subprocess.Popen(["node", "server.mjs", "--mock", "--port", str(porta)], cwd=MOCKUP, env=env,
                             stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace")
     try:
         for _ in range(50):
@@ -164,6 +187,7 @@ def servidor():
             proc.wait(timeout=5)
         except Exception:
             pass
+        shutil.rmtree(fb_dir, ignore_errors=True)
 
 
 def main():
@@ -210,6 +234,15 @@ def main():
         print("      " + l)
     if maus or "DONE" not in linhas:
         falhas.append("servidor")
+    # o link publico: o codigo no link vira cookie, sem o codigo o navegador ve o formulario (access_test.mjs)
+    cod, texto = roda(["node", "access_test.mjs"], cwd=MOCKUP)
+    ultima = [l for l in texto.strip().splitlines() if l.strip()]
+    print("      " + (ultima[-1].strip() if ultima else "acesso: sem saida"))
+    for l in ultima:
+        if l.startswith("FAIL"):
+            print("      " + l)
+    if cod != 0:
+        falhas.append("acesso")
 
     passo(4, "Detector de antipadroes (impeccable)")
     if DETECT and os.path.isfile(DETECT):
@@ -237,7 +270,7 @@ def main():
     try:
         with open(LEIAME, encoding="utf-8") as fp:
             leiame = fp.read()
-        faltas = [t for t in (os.path.basename(HTML), "qa_capstone.py", "render_capstone.py", "coleta.py", "server.mjs", "sonda_capstone.py") if t not in leiame]
+        faltas = [t for t in (os.path.basename(HTML), "qa_capstone.py", "render_capstone.py", "coleta.py", "server.mjs", "sonda_capstone.py", "access_test.mjs") if t not in leiame]
         print("      " + ("ok" if not faltas else "faltam: " + ", ".join(faltas)))
         if faltas:
             falhas.append("documentacao")

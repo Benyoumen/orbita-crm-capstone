@@ -1,8 +1,8 @@
 [
   {
-    "run_id": "RUN-1793222829216",
+    "run_id": "RUN-1793474176547",
     "seq": 1,
-    "timestamp": "2026-10-28T21:27:09.217Z",
+    "timestamp": "2026-10-31T19:16:16.550Z",
     "actor": "system",
     "action": "run_created",
     "object_id": "MTG-2010",
@@ -10,9 +10,9 @@
     "detail": "user=U01"
   },
   {
-    "run_id": "RUN-1793222829216",
+    "run_id": "RUN-1793474176547",
     "seq": 2,
-    "timestamp": "2026-10-28T21:27:09.217Z",
+    "timestamp": "2026-10-31T19:16:16.551Z",
     "actor": "system",
     "action": "access_checked",
     "object_id": "OPP-0148",
@@ -20,9 +20,9 @@
     "detail": "user=U01"
   },
   {
-    "run_id": "RUN-1793222829216",
+    "run_id": "RUN-1793474176547",
     "seq": 3,
-    "timestamp": "2026-10-28T21:27:09.217Z",
+    "timestamp": "2026-10-31T19:16:16.551Z",
     "actor": "system",
     "action": "opportunity_read",
     "object_id": "OPP-0148",
@@ -30,9 +30,9 @@
     "detail": "stage=Qualified Opportunity"
   },
   {
-    "run_id": "RUN-1793222829216",
+    "run_id": "RUN-1793474176547",
     "seq": 4,
-    "timestamp": "2026-10-28T21:27:09.218Z",
+    "timestamp": "2026-10-31T19:16:16.551Z",
     "actor": "system",
     "action": "transcript_checked",
     "object_id": "MTG-2010",
@@ -40,9 +40,9 @@
     "detail": "status=complete; coverage=84% of 45 min; ends_mid_sentence=false"
   },
   {
-    "run_id": "RUN-1793222829216",
+    "run_id": "RUN-1793474176547",
     "seq": 5,
-    "timestamp": "2026-10-28T21:27:09.218Z",
+    "timestamp": "2026-10-31T19:16:16.551Z",
     "actor": "system",
     "action": "agent_called",
     "object_id": "MTG-2010",
@@ -50,19 +50,19 @@
     "detail": "claude-opus-5-5 · effort medium"
   },
   {
-    "run_id": "RUN-1793222829216",
+    "run_id": "RUN-1793474176547",
     "seq": 6,
-    "timestamp": "2026-10-28T21:27:30.488Z",
+    "timestamp": "2026-10-31T19:16:40.697Z",
     "actor": "system",
     "action": "agent_answered",
     "object_id": "MTG-2010",
     "outcome": "ok",
-    "detail": "in=1660 cache_read=11814 cache_write=0 out=2678 cost=$0.0626"
+    "detail": "in=1644 cache_read=13543 cache_write=0 out=3080 cost=$0.0709"
   },
   {
-    "run_id": "RUN-1793222829216",
+    "run_id": "RUN-1793474176547",
     "seq": 7,
-    "timestamp": "2026-10-28T21:27:30.489Z",
+    "timestamp": "2026-10-31T19:16:40.698Z",
     "actor": "system",
     "action": "output_validated",
     "object_id": "MTG-2010",
@@ -70,9 +70,9 @@
     "detail": "0 correction(s)"
   },
   {
-    "run_id": "RUN-1793222829216",
+    "run_id": "RUN-1793474176547",
     "seq": 8,
-    "timestamp": "2026-10-28T21:27:30.489Z",
+    "timestamp": "2026-10-31T19:16:40.698Z",
     "actor": "agent",
     "action": "proposals_generated",
     "object_id": "OPP-0148",

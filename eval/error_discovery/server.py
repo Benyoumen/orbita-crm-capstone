@@ -3,7 +3,7 @@
     python eval/error_discovery/server.py [--port 8790]
 
 Serves app.html and keeps every file in eval/error_discovery/error_discovery_data/:
-records (built), samples, annotations (the reviewer's notes), graph, patterns (the failure-mode taxonomy)
+records (built), samples, annotations (the reviewer's notes, plus the Pass / Fail labels the CRM's Evals tab writes), graph, patterns (the failure-mode taxonomy)
 and suggestions (agent proposals the reviewer accepts or dismisses).
 """
 import json
@@ -99,7 +99,11 @@ class Handler(BaseHTTPRequestHandler):
                     write("samples.json", s)
                 return self.send_json({"added": new})
             if route == "/api/annotations":
-                write("annotations.json", {"annotations": data.get("annotations", []), "reviewed": data.get("reviewed", {})})
+                # labels (Pass / Fail / Defer) and judge_labels (agree / disagree with the LLM judge) come from the Evals tab
+                # of the CRM; this app does not edit them, so it keeps them
+                cur = read("annotations.json")
+                write("annotations.json", {"annotations": data.get("annotations", []), "reviewed": data.get("reviewed", {}),
+                                           "labels": cur.get("labels", {}), "judge_labels": cur.get("judge_labels", {})})
                 return self.send_json({"ok": True})
             if route == "/api/patterns":
                 data["updated_at"] = now()

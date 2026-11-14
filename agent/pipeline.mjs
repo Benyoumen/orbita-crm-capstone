@@ -15,9 +15,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import * as core from "./core.mjs";
+import * as T from "./tracing.mjs";
 
 const KIT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 if (fs.existsSync(path.join(KIT, ".env")) && typeof process.loadEnvFile === "function") process.loadEnvFile(path.join(KIT, ".env"));
+// Arize tracing (optional, off without ARIZE_SPACE_ID and ARIZE_API_KEY): started before any Anthropic client exists
+await T.initTracing();
 const rd = (p) => fs.readFileSync(path.join(KIT, p), "utf8");
 const rj = (p) => JSON.parse(rd(p));
 
@@ -58,6 +61,8 @@ function renderExamples(team) {
 /** The static system prompt: identical for every run, so it is cached (prefix match). */
 export function systemPrompt(team = rj("data/team.json")) {
   if (SYSTEM) return SYSTEM;
+  // a candidate prompt under test (eval/arize/optimize_prompt.mjs): used whole, only when the variable is set
+  if (process.env.ORBITA_SYSTEM_PROMPT_FILE) return (SYSTEM = fs.readFileSync(path.resolve(process.env.ORBITA_SYSTEM_PROMPT_FILE), "utf8"));
   let s = rd("agent/system_prompt.md").split("\n---\n")[0].replace(/^> .*\n/gm, "");
   s = s.replace("{{policies/agent_policy.md}}", rd("policies/agent_policy.md").trim())
     .replace("{{field_dictionary}}", core.renderFieldDictionary(SCHEMA))
@@ -74,6 +79,7 @@ let anthropic = null;
 async function api() {
   if (!anthropic) {
     const { default: Anthropic } = await import("@anthropic-ai/sdk");
+    T.instrumentAnthropic(Anthropic);
     anthropic = new Anthropic(); // ANTHROPIC_API_KEY, ANTHROPIC_AUTH_TOKEN or an `ant auth login` profile
   }
   return anthropic;
@@ -121,39 +127,70 @@ function mockOutput(meetingId, lines) {
 // ------------------------------------------------------------------ orchestration
 // meeting/transcript: a conversation that is not in the kit (a dropped file, a pasted text), already normalised.
 export async function runAgent({ meetingId, opportunityId, userId, dryRun = false, mock = false, crm, model = DEFAULT_MODEL,
-  effort = EFFORT, permissions = null, meeting: given = null, transcript: givenText = null }) {
+  effort = EFFORT, permissions = null, meeting: given = null, transcript: givenText = null, caseId = null, sessionId = null, tags = null }) {
   const data = loadData(crm);
   const runId = `RUN-${Date.now()}`;
   const log = core.newLog(runId);
-  let meeting = given || data.meetings.find((m) => m.meeting_id === meetingId);
-  const transcript = givenText ?? readTranscript(meeting);
-  if (meeting) {
-    // a conversation that arrived without a link is attributed the way the platform does it (match, or a new opportunity)
-    meeting = core.attribute({ meeting, lines: core.transcriptLines(transcript || ""), data, user: data.team.find((u) => u.user_id === userId), schema: SCHEMA });
-    data.meetings = [meeting, ...data.meetings.filter((m) => m.meeting_id !== meeting.meeting_id)];
-    meetingId = meeting.meeting_id;
-  }
-  const pre = core.prepareRun({ meetingId, opportunityId, userId, data, transcript, log, schema: SCHEMA, permissions });
-  if (pre.output) { log.add("system", "run_blocked", meetingId, "blocked", pre.output.block_reason); return { runId, output: pre.output, log: log.events }; }
-  const prompt = buildPrompt({ ...pre, data, permissions });
-  if (dryRun) return { runId, output: { dry_run: true, system_chars: prompt.system.length, user_chars: prompt.user.length, lines: pre.lines.length }, log: log.events };
-  let raw; let usage = null; let served = null;
-  if (mock) {
-    log.add("system", "agent_called", meetingId, "ok", "MOCK (reference output)");
-    raw = mockOutput(meetingId, pre.lines);
-  } else {
-    log.add("system", "agent_called", meetingId, "ok", `${model} · effort ${effort}`);
-    const r = await callModel(prompt, model, effort);
-    raw = r.raw; usage = r.usage; served = r.model;
-    const cost = core.costOf(usage, model);
-    log.add("system", "agent_answered", meetingId, "ok",
-      `in=${usage.input_tokens} cache_read=${usage.cache_read_input_tokens} cache_write=${usage.cache_creation_input_tokens} out=${usage.output_tokens}${cost != null ? ` cost=$${cost.toFixed(4)}` : ""}${served !== model ? ` served_by=${served}` : ""}`);
-  }
-  const output = core.validateOutput(raw, { ...pre, team: data.team }, SCHEMA);
-  output.usage = usage ? { ...usage, model, served_by: served, cost_usd: core.costOf(usage, model) } : null;
-  log.add("system", "output_validated", meetingId, "ok", `${output.validation_notes.length} correction(s)`);
-  log.add("agent", "proposals_generated", pre.opp.opportunity_id || "new opportunity", "ok", output.fields.map((f) => `${f.field}=${f.status}`).join(", "));
-  return { runId, output, log: log.events };
+  const label = mock ? "mock" : model;
+  // one trace per run (a no-op without Arize); dry runs make no model call and are not traced
+  const NOSPAN = { setInput() {}, setOutput() {}, set() {}, ids: () => ({ traceId: null, spanId: null }) };
+  const traced = (fn) => (dryRun ? fn(NOSPAN)
+    : T.inSpan("orbita.update", { kind: "CHAIN", sessionId, userId, tags: tags || [mock ? "mock" : "live", caseId ? "eval" : "app"],
+      input: { meeting_id: meetingId || (given && given.meeting_id) || null, opportunity_id: opportunityId || null, case_id: caseId } }, fn));
+  return traced(async (root) => {
+    let meeting = given || data.meetings.find((m) => m.meeting_id === meetingId);
+    const transcript = givenText ?? readTranscript(meeting);
+    const pre = await T.inSpan("pre-checks", { kind: "GUARDRAIL", input: { meeting_id: meetingId, user_id: userId } }, async (h) => {
+      if (meeting) {
+        // a conversation that arrived without a link is attributed the way the platform does it (match, or a new opportunity)
+        meeting = core.attribute({ meeting, lines: core.transcriptLines(transcript || ""), data, user: data.team.find((u) => u.user_id === userId), schema: SCHEMA });
+        data.meetings = [meeting, ...data.meetings.filter((m) => m.meeting_id !== meeting.meeting_id)];
+        meetingId = meeting.meeting_id;
+      }
+      const p = core.prepareRun({ meetingId, opportunityId, userId, data, transcript, log, schema: SCHEMA, permissions });
+      h.setOutput(p.output ? { blocked: true, source_status: p.output.source_status, block_reason: p.output.block_reason }
+        : { blocked: false, opportunity: (p.opp && p.opp.opportunity_id) || "new opportunity", lines: p.lines.length });
+      return p;
+    });
+    const meta = { run_id: runId, case_id: caseId, meeting_id: meetingId, user_id: userId, model: label, effort };
+    if (pre.output) {
+      log.add("system", "run_blocked", meetingId, "blocked", pre.output.block_reason);
+      root.set({ metadata: { ...meta, run_status: "Blocked", source_status: pre.output.source_status } });
+      root.setOutput(pre.output);
+      return { runId, output: pre.output, log: log.events, ...root.ids() };
+    }
+    const prompt = buildPrompt({ ...pre, data, permissions });
+    // the root span's input is what the agent read for this run (CRM context + numbered conversation), not the cached policy
+    root.setInput(prompt.user);
+    if (dryRun) return { runId, output: { dry_run: true, system_chars: prompt.system.length, user_chars: prompt.user.length, lines: pre.lines.length }, log: log.events };
+    let raw; let usage = null; let served = null;
+    if (mock) {
+      log.add("system", "agent_called", meetingId, "ok", "MOCK (reference output)");
+      raw = mockOutput(meetingId, pre.lines);
+    } else {
+      log.add("system", "agent_called", meetingId, "ok", `${model} · effort ${effort}`);
+      const r = await callModel(prompt, model, effort); // the Anthropic instrumentor records this call as the LLM span
+      raw = r.raw; usage = r.usage; served = r.model;
+      const cost = core.costOf(usage, model);
+      log.add("system", "agent_answered", meetingId, "ok",
+        `in=${usage.input_tokens} cache_read=${usage.cache_read_input_tokens} cache_write=${usage.cache_creation_input_tokens} out=${usage.output_tokens}${cost != null ? ` cost=$${cost.toFixed(4)}` : ""}${served !== model ? ` served_by=${served}` : ""}`);
+    }
+    // the validator gets its own span: the model's raw answer in, the corrections out (a fix by the validator stays visible)
+    const output = await T.inSpan("validator", { kind: "GUARDRAIL", input: raw }, async (h) => {
+      const o = core.validateOutput(raw, { ...pre, team: data.team }, SCHEMA);
+      h.set({ "validator.corrections": o.validation_notes.length });
+      h.setOutput({ corrections: o.validation_notes, statuses: Object.fromEntries(o.fields.map((f) => [f.field, f.status])) });
+      return o;
+    });
+    output.usage = usage ? { ...usage, model, served_by: served, cost_usd: core.costOf(usage, model) } : null;
+    log.add("system", "output_validated", meetingId, "ok", `${output.validation_notes.length} correction(s)`);
+    log.add("agent", "proposals_generated", pre.opp.opportunity_id || "new opportunity", "ok", output.fields.map((f) => `${f.field}=${f.status}`).join(", "));
+    root.set({ metadata: { ...meta, opportunity_id: pre.opp.opportunity_id || "new", run_status: output.run_status, source_status: output.source_status,
+      prompt_version: T.promptVersion(prompt.system), fields_with_evidence: output.fields.filter((f) => f.status !== "no_evidence").length,
+      corrections: output.validation_notes.length, cost_usd: output.usage ? output.usage.cost_usd : null } });
+    root.setOutput(output);
+    return { runId, output, log: log.events, ...root.ids() };
+  });
 }
 
 // ------------------------------------------------------------------ CLI
@@ -181,12 +218,15 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const label = mock ? "mock" : model;
   const outDir = arg("--out") ? path.resolve(arg("--out")) : path.join(KIT, "eval", "outputs", label);
   if (!dryRun) fs.mkdirSync(outDir, { recursive: true });
+  // every case of one CLI run shares a session id, so Arize groups the batch (e.g. one eval run of one model)
+  const SESSION = `${mock ? "mock" : model}-${new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "")}`;
   let spent = 0; let calls = 0;
   for (const c of jobs) {
     try {
       // every case starts from the seed CRM: crm undefined -> loadData reads data/*.json again
-      const { output, log } = await runAgent({ meetingId: c.meeting_id, opportunityId: c.opportunity_id, userId: c.run_as_user_id, dryRun, mock, model,
-        meeting: c.meeting || null, transcript: c.transcript ?? null });
+      const { output, log, traceId } = await runAgent({ meetingId: c.meeting_id, opportunityId: c.opportunity_id, userId: c.run_as_user_id, dryRun, mock, model,
+        meeting: c.meeting || null, transcript: c.transcript ?? null, caseId: c.case_id, sessionId: SESSION });
+      if (traceId) output.trace_id = traceId;
       if (!dryRun) {
         fs.writeFileSync(path.join(outDir, `${c.case_id}.json`), JSON.stringify(output, null, 2));
         fs.writeFileSync(path.join(outDir, `${c.case_id}.log.json`), JSON.stringify(log, null, 2));
@@ -204,4 +244,5 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     }
   }
   if (calls) console.log(`\n${calls} model call(s) on ${model}, total $${spent.toFixed(4)}. Outputs: ${path.relative(KIT, outDir)}`);
+  if (T.tracingOn()) { await T.flushTracing(); console.log(`Traces sent to Arize, project ${T.PROJECT}, session ${SESSION}.`); }
 }

@@ -488,14 +488,15 @@ export function renderFieldDictionary(schema) {
     "",
     `**Per-conversation fields** describe this conversation only: ${perCall}. **State fields** describe the opportunity or the client now; only state fields can be \`contradictory\`.`,
     `**Seller-only, never proposed:** ${schema.seller_only_note}`,
-    "Values are plain strings. Respect each format exactly: the platform rejects values that do not match it.",
+    "Values are plain strings. Respect each format exactly: the platform rejects values that do not match it. A picklist field takes its options word for word (several joined by '; '); the specifics a category cannot hold (names, figures, systems) go in the field's `note`.",
   ];
   for (const g of schema.groups) {
     out.push("", `## ${g.label}`);
     for (const d of schema.fields.filter((f) => f.group === g.id)) {
       const where = d.record === "client" ? "client record" : "opportunity";
       const tag = d.meddpicc ? `, MEDDPICC ${d.meddpicc}` : "";
-      out.push(`- \`${d.key}\` (${d.label}; ${d.kind === "per_call" ? "per-conversation" : "state"}, ${where}${tag}): ${d.definition} Evidence: ${d.evidence} Format: ${d.format} Good: "${d.good}". Bad: ${d.bad}.`);
+      const opts = d.options ? ` Options${d.type === "multiselect" ? " (one or more)" : " (exactly one)"}: ${d.options.map((o) => `"${o}"`).join(", ")}${d.allow_other ? `; or "Other: <few words>" when none fits` : ""}.` : "";
+      out.push(`- \`${d.key}\` (${d.label}; ${d.kind === "per_call" ? "per-conversation" : "state"}, ${where}${tag}): ${d.definition} Evidence: ${d.evidence} Format: ${d.format}${opts} Good: "${d.good}". Bad: ${d.bad}.`);
     }
   }
   return out.join("\n");
@@ -596,17 +597,31 @@ export function checkValue(def, value, { schema, team, current, seller = false }
       const s = v.replace(/[,\s]/g, "");
       return /^\d+$/.test(s) && +s > 0 ? { ok: true, value: String(+s) } : { ok: false, why: `'${v}' is not a whole number` };
     }
-    case "multi": {
-      const opts = schema.departments;
-      const parts = v.split(/[;,]/).map((p) => p.trim()).filter(Boolean);
-      const hit = opts.filter((o) => parts.some((p) => norm(p) === norm(o)));
-      const miss = parts.filter((p) => !opts.some((o) => norm(o) === norm(p)));
-      if (!hit.length) return { ok: false, why: `'${v}' has no department from the list` };
-      return note({ value: hit.join("; "), note: miss.length ? `dropped unknown department(s): ${miss.join(", ")}` : null });
+    case "select": {
+      // one option of the list; "Other: <text>" only where the field allows it
+      const o = optionOf(def, v);
+      if (o) return { ok: true, value: o };
+      const other = otherOf(v);
+      if (def.allow_other && other) return { ok: true, value: other };
+      return { ok: false, why: `'${v}' is not an option of ${def.label}` };
     }
-    case "budget": {
-      if (/^no budget allocated\.?$/i.test(v)) return { ok: true, value: "No budget allocated" };
-      return /^usd\s*\d/i.test(v) ? { ok: true, value: v.replace(/^usd\s*/i, "USD ") } : { ok: false, why: `budget '${v}' is not 'USD <amount> per <period>'` };
+    case "multiselect": {
+      // several options joined by '; ' (option names never contain ';'). An item outside the list becomes
+      // "Other: <item>" where the field allows it, and is dropped where it does not; both are noted.
+      const parts = v.split(";").map((x) => x.trim()).filter(Boolean);
+      const hit = [], others = [], noted = [];
+      for (const part of parts) {
+        const o = optionOf(def, part);
+        if (o) { if (!hit.includes(o)) hit.push(o); continue; }
+        const other = otherOf(part) || (def.allow_other ? `Other: ${part}` : null);
+        if (def.allow_other && other) {
+          if (!others.some((x) => norm(x) === norm(other))) others.push(other);
+          if (!otherOf(part)) noted.push(`'${part}' is not an option, kept as ${other}`);
+        } else noted.push(`dropped '${part}' (not an option)`);
+      }
+      if (!hit.length && !others.length) return { ok: false, why: `'${v}' has no option of ${def.label}` };
+      const ordered = def.options.filter((o) => hit.includes(o)).concat(others);
+      return note({ value: ordered.join("; "), note: noted.length ? noted.join("; ") : null });
     }
     case "person": {
       const role = def.label.toLowerCase();
@@ -629,11 +644,22 @@ export function checkValue(def, value, { schema, team, current, seller = false }
   }
 }
 
+/** The option a value names (case, spacing and final punctuation ignored), or null. */
+export function optionOf(def, v) {
+  const n = norm(v).replace(/[.\s]+$/, "");
+  return (def.options || []).find((o) => norm(o) === n) || null;
+}
+/** "Other: <text>" from a value written as "other: text" or "Other - text", or null. */
+function otherOf(v) {
+  const m = /^other\s*[:\-]\s*(.+)$/i.exec(String(v).trim());
+  return m && m[1].trim() ? `Other: ${m[1].trim()}` : null;
+}
+
 export function sameValue(def, a, b) {
   if (a == null || b == null) return a == null && b == null;
   if (def.type === "integer") return String(a).replace(/[,\s]/g, "") === String(b).replace(/[,\s]/g, "");
-  if (def.type === "multi") {
-    const set = (s) => String(s).split(/[;,]/).map(norm).filter(Boolean).sort().join("|");
+  if (def.type === "multiselect") {
+    const set = (s) => String(s).split(";").map(norm).filter(Boolean).sort().join("|");
     return set(a) === set(b);
   }
   return norm(a).replace(/[.\s]+$/, "") === norm(b).replace(/[.\s]+$/, "");

@@ -1,0 +1,112 @@
+[
+ {
+  "record_id": "01a19377-1383-757d-ab37-bb24fcc09f7b",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19377-1383-75c2-b5cb-8ee4bb1cd6b3",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19377-1383-75cc-95ec-e53b9d148d11",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19377-1383-75d6-b1d6-6a1007bba4c4",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19377-1383-75de-9dd9-4ade2aadfd0c",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "decision_criteria: missing key facts [[\"Visit and activity tracking\"],[\"sample\"]]"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19377-1383-75e6-b53c-8e80e6ff8d4a",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19377-1383-75ef-b3a4-25d5e557349e",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19377-1383-75fc-a792-d963713fb177",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19377-1383-7605-900c-3edcee002c6b",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "decision_criteria: missing key facts [[\"Lead capture and routing\"],[\"Pipeline management\"],[\"WhatsApp messaging\"]] | integrations: missing key facts [[\"Industry or in-house system\"],[\"Marketing automation\"],[\"WhatsApp Business\"]]"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19377-1383-760d-833c-f990b3d546ea",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19377-1383-7616-85e2-43f0951545d5",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ }
+]

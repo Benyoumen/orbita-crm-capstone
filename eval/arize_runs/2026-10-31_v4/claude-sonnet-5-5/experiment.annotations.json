@@ -1,0 +1,112 @@
+[
+ {
+  "record_id": "01a19375-8490-71d7-87ad-b3dc03c50d16",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19375-8490-71e7-b5c7-ef6128a8d876",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19375-8490-71f2-95f9-a0dda0b23e2b",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "objection: status no_evidence, expected proposed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19375-8490-71fb-9eb9-03d5d8ecab56",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19375-8490-7204-86c4-36f41250dbf9",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "decision_criteria: missing key facts [[\"Visit and activity tracking\"],[\"sample\"]]"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19375-8490-720c-b735-c3297c4e71dd",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19375-8490-721b-8793-d9ab2b5cad74",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19375-8490-7223-9142-04199a946fa8",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19375-8490-722c-afb2-52db74d102a9",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "fail",
+    "text": "decision_criteria: missing key facts [[\"Lead capture and routing\"],[\"Pipeline management\"],[\"WhatsApp messaging\"]]"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19375-8490-7234-8d27-a4596cd3fcbd",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ },
+ {
+  "record_id": "01a19375-8490-723c-b461-ae43e0c107b1",
+  "values": [
+   {
+    "name": "code_checks",
+    "label": "pass",
+    "text": "all checks passed"
+   }
+  ]
+ }
+]
